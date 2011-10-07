@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <!-- HomeActivity list options -->
+    <string-array name="options">
+        <item>Всё-в-одном</item>
+        <item>Скачать TPT-образ</item>
+        <item>Проверить md5-хэш файла</item>
+        <item>Распаковать zip-файл</item>
+        <item>Проверить директорию с образами</item>
+        <item>Запустить TPT</item>
+        <item>Create your own TPT</item>
+        <item>Удалить директорию с образами</item>
+        <item>Выключть телефон и запустить TPT</item>
+        <!-- <item>Тесты</item> -->
+    </string-array>
+      <!-- HomeActivity disclaimer strings -->
+    <string name="disclaimer_heading">Отказ от ответственности</string>
+    <string name="disclaimer">Вы используете это приложение на свой страх и риск. Я не несу ответственности за любой возможный вред, причинённый вашему телефону.</string>
+    <string name="accept">Принять</string>
+      <!-- HomeActivity start TPT strings -->
+    <string name="power_off">Выключить</string>
+    <string name="start_tpt">После выключения телефона, зажмите кнопку громкость+(или громкость+ и меню, громкость-) и нажмите кнопку питания для запуска TPT.</string>
+      <!-- HomeActivity delete image strings -->
+    <string name="delete_image_heading">Удалить образ</string>
+    <string name="delete_image">Вы уверены, что хотите удалить директорию с образами(и всё её содержимое)?</string>
+    <string name="deleting">Удаление. Подалуйста подождите...</string>
+    <string name="image_deleted">Директория с образами удалена.</string>
+      <!-- HomeActivity low battery strings -->
+    <string name="low_battery_heading">Низкий заряд батареи.</string>
+    <string name="low_battery">Уровень заряда вашей батареи ниже 25%, продолжить запуск TPT?</string>
+      <!-- HomeActivity auto tpt strings -->
+    <string name="auto_tpt_heading">Запустить TPT</string>
+    <string name="auto_tpt">Запустить TPT? Если вы не выбрали директорию с образом, то нажмите "Нет". Чтобы продолжить, нажмите "Да".</string>
+    <string name="auto_tpt_fail">Извините, эта возможность пока не поддерживается вашим ROM.</string>
+      <!-- HomeActivity locale changing strings -->
+    <string name="change_locale_heading">Pick the language to use</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="german">German</string>
+    <string name="russian">Russian</string>
+    <string name="chinese">Chinese</string>
+    
+      <!-- Downloader strings -->
+    <string name="standard_tpt_heading">Стандартные TPT-образы:</string>
+    <string name="standard_tpt">Преобразует разметку, но не содержит готовый ROM</string>
+    <string name="allinone_tpt_heading">TPT-образы "Всё-в-одном":</string>
+    <string name="allinone_tpt">Преобразует разметку и прошивает новый ROM в один шаг</string>
+    <string name="downloader">Скачать TPT-образ</string>
+    
+      <!-- DirectDownloader strings -->  
+    <string name="downloading">Загрузка...</string>
+    <string name="download_finished_heading">Загрузка завершена</string>
+    <string name="download_finished">Загружено</string>
+    <string name="pick_download">Выберите файл для загрузки</string>
+    <string name="file_there_heading">Файл на SD-карте</string>
+    <string name="file_there1">Найден</string>
+    <string name="file_there2">на SD-карте. Продолжить скачивание?</string>
+    <string name="download_failed_heading">Загрузка прервана</string>
+    <string name="download_failed">Невозможно загрузить</string>
+    
+      <!-- MD5 checking strings -->
+    <string name="pickmd5">Выберите файл для проверки</string>
+    <string name="calculating">Расчёт. Пожалуйста подождите...</string>
+    <string name="md5">MD5sum</string>
+    <string name="md5of">Проверка md5-суммы файла:</string>
+    <string name="md5is">MD5-сумма:</string>
+    <string name="md5matches">Совпадает с ожидаемым.</string>
+    
+      <!-- PickFile strings -->
+    <string name="file_not_found_heading">Файл не найден</string>
+    <string name="file_not_found1">Не найдено</string>
+    <string name="file_not_found2">.Хотите скачать?</string>
+    
+      <!-- Unzipping strings -->
+    <string name="pickunzip">Выберите zip-файл для распаковки</string>
+    <string name="unzipping">Распаковка. Пожалуйста подождите...</string>
+    <string name="unzipgood">Распаковка завершена</string>
+    <string name="unzipbad">Ошибка распаковки</string>
+    <string name="unzip">Распаковать</string>
+    <string name="unzip_file">Пробуем распаковать</string>
+    
+      <!-- EnterFile strings -->
+    <string name="askfile">Введите имя файла и нажмите "ввод"(файл должен быть в корневой директории карты памяти)</string>
+    <string name="enterfile">Ввод</string>
+    <string name="unfound1">Невозможно найти \'</string>
+    <string name="unfound2">\'. Пожалуйста проверте и попробуйте снова.</string>
+    
+      <!-- VerifyImage strings -->
+    <string name="nooffiles">Файлов проверено:</string>
+    <string name="noofmatches">Совпадает md5-сумм:</string>
+    <string name="missingfiles">Файлов не найдено:</string>
+    <string name="filessearched">Files searched for:</string>
+    <string name="files_verified">Файлов проверено:</string>
+    <string name="no_of_matches">Количество совпадений:</string>
+    <string name="files_not_found">файлы не найдены.</string>
+    <string name="file_not_found">файл не найден.</string>
+    <string name="no_nandroid">Файл nandroid.md5 не найден. Проверьте наличие в директории с образами и попробуйте снова.</string>
+    <string name="verifying">Проверка. Пожалуйста подождите...</string>
+    
+      <!-- AllInOne strings -->
+    <string name="md5resultaio">Результат MD5:</string>
+    <string name="unzipdoneaio">Результат распаковки:</string>
+    <string name="downloadresultaio">Результат загрузки: </string>
+    <string name="md5_mismatch_heading">Несовпадение MD5-суммы</string>
+    <string name="md5_mismatch">MD5-сумма не совпадает с ожидаемой. Хотите закачать файл заново?</string>
+    <string name="unzip_fail">Ошибка распаковки, останавливаем работу.</string>
+    <string name="no_nandroid2">Файл nandroid.md5 не найден в директории с образами. Останавливаем работу.</string>
+    <string name="working">Работаем. Пожалуйста подождите...</string>
+    <string name="pickallinone">Выберите файл для использования</string>
+    
+      <!-- Instructions strings -->
+    <string name="instructions">Инструкция по использованию</string>
+    <string name="instruction1">1. Скачать TPT-образ</string>
+    <string name="instruction2">2. Проверить MD5-сумму</string>
+    <string name="instruction3">3. Распаковать TPT-образ</string>
+    <string name="instruction4">4. Проверить содержимое директории с образами на соответствие со значениями в nandroid.md5</string>
+    <string name="instruction5">5. Выключить телефон</string>
+    <string name="instruction6">6. Зажмите громкость+(меню и громкость+ на некоторых устройствах) и нажмите кнопку питания телефона.</string>
+    <string name="instruction7">Используя стандартные TPT-образы:</string>
+    <string name="instruction8">7. На экране должен появиться зелёный текст и телефон перегрузится в Recovery</string>
+    <string name="instruction9">8. Прошить ROM через Recovery и перегрузиться</string>
+    <string name="instruction10">Используя TPT-образы "Всё-в-одном":</string>
+    <string name="instruction11">7. На экране должен появиться зелёный текст и затем телефон перезагрузится в выбраный ROM</string>
+    
+      <!-- Troubleshooting strings -->
+    <string name="troubleshooting1">Q. I pressed the power off button, but nothing happened.</string>
+    <string name="troubleshooting2">A. You need root (superuser) for this option to work. If you have root and granted su permissions, try unchecking the Auto Power-off option in the Options menu.</string>
+    <string name="troubleshooting3">Q. I followed all the steps and tried to flash the TPT, but now I\'m stuck at the green android.</string>
+    <string name="troubleshooting4">A. You\'re probably in fastboot mode. Trying holding menu and vol+ and try flashing again.</string>
+    <string name="troubleshooting5">Q. I downloaded and unzipped a TPT, but some of the files don\'t match.</string>
+    <string name="troubleshooting6">A. The download may have been corrupted, try downloading again and if they still don\'t match use the feedback email and give details of which file you downloaded and which files don\'t match.</string>
+    <string name="troubleshooting7"></string>
+    <string name="troubleshooting8"></string>
+    <string name="troubleshooting9"></string>
+    <string name="troubleshooting10"></string>
+    <string name="troubleshooting11"></string>
+    
+      <!-- Changelog strings -->
+    <string name="changelog">Что нового</string>
+    
+      <!-- CustomTPT strings -->
+    <string name="finished_heading">TPT Built</string>
+    <string name="finished">Finished building your TPT.</string>
+    <string name="copying">Copying. Please wait...</string>
+    
+      <!-- General strings -->
+    <string name="app_name">TPT Helper</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Отмена</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="error">Ошибка</string>
+    <string name="other">Другое</string>
+    <string name="options">Настройки</string>
+    <string name="feedback">Обратная связь</string>
+    <string name="about">О программе</string>
+</resources>
