@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <!-- HomeActivity list options -->
+    <string-array name="options">
+        <item>Alles auf einmal</item>
+        <item>TPT-Datei herunterladen</item>
+        <item>MD5-Summe einer Datei prüfen</item>
+        <item>Zip-Datei entpacken</item>
+        <item>/image-Ordner prüfen</item>
+        <item>TPT auslösen</item>
+        <item>Create your own TPT</item>
+        <item>/image-Ordner löschen</item>
+        <item>Herunterfahren um den TPT zu starten</item>
+        <!-- <item>Tests</item> -->
+    </string-array>
+      <!-- HomeActivity disclaimer strings -->
+    <string name="disclaimer_heading">Haftungsausschluss</string>
+    <string name="disclaimer">Benutzung dieser App auf eigene Gefahr. Ich übernehme keine Verantwortung für irgendeinen Schaden am Gerät.</string>
+    <string name="accept">Akzeptieren</string>
+      <!-- HomeActivity start TPT strings -->
+    <string name="power_off">Herunterfahren</string>
+    <string name="start_tpt">Sobald das Gerät heruntergefahren ist, Lautstärke+ (oder Lautstärke+ und Menü) halten und den Einschaltknopf drücken um den TPT zu starten.</string>
+      <!-- HomeActivity delete image strings -->
+    <string name="delete_image_heading">Image löschen</string>
+    <string name="delete_image">Soll der /image-Ordner und seinen gesamter Inhalt wirklich gelöscht werden?</string>
+    <string name="deleting">Lösche. Bitte warten...</string>
+    <string name="image_deleted">/image-Ordner gelöscht.</string>
+      <!-- HomeActivity low battery strings -->
+    <string name="low_battery_heading">Niedriger Akkustand</string>
+    <string name="low_battery">Der Akkustand ist unter 25%, soll der TPT dennoch gestartet werden?</string>
+      <!-- HomeActivity auto tpt strings -->
+    <string name="auto_tpt_heading">TPT auslösen</string>
+    <string name="auto_tpt">Dies wird den TPT starten. Wenn der /image-Ordner noch nicht überprüft wurde, jetzt "Nein" auswählen und erst nachholen! Soll fortgefahren werden?</string>
+    <string name="auto_tpt_fail">Dieses Feature ist für das momentane ROM leider noch nicht verfügbar. Sorry!</string>
+      <!-- HomeActivity locale changing strings -->
+    <string name="change_locale_heading">Pick the language to use</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="german">German</string>
+    <string name="russian">Russian</string>
+    <string name="chinese">Chinese</string>
+    
+      <!-- Downloader strings -->
+    <string name="standard_tpt_heading">Standard TPTs:</string>
+    <string name="standard_tpt">Konvertiert, aber enthält kein ROM.</string>
+    <string name="allinone_tpt_heading">Alles-auf-einmal-TPTs:</string>
+    <string name="allinone_tpt">Konvertiert das Gerät und flasht das ROM in einem Durchgang</string>
+    <string name="downloader">Einen TPT herunterladen</string>
+    
+      <!-- DirectDownloader strings -->  
+    <string name="downloading">Lädt runter...</string>
+    <string name="download_finished_heading">Download komplett</string>
+    <string name="download_finished">Download erfolgreich</string>
+    <string name="pick_download">Zu ladende Datei wählen</string>
+    <string name="file_there_heading">Datei auf der SD-Karte</string>
+    <string name="file_there1">Gefunden</string>
+    <string name="file_there2">schon auf der Speicherkarte vorhanden. Trotzdem erneut runterladen?</string>
+    <string name="download_failed_heading">Download fehlgeschlagen</string>
+    <string name="download_failed">Der Download ist fehlgeschlagen.</string>
+    
+      <!-- MD5 checking strings -->
+    <string name="pickmd5">Zu überprüfende Datei wählen</string>
+    <string name="calculating">Berechne. Bitte warten...</string>
+    <string name="md5">MD5-Summe</string>
+    <string name="md5of">Überprüfe MD5-Summe von:</string>
+    <string name="md5is">MD5-Summe ist:</string>
+    <string name="md5matches">Stimmt mit dem erwarteten Wert überein.</string>
+    
+      <!-- PickFile strings -->
+    <string name="file_not_found_heading">Datei nicht gefunden.</string>
+    <string name="file_not_found1">Nicht gefunden: </string>
+    <string name="file_not_found2">. Soll es heruntergeladen werden?</string>
+    
+      <!-- Unzipping strings -->
+    <string name="pickunzip">Zu entpackende zip-Datei wählen:</string>
+    <string name="unzipping">Entpacke. Bitte warten...</string>
+    <string name="unzipgood">Entpacken erfolgreich.</string>
+    <string name="unzipbad">Entpacken fehlgeschlagen.</string>
+    <string name="unzip">Entpacken</string>
+    <string name="unzip_file">Versuche zu Entpacken</string>
+    
+      <!-- EnterFile strings -->
+    <string name="askfile">Bitte den Dateinamen eingeben, dann Enter drücken (Datei muss im obersten Verzeichnis der SD-Karte liegen)</string>
+    <string name="enterfile">Enter</string>
+    <string name="unfound1">Nicht gefunden: \'</string>
+    <string name="unfound2">\'. Bitte überprüfen und nochmals versuchen.</string>
+    
+      <!-- VerifyImage strings -->
+    <string name="nooffiles">Anzahl der überprüften Dateien:</string>
+    <string name="noofmatches">Anzahl der korrekten MD5-Summen:</string>
+    <string name="missingfiles">Anzahl der nicht gefundenen Dateien:</string>
+    <string name="filessearched">Gesuchte Dateien:</string>
+    <string name="files_verified">Dateien überprüft</string>
+    <string name="no_of_matches">Anzahl der Übereinstimmungen:</string>
+    <string name="files_not_found">Dateien nicht gefunden.</string>
+    <string name="file_not_found">Datei nicht gefunden.</string>
+    <string name="no_nandroid">Kann keine nandroid.md5-Datei im /image-Ordner finden, bitte überprüfen das sie existiert und nochmal versuchen.</string>
+    <string name="verifying">Überprüfe. Bitte warten...</string>
+    
+      <!-- AllInOne strings -->
+    <string name="md5resultaio">MD5 Ergebnis:</string>
+    <string name="unzipdoneaio">Ergebnis des Entpackens:</string>
+    <string name="downloadresultaio">Ergebnis des Downloads:</string>
+    <string name="md5_mismatch_heading">MD5-Summe stimmt nicht überein</string>
+    <string name="md5_mismatch">Die MD5-Summe stimmt nicht mit dem erwarteten Wert überein. Soll ein erneuter Download versucht werden?</string>
+    <string name="unzip_fail">Entpacken fehlgeschlagen, Aktivität wird gestoppt.</string>
+    <string name="no_nandroid2">Kann nandroid.md5-Datei im /image-Ordner nicht finden, Aktivität wird gestoppt.</string>
+    <string name="working">Arbeite. Bitte warten...</string>
+    <string name="pickallinone">Zu benutzende Datei auswählen</string>
+    
+      <!-- Instructions strings -->
+    <string name="instructions">Anleitung</string>
+    <string name="instruction1">1. TPT herunterladen</string>
+    <string name="instruction2">2. MD5-Summen der .zip-Datei vergleichen</string>
+    <string name="instruction3">3. Den TPT entpacken</string>
+    <string name="instruction4">4. Die MD5-Summen der Dateien im /image-Ordner mit den Werten in der nandroid.md5-Datei vergleichen</string>
+    <string name="instruction5">5. Gerät ausschalten</string>
+    <string name="instruction6">6. Lautstärke+ (Menü und Lautstärke+ bei manchen Geräten) halten und den Einschaltknopf drücken</string>
+    <string name="instruction7">Wenn ein Standard-TPT verwendet wird:</string>
+    <string name="instruction8">7. Grüner Text sollte erscheinen, dann sollte das Gerät ins Recovery booten.</string>
+    <string name="instruction9">8. Flashe das ausgewählte ROM vom Recovery, und reboote</string>
+    <string name="instruction10">Wenn ein Alles-auf-einmal-TPT verwendet wird:</string>
+    <string name="instruction11">7. Grüner Text sollte erscheinen, dann sollte das Gerät das ROM booten.</string>
+    
+      <!-- Troubleshooting strings -->
+    <string name="troubleshooting1">Q. I pressed the power off button, but nothing happened.</string>
+    <string name="troubleshooting2">A. You need root (superuser) for this option to work. If you have root and granted su permissions, try unchecking the Auto Power-off option in the Options menu.</string>
+    <string name="troubleshooting3">Q. I followed all the steps and tried to flash the TPT, but now I\'m stuck at the green android.</string>
+    <string name="troubleshooting4">A. You\'re probably in fastboot mode. Trying holding menu and vol+ and try flashing again.</string>
+    <string name="troubleshooting5">Q. I downloaded and unzipped a TPT, but some of the files don\'t match.</string>
+    <string name="troubleshooting6">A. The download may have been corrupted, try downloading again and if they still don\'t match use the feedback email and give details of which file you downloaded and which files don\'t match.</string>
+    <string name="troubleshooting7"></string>
+    <string name="troubleshooting8"></string>
+    <string name="troubleshooting9"></string>
+    <string name="troubleshooting10"></string>
+    <string name="troubleshooting11"></string>
+    
+      <!-- Changelog strings -->
+    <string name="changelog">Changelog</string>
+    
+      <!-- CustomTPT strings -->
+    <string name="finished_heading">TPT Built</string>
+    <string name="finished">Finished building your TPT.</string>
+    <string name="copying">Copying. Please wait...</string>
+    
+      <!-- General strings -->
+    <string name="app_name">TPT-Helfer</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="error">Fehler</string>
+    <string name="other">Anderes</string>
+    <string name="options">Einstellungen</string>
+    <string name="feedback">Feedback</string>
+    <string name="about">Über diese App</string>
+</resources>
