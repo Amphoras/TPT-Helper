@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <!-- HomeActivity list options -->
+    <string-array name="options">
+        <item>一键 TPT</item>
+        <item>下载一个 TPT 文件</item>
+        <item>检查文件的 md5sum 校验数据</item>
+        <item>解压缩一个 zip 文件</item>
+        <item>检查"image"文件夹</item>
+        <item>开始 TPT</item>
+        <item>Create your own TPT</item>
+        <item>删除"image"文件夹</item>
+        <item>关闭电源以启动 TPT</item>
+        <!-- <item>测试</item> -->
+    </string-array>
+      <!-- HomeActivity disclaimer strings -->
+    <string name="disclaimer_heading">声明</string>
+    <string name="disclaimer">使用此软件风险自负。对于可能对你的手机造成的任何损坏我不承担任何责任。</string>
+    <string name="accept">接受</string>
+      <!-- HomeActivity start TPT strings -->
+    <string name="power_off">关闭电源</string>
+    <string name="start_tpt">关闭手机电源后，按住“增大音量”键（或者“增大音量”和“Menu”）同时按下电源按钮启动 TPT。</string>
+      <!-- HomeActivity delete image strings -->
+    <string name="delete_image_heading">删除"image"文件夹</string>
+    <string name="delete_image">你确定要删除"image"文件夹和其中的所有文件吗？</string>
+    <string name="deleting">删除中，请稍候...</string>
+    <string name="image_deleted">"image"文件夹已删除。</string>
+      <!-- HomeActivity low battery strings -->
+    <string name="low_battery_heading">低电量</string>
+    <string name="low_battery">你的电池电量低于25%，你希望继续进行 TPT 操作吗？</string>
+      <!-- HomeActivity auto tpt strings -->
+    <string name="auto_tpt_heading">开始 TPT</string>
+    <string name="auto_tpt">即将开始 TPT 。如果你尚未检查 "image" 文件夹，请按“否”并检查它。你希望继续操作吗？</string>
+    <string name="auto_tpt_fail">对不起，你目前的 ROM 还不支持此特性。</string>
+      <!-- HomeActivity locale changing strings -->
+    <string name="change_locale_heading">Pick the language to use</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="german">German</string>
+    <string name="russian">Russian</string>
+    <string name="chinese">Chinese</string>
+    
+      <!-- Downloader strings -->
+    <string name="standard_tpt_heading">标准 TPT 文件:</string>
+    <string name="standard_tpt">转换但不包含任何 rom</string>
+    <string name="allinone_tpt_heading">一键 TPT 文件:</string>
+    <string name="allinone_tpt">转换并同时刷入新的 rom</string>
+    <string name="downloader">下载一个 TPT 文件</string>
+    
+      <!-- DirectDownloader strings -->  
+    <string name="downloading">下载中...</string>
+    <string name="download_finished_heading">下载完成</string>
+    <string name="download_finished">成功下载</string>
+    <string name="pick_download">选择需要下载的文件</string>
+    <string name="file_there_heading">在存储卡中的文件</string>
+    <string name="file_there1">找到</string>
+    <string name="file_there2">已经存在于存储卡中。你希望重新下载吗？</string>
+    <string name="download_failed_heading">下载失败</string>
+    <string name="download_failed">无法下载</string>
+    
+      <!-- MD5 checking strings -->
+    <string name="pickmd5">选择需要校验的文件</string>
+    <string name="calculating">计算中，请稍候...</string>
+    <string name="md5">MD5sum</string>
+    <string name="md5of">校验以下文件的 MD5sum:</string>
+    <string name="md5is">MD5sum是:</string>
+    <string name="md5matches">检验正确。</string>
+    
+      <!-- PickFile strings -->
+    <string name="file_not_found_heading">无法找到文件</string>
+    <string name="file_not_found1">没有找到</string>
+    <string name="file_not_found2">。你希望下载它吗？</string>
+    
+      <!-- Unzipping strings -->
+    <string name="pickunzip">选择 zip 文件进行解压</string>
+    <string name="unzipping">解压中，请稍候...</string>
+    <string name="unzipgood">解压完成</string>
+    <string name="unzipbad">解压失败</string>
+    <string name="unzip">解压</string>
+    <string name="unzip_file">尝试解压</string>
+    
+      <!-- EnterFile strings -->
+    <string name="askfile">请输入文件夹名然后回车（文件必须在存储卡的根目录下）</string>
+    <string name="enterfile">回车</string>
+    <string name="unfound1">无法找到 \'</string>
+    <string name="unfound2">\'。请检查后重试。</string>
+    
+      <!-- VerifyImage strings -->
+    <string name="nooffiles">校验的文件数:</string>
+    <string name="noofmatches">MD5sum 匹配的文件数:</string>
+    <string name="missingfiles">未找到的文件数:</string>
+    <string name="filessearched">查找文件:</string>
+    <string name="files_verified">文件已校验</string>
+    <string name="no_of_matches">匹配数目:</string>
+    <string name="files_not_found">文件未找到。</string>
+    <string name="file_not_found">文件未找到。</string>
+    <string name="no_nandroid">在 "image" 文件夹中无法找到 nandroid.md5 文件，请检查其是否存在并重试。</string>
+    <string name="verifying">校验中，请稍候...</string>
+    
+      <!-- AllInOne strings -->
+    <string name="md5resultaio">MD5 结果:</string>
+    <string name="unzipdoneaio">解压结果:</string>
+    <string name="downloadresultaio">下载结果:</string>
+    <string name="md5_mismatch_heading">MD5sum 不匹配</string>
+    <string name="md5_mismatch">MD5sum 和预设值不匹配，你想尝试重新下载吗？</string>
+    <string name="unzip_fail">解压缩失败，操作终止。</string>
+    <string name="no_nandroid2">在 "image" 文件夹中找不到 nandroid.md5 文件，操作终止。</string>
+    <string name="working">操作中，请稍候...</string>
+    <string name="pickallinone">选择想使用的文件</string>
+    
+      <!-- Instructions strings -->
+    <string name="instructions">使用说明</string>
+    <string name="instruction1">1. 下载一个 TPT 文件</string>
+    <string name="instruction2">2. 检查 zip 文件的 MD5sum 是否匹配</string>
+    <string name="instruction3">3. 解压缩 TPT 文件</string>
+    <string name="instruction4">4. 检查 "image" 文件夹的文件校验值是否符合 nandroid.md5 文件</string>
+    <string name="instruction5">5. 关闭手机电源</string>
+    <string name="instruction6">6. 按住“增大音量”键（或者“menu”和 “增大音量”键）同时按下电源按钮</string>
+    <string name="instruction7">如果使用一个标准的 TPT 文件:</string>
+    <string name="instruction8">7. 屏幕会显示绿色的文字，然后手机会重启进入 recovery</string>
+    <string name="instruction9">8. 在 recovery 中刷入你选择的 rom，然后重启</string>
+    <string name="instruction10">如果使用一个“一键TPT”文件:</string>
+    <string name="instruction11">7. 屏幕会显示绿色的文字，然后手机会重启进入新安装的 rom</string>
+    
+      <!-- Troubleshooting strings -->
+    <string name="troubleshooting1">Q. I pressed the power off button, but nothing happened.</string>
+    <string name="troubleshooting2">A. You need root (superuser) for this option to work. If you have root and granted su permissions, try unchecking the Auto Power-off option in the Options menu.</string>
+    <string name="troubleshooting3">Q. I followed all the steps and tried to flash the TPT, but now I\'m stuck at the green android.</string>
+    <string name="troubleshooting4">A. You\'re probably in fastboot mode. Trying holding menu and vol+ and try flashing again.</string>
+    <string name="troubleshooting5">Q. I downloaded and unzipped a TPT, but some of the files don\'t match.</string>
+    <string name="troubleshooting6">A. The download may have been corrupted, try downloading again and if they still don\'t match use the feedback email and give details of which file you downloaded and which files don\'t match.</string>
+    <string name="troubleshooting7"></string>
+    <string name="troubleshooting8"></string>
+    <string name="troubleshooting9"></string>
+    <string name="troubleshooting10"></string>
+    <string name="troubleshooting11"></string>
+    
+      <!-- Changelog strings -->
+    <string name="changelog">Changelog</string>
+    
+      <!-- CustomTPT strings -->
+    <string name="finished_heading">TPT Built</string>
+    <string name="finished">Finished building your TPT.</string>
+    <string name="copying">Copying. Please wait...</string>
+    
+      <!-- General strings -->
+    <string name="app_name">TPT Helper</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="error">错误</string>
+    <string name="other">其他</string>
+    <string name="options">选项</string>
+    <string name="feedback">选项</string>
+    <string name="about">关于</string>
+</resources>
