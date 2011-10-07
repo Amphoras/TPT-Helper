@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--  
+TPT Helper  Copyright (C) 2011  David Phillips
+
+This file is part of TPT Helper.
+
+TPT Helper is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+TPT Helper is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+<LinearLayout
+      android:orientation="vertical"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_weight="1">
+    <ScrollView
+        android:id="@+id/android:list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+<TableLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1">
+    <TableRow>
+       <TextView
+            android:text="@string/downloadresultaio"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/downloadresultaio"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    <TableRow>
+       <TextView
+            android:text="@string/md5resultaio"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/md5resultaio"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:text="@string/unzipdoneaio"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/unzipdoneaio"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:text="@string/nooffiles"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/nooffiles"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="@string/noofmatches"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/noofmatches"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:text="@string/missingfiles"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/missingfiles"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:text="@string/filessearched"
+            android:layout_column="0"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file1"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match1"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/file2"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match2"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file3"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match3"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file4"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match4"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file5"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match5"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file6"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match6"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file7"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match7"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file8"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match8"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file9"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match9"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file10"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match10"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file11"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match11"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file12"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match12"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file13"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match13"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file14"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match14"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file15"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match15"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file16"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match16"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file17"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match17"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+    
+    <TableRow>
+        <TextView
+            android:id="@+id/file18"
+            android:layout_column="0"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/match18"
+            android:gravity="right"
+            android:padding="3dip" />
+    </TableRow>
+</TableLayout>
+    </ScrollView>
+</LinearLayout>
+</LinearLayout>
