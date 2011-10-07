@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--  
+TPT Helper  Copyright (C) 2011  David Phillips
+
+This file is part of TPT Helper.
+
+TPT Helper is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+TPT Helper is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Options">
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="xbin"
+        android:summary="Untick if phone doesn't power off automatically when chosing to start TPT"
+        android:enabled="true"
+        android:persistent="true"
+        android:selectable="true"
+        android:title="Auto Power-off"/>
+</PreferenceScreen>
