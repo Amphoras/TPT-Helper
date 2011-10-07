@@ -1,0 +1,35 @@
+TPT Helper  Copyright (C) 2011  David Phillips
+
+This file is part of TPT Helper.
+
+TPT Helper is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+TPT Helper is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
+
+You can see a copy of the full license by picking the "License" option from the menu.
+
+---------------------------------------------------------
+
+TPT Helper is designed for the ZTE Blade to make it easy to repartition and convert your phone to run the latest custom roms.
+
+The TPTs used were created by wbaw.
+
+Translations:
+French translations by Alex131089.
+German translations by FelixL.
+Russian translations by top4ek.
+Chinese translations by wuxipaopao.
+
+Auto TPT Mode:
+Auto TPT mode is currently a work in progress. It is confirmed working on Ginger Stir Fry and CAE. It should also work on any ZTE rom or roms based on these (Swedish Spring etc.).
+
+Currently it does not work on CyanogenMod 7 or GingerBlade.
