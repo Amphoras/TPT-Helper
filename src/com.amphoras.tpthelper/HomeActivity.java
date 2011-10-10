@@ -49,9 +49,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class HomeActivity extends ListActivity {
-  SharedPreferences preferences;
+	SharedPreferences preferences;
 	private static ProgressDialog dialog;
 	private final int SHOW_DISCLAIMER = 1;
 	private final int POWER_OFF = 2;
@@ -61,6 +62,7 @@ public class HomeActivity extends ListActivity {
 	private final int START_TPT = 6;
 	private final int TPT_FAILED = 7;
 	private final int CHANGE_LOCALE = 8;
+	private final String model = (android.os.Build.MODEL).toLowerCase();
 	
 	private BroadcastReceiver BatInfoReceiver = new BroadcastReceiver(){
 
@@ -112,8 +114,17 @@ public class HomeActivity extends ListActivity {
 	        	  startActivity(i);
 			      break;
 		      case 1:
-		    	  Intent j = new Intent(HomeActivity.this, DirectDownloader.class);
-	        	  startActivity(j);
+		    	  if (model.equals("zte-blade")) {
+		    		  Intent j = new Intent(HomeActivity.this, DirectDownloader.class);
+		        	  startActivity(j);
+		    	  } else {
+		    		  if (model.equals("zte-skate")) {
+		    			  Intent j = new Intent(HomeActivity.this, DirectDownloaderSkate.class);
+			        	  startActivity(j);
+		    		  } else{
+		    			  Toast.makeText(HomeActivity.this, "No TPTs for your model (" + model + ")", Toast.LENGTH_LONG).show();
+		    		  }
+		    	  }
 				  break;
 		      case 2:
 		    	  Intent k = new Intent(HomeActivity.this, PickFile.class);
