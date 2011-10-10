@@ -1,7 +1,8 @@
 v1.7
 
-Tidied up code and removed unneeded parts.
 App released under GNU GPL v3 for source code see https://github.com/Amphoras/TPT-Helper/tree/V1.7
+Tidied up code and removed unneeded parts.
+Adverts removed.
 
 v1.6.1
 
