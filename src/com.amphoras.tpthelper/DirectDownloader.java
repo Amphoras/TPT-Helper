@@ -684,7 +684,7 @@ public class DirectDownloader extends ListActivity {
 			            fos.write(buffer, 0, length);
 			              // update amount downloaded then show progress
 			            downloaded += length;
-			            publishProgress(""+(int)((downloaded/total)*100));
+			            publishProgress(""+(int)((downloaded*100)/total));
 			        }
 			        fos.close();
 			        response = "Download Completed";
