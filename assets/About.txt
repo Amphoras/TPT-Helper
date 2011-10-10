@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
 
 You can see a copy of the full license by picking the "License" option from the menu.
+You can get a copy of the source code for this version from https://github.com/Amphoras/TPT-Helper/tree/V1.7
 
 ---------------------------------------------------------
 
