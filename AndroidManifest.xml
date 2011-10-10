@@ -70,5 +70,7 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
                   android:configChanges="orientation"></activity>
         <activity android:name="License"
                   android:configChanges="orientation"></activity>
+        <activity android:name="DirectDownloaderSkate"
+                  android:configChanges="orientation"></activity>
     </application>
 </manifest>
