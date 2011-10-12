@@ -54,7 +54,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
 public class DirectDownloader extends ListActivity {
-  SharedPreferences preferences;
+	SharedPreferences preferences;
 	private ProgressDialog dialog;
 	final File dir = Environment.getExternalStorageDirectory();
 	final File customTPT = new File(dir, "Gen1-to-Gen2-TPT-v8-custom.zip");
