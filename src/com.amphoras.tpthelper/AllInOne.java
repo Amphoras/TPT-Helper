@@ -54,7 +54,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class AllInOne extends Activity {
-  SharedPreferences preferences;
+	SharedPreferences preferences;
 	final File dir = Environment.getExternalStorageDirectory();
 	final File customTPT = new File(dir, "Gen1-to-Gen2-TPT-v8-custom.zip");
 	final File downloadcustomTPT = new File(dir, "download/Gen1-to-Gen2-TPT-v8-custom.zip");
@@ -704,7 +704,7 @@ public class AllInOne extends Activity {
 			            fos.write(buffer, 0, length);
 			              // update amount downloaded then show progress
 			            downloaded += length;
-			            publishProgress(""+(int)((downloaded/total)*100));
+			            publishProgress(""+(int)((downloaded*100)/total));
 			        }
 			        fos.close();
 			        response = "Download Completed";
