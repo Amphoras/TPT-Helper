@@ -44,7 +44,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -55,7 +54,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class CustomTPT extends Activity {
-  SharedPreferences preferences;
+	SharedPreferences preferences;
     private final int PICK_SPLASH = 1;
     private final int PICK_PARTITION = 2;
     private final int PICK_RECOVERY = 3;
@@ -66,9 +65,11 @@ public class CustomTPT extends Activity {
     private final int FINISHED = 8;
     private final int MD5_MISMATCH = 9;
     private String unziplocation = Environment.getExternalStorageDirectory() + "/";
+    private String unziplocationfiles = Environment.getExternalStorageDirectory() + "/TPT Helper/";
     private static ProgressDialog dialog;
     private static File dir = Environment.getExternalStorageDirectory();
     private static File basezip = new File(dir, "TPT Helper/custom-TPT-base.zip");
+    private static File extrafiles = new File(dir, "TPT Helper/custom-tpt-files.zip");
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -348,7 +349,11 @@ public class CustomTPT extends Activity {
 	
 	private void buildTPT() {
 		if (basezip.canRead() == true) {
-			unzip();
+			if (extrafiles.canRead() == true) {
+				unzip();
+			} else {
+				DownloadFile2();
+			}
 		} else {
 			DownloadFile();
 		}
@@ -361,21 +366,20 @@ public class CustomTPT extends Activity {
 	}
 	
 	private void CopyAssets(String filename, String newfilename) {
-	    AssetManager assets = getAssets();
 	    try {
 	    	  // open the file from the assets folder
-	    	InputStream is = assets.open(filename);
+	    	InputStream fis = new FileInputStream(Environment.getExternalStorageDirectory() + "/TPT Helper/custom-tpt-files/" + filename);
 	          // set where to save it
-		    OutputStream os = new FileOutputStream("/sdcard/image/" + newfilename);
+		    OutputStream fos = new FileOutputStream(Environment.getExternalStorageDirectory() + "/image/" + newfilename);
 	        byte[] buffer = new byte[1024];
 		    int i;
 		      // while you can still read to the buffer, write to the output
-		    while((i = is.read(buffer)) != -1){
-		        os.write(buffer, 0, i);
+		    while((i = fis.read(buffer)) != -1){
+		        fos.write(buffer, 0, i);
 		    }
 		      // closes the input/output
-	        is.close();
-	        os.close();
+	        fis.close();
+	        fos.close();
 	    } catch(Exception e) {
 
 	    }
@@ -383,6 +387,15 @@ public class CustomTPT extends Activity {
 	
 	private void MakeDirectory(String path) {
 		String image = Environment.getExternalStorageDirectory() + "/";
+	    File file = new File(image + path);
+	      // if the location doesn't exist, create it
+	    if(!file.isDirectory()) {
+	        file.mkdirs();
+	    }
+	}
+	
+	private void MakeDirectory2(String path) {
+		String image = Environment.getExternalStorageDirectory() + "/TPT Helper/";
 	    File file = new File(image + path);
 	      // if the location doesn't exist, create it
 	    if(!file.isDirectory()) {
@@ -446,7 +459,7 @@ public class CustomTPT extends Activity {
 		protected void onPostExecute(String result) {
 			dialog.dismiss();
 			if (result.equals("Unzip completed")) {
-				verifyimage();
+				unzip2();
 			} else {
 				if (result.equals("Unzip failed")) {
 					showDialog(UNZIP_FAILED);
@@ -459,6 +472,82 @@ public class CustomTPT extends Activity {
 		UnzipTask task = new UnzipTask();
 		try {
 			String zipname = "/TPT Helper/custom-TPT-base.zip";
+			FileInputStream sfin = new FileInputStream(Environment.getExternalStorageDirectory() + zipname);
+			task.execute(new FileInputStream[] {sfin});
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private class UnzipTask2 extends AsyncTask<FileInputStream, Void, String> {
+		@Override
+		protected void onPreExecute() {
+			CharSequence unzipping = getText(R.string.unzipping);
+			dialog = ProgressDialog.show(CustomTPT.this, "", unzipping, true);
+		}
+		
+		@Override
+		protected String doInBackground(FileInputStream... fins) {
+			String response = "";
+			for (FileInputStream fin : fins) {
+				  // delete the files directory if it already exists
+				File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/custom-tpt-files");
+				deleteDirectory(file);
+				try  {
+			    	// sets chosen zip as input
+			      ZipInputStream zin = new ZipInputStream(fin);
+			      ZipEntry ze = null;
+			        // as long as there is another entry
+			      while ((ze = zin.getNextEntry()) != null) {
+			    	  // check if the next entry is a directory
+			        if(ze.isDirectory()) {
+			        	  // if so, create it if it doesn't exist
+			            MakeDirectory2(ze.getName());
+			        } else {
+			        	// open output to location
+			          FileOutputStream fos = new FileOutputStream(unziplocationfiles + ze.getName());
+			          byte[] buffer = new byte[1024];
+			          int length;
+			            // read zip input to buffer
+			          while ((length = zin.read(buffer))>0) {
+			        	  // while buffer has data in it, write the data to the location
+			        	fos.write(buffer, 0, length);
+			          }
+			            // close input/ouput streams when finished
+			          zin.closeEntry();
+			          fos.close();
+			        }
+			      }
+			      zin.close();
+			        // if end reached without errors, return success
+			      CharSequence unzipgood = getText(R.string.unzipgood);
+			      response = (String) unzipgood;
+			    } catch(Exception e) {
+			        // if there was an error, return failure
+			      CharSequence unzipbad = getText(R.string.unzipbad);
+			      response = (String) unzipbad;
+			    }
+			}
+			return response;
+		}
+		
+		@Override
+		protected void onPostExecute(String result) {
+			dialog.dismiss();
+			if (result.equals("Unzip completed")) {
+				verifyimage();
+			} else {
+				if (result.equals("Unzip failed")) {
+					showDialog(UNZIP_FAILED);
+				}
+			}
+		}
+	}
+
+	public void unzip2() {
+		UnzipTask2 task = new UnzipTask2();
+		try {
+			String zipname = "/TPT Helper/custom-tpt-files.zip";
 			FileInputStream sfin = new FileInputStream(Environment.getExternalStorageDirectory() + zipname);
 			task.execute(new FileInputStream[] {sfin});
 		} catch (FileNotFoundException e) {
@@ -515,7 +604,75 @@ public class CustomTPT extends Activity {
 			            fos.write(buffer, 0, length);
 			              // update amount downloaded then show progress
 			            downloaded += length;
-			            publishProgress(""+(int)((downloaded/total)*100));
+			            publishProgress(""+(int)((downloaded*100)/total));
+			        }
+			        fos.close();
+			        response = "Download Completed";
+			    } catch (MalformedURLException e) {
+			        e.printStackTrace();
+			    } catch (IOException e) {
+			        e.printStackTrace();
+			    }
+			}
+			return response;
+		}
+
+		protected void onProgressUpdate(String... progress) {
+            dialog.setProgress(Integer.parseInt(progress[0]));
+       }
+		
+		@Override
+		protected void onPostExecute(String result) {
+			dialog.dismiss();
+			if (result.equals("Download Completed")){
+				if (extrafiles.canRead() == true) {
+					unzip();
+				} else {
+					DownloadFile2();
+				}
+			} else {
+				showDialog(DOWNLOAD_FAILED);
+			}
+		}
+	}
+
+	public void DownloadFile() {
+		DownloadFileTask task = new DownloadFileTask();
+		task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/custom-TPT-base.zip" });
+	}
+	
+	private class DownloadFileTask2 extends AsyncTask<String, String, String> {
+		@Override
+		protected void onPreExecute() {
+            showDialog(DOWNLOADING);
+		}
+		
+		@Override
+		protected String doInBackground(String... urls) {
+			String response = "";
+			for (String urlstring : urls) {
+				try {
+					  // set the download URL
+			        URL url = new URL(urlstring);
+			        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			        connection.connect();
+			          // set where to save file
+			        File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/custom-tpt-files.zip");
+			          // check the directory exists and create it if it doen't
+			        MakeDirectory("TPT Helper");
+			        FileOutputStream fos = new FileOutputStream(file);
+			        InputStream is = connection.getInputStream();
+			          // get total size of file
+			        int total = connection.getContentLength();
+			        int downloaded = 0;
+			        byte[] buffer = new byte[1024];
+			        int length = 0;
+			          // read buffer and write to file
+			        while ((length = is.read(buffer)) > 0 ) {
+			            fos.write(buffer, 0, length);
+			              // update amount downloaded then show progress
+			            downloaded += length;
+			            publishProgress(""+(int)((downloaded*100)/total));
 			        }
 			        fos.close();
 			        response = "Download Completed";
@@ -543,9 +700,9 @@ public class CustomTPT extends Activity {
 		}
 	}
 
-	public void DownloadFile() {
-		DownloadFileTask task = new DownloadFileTask();
-		task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/custom-TPT-base.zip" });
+	public void DownloadFile2() {
+		DownloadFileTask2 task = new DownloadFileTask2();
+		task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/custom-tpt-files.zip" });
 	}
 	
 	private class CopyTask extends AsyncTask<String, Void, String> {
