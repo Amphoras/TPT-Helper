@@ -48,7 +48,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class VerifyImage extends Activity {
-  SharedPreferences preferences;
+	SharedPreferences preferences;
 	private static ProgressDialog dialog;
 	  // open the file for reading
 	private static File nandroid = new File(Environment.getExternalStorageDirectory(), "image/nandroid.md5");
@@ -302,8 +302,10 @@ public class VerifyImage extends Activity {
           CharSequence german = getText(R.string.german);
           CharSequence russian = getText(R.string.russian);
           CharSequence chinese = getText(R.string.chinese);
+          CharSequence portuguese = getText(R.string.portuguese);
+          CharSequence spanish = getText(R.string.spanish);
           CharSequence cancel = getText(R.string.cancel);
-          final CharSequence[] locales = {english, french, german, russian, chinese, cancel};
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -344,6 +346,20 @@ public class VerifyImage extends Activity {
       	    	    VerifyImage.this.finish();
       	    		break;
       	    	case 5:
+      	    		editlocale.putString("locale", "pt");
+      	    		editlocale.commit();
+      	    		Intent n = new Intent(VerifyImage.this, HomeActivity.class);
+      	    	    startActivity(n);
+      	    	    VerifyImage.this.finish();
+      	    		break;
+      	    	case 6:
+      	    		editlocale.putString("locale", "es");
+      	    		editlocale.commit();
+      	    		Intent o = new Intent(VerifyImage.this, HomeActivity.class);
+      	    	    startActivity(o);
+      	    	    VerifyImage.this.finish();
+      	    		break;
+      	    	case 7:
       	    		// Do nothing
       	    		break;
       	    	}
