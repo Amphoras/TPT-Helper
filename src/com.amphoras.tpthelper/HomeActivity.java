@@ -51,7 +51,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class HomeActivity extends ListActivity {
-  SharedPreferences preferences;
+	SharedPreferences preferences;
 	private static ProgressDialog dialog;
 	private final int SHOW_DISCLAIMER = 1;
 	private final int POWER_OFF = 2;
@@ -113,7 +113,7 @@ public class HomeActivity extends ListActivity {
 			      break;
 		      case 1:
 		    	  Intent j = new Intent(HomeActivity.this, DirectDownloader.class);
-	        	  startActivity(j);
+		          startActivity(j);
 				  break;
 		      case 2:
 		    	  Intent k = new Intent(HomeActivity.this, PickFile.class);
@@ -366,8 +366,10 @@ public class HomeActivity extends ListActivity {
           CharSequence german = getText(R.string.german);
           CharSequence russian = getText(R.string.russian);
           CharSequence chinese = getText(R.string.chinese);
+          CharSequence portuguese = getText(R.string.portuguese);
+          CharSequence spanish = getText(R.string.spanish);
           CharSequence cancel = getText(R.string.cancel);
-          final CharSequence[] locales = {english, french, german, russian, chinese, cancel};
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -408,6 +410,20 @@ public class HomeActivity extends ListActivity {
       	    	    HomeActivity.this.finish();
       	    		break;
       	    	case 5:
+      	    		editlocale.putString("locale", "pt");
+      	    		editlocale.commit();
+      	    		Intent n = new Intent(HomeActivity.this, HomeActivity.class);
+      	    	    startActivity(n);
+      	    	    HomeActivity.this.finish();
+      	    		break;
+      	    	case 6:
+      	    		editlocale.putString("locale", "es");
+      	    		editlocale.commit();
+      	    		Intent o = new Intent(HomeActivity.this, HomeActivity.class);
+      	    	    startActivity(o);
+      	    	    HomeActivity.this.finish();
+      	    		break;
+      	    	case 7:
       	    		// Do nothing
       	    		break;
       	    	}
