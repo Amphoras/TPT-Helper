@@ -821,8 +821,10 @@ public class DirectDownloader extends ListActivity {
               CharSequence german = getText(R.string.german);
               CharSequence russian = getText(R.string.russian);
               CharSequence chinese = getText(R.string.chinese);
+              CharSequence portuguese = getText(R.string.portuguese);
+              CharSequence spanish = getText(R.string.spanish);
               CharSequence cancel = getText(R.string.cancel);
-              final CharSequence[] locales = {english, french, german, russian, chinese, cancel};
+              final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, cancel};
           	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
           	    public void onClick(DialogInterface dialog, int item) {
           	    	Editor editlocale = preferences.edit();
@@ -863,6 +865,20 @@ public class DirectDownloader extends ListActivity {
           	    	    DirectDownloader.this.finish();
           	    		break;
           	    	case 5:
+          	    		editlocale.putString("locale", "pt");
+          	    		editlocale.commit();
+          	    		Intent n = new Intent(DirectDownloader.this, HomeActivity.class);
+          	    	    startActivity(n);
+          	    	    DirectDownloader.this.finish();
+          	    		break;
+          	    	case 6:
+          	    		editlocale.putString("locale", "es");
+          	    		editlocale.commit();
+          	    		Intent o = new Intent(DirectDownloader.this, HomeActivity.class);
+          	    	    startActivity(o);
+          	    	    DirectDownloader.this.finish();
+          	    		break;
+          	    	case 7:
           	    		// Do nothing
           	    		break;
           	    	}
