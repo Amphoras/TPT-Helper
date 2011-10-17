@@ -43,7 +43,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Changelog extends Activity {
-  private final int CHANGE_LOCALE = 1;
+	private final int CHANGE_LOCALE = 1;
 	SharedPreferences preferences;
 	
 	public void onCreate(Bundle savedInstanceState) {
@@ -163,8 +163,10 @@ public class Changelog extends Activity {
           CharSequence german = getText(R.string.german);
           CharSequence russian = getText(R.string.russian);
           CharSequence chinese = getText(R.string.chinese);
+          CharSequence portuguese = getText(R.string.portuguese);
+          CharSequence spanish = getText(R.string.spanish);
           CharSequence cancel = getText(R.string.cancel);
-          final CharSequence[] locales = {english, french, german, russian, chinese, cancel};
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -205,7 +207,21 @@ public class Changelog extends Activity {
       	    	    Changelog.this.finish();
       	    		break;
       	    	case 5:
-      	    		  // Do nothing
+      	    		editlocale.putString("locale", "pt");
+      	    		editlocale.commit();
+      	    		Intent n = new Intent(Changelog.this, HomeActivity.class);
+      	    	    startActivity(n);
+      	    	    Changelog.this.finish();
+      	    		break;
+      	    	case 6:
+      	    		editlocale.putString("locale", "es");
+      	    		editlocale.commit();
+      	    		Intent o = new Intent(Changelog.this, HomeActivity.class);
+      	    	    startActivity(o);
+      	    	    Changelog.this.finish();
+      	    		break;
+      	    	case 7:
+      	    		// Do nothing
       	    		break;
       	    	}
       	      }
