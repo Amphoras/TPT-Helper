@@ -64,6 +64,7 @@ public class CustomTPT extends Activity {
     private final int DOWNLOAD_FAILED = 7;
     private final int FINISHED = 8;
     private final int MD5_MISMATCH = 9;
+    private final int CHANGE_LOCALE = 10;
     private String unziplocation = Environment.getExternalStorageDirectory() + "/";
     private String unziplocationfiles = Environment.getExternalStorageDirectory() + "/TPT Helper/";
     private static ProgressDialog dialog;
@@ -105,6 +106,9 @@ public class CustomTPT extends Activity {
 			Intent j = new Intent(HomeActivity.this, Troubleshooting.class);
 			startActivity(j);
 			break; */
+		case R.id.locale:
+			showDialog(CHANGE_LOCALE);
+			break;
 		case R.id.about:
 			Intent j = new Intent(CustomTPT.this, About.class);
 			startActivity(j);
@@ -324,7 +328,7 @@ public class CustomTPT extends Activity {
             finishedbuilder.setMessage(finished);
             finishedbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                	// Do nothing
+                	CustomTPT.this.finish();
                 }
             });
             AlertDialog finishedalert = finishedbuilder.create();
@@ -343,6 +347,81 @@ public class CustomTPT extends Activity {
             AlertDialog md5alert = md5builder.create();
             md5alert.show();
             break;
+        case CHANGE_LOCALE:
+      	    // change the locale used in the app
+          Builder localebuilder = new AlertDialog.Builder(CustomTPT.this);
+          localebuilder.setTitle(R.string.change_locale_heading);
+          localebuilder.setCancelable(false);
+          CharSequence english = getText(R.string.english);
+          CharSequence french = getText(R.string.french);
+          CharSequence german = getText(R.string.german);
+          CharSequence russian = getText(R.string.russian);
+          CharSequence chinese = getText(R.string.chinese);
+          CharSequence portuguese = getText(R.string.portuguese);
+          CharSequence spanish = getText(R.string.spanish);
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, cancel};
+      	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
+      	    public void onClick(DialogInterface dialog, int item) {
+      	    	Editor editlocale = preferences.edit();
+      	    	switch (item) {
+      	    	case 0:
+      	    		editlocale.putString("locale", "en");
+      	    		editlocale.commit();
+      	    		Intent i = new Intent(CustomTPT.this, HomeActivity.class);
+      	    	    startActivity(i);
+      	    	    CustomTPT.this.finish();
+      	    		break;
+      	    	case 1:
+      	    		editlocale.putString("locale", "fr");
+      	    		editlocale.commit();
+      	    		Intent j = new Intent(CustomTPT.this, HomeActivity.class);
+      	    	    startActivity(j);
+      	    	    CustomTPT.this.finish();
+      	    		break;
+      	    	case 2:
+      	    		editlocale.putString("locale", "de");
+      	    		editlocale.commit();
+      	    		Intent k = new Intent(CustomTPT.this, HomeActivity.class);
+      	    	    startActivity(k);
+      	    	    CustomTPT.this.finish();
+      	    		break;
+      	    	case 3:
+      	    		editlocale.putString("locale", "ru");
+      	    		editlocale.commit();
+      	    		Intent l = new Intent(CustomTPT.this, HomeActivity.class);
+      	    	    startActivity(l);
+      	    	    CustomTPT.this.finish();
+      	    		break;
+      	    	case 4:
+      	    		editlocale.putString("locale", "zh");
+      	    		editlocale.commit();
+      	    		Intent m = new Intent(CustomTPT.this, HomeActivity.class);
+      	    	    startActivity(m);
+      	    	    CustomTPT.this.finish();
+      	    		break;
+      	    	case 5:
+      	    		editlocale.putString("locale", "pt");
+      	    		editlocale.commit();
+      	    		Intent n = new Intent(CustomTPT.this, HomeActivity.class);
+      	    	    startActivity(n);
+      	    	    CustomTPT.this.finish();
+      	    		break;
+      	    	case 6:
+      	    		editlocale.putString("locale", "es");
+      	    		editlocale.commit();
+      	    		Intent o = new Intent(CustomTPT.this, HomeActivity.class);
+      	    	    startActivity(o);
+      	    	    CustomTPT.this.finish();
+      	    		break;
+      	    	case 7:
+      	    		// Do nothing
+      	    		break;
+      	    	}
+      	      }
+      	  });
+          AlertDialog localealert = localebuilder.create();
+          localealert.show();
+          break;
         }
         return super.onCreateDialog(id);
     }
