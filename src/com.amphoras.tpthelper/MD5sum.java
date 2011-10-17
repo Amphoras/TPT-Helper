@@ -44,7 +44,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MD5sum extends Activity {
-  SharedPreferences preferences;
+	SharedPreferences preferences;
 	private TextView textview;
 	private static ProgressDialog dialog;
 	private final int CHECK_FINISHED = 1;
@@ -182,8 +182,10 @@ public class MD5sum extends Activity {
           CharSequence german = getText(R.string.german);
           CharSequence russian = getText(R.string.russian);
           CharSequence chinese = getText(R.string.chinese);
+          CharSequence portuguese = getText(R.string.portuguese);
+          CharSequence spanish = getText(R.string.spanish);
           CharSequence cancel = getText(R.string.cancel);
-          final CharSequence[] locales = {english, french, german, russian, chinese, cancel};
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -224,6 +226,20 @@ public class MD5sum extends Activity {
       	    	    MD5sum.this.finish();
       	    		break;
       	    	case 5:
+      	    		editlocale.putString("locale", "pt");
+      	    		editlocale.commit();
+      	    		Intent n = new Intent(MD5sum.this, HomeActivity.class);
+      	    	    startActivity(n);
+      	    	    MD5sum.this.finish();
+      	    		break;
+      	    	case 6:
+      	    		editlocale.putString("locale", "es");
+      	    		editlocale.commit();
+      	    		Intent o = new Intent(MD5sum.this, HomeActivity.class);
+      	    	    startActivity(o);
+      	    	    MD5sum.this.finish();
+      	    		break;
+      	    	case 7:
       	    		// Do nothing
       	    		break;
       	    	}
