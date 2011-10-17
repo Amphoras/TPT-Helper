@@ -1,3 +1,7 @@
+v1.8.1
+
+Added some Portuguese and Spanish translations.
+
 v1.8
 
 Fixed download progress bar.
