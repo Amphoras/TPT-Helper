@@ -39,6 +39,8 @@
     <string name="german">German</string>
     <string name="russian">Russian</string>
     <string name="chinese">Chinese</string>
+    <string name="portuguese">Portuguese</string>
+    <string name="spanish">Spanish</string>
     
       <!-- Downloader strings -->
     <string name="standard_tpt_heading">Standard TPTs:</string>
