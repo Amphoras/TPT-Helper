@@ -45,7 +45,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class Unzipper extends Activity {
-  SharedPreferences preferences;
+	SharedPreferences preferences;
 	private TextView textview;
 	private static ProgressDialog dialog;
 	private String unziplocation = Environment.getExternalStorageDirectory() + "/";
@@ -194,8 +194,10 @@ public class Unzipper extends Activity {
           CharSequence german = getText(R.string.german);
           CharSequence russian = getText(R.string.russian);
           CharSequence chinese = getText(R.string.chinese);
+          CharSequence portuguese = getText(R.string.portuguese);
+          CharSequence spanish = getText(R.string.spanish);
           CharSequence cancel = getText(R.string.cancel);
-          final CharSequence[] locales = {english, french, german, russian, chinese, cancel};
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -236,7 +238,21 @@ public class Unzipper extends Activity {
       	    	    Unzipper.this.finish();
       	    		break;
       	    	case 5:
-      	    		  // Do nothing
+      	    		editlocale.putString("locale", "pt");
+      	    		editlocale.commit();
+      	    		Intent n = new Intent(Unzipper.this, HomeActivity.class);
+      	    	    startActivity(n);
+      	    	    Unzipper.this.finish();
+      	    		break;
+      	    	case 6:
+      	    		editlocale.putString("locale", "es");
+      	    		editlocale.commit();
+      	    		Intent o = new Intent(Unzipper.this, HomeActivity.class);
+      	    	    startActivity(o);
+      	    	    Unzipper.this.finish();
+      	    		break;
+      	    	case 7:
+      	    		// Do nothing
       	    		break;
       	    	}
       	      }
