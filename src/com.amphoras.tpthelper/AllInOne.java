@@ -567,7 +567,9 @@ public class AllInOne extends Activity {
           CharSequence german = getText(R.string.german);
           CharSequence russian = getText(R.string.russian);
           CharSequence chinese = getText(R.string.chinese);
-          final CharSequence[] locales = {english, french, german, russian, chinese, cancel};
+          CharSequence portuguese = getText(R.string.portuguese);
+          CharSequence spanish = getText(R.string.spanish);
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -608,6 +610,20 @@ public class AllInOne extends Activity {
       	    	    AllInOne.this.finish();
       	    		break;
       	    	case 5:
+      	    		editlocale.putString("locale", "pt");
+      	    		editlocale.commit();
+      	    		Intent n = new Intent(AllInOne.this, HomeActivity.class);
+      	    	    startActivity(n);
+      	    	    AllInOne.this.finish();
+      	    		break;
+      	    	case 6:
+      	    		editlocale.putString("locale", "es");
+      	    		editlocale.commit();
+      	    		Intent o = new Intent(AllInOne.this, HomeActivity.class);
+      	    	    startActivity(o);
+      	    	    AllInOne.this.finish();
+      	    		break;
+      	    	case 7:
       	    		// Do nothing
       	    		break;
       	    	}
