@@ -41,7 +41,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class EnterFileUnzip extends Activity {
-  SharedPreferences preferences;
+	SharedPreferences preferences;
 	private final int FILE_UNFOUND = 1;
 	private final int CHANGE_LOCALE = 2;
 	
@@ -104,8 +104,10 @@ public class EnterFileUnzip extends Activity {
           CharSequence german = getText(R.string.german);
           CharSequence russian = getText(R.string.russian);
           CharSequence chinese = getText(R.string.chinese);
+          CharSequence portuguese = getText(R.string.portuguese);
+          CharSequence spanish = getText(R.string.spanish);
           CharSequence cancel = getText(R.string.cancel);
-          final CharSequence[] locales = {english, french, german, russian, chinese, cancel};
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -146,6 +148,20 @@ public class EnterFileUnzip extends Activity {
       	    	    EnterFileUnzip.this.finish();
       	    		break;
       	    	case 5:
+      	    		editlocale.putString("locale", "pt");
+      	    		editlocale.commit();
+      	    		Intent n = new Intent(EnterFileUnzip.this, HomeActivity.class);
+      	    	    startActivity(n);
+      	    	    EnterFileUnzip.this.finish();
+      	    		break;
+      	    	case 6:
+      	    		editlocale.putString("locale", "es");
+      	    		editlocale.commit();
+      	    		Intent o = new Intent(EnterFileUnzip.this, HomeActivity.class);
+      	    	    startActivity(o);
+      	    	    EnterFileUnzip.this.finish();
+      	    		break;
+      	    	case 7:
       	    		// Do nothing
       	    		break;
       	    	}
