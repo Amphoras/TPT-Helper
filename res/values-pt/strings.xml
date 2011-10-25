@@ -39,12 +39,12 @@
     <string name="german">German</string>
     <string name="russian">Russian</string>
     <string name="chinese">Chinese</string>
-    <string name="portuguese">Portuguese</string>
+    <string name="portuguese">Portugues</string>
     <string name="spanish">Spanish</string>
     
       <!-- Downloader strings -->
     <string name="standard_tpt_heading">Standard TPTs:</string>
-    <string name="standard_tpt">Converts, but doesn\'t include a rom</string>
+    <string name="standard_tpt">Converte, mas não inclui uma rom</string>
     <string name="allinone_tpt_heading">All in one TPTs:</string>
     <string name="allinone_tpt">Converts and flashes rom in one go</string>
     <string name="downloader">Download a TPT</string>
@@ -54,9 +54,9 @@
     <string name="download_finished_heading">Download Complete</string>
     <string name="download_finished">Successfully downloaded</string>
     <string name="pick_download">Chose the file to download</string>
-    <string name="file_there_heading">File on sdcard</string>
-    <string name="file_there1">Found</string>
-    <string name="file_there2">on the sdcard already. Do you still want to download it again?</string>
+    <string name="file_there_heading">Ficheiro no cartao de memoria</string>
+    <string name="file_there1">Encontrado</string>
+    <string name="file_there2">Ja se encontra no cartao de memoria. Pretende efectuar novo download?</string>
     <string name="download_failed_heading">Download Failed</string>
     <string name="download_failed">Failed to download</string>
     
@@ -143,17 +143,17 @@
       <!-- CustomTPT strings -->
     <string name="finished_heading">TPT Built</string>
     <string name="finished">Finished building your TPT.</string>
-    <string name="copying">Copying. Please wait...</string>
+    <string name="copying">A copiar, aguarde pf...</string>
     
       <!-- General strings -->
-    <string name="app_name">TPT Helper</string>
-    <string name="ok">Ok</string>
+    <string name="app_name">Ajuda do TPT</string>
+    <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="error">Error</string>
-    <string name="other">Other</string>
-    <string name="options">Options</string>
+    <string name="yes">Sim</string>
+    <string name="no">Nao</string>
+    <string name="error">Erro</string>
+    <string name="other">Outros</string>
+    <string name="options">Opções</string>
     <string name="feedback">Feedback</string>
-    <string name="about">About</string>
+    <string name="about">Acerca de</string>
 </resources>
