@@ -8,7 +8,7 @@
         <item>Dézipper un fichier</item>
         <item>Vérifier le dossier "image"</item>
         <item>Lancer le TPT</item>
-        <item>Create your own TPT</item>
+        <item>Créer votre propre TPT</item>
         <item>Supprimer le dossier "image"</item>
         <item>Eteindre pour lancer le TPT</item>
         <!-- <item>Tests</item> -->
@@ -141,8 +141,8 @@
     <string name="changelog">Historique des versions</string>
     
       <!-- CustomTPT strings -->
-    <string name="finished_heading">TPT Built</string>
-    <string name="finished">Finished building your TPT.</string>
+    <string name="finished_heading">TPT Créé</string>
+    <string name="finished">Votre TPT a fini d'être construit.</string>
     <string name="copying">Copie en cours. Veuillez patienter...</string>
     
       <!-- General strings -->
