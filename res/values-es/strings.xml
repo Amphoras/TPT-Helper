@@ -10,23 +10,23 @@
         <item>Arrancar TPT</item>
         <item>Crear tu propio TPT</item>
         <item>Eliminar el directorio "image"</item>
-        <item>Power off to start the TPT</item>
-        <!-- <item>Tests</item> -->
+        <item>Apagar para iniciar el TPT</item>
+        <!-- <item>Pruebas</item> -->
     </string-array>
       <!-- HomeActivity disclaimer strings -->
-    <string name="disclaimer_heading">Disclaimer</string>
-    <string name="disclaimer">Use this app at your own risk. I take no responsibilty for any damage done to your phone.</string>
-    <string name="accept">Accept</string>
+    <string name="disclaimer_heading">Advertencia</string>
+    <string name="disclaimer">Use esta aplicación bajo su propio riesgo. No tomo ninguna responsabilidad por cualquier daño en su teléfono.</string>
+    <string name="accept">Aceptar</string>
       <!-- HomeActivity start TPT strings -->
-    <string name="power_off">Power Off</string>
+    <string name="power_off">Apagar</string>
     <string name="start_tpt">Once the phone has turned off, hold volume+ (or volume+ and menu) and press the power button to start the TPT.</string>
       <!-- HomeActivity delete image strings -->
-    <string name="delete_image_heading">Delete Image</string>
+    <string name="delete_image_heading">Borrar "image"</string>
     <string name="delete_image">Are you sure you want to delete the image folder and all its contents?</string>
-    <string name="deleting">Deleting. Please wait...</string>
-    <string name="image_deleted">Image folder deleted.</string>
+    <string name="deleting">Borrando. Espere por favor...</string>
+    <string name="image_deleted">Directorio "image" borrado</string>
       <!-- HomeActivity low battery strings -->
-    <string name="low_battery_heading">Low Battery</string>
+    <string name="low_battery_heading">Batería baja</string>
     <string name="low_battery">Your battery is below 25%, do you still want to start the TPT?</string>
       <!-- HomeActivity auto tpt strings -->
     <string name="auto_tpt_heading">Arrancar TPT</string>
@@ -40,25 +40,25 @@
     <string name="russian">Russian</string>
     <string name="chinese">Chinese</string>
     <string name="portuguese">Portuguese</string>
-    <string name="spanish">Spanish</string>
+    <string name="spanish">Español</string>
     
       <!-- Downloader strings -->
-    <string name="standard_tpt_heading">Standard TPTs:</string>
+    <string name="standard_tpt_heading">TPT standard:</string>
     <string name="standard_tpt">Converts, but doesn\'t include a rom</string>
     <string name="allinone_tpt_heading">All in one TPTs:</string>
     <string name="allinone_tpt">Converts and flashes rom in one go</string>
-    <string name="downloader">Download a TPT</string>
+    <string name="downloader">Descargar un TPT</string>
     
       <!-- DirectDownloader strings -->  
-    <string name="downloading">Downloading...</string>
-    <string name="download_finished_heading">Download Complete</string>
+    <string name="downloading">Descargando...</string>
+    <string name="download_finished_heading">Descarga completada</string>
     <string name="download_finished">Successfully downloaded</string>
     <string name="pick_download">Chose the file to download</string>
     <string name="file_there_heading">File on sdcard</string>
     <string name="file_there1">Found</string>
     <string name="file_there2">on the sdcard already. Do you still want to download it again?</string>
     <string name="download_failed_heading">Download Failed</string>
-    <string name="download_failed">Failed to download</string>
+    <string name="download_failed">Error en la descarga</string>
     
       <!-- MD5 checking strings -->
     <string name="pickmd5">Chose the file to check</string>
