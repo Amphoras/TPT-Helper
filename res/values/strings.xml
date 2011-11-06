@@ -59,8 +59,9 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="german">German</string>
     <string name="russian">Russian</string>
     <string name="chinese">Chinese</string>
-    <string name="portuguese">Portuguese</string>
-    <string name="spanish">Spanish</string>
+    <string name="portuguese">Portugues</string>
+    <string name="spanish">Español</string>
+    <string name="serbian">Srpski</string>
     
       <!-- Downloader strings -->
     <string name="standard_tpt_heading">Standard TPTs:</string>
