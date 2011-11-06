@@ -19,8 +19,12 @@ You should have received a copy of the GNU General Public License
 along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.File;
+import java.io.InputStreamReader;
 import java.util.Locale;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -61,6 +65,7 @@ public class HomeActivity extends ListActivity {
 	private final int START_TPT = 6;
 	private final int TPT_FAILED = 7;
 	private final int CHANGE_LOCALE = 8;
+	private final int CHECK_TYPE = 9;
 	
 	private BroadcastReceiver BatInfoReceiver = new BroadcastReceiver(){
 
@@ -76,6 +81,7 @@ public class HomeActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	  super.onCreate(savedInstanceState);
+	  showDialog(CHECK_TYPE);
 	  setContentView(R.layout.main);
 	  preferences = PreferenceManager.getDefaultSharedPreferences(this);
 	  Locale currentlocale = Locale.getDefault();
@@ -368,8 +374,9 @@ public class HomeActivity extends ListActivity {
           CharSequence chinese = getText(R.string.chinese);
           CharSequence portuguese = getText(R.string.portuguese);
           CharSequence spanish = getText(R.string.spanish);
+          CharSequence serbian = getText(R.string.serbian);
           CharSequence cancel = getText(R.string.cancel);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, cancel};
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -424,6 +431,13 @@ public class HomeActivity extends ListActivity {
       	    	    HomeActivity.this.finish();
       	    		break;
       	    	case 7:
+      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.commit();
+      	    		Intent p = new Intent(HomeActivity.this, HomeActivity.class);
+      	    	    startActivity(p);
+      	    	    HomeActivity.this.finish();
+      	    		break;
+      	    	case 8:
       	    		// Do nothing
       	    		break;
       	    	}
@@ -431,6 +445,69 @@ public class HomeActivity extends ListActivity {
       	  });
           AlertDialog localealert = localebuilder.create();
           localealert.show();
+          break;
+        case CHECK_TYPE:
+      	    // check what type of blade user has
+          String type = "Unknown Blade";
+          try {
+      	      File iomem = new File("/proc/iomem");
+      	      FileInputStream fis = new FileInputStream(iomem);
+      	      InputStreamReader isr = new InputStreamReader(fis);
+      	      BufferedReader br = new BufferedReader(isr);
+      	      StringBuffer buffer = new StringBuffer();
+      	      StringBuffer buffer2 = new StringBuffer();
+      	      for (int i = 1; i < 7; i++) {
+      		      String s = br.readLine();
+      		      if (s != null) {
+      		    	  if (i == 5) {
+      		    		  for (int j = 20; j < s.length(); j++) {
+      		    		      buffer.append(s.charAt(j));
+      		    	      }
+      		    		  String check = buffer.toString();
+      		        	  if (check.equals("System RAM")) {
+      		    		      if (s.charAt(0) == '2') {
+      				    	      type = "European Blade";
+      				          } 
+      		        	  } else {
+      				    	  if (s.charAt(0) == '9') {
+      				    		  type = "Chinese Blade";
+      				          }
+      				      }
+      		    	  }
+      		    	  if (i == 6) {
+      	    			  for (int j = 20; j < s.length(); j++) {
+      		    		      buffer2.append(s.charAt(j));
+      		    	      }
+      	    			  String check = buffer2.toString();
+      		        	  if (check.equals("System RAM")) {
+      		        		  if (s.charAt(0) == '2') {
+      					    	  type = "European Blade";
+      					      }
+      		        	  } else {
+      		        		  
+      		        	  }
+      	    		  }
+      		      }
+      	      }
+      	  } catch (FileNotFoundException e) {
+      	    	
+      	  } catch (IOException e) {
+
+      	  }
+      	  final String bladetype = type;
+          Builder checktypebuilder = new AlertDialog.Builder(HomeActivity.this);
+          checktypebuilder.setTitle("Blade Type");
+          checktypebuilder.setMessage(type + " detected. Is this correct?");
+          checktypebuilder.setCancelable(false);
+          checktypebuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int id) {
+      	          Editor edit = preferences.edit();
+      	          edit.putString("blade", bladetype);
+      	          edit.commit();
+              }
+          });
+          AlertDialog checktypealert = checktypebuilder.create();
+          checktypealert.show();
           break;
         }
         return super.onCreateDialog(id);
