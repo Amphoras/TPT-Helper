@@ -359,7 +359,8 @@ public class CustomTPT extends Activity {
           CharSequence chinese = getText(R.string.chinese);
           CharSequence portuguese = getText(R.string.portuguese);
           CharSequence spanish = getText(R.string.spanish);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, cancel};
+          CharSequence serbian = getText(R.string.serbian);
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -414,6 +415,13 @@ public class CustomTPT extends Activity {
       	    	    CustomTPT.this.finish();
       	    		break;
       	    	case 7:
+      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.commit();
+      	    		Intent p = new Intent(CustomTPT.this, HomeActivity.class);
+      	    	    startActivity(p);
+      	    	    CustomTPT.this.finish();
+      	    		break;
+      	    	case 8:
       	    		// Do nothing
       	    		break;
       	    	}
