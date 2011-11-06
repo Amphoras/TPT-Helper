@@ -52,20 +52,34 @@ public class VerifyImage extends Activity {
 	private static ProgressDialog dialog;
 	  // open the file for reading
 	private static File nandroid = new File(Environment.getExternalStorageDirectory(), "image/nandroid.md5");
+	//private static File image = new File(Environment.getExternalStorageDirectory(), "image/image.md5");
 	private final int IMAGE_CHECKED = 1;
 	private final int NO_NANDROID = 2;
 	private final int CHANGE_LOCALE = 3;
+	private final int NO_IMAGE = 4;
 
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.verifyimage);
-		preferences = PreferenceManager.getDefaultSharedPreferences(this);
-          // if the nandroid.md5 file exists
-		if (nandroid.canRead() == true){
-			verifyimage();
-	    } else {
-			showDialog(NO_NANDROID);
-		}
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //String blade = preferences.getString("blade", "European Gen1");
+		//if (blade.equals("European Gen1")) {
+			  // if the nandroid.md5 file exists
+			if (nandroid.canRead() == true){
+				verifyimage();
+		    } else {
+				showDialog(NO_NANDROID);
+			}
+		//} else {
+			//if (blade.equals("European Gen2")) {
+				  // if the image.md5 file exists
+				//if (image.canRead() == true){
+				//	verifyimage();
+			    //} else {
+				//	showDialog(NO_IMAGE);
+				//}
+			//}
+		//}
     }
 	
 	@Override
@@ -304,8 +318,9 @@ public class VerifyImage extends Activity {
           CharSequence chinese = getText(R.string.chinese);
           CharSequence portuguese = getText(R.string.portuguese);
           CharSequence spanish = getText(R.string.spanish);
+          CharSequence serbian = getText(R.string.serbian);
           CharSequence cancel = getText(R.string.cancel);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, cancel};
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -360,6 +375,13 @@ public class VerifyImage extends Activity {
       	    	    VerifyImage.this.finish();
       	    		break;
       	    	case 7:
+      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.commit();
+      	    		Intent p = new Intent(VerifyImage.this, HomeActivity.class);
+      	    	    startActivity(p);
+      	    	    VerifyImage.this.finish();
+      	    		break;
+      	    	case 8:
       	    		// Do nothing
       	    		break;
       	    	}
@@ -367,6 +389,19 @@ public class VerifyImage extends Activity {
       	  });
           AlertDialog localealert = localebuilder.create();
           localealert.show();
+          break;
+        case NO_IMAGE:
+    	      // show error dialog after failing to find nandroid.md5 file
+          Builder noimagefilebuilder = new AlertDialog.Builder(VerifyImage.this);
+          noimagefilebuilder.setTitle(R.string.error);
+          noimagefilebuilder.setMessage(R.string.no_nandroid);
+          noimagefilebuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int id) {
+              	// Do nothing
+              }
+          });
+          AlertDialog noimagefilealert = noimagefilebuilder.create();
+          noimagefilealert.show();
           break;
         }
         return super.onCreateDialog(id);
@@ -577,9 +612,17 @@ public class VerifyImage extends Activity {
 
 	public void verifyimage() {
 		VerifyImageTask task = new VerifyImageTask();
+		//String blade = preferences.getString("blade", "European Gen1");
 		try {
-			FileReader in = new FileReader(new File(Environment.getExternalStorageDirectory(), "image/nandroid.md5"));
-			task.execute(new FileReader[] {in});
+			//if (blade.equals("European Gen1")) {
+				FileReader in = new FileReader(nandroid);
+				task.execute(new FileReader[] {in});
+			//} else {
+			//	if (blade.equals("European Gen1")) {
+				//	FileReader in = new FileReader(image);
+				//	task.execute(new FileReader[] {in});
+			//	}
+			//}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
