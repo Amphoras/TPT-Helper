@@ -40,7 +40,8 @@
     <string name="russian">Russian</string>
     <string name="chinese">Chinese</string>
     <string name="portuguese">Portugues</string>
-    <string name="spanish">Spanish</string>
+    <string name="spanish">Español</string>
+    <string name="serbian">Srpski</string>
     
       <!-- Downloader strings -->
     <string name="standard_tpt_heading">Standard TPTs:</string>
