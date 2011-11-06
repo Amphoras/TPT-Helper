@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <!-- HomeActivity list options -->
+    <string-array name="options">
+        <item>Sve u jednom</item>
+        <item>Snimiti TPT</item>
+        <item>Kontrola fajla po MD5</item>
+        <item>Raspakivanje zip arhive</item>
+        <item>Kontrola sadržaja "Image" direktorijuma</item>
+        <item>Pokretanje TPT</item>
+        <item>Napravite svoj TPT</item>
+        <item>Obrisati "Image" direktorijum</item>
+        <item>Isključiti telefon i pokrenuti TPT</item>
+        <!-- <item>Testovi</item> -->
+    </string-array>
+      <!-- HomeActivity disclaimer strings -->
+    <string name="disclaimer_heading">Ograničenje odgovornosti</string>
+    <string name="disclaimer">Ovaj program koristite na sopstvenu odgovornost. Ne preuzimam odgovornost za bilo kakvu štetu na Vašem telefonu.</string>
+    <string name="accept">Potvrdi</string>
+      <!-- HomeActivity start TPT strings -->
+    <string name="power_off">Isključiti</string>
+    <string name="start_tpt">Nakon isklučenja, pritisnuti i držati taster Volume+ (ili Volume+ i Menu) i uključiti telefon za pokretanje TPT.</string>
+      <!-- HomeActivity delete image strings -->
+    <string name="delete_image_heading">Obrisati "Image"</string>
+    <string name="delete_image">Da li ste sigurni da želite da obrišete direktorijum i njegov sadržaj?</string>
+    <string name="deleting">Brisanje. Molim sačekajte...</string>
+    <string name="image_deleted">"Image" direktorijum obrisan</string>
+      <!-- HomeActivity low battery strings -->
+    <string name="low_battery_heading">Baterija ispražnjena</string>
+    <string name="low_battery">Napunjenost baterije je ispod 25%, da li želite da pokrenete TPT?</string>
+      <!-- HomeActivity auto tpt strings -->
+    <string name="auto_tpt_heading">Pokrenuti TPT</string>
+    <string name="auto_tpt">TPT će biti pokrenut. Ako niste uradili kontrolu "Image" direktorijuma izaberite "Ne" i uradite kontrolu sada. Da li želite da nastavite?</string>
+    <string name="auto_tpt_fail">Ova funkcija još uvek nije podržana u ovom ROM-u. Žao nam je.</string>
+      <!-- HomeActivity locale changing strings -->
+    <string name="change_locale_heading">Izaberite jezik</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="german">German</string>
+    <string name="russian">Russian</string>
+    <string name="chinese">Chinese</string>
+    <string name="portuguese">Portugues</string>
+    <string name="spanish">Español</string>
+    <string name="serbian">Srpski</string>
+    
+      <!-- Downloader strings -->
+    <string name="standard_tpt_heading">Standardni TPT:</string>
+    <string name="standard_tpt">Konverzija, ali bez instalacije ROM-a.</string>
+    <string name="allinone_tpt_heading">Sve u jednom TPT:</string>
+    <string name="allinone_tpt">Konverzija i instalacija ROM-a u jednom prolazu</string>
+    <string name="downloader">Snimanje TPT</string>
+    
+      <!-- DirectDownloader strings -->  
+    <string name="downloading">Snimanje...</string>
+    <string name="download_finished_heading">Snimanje završeno</string>
+    <string name="download_finished">Uspešno snimljeno</string>
+    <string name="pick_download">Izaberite fajl koji želite da snimite</string>
+    <string name="file_there_heading">Fajl na SD-karti</string>
+    <string name="file_there1">Pronađen</string>
+    <string name="file_there2">već je na SD-karti. Da li želite ponovo da ga snimite?</string>
+    <string name="download_failed_heading">Snimanje prekinuto</string>
+    <string name="download_failed">Neuspešno snimanje</string>
+    
+      <!-- MD5 checking strings -->
+    <string name="pickmd5">Izaberite fajl za proveru</string>
+    <string name="calculating">Računanje. Molim sačekajte...</string>
+    <string name="md5">MD5 suma</string>
+    <string name="md5of">Provera MD5 sume fajla:</string>
+    <string name="md5is">MD5 suma je:</string>
+    <string name="md5matches">Ispravna vrednost.</string>
+    
+      <!-- PickFile strings -->
+    <string name="file_not_found_heading">Fajl nije pronađen.</string>
+    <string name="file_not_found1">Nije nađeno</string>
+    <string name="file_not_found2">. Da li želite da ga snimite?</string>
+    
+      <!-- Unzipping strings -->
+    <string name="pickunzip">Izaberite arhivu za raspakivanje</string>
+    <string name="unzipping">Raspakivanje. Molimo sačekajte...</string>
+    <string name="unzipgood">Raspakivanje završeno</string>
+    <string name="unzipbad">Raspakivanje neuspešno</string>
+    <string name="unzip">Raspakovati</string>
+    <string name="unzip_file">Pokušaj raspakivanja</string>
+    
+      <!-- EnterFile strings -->
+    <string name="askfile">Molim, unesite ime fajla i kliknite Enter (fajl mora biti na SD-karti)</string>
+    <string name="enterfile">Enter</string>
+    <string name="unfound1">Nije nađeno \'</string>
+    <string name="unfound2">\'. Molim proverite i pokušajte ponovo.</string>
+    
+      <!-- VerifyImage strings -->
+    <string name="nooffiles">Broj proverenih fajlova:</string>
+    <string name="noofmatches">Broj tačnih MD5-suma:</string>
+    <string name="missingfiles">Broj fajlova koji nisu nađeni:</string>
+    <string name="filessearched">Broj traženih fajlova:</string>
+    <string name="files_verified">Provereni fajlovi</string>
+    <string name="no_of_matches">Broj podudaranja:</string>
+    <string name="files_not_found">fajlova nije nađeno.</string>
+    <string name="file_not_found">fajl nije nađen.</string>
+    <string name="no_nandroid">Nije nađen fajl nandroid.md5 u folderu "Image", molim proverite i pokušajte ponovo.</string>
+    <string name="verifying">Provera. Molim sačekajte...</string>
+    
+      <!-- AllInOne strings -->
+    <string name="md5resultaio">MD5 rezultat:</string>
+    <string name="unzipdoneaio">Rezultat raspakivanja:</string>
+    <string name="downloadresultaio">Rezultat snimanja:</string>
+    <string name="md5_mismatch_heading">Razlika u MD5-sum</string>
+    <string name="md5_mismatch">MD5-suma ne odgovara očekivanoj vrednosti. Da li želite da pokušate ponovo?</string>
+    <string name="unzip_fail">Raspakivanje neuspešno, zaustavljam proces.</string>
+    <string name="no_nandroid2">Nije nađen fajl nandroid.md5 u folderu "Image", zaustavljam proces.</string>
+    <string name="working">U toku. Molim sačekajte...</string>
+    <string name="pickallinone">Izaberite fajl koji želite da koristite</string>
+    
+      <!-- Instructions strings -->
+    <string name="instructions">Kako se koristi</string>
+    <string name="instruction1">1. Snimite TPT</string>
+    <string name="instruction2">2. Proverite da li je MD5-suma arhive tačna</string>
+    <string name="instruction3">3. Raspakujte TPT</string>
+    <string name="instruction4">4. Proverite da li se sadržaj "Image" direktorijuma slaže sa vrednostima u fajlu nandroid.md5</string>
+    <string name="instruction5">5. Isključite telefon</string>
+    <string name="instruction6">6. Držeći Vol+ (Menu i Vol+ zajedno na nekim uređajima) uključite telefon</string>
+    <string name="instruction7">Ako koristite standardni TPT:</string>
+    <string name="instruction8">7. Trebalo da se pojavi zeleni tekst na ekranu a nakon toga da telefon pređe u "recovery" mod</string>
+    <string name="instruction9">8. Instalirajte ROM po želji i restartujte telefon</string>
+    <string name="instruction10">Ako koristite sve-u-jednom TPT:</string>
+    <string name="instruction11">7. Trebalo da se pojavi zeleni tekst na ekranu a nakon toga da telefon nastavi sa podizanjem sistema</string>
+    
+      <!-- Troubleshooting strings -->
+    <string name="troubleshooting1">Q. I pressed the power off button, but nothing happened.</string>
+    <string name="troubleshooting2">A. You need root (superuser) for this option to work. If you have root and granted su permissions, try unchecking the Auto Power-off option in the Options menu.</string>
+    <string name="troubleshooting3">Q. I followed all the steps and tried to flash the TPT, but now I\'m stuck at the green android.</string>
+    <string name="troubleshooting4">A. You\'re probably in fastboot mode. Trying holding menu and vol+ and try flashing again.</string>
+    <string name="troubleshooting5">Q. I downloaded and unzipped a TPT, but some of the files don\'t match.</string>
+    <string name="troubleshooting6">A. The download may have been corrupted, try downloading again and if they still don\'t match use the feedback email and give details of which file you downloaded and which files don\'t match.</string>
+    <string name="troubleshooting7"></string>
+    <string name="troubleshooting8"></string>
+    <string name="troubleshooting9"></string>
+    <string name="troubleshooting10"></string>
+    <string name="troubleshooting11"></string>
+    
+      <!-- Changelog strings -->
+    <string name="changelog">Šta je novo</string>
+    
+      <!-- CustomTPT strings -->
+    <string name="finished_heading">TPT spreman</string>
+    <string name="finished">Završena priprema Vašeg TPT.</string>
+    <string name="copying">Kopiranje. Molim sačekajte...</string>
+    
+      <!-- General strings -->
+    <string name="app_name">TPT Helper</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Prekid</string>
+    <string name="yes">Da</string>
+    <string name="no">Ne</string>
+    <string name="error">Greška</string>
+    <string name="other">Ostalo</string>
+    <string name="options">Opcije</string>
+    <string name="feedback">Komentar</string>
+    <string name="about">O programu</string>
+</resources>
