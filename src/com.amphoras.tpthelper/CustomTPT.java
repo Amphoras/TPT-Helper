@@ -167,9 +167,7 @@ public class CustomTPT extends Activity {
         	    	}
         	    }
         	});
-        	AlertDialog alert1 = builder1.create();
-            alert1.show();
-            break;
+        	return builder1.create();
         case PICK_PARTITION:
         	Builder builder2 = new AlertDialog.Builder(CustomTPT.this);
             builder2.setTitle(R.string.pickmd5);
@@ -205,9 +203,7 @@ public class CustomTPT extends Activity {
         	    	}
         	    }
         	});
-        	AlertDialog alert2 = builder2.create();
-            alert2.show();
-            break;
+        	return builder2.create();
         case PICK_RECOVERY:
         	Builder builder3 = new AlertDialog.Builder(CustomTPT.this);
             builder3.setTitle(R.string.pickmd5);
@@ -241,9 +237,7 @@ public class CustomTPT extends Activity {
         	    	}
         	    }
         	});
-        	AlertDialog alert3 = builder3.create();
-            alert3.show();
-            break;
+        	return builder3.create();
         case PICK_SYSTEM:
         	Builder builder4 = new AlertDialog.Builder(CustomTPT.this);
             builder4.setTitle(R.string.pickmd5);
@@ -284,9 +278,7 @@ public class CustomTPT extends Activity {
         	    	}
         	    }
         	});
-        	AlertDialog alert4 = builder4.create();
-            alert4.show();
-            break;
+        	return builder4.create();
         case UNZIP_FAILED:
             Builder failedbuilder = new AlertDialog.Builder(CustomTPT.this);
             failedbuilder.setTitle(R.string.unzip);
@@ -297,17 +289,14 @@ public class CustomTPT extends Activity {
           	        CustomTPT.this.finish();
                 }
             });
-            AlertDialog failedalert = failedbuilder.create();
-            failedalert.show();
-            break;
+            return failedbuilder.create();
         case DOWNLOADING:
             dialog = new ProgressDialog(CustomTPT.this);
             CharSequence downloadmessage = getText(R.string.downloading);
             dialog.setMessage(downloadmessage);
             dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             dialog.setCancelable(false);
-            dialog.show();
-            break;
+            return dialog;
         case DOWNLOAD_FAILED:
         	Builder downloadfailedbuilder = new AlertDialog.Builder(CustomTPT.this);
         	downloadfailedbuilder.setTitle(R.string.download_failed_heading);
@@ -318,9 +307,7 @@ public class CustomTPT extends Activity {
                 	// Do nothing
                 }
             });
-            AlertDialog downloadfailedalert = downloadfailedbuilder.create();
-            downloadfailedalert.show();
-            break;
+            return downloadfailedbuilder.create();
         case FINISHED:
         	Builder finishedbuilder = new AlertDialog.Builder(CustomTPT.this);
         	finishedbuilder.setTitle(R.string.finished_heading);
@@ -331,9 +318,7 @@ public class CustomTPT extends Activity {
                 	CustomTPT.this.finish();
                 }
             });
-            AlertDialog finishedalert = finishedbuilder.create();
-            finishedalert.show();
-            break;
+            return finishedbuilder.create();
         case MD5_MISMATCH:
         	Builder md5builder = new AlertDialog.Builder(CustomTPT.this);
         	md5builder.setTitle(R.string.md5_mismatch_heading);
@@ -344,9 +329,7 @@ public class CustomTPT extends Activity {
                 	// Do nothing
                 }
             });
-            AlertDialog md5alert = md5builder.create();
-            md5alert.show();
-            break;
+            return md5builder.create();
         case CHANGE_LOCALE:
       	    // change the locale used in the app
           Builder localebuilder = new AlertDialog.Builder(CustomTPT.this);
@@ -427,9 +410,7 @@ public class CustomTPT extends Activity {
       	    	}
       	      }
       	  });
-          AlertDialog localealert = localebuilder.create();
-          localealert.show();
-          break;
+      	  return localebuilder.create();
         }
         return super.onCreateDialog(id);
     }
