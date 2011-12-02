@@ -90,9 +90,7 @@ public class EnterFile extends Activity {
                 	// Do nothing
                 }
             });
-            AlertDialog alert = builder.create();
-            alert.show();
-            break;
+            return builder.create();
         case CHANGE_LOCALE:
       	    // change the locale used in the app
           Builder localebuilder = new AlertDialog.Builder(EnterFile.this);
@@ -174,9 +172,7 @@ public class EnterFile extends Activity {
       	    	}
       	      }
       	  });
-          AlertDialog localealert = localebuilder.create();
-          localealert.show();
-          break;
+      	  return localebuilder.create();
         }
         return super.onCreateDialog(id);
     }
