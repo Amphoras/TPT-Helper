@@ -169,9 +169,7 @@ public class MD5sum extends Activity {
             	    // Do nothing
                 }
             });
-            AlertDialog alert = md5builder.create();
-            alert.show();
-            break;
+            return md5builder.create();
         case CHANGE_LOCALE:
       	    // change the locale used in the app
           Builder localebuilder = new AlertDialog.Builder(MD5sum.this);
@@ -253,9 +251,7 @@ public class MD5sum extends Activity {
       	    	}
       	      }
       	  });
-          AlertDialog localealert = localebuilder.create();
-          localealert.show();
-          break;
+      	  return localebuilder.create();
         }
         return super.onCreateDialog(id);
 	}
