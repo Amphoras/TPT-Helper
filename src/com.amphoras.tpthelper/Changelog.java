@@ -234,9 +234,7 @@ public class Changelog extends Activity {
       	    	}
       	      }
       	  });
-          AlertDialog localealert = localebuilder.create();
-          localealert.show();
-          break;
+          return localebuilder.create();
         }
         return super.onCreateDialog(id);
     }
