@@ -33,7 +33,7 @@ import android.preference.PreferenceManager;
 import java.io.File;
 
 public class PickFile extends Activity {
-  SharedPreferences preferences;
+	SharedPreferences preferences;
 	final File dir = Environment.getExternalStorageDirectory();
 	final File customTPT = new File(dir, "Gen1-to-Gen2-TPT-v8-custom.zip");
 	final File downloadcustomTPT = new File(dir, "download/Gen1-to-Gen2-TPT-v8-custom.zip");
@@ -344,7 +344,6 @@ public class PickFile extends Activity {
         	    	case 10:
         	    		Intent i = new Intent(PickFile.this, EnterFile.class);
                 		startActivityForResult(i, 1);
-                		PickFile.this.finish();
                 		break;
         	    	case 11:
                 		PickFile.this.finish();
@@ -352,9 +351,7 @@ public class PickFile extends Activity {
         	    	}
         	    }
         	});
-        	AlertDialog alert1 = builder1.create();
-            alert1.show();
-            break;
+        	return builder1.create();
         case FILE_UNFOUND:
         	String filepicked = preferences.getString("filepicked", "");
         	Builder builder2 = new AlertDialog.Builder(PickFile.this);
@@ -375,9 +372,7 @@ public class PickFile extends Activity {
               	    PickFile.this.finish();
                 }
             });
-            AlertDialog alert2 = builder2.create();
-            alert2.show();
-            break;
+            return builder2.create();
         }
         return super.onCreateDialog(id);
     }
