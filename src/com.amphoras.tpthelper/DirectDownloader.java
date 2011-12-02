@@ -758,8 +758,7 @@ public class DirectDownloader extends ListActivity {
                 dialog.setMessage(downloadmessage);
                 dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 dialog.setCancelable(false);
-                dialog.show();
-                break;
+                return dialog;
             default:
                 return null;
             case DOWNLOAD_COMPLETE:
@@ -773,9 +772,7 @@ public class DirectDownloader extends ListActivity {
                     	// Do nothing
                     }
                 });
-                AlertDialog downloadalert = downloadbuilder.create();
-                downloadalert.show();
-                break;
+                return downloadbuilder.create();
             case DOWNLOAD_FAILED:
             	String downloadfailed = preferences.getString("downloadpicked", "");
             	Builder downloadfailedbuilder = new AlertDialog.Builder(DirectDownloader.this);
@@ -787,9 +784,7 @@ public class DirectDownloader extends ListActivity {
                     	// Do nothing
                     }
                 });
-                AlertDialog downloadfailedalert = downloadfailedbuilder.create();
-                downloadfailedalert.show();
-                break;
+                return downloadfailedbuilder.create();
             case FILE_FOUND:
             	String filepicked = preferences.getString("downloadpicked", "");
             	Builder filetherebuilder = new AlertDialog.Builder(DirectDownloader.this);
@@ -808,9 +803,7 @@ public class DirectDownloader extends ListActivity {
                     	DirectDownloader.this.finish();
                     }
                 });
-                AlertDialog filetherealert = filetherebuilder.create();
-                filetherealert.show();
-                break;
+                return filetherebuilder.create();
             case CHANGE_LOCALE:
           	    // change the locale used in the app
               Builder localebuilder = new AlertDialog.Builder(DirectDownloader.this);
@@ -892,9 +885,7 @@ public class DirectDownloader extends ListActivity {
           	    	}
           	      }
           	  });
-              AlertDialog localealert = localebuilder.create();
-              localealert.show();
-              break;
+          	  return localebuilder.create();
             case V9CUSTOM:
                 Builder builder1 = new AlertDialog.Builder(DirectDownloader.this);
                 builder1.setTitle("Gen 1 to Gen 2 v9 custom");
@@ -905,9 +896,7 @@ public class DirectDownloader extends ListActivity {
                     	// Do nothing
                     }
                 });
-                AlertDialog alert1 = builder1.create();
-                alert1.show();
-                break;
+                return builder1.create();
             case V8CUSTOM:
                 Builder builder2 = new AlertDialog.Builder(DirectDownloader.this);
                 builder2.setTitle("Gen 1 to Gen 2 v8 custom");
@@ -918,9 +907,7 @@ public class DirectDownloader extends ListActivity {
                     	// Do nothing
                     }
                 });
-                AlertDialog alert2 = builder2.create();
-                alert2.show();
-                break;
+                return builder2.create();
             case V8STOCK:
                 Builder builder3 = new AlertDialog.Builder(DirectDownloader.this);
                 builder3.setTitle("Gen 1 to Gen 2 v8 stock");
@@ -931,9 +918,7 @@ public class DirectDownloader extends ListActivity {
                   	    // Do nothing
                     }
                 });
-                AlertDialog alert3 = builder3.create();
-                alert3.show();
-                break;
+                return builder3.create();
             case V7B:
                 Builder builder4 = new AlertDialog.Builder(DirectDownloader.this);
                 builder4.setTitle("Gen 1 to Gen 2 v7b");
@@ -944,9 +929,7 @@ public class DirectDownloader extends ListActivity {
                   	    // Do nothing
                     }
                 });
-                AlertDialog alert4 = builder4.create();
-                alert4.show();
-                break;
+                return builder4.create();
             case V4:
                 Builder builder5 = new AlertDialog.Builder(DirectDownloader.this);
                 builder5.setTitle("Gen 1 to Gen 2 v4");
@@ -957,9 +940,7 @@ public class DirectDownloader extends ListActivity {
                   	    // Do nothing
                     }
                 });
-                AlertDialog alert5 = builder5.create();
-                alert5.show();
-                break;
+                return builder5.create();
             case REVERT:
                 Builder builder6 = new AlertDialog.Builder(DirectDownloader.this);
                 builder6.setTitle("Gen 2 to Gen 1 v2 stock");
@@ -970,9 +951,7 @@ public class DirectDownloader extends ListActivity {
                     	// Do nothing
                     }
                 });
-                AlertDialog alert6 = builder6.create();
-                alert6.show();
-                break;
+                return builder6.create();
             case CM71RC1:
                 Builder builder8 = new AlertDialog.Builder(DirectDownloader.this);
                 builder8.setTitle("CM 7.1 RC1 Gen 1 to Gen 2");
@@ -983,9 +962,7 @@ public class DirectDownloader extends ListActivity {
                     	// Do nothing
                     }
                 });
-                AlertDialog alert8 = builder8.create();
-                alert8.show();
-                break;
+                return builder8.create();
             case GSFB24:
                 Builder builder9 = new AlertDialog.Builder(DirectDownloader.this);
                 builder9.setTitle("GSF B24 Gen 1 to Gen 2");
@@ -996,9 +973,7 @@ public class DirectDownloader extends ListActivity {
                   	    // Do nothing
                     }
                 });
-                AlertDialog alert9 = builder9.create();
-                alert9.show();
-                break;
+                return builder9.create();
             case GSFB23:
                 Builder builder10 = new AlertDialog.Builder(DirectDownloader.this);
                 builder10.setTitle("GSF B23 Gen 1 to Gen 2");
@@ -1009,9 +984,7 @@ public class DirectDownloader extends ListActivity {
                   	    // Do nothing
                     }
                 });
-                AlertDialog alert10 = builder10.create();
-                alert10.show();
-                break;
+                return builder10.create();
             case GSFB19:
                 Builder builder11 = new AlertDialog.Builder(DirectDownloader.this);
                 builder11.setTitle("GSF B19 Gen 1 to Gen 2");
@@ -1022,11 +995,8 @@ public class DirectDownloader extends ListActivity {
                   	    // Do nothing
                     }
                 });
-                AlertDialog alert11 = builder11.create();
-                alert11.show();
-                break;
+                return builder11.create();
         }
-        return super.onCreateDialog(id);
     }
 	
 	@Override
