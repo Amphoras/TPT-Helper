@@ -121,8 +121,7 @@ public class AllInOne extends Activity {
             downloaddialog.setMessage(downloadmessage);
             downloaddialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             downloaddialog.setCancelable(false);
-            downloaddialog.show();
-            break;
+            return downloaddialog;
         case PICK_TPT:
         	Builder builder1 = new AlertDialog.Builder(AllInOne.this);
             builder1.setTitle(R.string.pickallinone);
@@ -310,9 +309,7 @@ public class AllInOne extends Activity {
         	    	}
         	    }
         	});
-        	AlertDialog alert1 = builder1.create();
-            alert1.show();
-            break;
+        	return builder1.create();
         case TPT_FOUND:
         	final String filepicked = preferences.getString("downloadpicked", "");
         	Builder filetherebuilder = new AlertDialog.Builder(AllInOne.this);
@@ -344,9 +341,7 @@ public class AllInOne extends Activity {
     	    		}
                 }
             });
-            AlertDialog filetherealert = filetherebuilder.create();
-            filetherealert.show();
-            break;
+            return filetherebuilder.create();
         case MD5_MISMATCH:
         	Builder builder3 = new AlertDialog.Builder(AllInOne.this);
             builder3.setTitle(R.string.md5_mismatch_heading);
@@ -364,9 +359,7 @@ public class AllInOne extends Activity {
               	    AllInOne.this.finish();
                 }
             });
-            AlertDialog alert3 = builder3.create();
-            alert3.show();
-            break;
+            return builder3.create();
         case UNZIP_FAILED:
           Builder failedbuilder = new AlertDialog.Builder(AllInOne.this);
           failedbuilder.setTitle(R.string.unzipbad);
@@ -377,9 +370,7 @@ public class AllInOne extends Activity {
                   AllInOne.this.finish();
               }
           });
-          AlertDialog failedalert = failedbuilder.create();
-          failedalert.show();
-          break;
+          return failedbuilder.create();
         case NO_NANDROID:
     	      // show error dialog after failing to find nandroid.md5 file
           Builder nofilebuilder = new AlertDialog.Builder(AllInOne.this);
@@ -390,9 +381,7 @@ public class AllInOne extends Activity {
             	  AllInOne.this.finish();
               }
           });
-          AlertDialog nofilealert = nofilebuilder.create();
-          nofilealert.show();
-          break;
+          return nofilebuilder.create();
         case IMAGE_CHECKED:
       	    // get no. of files and matches
       	  Long a = preferences.getLong("no of files", 0);
@@ -456,8 +445,6 @@ public class AllInOne extends Activity {
               	// Do nothing
               }
           });
-          AlertDialog alert = builder.create();
-          alert.show();
             // set number of files, matches and missing files
           TextView nooffiles = (TextView) findViewById(R.id.nooffiles);
           String btext = b.toString();
@@ -542,7 +529,7 @@ public class AllInOne extends Activity {
           textmatch17.setText(match17);
           TextView textmatch18 = (TextView) findViewById(R.id.match18);
           textmatch18.setText(match18);
-          break;
+          return builder.create();
         case DOWNLOAD_FAILED:
         	String downloadfailed = preferences.getString("downloadpicked", "");
         	Builder downloadfailedbuilder = new AlertDialog.Builder(AllInOne.this);
@@ -554,9 +541,7 @@ public class AllInOne extends Activity {
                 	// Do nothing
                 }
             });
-            AlertDialog downloadfailedalert = downloadfailedbuilder.create();
-            downloadfailedalert.show();
-            break;
+            return downloadfailedbuilder.create();
         case CHANGE_LOCALE:
       	    // change the locale used in the app
           Builder localebuilder = new AlertDialog.Builder(AllInOne.this);
@@ -637,9 +622,7 @@ public class AllInOne extends Activity {
       	    	}
       	      }
       	  });
-          AlertDialog localealert = localebuilder.create();
-          localealert.show();
-          break;
+      	  return localebuilder.create();
         }
         return super.onCreateDialog(id);
     }
