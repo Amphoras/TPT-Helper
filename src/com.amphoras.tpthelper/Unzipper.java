@@ -168,9 +168,7 @@ public class Unzipper extends Activity {
             	    // Do nothing
                 }
             });
-            AlertDialog alert = unzipbuilder.create();
-            alert.show();
-            break;
+            return unzipbuilder.create();
         case UNZIP_FAILED:
             Builder failedbuilder = new AlertDialog.Builder(Unzipper.this);
             failedbuilder.setTitle(R.string.unzip);
@@ -181,9 +179,7 @@ public class Unzipper extends Activity {
           	        // Do nothing
                 }
             });
-            AlertDialog failedalert = failedbuilder.create();
-            failedalert.show();
-            break;
+            return failedbuilder.create();
         case CHANGE_LOCALE:
       	    // change the locale used in the app
           Builder localebuilder = new AlertDialog.Builder(Unzipper.this);
@@ -265,9 +261,7 @@ public class Unzipper extends Activity {
       	    	}
       	      }
       	  });
-          AlertDialog localealert = localebuilder.create();
-          localealert.show();
-          break;
+      	  return localebuilder.create();
         }
         return super.onCreateDialog(id);
 	}
