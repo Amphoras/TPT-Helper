@@ -206,8 +206,6 @@ public class VerifyImage extends Activity {
                 	// Do nothing
                 }
             });
-            AlertDialog alert = builder.create();
-            alert.show();
               // set number of files, matches and missing files
             TextView nooffiles = (TextView) findViewById(R.id.nooffiles);
             String btext = b.toString();
@@ -292,7 +290,7 @@ public class VerifyImage extends Activity {
             textmatch17.setText(match17);
             TextView textmatch18 = (TextView) findViewById(R.id.match18);
             textmatch18.setText(match18);
-            break;
+            return builder.create();
         case NO_NANDROID:
       	      // show error dialog after failing to find nandroid.md5 file
             Builder nofilebuilder = new AlertDialog.Builder(VerifyImage.this);
@@ -303,9 +301,7 @@ public class VerifyImage extends Activity {
                 	// Do nothing
                 }
             });
-            AlertDialog nofilealert = nofilebuilder.create();
-            nofilealert.show();
-            break;
+            return nofilebuilder.create();
         case CHANGE_LOCALE:
       	    // change the locale used in the app
           Builder localebuilder = new AlertDialog.Builder(VerifyImage.this);
@@ -387,9 +383,7 @@ public class VerifyImage extends Activity {
       	    	}
       	      }
       	  });
-          AlertDialog localealert = localebuilder.create();
-          localealert.show();
-          break;
+      	  return localebuilder.create();
         case NO_IMAGE:
     	      // show error dialog after failing to find nandroid.md5 file
           Builder noimagefilebuilder = new AlertDialog.Builder(VerifyImage.this);
@@ -400,9 +394,7 @@ public class VerifyImage extends Activity {
               	// Do nothing
               }
           });
-          AlertDialog noimagefilealert = noimagefilebuilder.create();
-          noimagefilealert.show();
-          break;
+          return noimagefilebuilder.create();
         }
         return super.onCreateDialog(id);
     }
