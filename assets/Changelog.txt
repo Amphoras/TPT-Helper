@@ -1,3 +1,7 @@
+v1.8.3
+
+Bugfix: Force closes on Eclair should be fixed.
+
 v1.8.2
 
 Added Serbian translations, thanks to Sokobeg.
