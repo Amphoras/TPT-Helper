@@ -66,60 +66,82 @@ public class HomeActivity extends ListActivity {
 	private final int TPT_FAILED = 7;
 	private final int CHANGE_LOCALE = 8;
 	private final int CHECK_TYPE = 9;
+	private final int CHECK_GEN = 10;
+	private final int MANUAL_TYPE = 11;
+	private final int UNKNOWN_TYPE = 12;
 	
 	private BroadcastReceiver BatInfoReceiver = new BroadcastReceiver(){
 
 	    @Override
 	    public void onReceive(Context arg0, Intent intent) {
-	      int level = intent.getIntExtra("level", 0);
-	      Editor edit = preferences.edit();
-	      edit.putInt("batterylevel", level);
-	      edit.commit();
+	        int level = intent.getIntExtra("level", 0);
+	        Editor edit = preferences.edit();
+	        edit.putInt("batterylevel", level);
+	        edit.commit();
 	    }
-	  };
+	};
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-	  super.onCreate(savedInstanceState);
-	  showDialog(CHECK_TYPE);
-	  setContentView(R.layout.main);
-	  preferences = PreferenceManager.getDefaultSharedPreferences(this);
-	  Locale currentlocale = Locale.getDefault();
-	  String defaultlocale = currentlocale.toString();
-	  String setlocale = preferences.getString("locale", defaultlocale);
-	  Locale locale = new Locale(setlocale); 
-	  if (!(currentlocale.equals(locale))) {
-      Locale.setDefault(locale);
-      Configuration config = new Configuration();
-      config.locale = locale;
-      getBaseContext().getResources().updateConfiguration(config, null);
-      Intent i = new Intent(HomeActivity.this, HomeActivity.class);
-	  startActivity(i);
-      HomeActivity.this.finish();
-	  }
-	  this.registerReceiver(this.BatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-        // show disclaimer on first start only
-      String firststart = preferences.getString("firststart", "");
-      if (firststart == "") {
-    	  showDialog(SHOW_DISCLAIMER);
-      }
-	  
-	  String[] options = getResources().getStringArray(R.array.options);
-	  setListAdapter(new ArrayAdapter<String>(this, R.layout.home_list_item, options));
+	    super.onCreate(savedInstanceState);
+	    setContentView(R.layout.main);
+	    preferences = PreferenceManager.getDefaultSharedPreferences(this);
+	    Locale currentlocale = Locale.getDefault();
+	    String defaultlocale = currentlocale.toString();
+	    String setlocale = preferences.getString("locale", defaultlocale);
+	    Locale locale = new Locale(setlocale); 
+	    if (!(currentlocale.equals(locale))) {
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, null);
+        Intent i = new Intent(HomeActivity.this, HomeActivity.class);
+	    startActivity(i);
+        HomeActivity.this.finish();
+	    }
+	    this.registerReceiver(this.BatInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+          // show disclaimer on first start only
+        String firststart = preferences.getString("firststart", "");
+        if (firststart == "") {
+      	    showDialog(SHOW_DISCLAIMER);
+        }
+	    String[] options = getResources().getStringArray(R.array.options);
+	    setListAdapter(new ArrayAdapter<String>(this, R.layout.home_list_item, options));
 
-	  ListView listview = getListView();
-	  listview.setTextFilterEnabled(true);
+	    ListView listview = getListView();
+	    listview.setTextFilterEnabled(true);
 
-	  listview.setOnItemClickListener(new OnItemClickListener() {
+	    listview.setOnItemClickListener(new OnItemClickListener() {
 	    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	    	int gen = preferences.getInt("gen", 1);
 	    	switch (position) {
 		      case 0:
 		    	  Intent i = new Intent(HomeActivity.this, AllInOne.class);
 	        	  startActivity(i);
 			      break;
 		      case 1:
-		    	  Intent j = new Intent(HomeActivity.this, DirectDownloader.class);
-		          startActivity(j);
+		    	  if (gen == 1) {
+		    		  Intent j = new Intent(HomeActivity.this, DirectDownloader.class);
+			          startActivity(j);
+		    	  } else {
+		    		  if (gen == 3) {
+		    			  Intent j = new Intent(HomeActivity.this, DirectDownloader.class);
+				          startActivity(j);
+		    		  } else {
+		    			  if (gen == 2) {
+		    				  Intent j = new Intent(HomeActivity.this, Downloader.class);
+		    		          startActivity(j);
+		    			  } else {
+		    				  if (gen == 4) {
+		    					  Intent j = new Intent(HomeActivity.this, Downloader.class);
+		    			          startActivity(j);
+		    				  } else {
+		    					  Intent j = new Intent(HomeActivity.this, DirectDownloader.class);
+		    			          startActivity(j);
+		    				  }
+		    			  }
+		    		  }
+		    	  }
 				  break;
 		      case 2:
 		    	  Intent k = new Intent(HomeActivity.this, PickFile.class);
@@ -167,39 +189,64 @@ public class HomeActivity extends ListActivity {
 
 	  listview.setOnItemClickListener(new OnItemClickListener() {
 	    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	    	int gen = preferences.getInt("gen", 1);
 	    	switch (position) {
-		      case 0:
-		    	  Intent i = new Intent(HomeActivity.this, DirectDownloader.class);
+	    	  case 0:
+		    	  Intent i = new Intent(HomeActivity.this, AllInOne.class);
 	        	  startActivity(i);
 			      break;
 		      case 1:
-		    	  Intent j = new Intent(HomeActivity.this, PickFile.class);
-	        	  startActivity(j);
+		    	  if (gen == 1) {
+		    		  Intent j = new Intent(HomeActivity.this, DirectDownloader.class);
+			          startActivity(j);
+		    	  } else {
+		    		  if (gen == 3) {
+		    			  Intent j = new Intent(HomeActivity.this, DirectDownloader.class);
+				          startActivity(j);
+		    		  } else {
+		    			  if (gen == 2) {
+		    				  Intent j = new Intent(HomeActivity.this, Downloader.class);
+		    		          startActivity(j);
+		    			  } else {
+		    				  if (gen == 4) {
+		    					  Intent j = new Intent(HomeActivity.this, Downloader.class);
+		    			          startActivity(j);
+		    				  } else {
+		    					  Intent j = new Intent(HomeActivity.this, DirectDownloader.class);
+		    			          startActivity(j);
+		    				  }
+		    			  }
+		    		  }
+		    	  }
 				  break;
 		      case 2:
-		    	  Intent k = new Intent(HomeActivity.this, PickFileUnzip.class);
+		    	  Intent k = new Intent(HomeActivity.this, PickFile.class);
 	        	  startActivity(k);
 				  break;
 		      case 3:
-		    	  Intent l = new Intent(HomeActivity.this, VerifyImage.class);
+		    	  Intent l = new Intent(HomeActivity.this, PickFileUnzip.class);
 	        	  startActivity(l);
 				  break;
 		      case 4:
-		    	  showDialog(POWER_OFF);
-				  break;
-		      case 5:
-		    	  showDialog(DELETE_IMAGE);
-				  break;
-		      case 6:
-		    	  Intent m = new Intent(HomeActivity.this, AllInOne.class);
+		    	  Intent m = new Intent(HomeActivity.this, VerifyImage.class);
 	        	  startActivity(m);
 				  break;
-		      case 7:
-		          showDialog(START_TPT);
+		      case 5:
+		    	  showDialog(START_TPT);
 				  break;
-		      /* case 8:
+		      case 6:
+		    	  Intent n = new Intent(HomeActivity.this, CustomTPT.class);
+	        	  startActivity(n);
+				  break;
+		      case 7:
+		    	  showDialog(DELETE_IMAGE);
+				  break;
+		      case 8:
+		    	  showDialog(POWER_OFF);
+		    	  break;
+		      /*case 9:
 		    	  
-		    	  break; */
+		    	  break;*/
 		    }
 	    }
 	  });
@@ -207,6 +254,7 @@ public class HomeActivity extends ListActivity {
     
     @Override
 	protected Dialog onCreateDialog(int id) {
+    	CharSequence unknown = getText(R.string.unknown);
         switch (id) {
         case SHOW_DISCLAIMER:
         	  // show disclaimer
@@ -219,17 +267,13 @@ public class HomeActivity extends ListActivity {
                 	Editor edit = preferences.edit();
         		    edit.putString("firststart", "no");
         	        edit.commit();
+        	        //String typechecked = preferences.getString("typechecked", "a");
+        	        //if (typechecked == "") {
+        	      	    //showDialog(CHECK_TYPE);
+        	        //}
                 }
             });
-            AlertDialog alert = builder.create();
-            try {
-                alert.show();
-            } catch (IllegalArgumentException e) {
-            	
-  	        } catch (RuntimeException e) {
-  	        	
-  	        }
-            break;
+            return builder.create();
         case POWER_OFF:
           Builder poweroffbuilder = new AlertDialog.Builder(HomeActivity.this);
           poweroffbuilder.setTitle(R.string.power_off);
@@ -241,14 +285,14 @@ public class HomeActivity extends ListActivity {
             	  if (level < 25) {
             		  showDialog(BATTERY_LOW);
             	  } else {
-            		  Boolean xbin = preferences.getBoolean("xbin", true);
                 	  try {
-    					if (xbin == true) {
-    						Runtime.getRuntime().exec(new String[]{"/system/xbin/su","-c","reboot -p"});
-    					} else {
-    						Runtime.getRuntime().exec(new String[]{"/system/bin/su","-c","reboot -p"});
-    					}
-    				  } catch (IOException e1) {
+    					Runtime.getRuntime().exec(new String[]{"/system/xbin/su","-c","reboot -p"});
+    				  } catch (IOException e) {
+    					  try {
+    					      Runtime.getRuntime().exec(new String[]{"/system/bin/su","-c","reboot -p"});
+    					  } catch (IOException e1) {
+    					  
+    					  }
     				  }
             	  }
               }
@@ -258,9 +302,7 @@ public class HomeActivity extends ListActivity {
             	  // Do nothing
               }
           });
-          AlertDialog poweroffalert = poweroffbuilder.create();
-          poweroffalert.show();
-          break;
+          return poweroffbuilder.create();
         case DELETE_IMAGE:
         	  // delete the image folder
             Builder deleteimagebuilder = new AlertDialog.Builder(HomeActivity.this);
@@ -277,11 +319,9 @@ public class HomeActivity extends ListActivity {
                 	// Do nothing
                 }
             });
-            AlertDialog deleteimagealert = deleteimagebuilder.create();
-            deleteimagealert.show();
-            break;
+            return deleteimagebuilder.create();
         case IMAGE_DELETED:
-      	    // comfirm image folder is deleted
+      	    // confirm image folder is deleted
           Builder imagedeletedbuilder = new AlertDialog.Builder(HomeActivity.this);
           imagedeletedbuilder.setTitle(R.string.delete_image_heading);
           imagedeletedbuilder.setMessage(R.string.image_deleted);
@@ -291,9 +331,7 @@ public class HomeActivity extends ListActivity {
       	          // Do nothing
               }
           });
-          AlertDialog imagedeletedalert = imagedeletedbuilder.create();
-          imagedeletedalert.show();
-          break;
+          return imagedeletedbuilder.create();
         case BATTERY_LOW:
         	  // warn about low battery level
             Builder lowbatbuilder = new AlertDialog.Builder(HomeActivity.this);
@@ -309,7 +347,8 @@ public class HomeActivity extends ListActivity {
   					  } else {
   						  Runtime.getRuntime().exec(new String[]{"/system/bin/su","-c","reboot -p"});
   					  }
-  				    } catch (IOException e1) {
+  				    } catch (IOException e) {
+  				    	
   				    }
                 }
             });
@@ -318,9 +357,7 @@ public class HomeActivity extends ListActivity {
         	          // Do nothing
                 }
             });
-            AlertDialog lowbatalert = lowbatbuilder.create();
-            lowbatalert.show();
-            break;
+            return lowbatbuilder.create();
         case START_TPT:
       	    // warn before starting TPT
           Builder autotptbuilder = new AlertDialog.Builder(HomeActivity.this);
@@ -329,11 +366,11 @@ public class HomeActivity extends ListActivity {
           autotptbuilder.setCancelable(false);
           autotptbuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
               public void onClick(DialogInterface dialog, int id) {
-            	  Intent localIntent1 = new Intent();
-		          ComponentName localComponentName = new ComponentName("com.android.settings", "com.android.settings.deviceinfo.SDRise");
-		          localIntent1.setComponent(localComponentName);
+            	  Intent i = new Intent();
+		          ComponentName component = new ComponentName("com.android.settings", "com.android.settings.deviceinfo.SDRise");
+		          i.setComponent(component);
 		          try {
-		        	  HomeActivity.this.startActivity(localIntent1);
+		        	  HomeActivity.this.startActivity(i);
 			          HomeActivity.this.finish();
 		          } catch (ActivityNotFoundException e) {
 		        	  showDialog(TPT_FAILED);
@@ -345,9 +382,7 @@ public class HomeActivity extends ListActivity {
       	          // Do nothing
               }
           });
-          AlertDialog autotptalert = autotptbuilder.create();
-          autotptalert.show();
-          break;
+          return autotptbuilder.create();
         case TPT_FAILED:
       	    // tell that auto tpt not supported on current rom
           Builder autotptfailbuilder = new AlertDialog.Builder(HomeActivity.this);
@@ -359,9 +394,7 @@ public class HomeActivity extends ListActivity {
       	          // Do nothing
               }
           });
-          AlertDialog autotptfailalert = autotptfailbuilder.create();
-          autotptfailalert.show();
-          break;
+          return autotptfailbuilder.create();
         case CHANGE_LOCALE:
       	    // change the locale used in the app
           Builder localebuilder = new AlertDialog.Builder(HomeActivity.this);
@@ -443,10 +476,8 @@ public class HomeActivity extends ListActivity {
       	    	}
       	      }
       	  });
-          AlertDialog localealert = localebuilder.create();
-          localealert.show();
-          break;
-        case CHECK_TYPE:
+          return localebuilder.create();
+        /*case CHECK_TYPE:
       	    // check what type of blade user has
           String type = "Unknown Blade";
           try {
@@ -496,19 +527,138 @@ public class HomeActivity extends ListActivity {
       	  }
       	  final String bladetype = type;
           Builder checktypebuilder = new AlertDialog.Builder(HomeActivity.this);
-          checktypebuilder.setTitle("Blade Type");
-          checktypebuilder.setMessage(type + " detected. Is this correct?");
+          checktypebuilder.setTitle(R.string.check_type_heading);
+          CharSequence checktype = getText(R.string.check_type);
+          checktypebuilder.setMessage(type + " " + checktype);
           checktypebuilder.setCancelable(false);
           checktypebuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
               public void onClick(DialogInterface dialog, int id) {
       	          Editor edit = preferences.edit();
       	          edit.putString("blade", bladetype);
       	          edit.commit();
+    	          showDialog(CHECK_GEN);
               }
           });
-          AlertDialog checktypealert = checktypebuilder.create();
-          checktypealert.show();
-          break;
+          checktypebuilder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int id) {
+    	          showDialog(MANUAL_TYPE);
+              }
+          });
+          checktypebuilder.setNeutralButton(R.string.unknown, new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int id) {
+      	          Editor edit = preferences.edit();
+      	          edit.putString("blade", bladetype);
+      	          edit.commit();
+    	          showDialog(UNKNOWN_TYPE);
+              }
+          });
+          return checktypebuilder.create();
+        case CHECK_GEN:
+      	    // check what gen of blade user has
+          Builder checkgenbuilder = new AlertDialog.Builder(HomeActivity.this);
+          checkgenbuilder.setTitle(R.string.check_gen_heading);
+          checkgenbuilder.setCancelable(false);
+          final CharSequence[] gens = {"Stock Gen 1", "Stock Gen 2", "TPT upgraded Gen 2", "Windows upgraded Gen 2", "Stock Gen 3", "TPT upgraded Gen 3", "Windows upgraded Gen 3", unknown};
+          checkgenbuilder.setItems(gens, new DialogInterface.OnClickListener() {
+      	    public void onClick(DialogInterface dialog, int item) {
+      	    	Editor editgen = preferences.edit();
+      	    	Editor edit2 = preferences.edit();
+      	    	switch (item) {
+      	    	case 0:
+      	    		editgen.putInt("gen", 1);
+      	    		editgen.commit();
+      	            edit2.putString("typechecked", "yes");
+      	            edit2.commit();
+      	    		break;
+      	    	case 1:
+      	    		editgen.putInt("gen", 2);
+      	    		editgen.commit();
+      	    		edit2.putString("typechecked", "yes");
+      	            edit2.commit();
+      	    		break;
+      	    	case 2:
+      	    		editgen.putInt("gen", 3);
+      	    		editgen.commit();
+      	    		edit2.putString("typechecked", "yes");
+      	            edit2.commit();
+      	    		break;
+      	    	case 3:
+      	    		editgen.putInt("gen", 2);
+      	    		editgen.commit();
+      	    		edit2.putString("typechecked", "yes");
+      	            edit2.commit();
+      	    		break;
+      	    	case 4:
+      	    		editgen.putInt("gen", 4);
+      	    		editgen.commit();
+      	    		edit2.putString("typechecked", "yes");
+      	            edit2.commit();
+      	    		break;
+      	    	case 5:
+      	    		editgen.putInt("gen", 4);
+      	    		editgen.commit();
+      	    		edit2.putString("typechecked", "yes");
+      	            edit2.commit();
+      	    		break;
+      	    	case 6:
+      	    		editgen.putInt("gen", 4);
+      	    		editgen.commit();
+      	    		edit2.putString("typechecked", "yes");
+      	            edit2.commit();
+      	    		break;
+      	    	case 7:
+      	    		editgen.putInt("gen", 0);
+      	    		editgen.commit();
+      	    		edit2.putString("typechecked", "yes");
+      	            edit2.commit();
+      	    		break;
+      	    	}
+      	      }
+      	  });
+          return checkgenbuilder.create();
+        case MANUAL_TYPE:
+      	    // let user enter type and set it
+          Builder manualtypebuilder = new AlertDialog.Builder(HomeActivity.this);
+          manualtypebuilder.setTitle(R.string.manual_type_heading);
+          manualtypebuilder.setCancelable(false);
+          final CharSequence[] types = {"European", "Chinese", unknown};
+          manualtypebuilder.setItems(types, new DialogInterface.OnClickListener() {
+      	    public void onClick(DialogInterface dialog, int item) {
+      	    	Editor edit = preferences.edit();
+      	    	switch (item) {
+      	    	case 0:
+      	    		edit.putString("blade", "European Blade");
+        	        edit.commit();
+        	        showDialog(CHECK_GEN);
+      	    		break;
+      	    	case 1:
+      	    		edit.putString("blade", "Chinese Blade");
+        	        edit.commit();
+        	        showDialog(CHECK_GEN);
+      	    		break;
+      	    	case 2:
+      	    		edit.putString("blade", "Unknown Blade");
+        	        edit.commit();
+        	        showDialog(CHECK_GEN);
+      	    		break;
+      	    	}
+      	      }
+      	  });
+          return manualtypebuilder.create();
+        case UNKNOWN_TYPE:
+      	    // tell the user that detected type is being set
+          Builder unknowntypebuilder = new AlertDialog.Builder(HomeActivity.this);
+          unknowntypebuilder.setTitle(R.string.setting_type_heading);
+          String unknowntype = preferences.getString("blade", "Unknown Blade");
+          CharSequence setting_type = getText(R.string.setting_type);
+          unknowntypebuilder.setMessage(setting_type + " " + unknowntype);
+          unknowntypebuilder.setCancelable(false);
+          unknowntypebuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int id) {
+    	          showDialog(CHECK_GEN);
+              }
+          });
+          return unknowntypebuilder.create();*/
         }
         return super.onCreateDialog(id);
     }
