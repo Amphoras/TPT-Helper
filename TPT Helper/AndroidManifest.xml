@@ -87,5 +87,7 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
         <activity android:name="AllInOneGen2"></activity>
         <activity android:name="AllInOneSF2"></activity>
         <activity android:name="AllInOneVivacity"></activity>
+        <activity android:name="DownloaderGen3"></activity>
+        <activity android:name="CustomTPTGen3"></activity>
     </application>
 </manifest>

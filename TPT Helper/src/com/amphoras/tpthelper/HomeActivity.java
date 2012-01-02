@@ -177,8 +177,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_2);
 					          break;
 			    		  case 3:
-			    			  //Intent gen_3 = new Intent(HomeActivity.this, DownloaderGen3.class);
-					          //startActivity(gen_3);
+			    			  Intent gen_3 = new Intent(HomeActivity.this, DownloaderGen3.class);
+					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -289,8 +289,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_2);
 					          break;
 			    		  case 3:
-			    			  //Intent gen_3 = new Intent(HomeActivity.this, CustomTPTGen3.class);
-					          //startActivity(gen_3);
+			    			  Intent gen_3 = new Intent(HomeActivity.this, CustomTPTGen3.class);
+					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -390,8 +390,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_2);
 					          break;
 			    		  case 3:
-			    			  //Intent gen_3 = new Intent(HomeActivity.this, DownloaderGen3.class);
-					          //startActivity(gen_3);
+			    			  Intent gen_3 = new Intent(HomeActivity.this, DownloaderGen3.class);
+					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -502,8 +502,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_2);
 					          break;
 			    		  case 3:
-			    			  //Intent gen_3 = new Intent(HomeActivity.this, CustomTPTGen3.class);
-					          //startActivity(gen_3);
+			    			  Intent gen_3 = new Intent(HomeActivity.this, CustomTPTGen3.class);
+					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
