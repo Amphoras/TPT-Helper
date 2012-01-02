@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--  
+TPT Helper  Copyright (C) 2011  David Phillips
+
+This file is part of TPT Helper.
+
+TPT Helper is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+TPT Helper is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+      android:id="@+id/instructions"
+      android:title="@string/instructions"/>
+    <item
+      android:id="@+id/show_changelog"
+      android:title="@string/changelog"/>
+    <item
+      android:id="@+id/support"
+      android:title="@string/feedback"/>
+    <item
+      android:id="@+id/about"
+      android:title="@string/about"/>
+    <group
+      android:visible="true"
+      android:enabled="true"
+      android:id="@+id/submenu" android:menuCategory="secondary">
+      <item
+        android:id="@+id/license"
+        android:title="License"/>
+      <item
+        android:id="@+id/locale"
+        android:title="@string/change_locale_heading"/>
+      <item
+        android:id="@+id/preferences"
+        android:title="@string/options"/>
+    </group>
+</menu>

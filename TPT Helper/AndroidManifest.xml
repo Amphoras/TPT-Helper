@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--  
+TPT Helper  Copyright (C) 2011  David Phillips
+
+This file is part of TPT Helper.
+
+TPT Helper is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+TPT Helper is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.amphoras.tpthelper"
+      android:versionCode="19"
+      android:versionName="2.0-beta-1">
+    <uses-sdk android:minSdkVersion="3" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".HomeActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="Unzipper"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="VerifyImage"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="MD5sum"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="EnterFile"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="Downloader"
+                  android:label="@string/downloader"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="EnterFileUnzip"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="Instructions"
+                  android:label="@string/instructions"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="Changelog"
+                  android:label="@string/changelog"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="PickFile"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="PickFileUnzip"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="Preferences"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="AllInOne"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="About"
+                  android:label="@string/about"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="DirectDownloader"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="CustomTPT"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="License"
+                  android:configChanges="orientation"></activity>
+        <activity android:name="DownloaderSkate"></activity>
+        <activity android:name="CustomTPTSkate"></activity>
+        <activity android:name="PickFileSkate"></activity>
+        <activity android:name="PickFileUnzipSkate"></activity>
+        <activity android:name="DownloaderSF2"></activity>
+        <activity android:name="DownloaderVivacity"></activity>
+        <activity android:name="PickFileGen2"></activity>
+        <activity android:name="PickFileUnzipGen2"></activity>
+        <activity android:name="PickFileSF2"></activity>
+        <activity android:name="PickFileUnzipSF2"></activity>
+        <activity android:name="PickFileVivacity"></activity>
+        <activity android:name="PickFileUnzipVivacity"></activity>
+        <activity android:name="CustomTPTGen2"></activity>
+    </application>
+</manifest>

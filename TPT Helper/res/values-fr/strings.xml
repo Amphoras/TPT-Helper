@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <!-- HomeActivity list options -->
+    <string-array name="options">
+        <item>Tout en un</item>
+        <item>Télécharger un TPT</item>
+        <item>Vérifier le MD5 d\'un fichier</item>
+        <item>Dézipper un fichier</item>
+        <item>Vérifier le dossier "image"</item>
+        <item>Lancer le TPT</item>
+        <item>Créer votre propre TPT</item>
+        <item>Supprimer le dossier "image"</item>
+        <item>Eteindre pour lancer le TPT</item>
+        <!-- <item>Tests</item> -->
+    </string-array>
+      <!-- HomeActivity disclaimer strings -->
+    <string name="disclaimer_heading">Avertissement</string>
+    <string name="disclaimer">Utilisez cette application à vos risques et périls. Je n\'endosse aucune responsabilité pour tout dommage causé a votre téléphone.</string>
+    <string name="accept">Accepter</string>
+      <!-- HomeActivity start TPT strings -->
+    <string name="power_off">Eteindre</string>
+    <string name="start_tpt">Une fois que le téléphone s\'est arrêté, maintenez [volume+] (ou [volume+] et [menu]) et appuyez sur le bouton d\'alimentation pour lancer le TPT.</string>
+      <!-- HomeActivity delete image strings -->
+    <string name="delete_image_heading">Supprimer "image"</string>
+    <string name="delete_image">Êtes-vous sûr de vouloir supprimer le dossier "image" et tout son contenu?</string>
+    <string name="deleting">Suppression. Veuillez patienter...</string>
+    <string name="image_deleted">Dossier "image" supprimé.</string>
+      <!-- HomeActivity low battery strings -->
+    <string name="low_battery_heading">Batterie faible</string>
+    <string name="low_battery">La charge de votre batterie est inférieure à 25%, voulez-vous toujours lancer le TPT?</string>
+      <!-- HomeActivity auto tpt strings -->
+    <string name="auto_tpt_heading">Lancer le TPT</string>
+    <string name="auto_tpt">Ceci lance le TPT. Si vous n\'avez pas vérifié le dossier "image", pressez non et faites-le maintenant. Voulez-vous continuer?</string> 
+    <string name="auto_tpt_fail">Désolé, cette fonctionnalité n\'est pas encore supportée pour votre ROM</string>
+      <!-- HomeActivity locale changing strings -->
+    <string name="change_locale_heading">Choisissez votre langue</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="german">German</string>
+    <string name="russian">Russian</string>
+    <string name="chinese">Chinese</string>
+    <string name="portuguese">Portugues</string>
+    <string name="spanish">Español</string>
+    <string name="serbian">Srpski</string>
+      <!-- HomeActivity type/gen checking strings -->
+    <string name="check_type_heading">Blade Type</string>
+    <string name="check_type">detected. Is this correct?</string>
+    <string name="check_gen_heading">Blade Gen</string>
+    <string name="check_gen">What gen of Blade do you have?</string>
+    <string name="manual_type_heading">Enter Blade Type</string>
+    <string name="setting_type_heading">Setting Blade Type</string>
+    <string name="setting_type">Setting type to</string>
+    <string name="check_board_heading">Phone Type</string>
+    <string name="correct">detected, is this correct?</string>
+    <string name="board_blade">ZTE Blade/Orange San Francisco</string>
+    <string name="board_skate">ZTE Skate/Orange Monte Carlo</string>
+    <string name="board_blade2">Orange San Francisco II/T-Mobile Vivacity</string>
+    <string name="phone_type_heading">Enter Phone Type</string>
+    <string name="san_francisco_ii">Orange San Francisco II</string>
+    <string name="vivacity">T-Mobile Vivacity</string>
+    <string name="unsupported_heading">Unsupported Model</string>
+    <string name="unsupported">Sorry, this device is not currently supported. If you think this is an error, please check your phone model and try again.</string>
+    
+      <!-- Downloader strings -->
+    <string name="standard_tpt_heading">TPTs standard:</string>
+    <string name="standard_tpt">Convertissent, mais n\'incluent pas de ROM</string>
+    <string name="allinone_tpt_heading">TPTs tout en un:</string>
+    <string name="allinone_tpt">Convertissent, et flashent une ROM en même temps</string>
+    <string name="downloader">Télécharger un TPT</string>
+    
+      <!-- DirectDownloader strings -->  
+    <string name="downloading">Téléchargement...</string>
+    <string name="download_finished_heading">Téléchargement terminé</string>
+    <string name="download_finished">Téléchargé avec succès</string>
+    <string name="pick_download">Choisissez le fichier à télécharger</string>
+    <string name="file_there_heading">Fichier sur la carte SD</string>
+    <string name="file_there1">Fichier</string>
+    <string name="file_there2">déjà sur la carte SD. Voulez-vous vraiment le re télécharger?</string>
+    <string name="download_failed_heading">Téléchargement échoué</string>
+    <string name="download_failed">Le téléchargement a échoué</string>
+    
+      <!-- MD5 checking strings -->
+    <string name="pickmd5">Choisissez les fichiers a vérifier</string>
+    <string name="calculating">Calcul en cours. Veuillez patienter...</string>
+    <string name="md5">Somme MD5</string>
+    <string name="md5of">Vérification de la somme MD5 de:</string>
+    <string name="md5is">Le MD5 est:</string>
+    <string name="md5matches">Correspond a la valeur attendue.</string>
+    
+      <!-- PickFile strings -->
+    <string name="file_not_found_heading">Fichier non trouvé</string>
+    <string name="file_not_found1">N\'a pas trouvé</string>
+    <string name="file_not_found2">. Voulez-vous le télécharger?</string>
+    
+      <!-- Unzipping strings -->
+    <string name="pickunzip">Choisissez le zip a décompresser</string>
+    <string name="unzipping">Décompression en cours. Veuillez patienter...</string>
+    <string name="unzipgood">Décompression complète</string>
+    <string name="unzipbad">Décompression échouée</string>
+    <string name="unzip">Décompression</string>
+    <string name="unzip_file">Tentative de décompression en cours</string>
+    
+      <!-- EnterFile strings -->
+    <string name="askfile">Veuillez entrer le nom du fichier puis cliquer Entrer (le fichier doit être à la racine de la carte SD)</string>
+    <string name="enterfile">Entrer</string>
+    <string name="unfound1">Impossible de trouver \'</string>
+    <string name="unfound2">\'. Veuillez vérifier puis réessayer.</string>
+    
+      <!-- VerifyImage strings -->
+    <string name="nooffiles">Nombre de fichiers vérifiés:</string>
+    <string name="noofmatches">Nombre de fichiers corrects:</string>
+    <string name="missingfiles">Nombre de fichiers non trouvés:</string>
+    <string name="filessearched">Fichiers recherchés:</string>
+    <string name="files_verified">Fichiers vérifiés</string>
+    <string name="no_of_matches">Nombre de correspondances:</string>
+    <string name="files_not_found">fichiers non trouvés.</string>
+    <string name="file_not_found">fichier non trouvé.</string>
+    <string name="no_nandroid">Impossible de trouver le fichier nandroid.md5 dans le dossier "image" ; veuillez vérifier son existance puis réessayer.</string>
+    <string name="verifying">Vérification. Veuillez patienter...</string>
+    
+      <!-- AllInOne strings -->
+    <string name="md5resultaio">Résultat MD5:</string>
+    <string name="unzipdoneaio">Résultat de la décompression:</string>
+    <string name="downloadresultaio">Résultat du téléchargement:</string>
+    <string name="md5_mismatch_heading">Somme de contrôle incorrecte</string>
+    <string name="md5_mismatch">La somme de contrôle MD5 ne correspond pas à la valeur attendue. Voulez-vous réessayer de télécharger?</string>
+    <string name="unzip_fail">Décompression échouée, arrêt des opérations.</string>
+    <string name="no_nandroid2">Impossible de trouver le fichier nandroid.md5, arrêt des opérations.</string>
+    <string name="working">Opération en cours, veuillez patienter...</string>
+    <string name="pickallinone">Choisissez le fichier à utiliser</string>
+    
+      <!-- Instructions strings -->
+    <string name="instructions">Comment utiliser</string>
+    <string name="instruction1">1. Télécharger un TPT</string>
+    <string name="instruction2">2. Vérifiez le MD5 du zip</string>
+    <string name="instruction3">3. Décompressez le ZIP</string>
+    <string name="instruction4">4. Vérifiez le contenu du dossier "image" avec le fichier nandroid.md5</string>
+    <string name="instruction5">5. Arrêtez votre téléphone</string>
+    <string name="instruction6">6. Maintenez le bouton [volume+] ([menu] et [volume+] sur certains appareils) et appuyez sur le bouton d\'alimentation</string>
+    <string name="instruction7">Pour un TPT standard:</string>
+    <string name="instruction8">7. Du texte vert devrait apparaître à l\'écran puis le téléphone devrait redémarrer en recovery</string>
+    <string name="instruction9">8. Flashez la ROM de votre choix depuis le recovery et redémarrez</string>
+    <string name="instruction10">Pour un TPT tout en un:</string>
+    <string name="instruction11">7. Du texte vert devrait apparaître à l\'écran puis le téléphone devrait redémarrer sur la nouvelle ROM</string>
+    
+      <!-- Troubleshooting strings -->
+    <string name="troubleshooting1">Q. I pressed the power off button, but nothing happened.</string>
+    <string name="troubleshooting2">A. You need root (superuser) for this option to work. If you have root and granted su permissions, try unchecking the Auto Power-off option in the Options menu.</string>
+    <string name="troubleshooting3">Q. I followed all the steps and tried to flash the TPT, but now I\'m stuck at the green android.</string>
+    <string name="troubleshooting4">A. You\'re probably in fastboot mode. Trying holding menu and vol+ and try flashing again.</string>
+    <string name="troubleshooting5">Q. I downloaded and unzipped a TPT, but some of the files don\'t match.</string>
+    <string name="troubleshooting6">A. The download may have been corrupted, try downloading again and if they still don\'t match use the feedback email and give details of which file you downloaded and which files don\'t match.</string>
+    <string name="troubleshooting7"></string>
+    <string name="troubleshooting8"></string>
+    <string name="troubleshooting9"></string>
+    <string name="troubleshooting10"></string>
+    <string name="troubleshooting11"></string>
+    
+      <!-- Changelog strings -->
+    <string name="changelog">Historique des versions</string>
+    
+      <!-- CustomTPT strings -->
+    <string name="finished_heading">TPT Créé</string>
+    <string name="finished">Votre TPT a fini d\'être construit.</string>
+    <string name="copying">Copie en cours. Veuillez patienter...</string>
+    <string name="pick_cache_heading">Cache</string>
+    <string name="pick_cache">Please enter a value between 2 and 50</string>
+    <string name="pick_system_heading">System</string>
+    <string name="pick_system">Please enter a value between 90 and 220</string>
+    <string name="set_userdata_heading">Data</string>
+    <string name="set_userdata1">Cache:</string>
+    <string name="set_userdata2">MB, System:</string>
+    <string name="set_userdata3">MB, and</string>
+    <string name="set_userdata4">MB of space left for data. Do you want to use these sizes?</string>
+    <string name="writing">Writing partitions. Please wait...</string>
+    
+      <!-- General strings -->
+    <string name="app_name">Assistant TPT</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Annuler</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="error">Erreur</string>
+    <string name="other">Autre</string>
+    <string name="options">Options</string>
+    <string name="feedback">Commentaires</string>
+    <string name="about">À propos de</string>
+    <string name="unknown">Unknown</string>
+</resources>

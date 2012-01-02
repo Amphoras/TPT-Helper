@@ -1,0 +1,94 @@
+v2.0
+
+Added support for ZTE Skate/Orange Monte Carlo.
+Added support for ZTE Blade II/Orange San Francisco II/T-Mobile Vivacity.
+Added support for stock and Windows upgraded gen 2 and 3 European Blades.
+Added support for gen 2 Chinese Blades.
+Attempts to detect phone model (Blade, Skate or Blade II) on first start.
+Attempts to detect type (European/Chinese) and gen (1, 2 or 3) of Blade on first start.
+Should show appropriate TPTs for users model/type/gen.
+Added more all-in-one TPTs for gen 1 and TPT upgraded Blades.
+"Create your own TPT" option now gives much larger choice of partition layouts for all models/types/gens.
+Updated Spanish and Portuguese translations.
+Fixed md5sum and unzipping for random files.
+
+v1.8.3
+
+Bugfix: Force closes on Eclair should be fixed.
+
+v1.8.2
+
+Added Serbian translations, thanks to Sokobeg.
+Updated French, Spanish and Portuguese translations.
+
+v1.8.1
+
+Added some Portuguese and Spanish translations.
+
+v1.8
+
+Fixed download progress bar.
+Download extra files for building TPT to massively reduce app size.
+
+v1.7
+
+App released under GNU GPL v3 for source code see https://github.com/Amphoras/TPT-Helper/tree/V1.7
+Tidied up code and removed unneeded parts.
+Adverts removed.
+
+v1.6.1
+
+Fixed build your own TPT option. Only the 160MB version would work.
+
+v1.6
+
+Added option to build your own TPT
+Updated French translations
+Fix bug that would cause the app to crash if you changed orientation while downloading
+
+v1.5.1
+
+Updated French, German, Russian and Chinese translations
+Added option to chose the language for the app to use
+
+v1.5
+
+Changed to direct download links
+Reworked "All In One" mode. It now includes downloading the TPTs and gives clearer feedback
+Updated Russian translations
+Some Chinese translations added (thanks to wuxipaopao)
+
+v1.4.1
+
+Added Russian translations (thanks to top4ek)
+Added GSF B24 all in one TPT
+Added Gen 1 to Gen 2 v9 custom TPT
+
+v1.4
+
+Added ability to start TPT mode from inside the app on some roms
+Added GSF B23 all in one TPT
+Added French translations (thanks to Alex131089)
+Added German translations (thanks to FelixL)
+
+v1.3
+
+Added option to check md5, unzip and verify image folder all in one step
+Added adverts
+Added more info about each downloadable TPT on long click
+Power off button should work more reliably now
+Added cancel option when picking the file to unzip/check md5sum
+Added more feedback after unzipping/checking md5sum
+GSF TPT should unzip properly now
+Added battery level check before powering off to start TPT
+
+v1.2
+
+Added check against expected md5sum for downloadable TPTs
+Added more Gen 1 to Gen 2 partition layout downloads
+Added some all in one TPTs to download page
+Added "working" dialogs while performing tasks
+Added menu
+Added instructions page
+Standard TPT download options now also show the partition sizes
+Added button to turn off phone when ready to start the TPT
