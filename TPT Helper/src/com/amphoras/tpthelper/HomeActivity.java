@@ -285,8 +285,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_1);
 					          break;
 			    		  case 2:
-			    			  //Intent gen_2 = new Intent(HomeActivity.this, CustomTPTGen2.class);
-					          //startActivity(gen_2);
+			    			  Intent gen_2 = new Intent(HomeActivity.this, CustomTPTGen2.class);
+					          startActivity(gen_2);
 					          break;
 			    		  case 3:
 			    			  //Intent gen_3 = new Intent(HomeActivity.this, CustomTPTGen3.class);
@@ -498,8 +498,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_1);
 					          break;
 			    		  case 2:
-			    			  //Intent gen_2 = new Intent(HomeActivity.this, CustomTPTGen2.class);
-					          //startActivity(gen_2);
+			    			  Intent gen_2 = new Intent(HomeActivity.this, CustomTPTGen2.class);
+					          startActivity(gen_2);
 					          break;
 			    		  case 3:
 			    			  //Intent gen_3 = new Intent(HomeActivity.this, CustomTPTGen3.class);
