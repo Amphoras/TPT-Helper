@@ -1443,7 +1443,7 @@ public class CustomTPTGen2 extends Activity {
 	    	int j = 0;
     		byte b = (byte) j;
 	    	  // add the offset for cache
-	    	int cache_offset_int = 553;
+	    	int cache_offset_int = 555;
 	    	  // add the size of cache
 	    	int cache_size = 8*cache_int;
 	    	String cache_hex = Integer.toHexString(cache_size);
