@@ -1229,7 +1229,7 @@ public class CustomTPTGen2 extends Activity {
 	        fis.close();
 	        fos.close();
 	    } catch(Exception e) {
-
+	    	Log.i(TAG, "Error copying files: " + e);
 	    }
 	}
 	
