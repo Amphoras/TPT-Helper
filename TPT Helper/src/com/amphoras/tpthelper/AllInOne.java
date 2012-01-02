@@ -78,7 +78,6 @@ public class AllInOne extends Activity {
 	final File downloadcustom9TPT = new File(dir, "download/Gen1-to-Gen2-TPT-v9-custom.zip");
 	private static ProgressDialog dialog;
 	private String unziplocation = Environment.getExternalStorageDirectory() + "/";
-	  // open the file for reading
 	private static File nandroid = new File(Environment.getExternalStorageDirectory(), "image/nandroid.md5");
 	private TextView textview;
 	private TextView textview2;
@@ -1211,7 +1210,7 @@ public class AllInOne extends Activity {
 		case R.id.support:
 			Intent emailIntent = new Intent(Intent.ACTION_SEND);
 	        emailIntent.setType("plain/text");
-	        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@gmail.com"});
+	        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
 	        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
 	        startActivity(emailIntent);
 			break;
