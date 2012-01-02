@@ -83,5 +83,7 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
         <activity android:name="PickFileVivacity"></activity>
         <activity android:name="PickFileUnzipVivacity"></activity>
         <activity android:name="CustomTPTGen2"></activity>
+        <activity android:name="AllInOneSkate"></activity>
+        <activity android:name="AllInOneGen2"></activity>
     </application>
 </manifest>

@@ -53,17 +53,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class AllInOneSkate extends Activity {
+public class AllInOneGen2 extends Activity {
 	SharedPreferences preferences;
 	final File dir = Environment.getExternalStorageDirectory();
-	final File skatev1a = new File(dir, "Skate-v1a.zip");
-	final File downloadskatev1a = new File(dir, "download/Skate-v1a.zip");
-	final File skatev2a = new File(dir, "Skate-v2a.zip");
-	final File downloadskatev2a = new File(dir, "download/Skate-v2a.zip");
-	final File skatev1b = new File(dir, "Skate-v1b.zip");
-	final File downloadskatev1b = new File(dir, "download/Skate-v1b.zip");
-	final File skatev2b = new File(dir, "Skate-v2b.zip");
-	final File downloadskatev2b = new File(dir, "download/Skate-v2b.zip");
+	final File gen2v1a = new File(dir, "Gen2-v1a.zip");
+	final File downloadgen2v1a = new File(dir, "download/Gen2-v1a.zip");
+	final File gen2v2a = new File(dir, "Gen2-v2a.zip");
+	final File downloadgen2v2a = new File(dir, "download/Gen2-v2a.zip");
+	final File gen2stock = new File(dir, "Gen2-stock.zip");
+	final File downloadgen2stock = new File(dir, "download/Gen2-stock.zip");
 	private static ProgressDialog dialog;
 	private String unziplocation = Environment.getExternalStorageDirectory() + "/";
 	private static File nandroid = new File(Environment.getExternalStorageDirectory(), "image/nandroid.md5");
@@ -103,17 +101,17 @@ public class AllInOneSkate extends Activity {
 		CharSequence cancel = getText(R.string.cancel);
         switch (id) {
         case DOWNLOADING:
-            downloaddialog = new ProgressDialog(AllInOneSkate.this);
+            downloaddialog = new ProgressDialog(AllInOneGen2.this);
             CharSequence downloadmessage = getText(R.string.downloading);
             downloaddialog.setMessage(downloadmessage);
             downloaddialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             downloaddialog.setCancelable(false);
             return downloaddialog;
         case PICK_TPT:
-        	Builder builder1 = new AlertDialog.Builder(AllInOneSkate.this);
+        	Builder builder1 = new AlertDialog.Builder(AllInOneGen2.this);
             builder1.setTitle(R.string.pickallinone);
             builder1.setCancelable(false);
-            final CharSequence[] zips1 = {"Skate-v1a.zip", "Skate-v2a.zip", "Skate-v1b.zip", "Skate-v2b.zip", cancel};
+            final CharSequence[] zips1 = {"Gen2-v1a.zip", "Gen2-v2a.zip", "Gen2-stock.zip", cancel};
         	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	Editor editmd5 = preferences.edit();
@@ -121,16 +119,16 @@ public class AllInOneSkate extends Activity {
         	    	Editor editdownloadint = preferences.edit();
         	    	switch (item) {
         	    	case 0:
-        	    		editdownload.putString("downloadpicked", "Skate-v1a.zip");
+        	    		editdownload.putString("downloadpicked", "Gen2-v1a.zip");
         	    		editdownload.commit();
         				editdownloadint.putInt("downloadint", 0);
         	    		editdownloadint.commit();
-        	    		editmd5.putString("expectedmd5", "9ded013763541d3ccacea94d99d6f645");
+        	    		editmd5.putString("expectedmd5", "7d73894ae1013d1bc65ff6dfbc1cc9d4");
         	    		editmd5.commit();
-        	    		if (skatev1a.canRead() == true){
+        	    		if (gen2v1a.canRead() == true){
         	    		    showDialog(TPT_FOUND);
         	    		} else {
-        	    			if (downloadskatev1a.canRead() == true){
+        	    			if (downloadgen2v1a.canRead() == true){
             	    	        showDialog(TPT_FOUND);
         	    			} else {
         	    		     	DownloadFile();
@@ -138,16 +136,16 @@ public class AllInOneSkate extends Activity {
         	    		}
         	    		break;
         	    	case 1:
-        	    		editdownload.putString("downloadpicked", "Skate-v2a.zip");
+        	    		editdownload.putString("downloadpicked", "Gen2-v2a.zip");
         	    		editdownload.commit();
         				editdownloadint.putInt("downloadint", 1);
         	    		editdownloadint.commit();
-        	    		editmd5.putString("expectedmd5", "790f6b04654a2abfde9ed2ae75b91fec");
+        	    		editmd5.putString("expectedmd5", "83624b0365216b8e97c13f55e7fdebab");
         	    		editmd5.commit();
-        	    		if (skatev2a.canRead() == true){
+        	    		if (gen2v2a.canRead() == true){
         	    			showDialog(TPT_FOUND);
         	    		} else {
-        	    			if (downloadskatev2a.canRead() == true){
+        	    			if (downloadgen2v2a.canRead() == true){
         	    				showDialog(TPT_FOUND);
         	    			} else {
         	    				DownloadFile();
@@ -155,16 +153,16 @@ public class AllInOneSkate extends Activity {
         	    		}
         	    		break;
         	    	case 2:
-        	    		editdownload.putString("downloadpicked", "Skate-v1b.zip");
+        	    		editdownload.putString("downloadpicked", "Gen2-stock.zip");
         	    		editdownload.commit();
         				editdownloadint.putInt("downloadint", 2);
         	    		editdownloadint.commit();
-        	    		editmd5.putString("expectedmd5", "a9a4fe7c802b035b8dd0298ea39fbd5a");
+        	    		editmd5.putString("expectedmd5", "4e8d9c15ac2e640e805fcfdaa44b0579");
         	    		editmd5.commit();
-        	    		if (skatev1b.canRead() == true){
+        	    		if (gen2stock.canRead() == true){
         	    			showDialog(TPT_FOUND);
         	    		} else {
-        	    			if (downloadskatev1b.canRead() == true){
+        	    			if (downloadgen2stock.canRead() == true){
         	    				showDialog(TPT_FOUND);
         	    			} else {
         	    				DownloadFile();
@@ -172,24 +170,7 @@ public class AllInOneSkate extends Activity {
         	    		}
         	    		break;
         	    	case 3:
-        	    		editdownload.putString("downloadpicked", "Skate-v2b.zip");
-        	    		editdownload.commit();
-        				editdownloadint.putInt("downloadint", 3);
-        	    		editdownloadint.commit();
-        	    		editmd5.putString("expectedmd5", "48bd788c6c3753d1f599b71f0560241e");
-        	    		editmd5.commit();
-        	    		if (skatev2b.canRead() == true){
-        	    			showDialog(TPT_FOUND);
-        	    		} else {
-        	    			if (downloadskatev2b.canRead() == true){
-        	    				showDialog(TPT_FOUND);
-        	    			} else {
-        	    				DownloadFile();
-        	    			}
-        	    		}
-        	    		break;
-        	    	case 4:
-                		AllInOneSkate.this.finish();
+                		AllInOneGen2.this.finish();
                 		break;
         	    	}
         	    }
@@ -197,7 +178,7 @@ public class AllInOneSkate extends Activity {
         	return builder1.create();
         case TPT_FOUND:
         	final String filepicked = preferences.getString("downloadpicked", "");
-        	Builder filetherebuilder = new AlertDialog.Builder(AllInOneSkate.this);
+        	Builder filetherebuilder = new AlertDialog.Builder(AllInOneGen2.this);
         	filetherebuilder.setTitle(R.string.file_there_heading);
         	CharSequence filethere1 = getText(R.string.file_there1);
         	CharSequence filethere2 = getText(R.string.file_there2);
@@ -228,42 +209,42 @@ public class AllInOneSkate extends Activity {
             });
             return filetherebuilder.create();
         case MD5_MISMATCH:
-        	Builder builder3 = new AlertDialog.Builder(AllInOneSkate.this);
+        	Builder builder3 = new AlertDialog.Builder(AllInOneGen2.this);
             builder3.setTitle(R.string.md5_mismatch_heading);
             builder3.setCancelable(false);
             builder3.setMessage(R.string.md5_mismatch);
             builder3.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                	Intent i = new Intent(AllInOneSkate.this, Downloader.class);
+                	Intent i = new Intent(AllInOneGen2.this, Downloader.class);
               	    startActivity(i);
-              	    AllInOneSkate.this.finish();
+              	    AllInOneGen2.this.finish();
                 }
             });
             builder3.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-              	    AllInOneSkate.this.finish();
+              	    AllInOneGen2.this.finish();
                 }
             });
             return builder3.create();
         case UNZIP_FAILED:
-          Builder failedbuilder = new AlertDialog.Builder(AllInOneSkate.this);
+          Builder failedbuilder = new AlertDialog.Builder(AllInOneGen2.this);
           failedbuilder.setTitle(R.string.unzipbad);
             // show dialog about failure
           failedbuilder.setMessage(R.string.unzip_fail);
           failedbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
               public void onClick(DialogInterface dialog, int id) {
-                  AllInOneSkate.this.finish();
+                  AllInOneGen2.this.finish();
               }
           });
           return failedbuilder.create();
         case NO_NANDROID:
     	    // show error dialog after failing to find nandroid.md5 file
-          Builder nofilebuilder = new AlertDialog.Builder(AllInOneSkate.this);
+          Builder nofilebuilder = new AlertDialog.Builder(AllInOneGen2.this);
           nofilebuilder.setTitle(R.string.error);
           nofilebuilder.setMessage(R.string.no_nandroid2);
           nofilebuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
               public void onClick(DialogInterface dialog, int id) {
-            	  AllInOneSkate.this.finish();
+            	  AllInOneGen2.this.finish();
               }
           });
           return nofilebuilder.create();
@@ -308,7 +289,7 @@ public class AllInOneSkate extends Activity {
       	  String match16 = preferences.getString("match16", "");
       	  String match17 = preferences.getString("match17", "");
       	  String match18 = preferences.getString("match18", "");
-          Builder builder = new AlertDialog.Builder(AllInOneSkate.this);
+          Builder builder = new AlertDialog.Builder(AllInOneGen2.this);
           builder.setTitle(R.string.files_verified);
             // show dialog with no. of matches/no. of files
           if (a == b) {
@@ -417,7 +398,7 @@ public class AllInOneSkate extends Activity {
           return builder.create();
         case DOWNLOAD_FAILED:
         	String downloadfailed = preferences.getString("downloadpicked", "");
-        	Builder downloadfailedbuilder = new AlertDialog.Builder(AllInOneSkate.this);
+        	Builder downloadfailedbuilder = new AlertDialog.Builder(AllInOneGen2.this);
         	downloadfailedbuilder.setTitle(R.string.download_failed_heading);
             CharSequence download_failed = getText(R.string.download_failed);
             downloadfailedbuilder.setMessage(download_failed + " " + downloadfailed);
@@ -429,7 +410,7 @@ public class AllInOneSkate extends Activity {
             return downloadfailedbuilder.create();
         case CHANGE_LOCALE:
       	    // change the locale used in the app
-          Builder localebuilder = new AlertDialog.Builder(AllInOneSkate.this);
+          Builder localebuilder = new AlertDialog.Builder(AllInOneGen2.this);
           localebuilder.setTitle(R.string.change_locale_heading);
           localebuilder.setCancelable(false);
           CharSequence english = getText(R.string.english);
@@ -448,58 +429,58 @@ public class AllInOneSkate extends Activity {
       	    	case 0:
       	    		editlocale.putString("locale", "en");
       	    		editlocale.commit();
-      	    		Intent i = new Intent(AllInOneSkate.this, HomeActivity.class);
+      	    		Intent i = new Intent(AllInOneGen2.this, HomeActivity.class);
       	    	    startActivity(i);
-      	    	    AllInOneSkate.this.finish();
+      	    	    AllInOneGen2.this.finish();
       	    		break;
       	    	case 1:
       	    		editlocale.putString("locale", "fr");
       	    		editlocale.commit();
-      	    		Intent j = new Intent(AllInOneSkate.this, HomeActivity.class);
+      	    		Intent j = new Intent(AllInOneGen2.this, HomeActivity.class);
       	    	    startActivity(j);
-      	    	    AllInOneSkate.this.finish();
+      	    	    AllInOneGen2.this.finish();
       	    		break;
       	    	case 2:
       	    		editlocale.putString("locale", "de");
       	    		editlocale.commit();
-      	    		Intent k = new Intent(AllInOneSkate.this, HomeActivity.class);
+      	    		Intent k = new Intent(AllInOneGen2.this, HomeActivity.class);
       	    	    startActivity(k);
-      	    	    AllInOneSkate.this.finish();
+      	    	    AllInOneGen2.this.finish();
       	    		break;
       	    	case 3:
       	    		editlocale.putString("locale", "ru");
       	    		editlocale.commit();
-      	    		Intent l = new Intent(AllInOneSkate.this, HomeActivity.class);
+      	    		Intent l = new Intent(AllInOneGen2.this, HomeActivity.class);
       	    	    startActivity(l);
-      	    	    AllInOneSkate.this.finish();
+      	    	    AllInOneGen2.this.finish();
       	    		break;
       	    	case 4:
       	    		editlocale.putString("locale", "zh");
       	    		editlocale.commit();
-      	    		Intent m = new Intent(AllInOneSkate.this, HomeActivity.class);
+      	    		Intent m = new Intent(AllInOneGen2.this, HomeActivity.class);
       	    	    startActivity(m);
-      	    	    AllInOneSkate.this.finish();
+      	    	    AllInOneGen2.this.finish();
       	    		break;
       	    	case 5:
       	    		editlocale.putString("locale", "pt");
       	    		editlocale.commit();
-      	    		Intent n = new Intent(AllInOneSkate.this, HomeActivity.class);
+      	    		Intent n = new Intent(AllInOneGen2.this, HomeActivity.class);
       	    	    startActivity(n);
-      	    	    AllInOneSkate.this.finish();
+      	    	    AllInOneGen2.this.finish();
       	    		break;
       	    	case 6:
       	    		editlocale.putString("locale", "es");
       	    		editlocale.commit();
-      	    		Intent o = new Intent(AllInOneSkate.this, HomeActivity.class);
+      	    		Intent o = new Intent(AllInOneGen2.this, HomeActivity.class);
       	    	    startActivity(o);
-      	    	    AllInOneSkate.this.finish();
+      	    	    AllInOneGen2.this.finish();
       	    		break;
       	    	case 7:
       	    		editlocale.putString("locale", "sr");
       	    		editlocale.commit();
-      	    		Intent p = new Intent(AllInOneSkate.this, HomeActivity.class);
+      	    		Intent p = new Intent(AllInOneGen2.this, HomeActivity.class);
       	    	    startActivity(p);
-      	    	    AllInOneSkate.this.finish();
+      	    	    AllInOneGen2.this.finish();
       	    		break;
       	    	case 8:
       	    		// Do nothing
@@ -533,16 +514,13 @@ public class AllInOneSkate extends Activity {
 		int id = preferences.getInt("downloadint", 0);
 		switch (id) {
 		case 0:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752084" });
+			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_779085" });
 			break;
 		case 1:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752040" });
+			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_779087" });
 			break;
 		case 2:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752088" });
-			break;
-		case 3:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752096" });
+			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_779071" });
 			break;
 		}
 	}
@@ -630,7 +608,7 @@ public class AllInOneSkate extends Activity {
 		@Override
 		protected void onPreExecute() {
 			CharSequence calculating = getText(R.string.calculating);
-			dialog = ProgressDialog.show(AllInOneSkate.this, "", calculating, true);
+			dialog = ProgressDialog.show(AllInOneGen2.this, "", calculating, true);
 		}
 		
 		@Override
@@ -706,7 +684,7 @@ public class AllInOneSkate extends Activity {
 		@Override
 		protected void onPreExecute() {
 			CharSequence unzipping = getText(R.string.unzipping);
-			dialog = ProgressDialog.show(AllInOneSkate.this, "", unzipping, true);
+			dialog = ProgressDialog.show(AllInOneGen2.this, "", unzipping, true);
 		}
 		
 		@Override
@@ -787,7 +765,7 @@ public class AllInOneSkate extends Activity {
 		@Override
 		protected void onPreExecute() {
 			CharSequence verifying = getText(R.string.verifying);
-			dialog = ProgressDialog.show(AllInOneSkate.this, "", verifying, true);
+			dialog = ProgressDialog.show(AllInOneGen2.this, "", verifying, true);
 		}
 		
 		@Override
@@ -1090,23 +1068,23 @@ public class AllInOneSkate extends Activity {
 			showDialog(CHANGE_LOCALE);
 			break;
 		case R.id.about:
-			Intent j = new Intent(AllInOneSkate.this, About.class);
+			Intent j = new Intent(AllInOneGen2.this, About.class);
 			startActivity(j);
 			break;
 		case R.id.instructions:
-			Intent k = new Intent(AllInOneSkate.this, Instructions.class);
+			Intent k = new Intent(AllInOneGen2.this, Instructions.class);
 			startActivity(k);
 			break;
 		case R.id.show_changelog:
-			Intent l = new Intent(AllInOneSkate.this, Changelog.class);
+			Intent l = new Intent(AllInOneGen2.this, Changelog.class);
 			startActivity(l);
 			break;
 		case R.id.preferences:
-			Intent m = new Intent(AllInOneSkate.this, Preferences.class);
+			Intent m = new Intent(AllInOneGen2.this, Preferences.class);
 			startActivity(m);
 			break;
 		case R.id.license:
-			Intent n = new Intent(AllInOneSkate.this, License.class);
+			Intent n = new Intent(AllInOneGen2.this, License.class);
 			startActivity(n);
 			break;
 		}
