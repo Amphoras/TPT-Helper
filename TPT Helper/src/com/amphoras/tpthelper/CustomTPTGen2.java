@@ -1178,6 +1178,12 @@ public class CustomTPTGen2 extends Activity {
 				case 1:
 					CopyAssets("CWMv5.img", "boot.img");
 					break;
+				case 2:
+					CopyAssets("CWMv3.img", "boot.img");
+					break;
+				case 3:
+					CopyAssets("PhoTom.img", "boot.img");
+					break;
 				}
 				//break;
 			/*case 2:
@@ -1302,7 +1308,13 @@ public class CustomTPTGen2 extends Activity {
 		    systemmd5 = "3d0bfef87dae68e4888802e30926b318";
 		    switch (recovery) {
 			case 1:
-				bootmd5 = "2aa061fded14f186fffe479b9fc7f3e5";
+				bootmd5 = "777287e4a51c90c30f8e952785ebd062";
+				break;
+			case 2:
+				bootmd5 = "320a0182b428dd879b9cdf23c1f214a8";
+				break;
+			case 3:
+				bootmd5 = "64b68f806e57771f478eed3cfe03b1af";
 				break;
 			}
 			//break;
@@ -1355,7 +1367,7 @@ public class CustomTPTGen2 extends Activity {
 			showDialog(MD5_MISMATCH);
 		}
 		} catch (IOException e) {
-			
+			Log.i(TAG, ""+e);
 		}
 	}
 	
