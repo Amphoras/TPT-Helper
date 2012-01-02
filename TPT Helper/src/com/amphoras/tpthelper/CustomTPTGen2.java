@@ -564,7 +564,7 @@ public class CustomTPTGen2 extends Activity {
 	
 	public void DownloadFile() {
 		DownloadFileTask task = new DownloadFileTask();
-		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_729450" });
+		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_720384" });
 	}
 	
 	private class DownloadFileTask extends AsyncTask<String, String, String> {
