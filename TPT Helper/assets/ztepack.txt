@@ -1,0 +1,417 @@
+// ztepack - written by cpg - http://android.modaco.com/user/724649-cpg/
+
+#define _CRT_SECURE_NO_WARNINGS		// defined so VC doesn't bother me
+#include <stdio.h>
+#include <string.h>
+
+// define host-to-little-long and little-to-host-long
+#ifdef HAVE_BIG_ENDIAN
+static inline unsigned __swap_uint32(unsigned x)
+{
+	return ((x & 0xff000000) >> 24) | ((x & 0x00ff0000) >> 8) | ((x & 0x0000ff00) << 8) | ((x & 0x000000ff) << 24);
+}
+#define htoll(x) __swap_uint32(x)
+#define ltohl(x) __swap_uint32(x)
+#else
+#define htoll(x) (x)
+#define ltohl(x) (x)
+#endif
+
+struct IMAGE_FILE
+{
+	unsigned type;
+	unsigned fixedsize;
+	char *name;
+	char *header;
+};
+
+struct HEADER
+{
+	char id[64];
+	unsigned count;
+	struct
+	{
+		unsigned type;
+		unsigned offset;
+		unsigned size;
+		unsigned hasheader;
+		unsigned headeroffset;
+		unsigned headersize;
+	} item[20];
+	unsigned unused[119];
+};
+
+struct FOOTER
+{
+	char unused[64];
+	char id[64];
+};
+
+// padding isn't actually required for partition_zte.mbn
+struct IMAGE_FILE partitions[] = {
+	{ 0x1c, 0x1d0, "partition.mbn", NULL },
+	{ 0x1d, 0, "partition_zte.mbn", NULL },
+};
+
+struct IMAGE_FILE files[] = {
+	{ 1, 0, "qcsblhd_cfgdata.mbn", NULL },
+	{ 2, 0, "qcsbl.mbn", NULL },
+	{ 3, 0, "oemsbl.mbn", "oemsblhd.mbn" },
+	{ 4, 0, "amss.mbn", "amsshd.mbn" },
+	{ 5, 0, "appsboot.mbn", "appsboothd.mbn" },
+	{ 6, 0, "apps.mbn", "appshd.mbn" },
+	{ 0x13, 0, "boot.img", NULL },
+	{ 0x15, 0, "recovery.img", NULL },
+	{ 0x16, 0, "userdata.img", NULL },
+	{ 0x17, 0, "misc.img", NULL },
+	{ 0x18, 0, "cache.img", NULL },
+	{ 0x19, 0, "splash.img", NULL },
+	{ 0x14, 0, "system.img", NULL },	// does not have to be last, but it will always be the biggest
+	{ 0x1e, 0, NULL, NULL }
+};
+
+struct HEADER header;
+struct FOOTER footer;
+
+char buffer[65536];
+
+unsigned filesize(FILE *file)
+{
+	unsigned position, size;
+
+	position = ftell(file);
+	if (fseek(file, 0, SEEK_END) != 0)
+		return 0;
+	size = ftell(file);
+	if (fseek(file, position, SEEK_SET) != 0)
+		return 0;
+	return size;
+}
+
+int copydata(FILE *dst, FILE *src, unsigned size)
+{
+	unsigned len;
+
+	for (; size > 0; size -= len)
+	{
+		len = size;
+		if (len > sizeof(buffer))
+			len = sizeof(buffer);
+
+		if (fread(buffer, 1, len, src) < len)
+			return 0;
+		if (fwrite(buffer, 1, len, dst) < len)
+			return 0;
+	}
+	return 1;
+}
+
+int additem(FILE *image, struct IMAGE_FILE *item)
+{
+	FILE *file, *headerfile;
+	unsigned size;
+
+	file = fopen(item->name, "rb");
+	if (file == NULL)
+		return 0;
+
+	// redundant check, since the list of files (currently) has less items
+	if (header.count + ((item->header != NULL) ? 1 : 0) >= sizeof(header.item) / sizeof(header.item[0]))
+	{
+		printf("Image full\r\n");
+		goto error_file;
+	}
+
+	printf("Adding %s\r\n", item->name);
+
+	// copy header if required
+	if (item->header != NULL)
+	{
+		headerfile = fopen(item->header, "rb");
+		if (headerfile == NULL)
+		{
+			printf("Failed to open header %s\r\n", item->header);
+			goto error_file;
+		}
+
+		printf("  with header %s\r\n", item->header);
+
+		header.item[header.count].hasheader = htoll(1);
+		header.item[header.count].headeroffset = htoll(ftell(image));
+
+		size = filesize(headerfile);
+		if (size == 0)
+		{
+			printf("Header is empty\r\n");
+			goto error_header;
+		}
+		if (!copydata(image, headerfile, size))
+		{
+			printf("Failed to copy header\r\n");
+			goto error_header;
+		}
+		fclose(headerfile);
+		header.item[header.count].headersize = htoll(size);
+	}
+
+	// copy file
+	header.item[header.count].type = item->type;
+	header.item[header.count].offset = htoll(ftell(image));
+
+	size = filesize(file);
+	if (size == 0)
+	{
+		printf("File is empty\r\n");
+		goto error_file;
+	}
+	if (!copydata(image, file, size))
+	{
+		printf("Failed to copy\r\n");
+		goto error;
+	}
+	fclose(file);
+	header.item[header.count].size = htoll(size);
+
+	// partition and partition_zte have a fixed file size
+	if (item->fixedsize != 0)
+	{
+		if (size > item->fixedsize)
+		{
+			printf("%s is too big\r\n", item->name);
+			goto error;
+		}
+		// pad with zeroes, just in case (smaller files didn't give errors with gen1 tpt, so they shouldn't now either)
+		if (size < item->fixedsize)
+		{
+			printf("  padding with zeroes\r\n");
+			size = item->fixedsize - size;
+			memset(buffer, 0, size);
+			if (fwrite(buffer, 1, size, image) < size)
+			{
+				printf("Failed to write to image.bin\r\n");
+				goto error;
+			}
+		}
+	}
+
+	header.count++;
+	return 1;
+
+error_header:
+	fclose(headerfile);
+error_file:
+	fclose(file);
+error:
+	return -1;
+}
+
+int pack()
+{
+	FILE *image;
+	struct IMAGE_FILE *item;
+	int result;
+
+	printf("image.bin will be created from files in the current directory\r\n");
+
+	// create image.bin
+	image = fopen("image.bin", "wb");
+	if (image == NULL)
+	{
+		printf("Failed to create image.bin\r\n");
+		return 0;
+	}
+
+	// write temporary header (empty)
+	memset(&header, 0, sizeof(header));
+	if (fwrite(&header, sizeof(header), 1, image) < 1)
+	{
+		printf("Failed to write to image.bin\r\n");
+		goto error;
+	}
+
+	// add partition definitions
+	for (item = partitions; item < partitions + sizeof(partitions) / sizeof(partitions[0]); item++)
+	{
+		result = additem(image, item);
+		if (result == 0)
+			printf("Could not find %s (required)\r\n", item->name);
+		if (result <= 0)
+			goto error;
+	}
+
+	// find all appropriate mbn files
+	for (item = files; item < files + sizeof(files) / sizeof(files[0]); item++)
+	{
+		if (item->name == NULL)
+		{
+			// add end marker if there's space
+			// this shouldn't even be parsed by the bootloader when the item count is properly set, but just in case
+			if (header.count < sizeof(header.item) / sizeof(header.item[0]))
+				header.item[header.count].type = item->type;
+			break;
+		}
+
+		if (additem(image, item) < 0)
+			goto error;
+	}
+
+	// add final header bits last (correct endianness of counter)
+	header.count = htoll(header.count);
+	strcpy(header.id, "ZTE SOFTWARE UPDATE PACKAGE");
+
+	if (fseek(image, 0, SEEK_SET) != 0 || fwrite(&header, sizeof(header), 1, image) < 1)
+	{
+		printf("Failed to write header\r\n");
+		goto error;
+	}
+
+	// add footer (doesn't seem to be checked)
+	memset(&footer, 0, sizeof(footer));
+	strcpy(footer.id, "ZTE SOFTWARE UPDATE PACKAGE");
+	if (fseek(image, 0, SEEK_END) != 0 || fwrite(&footer, sizeof(footer), 1, image) < 1)
+	{
+		printf("Failed to write header\r\n");
+		goto error;
+	}
+
+	fclose(image);
+	printf("Done\r\n");
+	return 1;
+
+error:
+	fclose(image);
+	return 0;
+}
+
+int extractfile(FILE *image, int index, struct IMAGE_FILE *item)
+{
+	FILE *file;
+
+	file = fopen(item->name, "wb");
+	if (file == NULL)
+	{
+		printf("Failed to create %s\r\n", item->name);
+		goto error;
+	}
+
+	printf("Extracting %s\r\n", item->name);
+
+	// extract file
+	if (fseek(image, header.item[index].offset, SEEK_SET) != 0 || !copydata(file, image, header.item[index].size))
+	{
+		printf("Failed to extract %s\r\n", item->name);
+		goto error_file;
+	}
+	fclose(file);
+
+	// extract header if required
+	if (item->header != NULL)
+	{
+		file = fopen(item->header, "wb");
+		if (file == NULL)
+		{
+			printf("Failed to create header %s\r\n", item->header);
+			goto error;
+		}
+
+		printf("  with header %s\r\n", item->header);
+
+		if (fseek(image, header.item[index].headeroffset, SEEK_SET) != 0 || !copydata(file, image, header.item[index].headersize))
+		{
+			printf("Failed to extract header %s\r\n", item->header);
+			goto error_file;
+		}
+		fclose(file);
+	}
+	return 1;
+
+error_file:
+	fclose(file);
+error:
+	return -1;
+}
+
+int unpack()
+{
+	FILE *image;
+	struct IMAGE_FILE *item;
+	unsigned index;
+
+	printf("Files will be extracted to the current directory\r\n");
+
+	// open image.bin
+	image = fopen("image.bin", "rb");
+	if (image == NULL)
+	{
+		printf("Failed to open image.bin\r\n");
+		return 0;
+	}
+
+	// read header
+	if (fread(&header, sizeof(header), 1, image) < 1)
+	{
+		printf("Failed to read header\r\n");
+		goto error;
+	}
+
+	if (strcmp(header.id, "ZTE SOFTWARE UPDATE PACKAGE"))
+	{
+		printf("Invalid header\r\n");
+		goto error;
+	}
+
+	// extract partitions
+	for (index = 0; index < sizeof(partitions) / sizeof(partitions[0]); index++)
+	{
+		if (extractfile(image, index, &partitions[index]) < 0)
+			goto error;
+	}
+
+	// extract all known mbn types
+	header.count = ltohl(header.count);
+	for (index = 2; index < header.count; index++)
+	{
+		// find type in list
+		for (item = files; item < files + sizeof(files) / sizeof(files[0]); item++)
+		{
+			if (item->type == header.item[index].type)
+				break;
+		}
+		if (item >= files + sizeof(files) / sizeof(files[0]))
+		{
+			printf("Unknown type 0x%x\r\n", header.item[index].type);
+			continue;
+		}
+
+		// end marker
+		if (item->name == NULL)
+			break;
+
+		if (extractfile(image, index, item) < 0)
+			goto error;
+	}
+
+	fclose(image);
+	printf("Done\r\n");
+	return 1;
+
+error:
+	fclose(image);
+	return 0;
+}
+
+int main(int argc, char *argv[])
+{
+	if (argc >= 2)
+	{
+		if (!strcmp(argv[1], "-p"))
+			return pack();
+		if (!strcmp(argv[1], "-x"))
+			return unpack();
+	}
+
+	printf("Syntax: ztepack OPTION\r\n");
+	printf("\t-p\tpack\r\n");
+	printf("\t-x\textract\r\n");
+	return 0;
+}
