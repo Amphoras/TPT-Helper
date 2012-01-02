@@ -149,7 +149,7 @@ public class CustomTPTGen2 extends Activity {
         	Builder builder1 = new AlertDialog.Builder(CustomTPTGen2.this);
             builder1.setTitle(R.string.pickmd5);
             builder1.setCancelable(false);
-            final CharSequence[] zips1 = {"Normal Android", "Unchanged", cancel};
+            final CharSequence[] zips1 = {"Normal Android", "Big Android", "CyanogenMod", "Unchanged", cancel};
         	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	Editor editsplash = preferences.edit();
@@ -165,6 +165,16 @@ public class CustomTPTGen2 extends Activity {
         	    		showDialog(PICK_RECOVERY);
         	    		break;
         	    	case 2:
+        	    		editsplash.putInt("splashpicked", 3);
+        	    		editsplash.commit();
+        	    		showDialog(PICK_RECOVERY);
+        	    		break;
+        	    	case 3:
+        	    		editsplash.putInt("splashpicked", 4);
+        	    		editsplash.commit();
+        	    		showDialog(PICK_RECOVERY);
+        	    		break;
+        	    	case 4:
         	    		CustomTPTGen2.this.finish();
         	    		break;
         	    	}
@@ -175,7 +185,7 @@ public class CustomTPTGen2 extends Activity {
         	Builder builder3 = new AlertDialog.Builder(CustomTPTGen2.this);
             builder3.setTitle(R.string.pickmd5);
             builder3.setCancelable(false);
-            final CharSequence[] zips3 = {"ClockworkMod v5.0.2.0", cancel};
+            final CharSequence[] zips3 = {"ClockworkMod v5.0.2.0", "ClockWorkMod v3.0.2.4", "PhoTom v4.0.1.5", cancel};
         	builder3.setItems(zips3, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	Editor editrecovery = preferences.edit();
@@ -186,6 +196,16 @@ public class CustomTPTGen2 extends Activity {
         	    		showDialog(PICK_CACHE);
         	    		break;
         	    	case 1:
+        	    		editrecovery.putInt("recoverypicked", 2);
+        	    		editrecovery.commit();
+        	    		showDialog(PICK_CACHE);
+        	    		break;
+        	    	case 2:
+        	    		editrecovery.putInt("recoverypicked", 3);
+        	    		editrecovery.commit();
+        	    		showDialog(PICK_CACHE);
+        	    		break;
+        	    	case 3:
         	    		CustomTPTGen2.this.finish();
         	    		break;
         	    	}
@@ -544,7 +564,7 @@ public class CustomTPTGen2 extends Activity {
 	
 	public void DownloadFile() {
 		DownloadFileTask task = new DownloadFileTask();
-		task.execute(new String[] { "" });
+		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_729450" });
 	}
 	
 	private class DownloadFileTask extends AsyncTask<String, String, String> {
@@ -617,7 +637,7 @@ public class CustomTPTGen2 extends Activity {
 	
 	public void DownloadFile2() {
 		DownloadFileTask2 task = new DownloadFileTask2();
-		task.execute(new String[] { "" });
+		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_729458" });
 	}
 	
 	private class DownloadFileTask2 extends AsyncTask<String, String, String> {
@@ -1131,12 +1151,24 @@ public class CustomTPTGen2 extends Activity {
 				CopyAssets("NormalAndroid.img", "splash.img");
 				break;
 			case 2:
+				CopyAssets("BigAndroid.img", "splash.img");
+				break;
+			case 3:
+				CopyAssets("CyanogenMod.img", "splash.img");
+				break;
+			case 4:
 				  // Copy nothing
 				break;
 			}
 			switch (recovery) {
 			case 1:
 				CopyAssets("CWMv5.img", "recovery.img");
+				break;
+			case 2:
+				CopyAssets("CWMv3.img", "recovery.img");
+				break;
+			case 3:
+				CopyAssets("PhoTom.img", "recovery.img");
 				break;
 			}
 			//switch (system) {
@@ -1242,15 +1274,27 @@ public class CustomTPTGen2 extends Activity {
 		//int system = preferences.getInt("rompicked", 1);
 		switch (splash) {
 		case 1:
-			splashmd5 = "";
-		    break;
+			splashmd5 = "6517e43357b2ccb1e3c23ce1af67f1e5";
+			break;
 		case 2:
+			splashmd5 = "0cfe844f4a4b84eef82c1767902b6618";
+			break;
+		case 3:
+			splashmd5 = "83d8df20241cec8bbc7b4a6bef329284";
+			break;
+		case 4:
 			nosplash = true;
 			break;
 		}
 		switch (recovery) {
 		case 1:
-			recoverymd5 = "2aa061fded14f186fffe479b9fc7f3e5";
+			recoverymd5 = "777287e4a51c90c30f8e952785ebd062";
+			break;
+		case 2:
+			recoverymd5 = "320a0182b428dd879b9cdf23c1f214a8";
+			break;
+		case 3:
+			recoverymd5 = "64b68f806e57771f478eed3cfe03b1af";
 			break;
 		}
 		//switch (system) {
@@ -1387,7 +1431,7 @@ public class CustomTPTGen2 extends Activity {
 	    	int j = 0;
     		byte b = (byte) j;
 	    	  // add the offset for cache
-	    	int cache_offset_int = 556;
+	    	int cache_offset_int = 553;
 	    	  // add the size of cache
 	    	int cache_size = 8*cache_int;
 	    	String cache_hex = Integer.toHexString(cache_size);
@@ -1485,7 +1529,7 @@ public class CustomTPTGen2 extends Activity {
 	private void WriteAppsboot(int cache_int, int system_int, int userdata_int) {
 	    try {
 	    	File appsboot = new File(Environment.getExternalStorageDirectory() + "/image/appsboot.mbn");
-	    	byte[] data = new byte[53435];
+	    	byte[] data = new byte[51159];
 	    	FileInputStream fis = new FileInputStream(appsboot);
 	    	fis.read(data);
 	    	int j = 0;
@@ -1501,11 +1545,11 @@ public class CustomTPTGen2 extends Activity {
 	    	String cache_str1 = cache_hex.substring(2, 4);
 	    	j = Integer.parseInt(cache_str1, 16);
 	    	b = (byte) j;
-	    	data[52956] = b;
+	    	data[50688] = b;
 	    	String cache_str2 = cache_hex.substring(0, 2);
 	    	j = Integer.parseInt(cache_str2, 16);
 	    	b = (byte) j;
-	    	data[52957] = b;
+	    	data[50689] = b;
 	    	  // add the offset for system
 	    	int system_offset_int = cache_size+cache_offset_int;
 	    	String system_offset_hex = Integer.toHexString(system_offset_int);
@@ -1515,11 +1559,11 @@ public class CustomTPTGen2 extends Activity {
 	    	String system_offset_str1 = system_offset_hex.substring(2, 4);
 	    	j = Integer.parseInt(system_offset_str1, 16);
 	    	b = (byte) j;
-	    	data[52984] = b;
+	    	data[50716] = b;
 	    	String system_offset_str2 = system_offset_hex.substring(0, 2);
 	    	j = Integer.parseInt(system_offset_str2, 16);
 	    	b = (byte) j;
-	    	data[52985] = b;
+	    	data[50717] = b;
 	    	  // add the size of system
 	    	int system_size = 8*system_int;
 	    	String system_hex = Integer.toHexString(system_size);
@@ -1529,11 +1573,11 @@ public class CustomTPTGen2 extends Activity {
 	    	String system_str1 = system_hex.substring(2, 4);
 	    	j = Integer.parseInt(system_str1, 16);
 	    	b = (byte) j;
-	    	data[52988] = b;
+	    	data[50720] = b;
 	    	String system_str2 = system_hex.substring(0, 2);
 	    	j = Integer.parseInt(system_str2, 16);
 	    	b = (byte) j;
-	    	data[52989] = b;
+	    	data[50721] = b;
 	    	  // add the offset for userdata
 	    	int userdata_offset_int = system_size+system_offset_int;
 	    	String userdata_offset_hex = Integer.toHexString(userdata_offset_int);
@@ -1543,11 +1587,11 @@ public class CustomTPTGen2 extends Activity {
 	    	String userdata_offset_str1 = userdata_offset_hex.substring(2, 4);
 	    	j = Integer.parseInt(userdata_offset_str1, 16);
 	    	b = (byte) j;
-	    	data[53016] = b;
+	    	data[50748] = b;
 	    	String userdata_offset_str2 = userdata_offset_hex.substring(0, 2);
 	    	j = Integer.parseInt(userdata_offset_str2, 16);
 	    	b = (byte) j;
-	    	data[53017] = b;
+	    	data[50749] = b;
 	    	  // add the size of userdata
 	    	int userdata_size = 8*userdata_int;
 	    	String userdata_hex = Integer.toHexString(userdata_size);
@@ -1557,11 +1601,11 @@ public class CustomTPTGen2 extends Activity {
 	    	String userdata_str1 = userdata_hex.substring(2, 4);
 	    	j = Integer.parseInt(userdata_str1, 16);
 	    	b = (byte) j;
-	    	data[53020] = b;
+	    	data[50752] = b;
 	    	String userdata_str2 = userdata_hex.substring(0, 2);
 	    	j = Integer.parseInt(userdata_str2, 16);
 	    	b = (byte) j;
-	    	data[53021] = b;
+	    	data[50753] = b;
 	    	  // add the offset for oem
 	    	int oem_offset_int = userdata_size+userdata_offset_int;
 	    	String oem_offset_hex = Integer.toHexString(oem_offset_int);
@@ -1571,11 +1615,11 @@ public class CustomTPTGen2 extends Activity {
 	    	String oem_offset_str1 = oem_offset_hex.substring(2, 4);
 	    	j = Integer.parseInt(oem_offset_str1, 16);
 	    	b = (byte) j;
-	    	data[53048] = b;
+	    	data[50780] = b;
 	    	String oem_offset_str2 = oem_offset_hex.substring(0, 2);
 	    	j = Integer.parseInt(oem_offset_str2, 16);
 	    	b = (byte) j;
-	    	data[53049] = b;
+	    	data[50781] = b;
 	    	
 	    	FileOutputStream fos = new FileOutputStream(Environment.getExternalStorageDirectory() + "/image/appsboot.mbn");
 	    	fos.write(data);
@@ -1604,9 +1648,10 @@ public class CustomTPTGen2 extends Activity {
 	    	fos.close();
 		    Process copy_ztepack = Runtime.getRuntime().exec("su");
 		    DataOutputStream dos = new DataOutputStream(copy_ztepack.getOutputStream());
-		    dos.writeBytes("mount -o remount,rw /system\n");
+		    dos.writeBytes("mount -o remount,rw /dev/mtdblock5 /system\n");
 		    dos.writeBytes("mv /sdcard/ztepack /system/bin/ztepack\n");
-		    dos.writeBytes("mount -o remount,ro /system\n");
+		    dos.writeBytes("chmod 0777 /system/bin/ztepack\n");
+		    dos.writeBytes("mount -o remount,ro /dev/mtdblock5 /system\n");
 		    dos.writeBytes("exit\n");
 		    copy_ztepack.waitFor();
 		    File ztepack = new File("/system/bin/ztepack");
