@@ -130,9 +130,40 @@ public class HomeActivity extends ListActivity {
 		    	String blade2 = preferences.getString("blade2","SF2");
 		    	switch (position) {
 			      case 0:
-			    	  Intent i = new Intent(HomeActivity.this, AllInOne.class);
-		        	  startActivity(i);
-				      break;
+			    	  switch (board) {
+			    	  case 1:
+			    		  switch (gen) {
+			    		  case 1:
+			    			  Intent gen_1 = new Intent(HomeActivity.this, AllInOne.class);
+					          startActivity(gen_1);
+					          break;
+			    		  case 2:
+			    			  //Intent gen_2 = new Intent(HomeActivity.this, AllInOneGen2.class);
+					          //startActivity(gen_2);
+					          break;
+			    		  case 3:
+			    			  //Intent gen_3 = new Intent(HomeActivity.this, AllInOneGen3.class);
+					          //startActivity(gen_3);
+					          break;
+			    		  }
+			    		  break;
+			    	  case 2:
+			    		  Intent skate = new Intent(HomeActivity.this, AllInOneSkate.class);
+			    		  startActivity(skate);
+			    		  break;
+			    	  case 3:
+			    		  if (blade2.equals("SF2")) {
+			    			  //Intent sf2 = new Intent(HomeActivity.this, AllInOneSF2.class);
+				    		  //startActivity(sf2);
+			    		  } else {
+			    			  if (blade2.equals("TMV")) {
+			    				  //Intent tmv = new Intent(HomeActivity.this, AllInOneVivacity.class);
+					    		  //startActivity(tmv);
+			    			  }
+			    		  }
+			    		  break;
+			    	  }
+					  break;
 			      case 1:
 			    	  switch (board) {
 			    	  case 1:
@@ -312,9 +343,40 @@ public class HomeActivity extends ListActivity {
 		    	String blade2 = preferences.getString("blade2", "SF2");
 		    	switch (position) {
 			      case 0:
-			    	  Intent i = new Intent(HomeActivity.this, AllInOne.class);
-		        	  startActivity(i);
-				      break;
+			    	  switch (board) {
+			    	  case 1:
+			    		  switch (gen) {
+			    		  case 1:
+			    			  Intent gen_1 = new Intent(HomeActivity.this, AllInOne.class);
+					          startActivity(gen_1);
+					          break;
+			    		  case 2:
+			    			  //Intent gen_2 = new Intent(HomeActivity.this, AllInOneGen2.class);
+					          //startActivity(gen_2);
+					          break;
+			    		  case 3:
+			    			  //Intent gen_3 = new Intent(HomeActivity.this, AllInOneGen3.class);
+					          //startActivity(gen_3);
+					          break;
+			    		  }
+			    		  break;
+			    	  case 2:
+			    		  Intent skate = new Intent(HomeActivity.this, AllInOneSkate.class);
+			    		  startActivity(skate);
+			    		  break;
+			    	  case 3:
+			    		  if (blade2.equals("SF2")) {
+			    			  //Intent sf2 = new Intent(HomeActivity.this, AllInOneSF2.class);
+				    		  //startActivity(sf2);
+			    		  } else {
+			    			  if (blade2.equals("TMV")) {
+			    				  //Intent tmv = new Intent(HomeActivity.this, AllInOneVivacity.class);
+					    		  //startActivity(tmv);
+			    			  }
+			    		  }
+			    		  break;
+			    	  }
+					  break;
 			      case 1:
 			    	  switch (board) {
 			    	  case 1:
