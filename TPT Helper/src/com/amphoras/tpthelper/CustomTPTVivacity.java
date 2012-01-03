@@ -1492,7 +1492,7 @@ public class CustomTPTVivacity extends Activity {
 	private void WriteAppsboot(int cache_int, int system_int, int userdata_int) {
 	    try {
 	    	File appsboot = new File(Environment.getExternalStorageDirectory() + "/image/appsboot.mbn");
-	    	byte[] data = new byte[53383];
+	    	byte[] data = new byte[53384];
 	    	FileInputStream fis = new FileInputStream(appsboot);
 	    	fis.read(data);
 	    	int j = 0;
