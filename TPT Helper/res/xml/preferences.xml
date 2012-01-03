@@ -22,12 +22,40 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="Options">
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="xbin"
-        android:summary="Untick if phone doesn't power off automatically when chosing to start TPT"
+    <ListPreference
         android:enabled="true"
-        android:persistent="true"
+        android:entries="@array/model"
+        android:dialogTitle="Choose your phone"
+        android:key="model"
         android:selectable="true"
-        android:title="Auto Power-off"/>
+        android:title="Phone Model"
+        android:entryValues="@array/models"
+        android:persistent="true"/>
+    <ListPreference
+        android:enabled="true"
+        android:entryValues="@array/gens"
+        android:dialogTitle="Choose which gen your ZTE Blade is."
+        android:entries="@array/gen"
+        android:selectable="true"
+        android:key="gens"
+        android:persistent="true"
+        android:title="ZTE Blade Gen"/>
+    <ListPreference
+        android:enabled="true"
+        android:entryValues="@array/types"
+        android:dialogTitle="Choose which type of ZTE Blade you have."
+        android:entries="@array/type"
+        android:selectable="true"
+        android:key="types"
+        android:persistent="true"
+        android:title="ZTE Blade Type"/>
+    <ListPreference
+        android:enabled="true"
+        android:entryValues="@array/blade2s"
+        android:dialogTitle="Choose which type of Blade II you have."
+        android:entries="@array/blade2"
+        android:selectable="true"
+        android:title="ZTE Blade II Model"
+        android:key="blade2"
+        android:persistent="true"/>
 </PreferenceScreen>

@@ -773,10 +773,6 @@ public class HomeActivity extends ListActivity {
       		        		  if (s.charAt(0) == '2') {
       					    	  type = "European Blade";
       					      }
-      		        	  } else {
-      		        		  if (s.charAt(0) == '9') {
-    				    		  type = "Chinese Blade";
-    				          }
       		        	  }
       	    		  }
       		      }

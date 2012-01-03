@@ -27,7 +27,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
@@ -46,18 +46,116 @@ public class Preferences extends PreferenceActivity {
 	    addPreferencesFromResource(R.xml.preferences);
 	    preferences = PreferenceManager.getDefaultSharedPreferences(this);
 	    
-	    final CheckBoxPreference xbinPref = (CheckBoxPreference) getPreferenceManager().findPreference("xbin");
+	    final ListPreference models = (ListPreference) getPreferenceManager().findPreference("model");
+	    
+	    int board = preferences.getInt("board", 1);
+	    String model = "blade";
+	    switch (board) {
+	    case 1:
+	    	model = "blade";
+	    	break;
+	    case 2:
+	    	model = "skate";
+	    	break;
+	    case 3:
+	    	model = "blade2";
+	    	break;
+	    }
+	    models.setValue(model);
 
-	    xbinPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {            
+	    models.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {            
 	        public boolean onPreferenceChange(Preference preference, Object newValue) {
-	            if (newValue.toString().equals("true")) {
-	        	    Editor edittrue = preferences.edit();
-    		        edittrue.putBoolean("xbin", true);
-    	            edittrue.commit();
+	            if (newValue.toString().equals("blade")) {
+	        	    Editor edit = preferences.edit();
+    		        edit.putInt("board", 1);
+    	            edit.commit();
 	            } else {  
-	        	    Editor editfalse = preferences.edit();
-    		        editfalse.putBoolean("xbin", false);
-    	            editfalse.commit();
+	            	if (newValue.toString().equals("skate")) {
+		        	    Editor edit = preferences.edit();
+	    		        edit.putInt("board", 2);
+	    	            edit.commit();
+	            	} else {
+	            		if (newValue.toString().equals("blade2")) {
+	    	        	    Editor edit = preferences.edit();
+	        		        edit.putInt("board", 3);
+	        	            edit.commit();
+	            		}
+	            	}
+	            }
+	            return true;
+	        }
+	    });
+	    
+        final ListPreference gens = (ListPreference) getPreferenceManager().findPreference("gens");
+	    
+	    int gen = preferences.getInt("gen", 1);
+	    String gen_value = "1";
+	    switch (gen) {
+	    case 1:
+	    	gen_value = "1";
+	    	break;
+	    case 2:
+	    	gen_value = "2";
+	    	break;
+	    }
+	    gens.setValue(gen_value);
+	    
+	    gens.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {            
+	        public boolean onPreferenceChange(Preference preference, Object newValue) {
+	            if (newValue.toString().equals("1")) {
+	        	    Editor edit = preferences.edit();
+    		        edit.putInt("gen", 1);
+    	            edit.commit();
+	            } else {  
+	            	if (newValue.toString().equals("2")) {
+		        	    Editor edit = preferences.edit();
+	    		        edit.putInt("gen", 2);
+	    	            edit.commit();
+	            	}
+	            }
+	            return true;
+	        }
+	    });
+	    
+        final ListPreference types = (ListPreference) getPreferenceManager().findPreference("types");
+	    
+	    String type = preferences.getString("blade", "European Blade");
+	    types.setValue(type);
+	    
+	    types.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {            
+	        public boolean onPreferenceChange(Preference preference, Object newValue) {
+	            if (newValue.toString().equals("European Blade")) {
+	        	    Editor edit = preferences.edit();
+    		        edit.putString("blade", "European Blade");
+    	            edit.commit();
+	            } else {  
+	            	if (newValue.toString().equals("Chinese Blade")) {
+		        	    Editor edit = preferences.edit();
+	    		        edit.putString("blade", "Chinese Blade");
+	    	            edit.commit();
+	            	}
+	            }
+	            return true;
+	        }
+	    });
+	    
+        final ListPreference blade2s = (ListPreference) getPreferenceManager().findPreference("blade2");
+	    
+	    String blade2 = preferences.getString("blade2", "SF2");
+	    blade2s.setValue(blade2);
+
+	    blade2s.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {            
+	        public boolean onPreferenceChange(Preference preference, Object newValue) {
+	            if (newValue.toString().equals("SF2")) {
+	        	    Editor edit = preferences.edit();
+    		        edit.putString("blade2", "SF2");
+    	            edit.commit();
+	            } else {  
+	            	if (newValue.toString().equals("TMV")) {
+		        	    Editor edit = preferences.edit();
+	    		        edit.putString("blade2", "TMV");
+	    	            edit.commit();
+	            	}
 	            }
 	            return true;
 	        }
@@ -77,7 +175,7 @@ public class Preferences extends PreferenceActivity {
 		case R.id.support:
 			Intent emailIntent = new Intent(Intent.ACTION_SEND);
 	        emailIntent.setType("plain/text");
-	        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@gmail.com"});
+	        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
 	        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
 	        startActivity(emailIntent);
 			break;
