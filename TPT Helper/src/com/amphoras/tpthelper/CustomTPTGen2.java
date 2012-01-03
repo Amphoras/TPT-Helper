@@ -305,6 +305,7 @@ public class CustomTPTGen2 extends Activity {
             });
             enter_userdata.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
+                	removeDialog(SET_USERDATA);
               	    showDialog(PICK_CACHE);
                 }
             });

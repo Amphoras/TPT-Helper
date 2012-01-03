@@ -305,6 +305,7 @@ public class CustomTPTGen3 extends Activity {
             });
             enter_userdata.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
+                	removeDialog(SET_USERDATA);
               	    showDialog(PICK_CACHE);
                 }
             });
@@ -637,7 +638,7 @@ public class CustomTPTGen3 extends Activity {
 	
 	public void DownloadFile2() {
 		DownloadFileTask2 task = new DownloadFileTask2();
-		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_723583" });
+		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_735215" });
 	}
 	
 	private class DownloadFileTask2 extends AsyncTask<String, String, String> {

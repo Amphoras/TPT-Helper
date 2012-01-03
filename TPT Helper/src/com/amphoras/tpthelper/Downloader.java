@@ -511,7 +511,7 @@ public class Downloader extends ListActivity {
           	  return localebuilder.create();
             case GEN2V1A:
                 Builder builder1 = new AlertDialog.Builder(Downloader.this);
-                builder1.setTitle("Gen 2 custom");
+                builder1.setTitle("Gen 2 v1a");
                 builder1.setMessage(Html.fromHtml("<b>Size:</b> 16.14MB<br /><b>Recovery:</b> ClockworkMod v5.0.2.0<br /><b>Splash:</b> Normal Android<br /><b>Fastboot:</b> Enabled on vol+"));
                 builder1.setCancelable(false);
                 builder1.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -522,7 +522,7 @@ public class Downloader extends ListActivity {
                 return builder1.create();
             case GEN2V2A:
                 Builder builder2 = new AlertDialog.Builder(Downloader.this);
-                builder2.setTitle("Gen 2 custom b");
+                builder2.setTitle("Gen 2 v2a");
                 builder2.setMessage(Html.fromHtml("<b>Size:</b> 16.13MB<br /><b>Recovery:</b> ClockworkMod v5.0.2.0<br /><b>Splash:</b> Normal Android<br /><b>Fastboot:</b> Enabled on vol+"));
                 builder2.setCancelable(false);
                 builder2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
