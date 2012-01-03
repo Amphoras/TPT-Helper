@@ -545,7 +545,7 @@ public class CustomTPTVivacity extends Activity {
 	
 	public void DownloadFile() {
 		DownloadFileTask task = new DownloadFileTask();
-		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_738058" });
+		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_738016" });
 	}
 	
 	private class DownloadFileTask extends AsyncTask<String, String, String> {
@@ -618,7 +618,7 @@ public class CustomTPTVivacity extends Activity {
 	
 	public void DownloadFile2() {
 		DownloadFileTask2 task = new DownloadFileTask2();
-		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_738052" });
+		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_738000" });
 	}
 	
 	private class DownloadFileTask2 extends AsyncTask<String, String, String> {
