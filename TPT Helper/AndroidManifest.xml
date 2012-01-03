@@ -92,5 +92,10 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
         <activity android:name="PickFileGen3"></activity>
         <activity android:name="PickFileUnzipGen3"></activity>
         <activity android:name="AllInOneGen3"></activity>
+        <activity android:name="DownloaderGen2Gen3"></activity>
+        <activity android:name="AllInOneGen2Gen3"></activity>
+        <activity android:name="PickFileGen2Gen3"></activity>
+        <activity android:name="PickFileGen2Gen3"></activity>
+        <activity android:name="CustomTPTGen2Gen3"></activity>
     </application>
 </manifest>

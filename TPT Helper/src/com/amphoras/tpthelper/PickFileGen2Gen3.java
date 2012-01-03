@@ -32,7 +32,7 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import java.io.File;
 
-public class PickFileGen2 extends Activity {
+public class PickFileGen2Gen3 extends Activity {
 	SharedPreferences preferences;
 	final File dir = Environment.getExternalStorageDirectory();
 	final File gen2v1a = new File(dir, "Gen2-v1a.zip");
@@ -41,6 +41,12 @@ public class PickFileGen2 extends Activity {
 	final File downloadgen2v2a = new File(dir, "download/Gen2-v2a.zip");
 	final File gen2stock = new File(dir, "Gen2-stock.zip");
 	final File downloadgen2stock = new File(dir, "download/Gen2-stock.zip.zip");
+	final File gen3v1a = new File(dir, "Gen3-v1a.zip");
+	final File downloadgen3v1a = new File(dir, "download/Gen3-v1a.zip");
+	final File gen3v2a = new File(dir, "Gen3-v2a.zip");
+	final File downloadgen3v2a = new File(dir, "download/Gen3-v2a.zip");
+	final File gen3stock = new File(dir, "Gen3-stock.zip");
+	final File downloadgen3stock = new File(dir, "download/Gen3-stock.zip.zip");
 	private final int PICK_FILE = 1;
 	private final int FILE_UNFOUND = 2;
 	
@@ -57,12 +63,12 @@ public class PickFileGen2 extends Activity {
 	protected Dialog onCreateDialog(int id) {
         switch (id) {
         case PICK_FILE:
-        	Builder builder1 = new AlertDialog.Builder(PickFileGen2.this);
+        	Builder builder1 = new AlertDialog.Builder(PickFileGen2Gen3.this);
             builder1.setTitle(R.string.pickmd5);
             builder1.setCancelable(false);
             CharSequence cancel = getText(R.string.cancel);
             CharSequence other = getText(R.string.other);
-            final CharSequence[] zips1 = {"Gen2-v1a.zip", "Gen2-v2a.zip", "Gen2-stock.zip", other, cancel};
+            final CharSequence[] zips1 = {"Gen2-v1a.zip", "Gen2-v2a.zip", "Gen2-stock.zip", "Gen3-v1a.zip", "Gen3-v2a.zip", "Gen3-stock.zip", other, cancel};
         	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	Editor editmd5 = preferences.edit();
@@ -74,17 +80,17 @@ public class PickFileGen2 extends Activity {
         	    		    Editor edit = preferences.edit();
         	    			edit.putString("filepath", "/Gen2-v1a.zip");
         	    			edit.commit();
-        	    	        Intent i = new Intent(PickFileGen2.this, MD5sum.class);
+        	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
         	    	        startActivity(i);
-        	    	        PickFileGen2.this.finish();
+        	    	        PickFileGen2Gen3.this.finish();
         	    		} else {
         	    			if (downloadgen2v1a.canRead() == true){
             	    	        Editor edit = preferences.edit();
             	    		    edit.putString("filepath", "/download/Gen2-v1a.zip");
             	    			edit.commit();
-            	    	        Intent i = new Intent(PickFileGen2.this, MD5sum.class);
+            	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
             	    	        startActivity(i);
-            	    	        PickFileGen2.this.finish();
+            	    	        PickFileGen2Gen3.this.finish();
         	    			} else {
         	    				Editor edit = preferences.edit();
             	    			edit.putString("filepicked", "Gen2-v1a.zip");
@@ -100,17 +106,17 @@ public class PickFileGen2 extends Activity {
         	    		    Editor edit = preferences.edit();
         	    			edit.putString("filepath", "/Gen2-v2a.zip");
         	    			edit.commit();
-        	    	        Intent i = new Intent(PickFileGen2.this, MD5sum.class);
+        	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
         	    	        startActivity(i);
-        	    	        PickFileGen2.this.finish();
+        	    	        PickFileGen2Gen3.this.finish();
         	    		} else {
         	    			if (downloadgen2v2a.canRead() == true){
             	    	        Editor edit = preferences.edit();
             	    		    edit.putString("filepath", "/download/Gen2-v2a.zip");
             	    			edit.commit();
-            	    	        Intent i = new Intent(PickFileGen2.this, MD5sum.class);
+            	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
             	    	        startActivity(i);
-            	    	        PickFileGen2.this.finish();
+            	    	        PickFileGen2Gen3.this.finish();
         	    			} else {
         	    				Editor edit = preferences.edit();
             	    			edit.putString("filepicked", "Gen2-v2a.zip");
@@ -126,17 +132,17 @@ public class PickFileGen2 extends Activity {
         	    		    Editor edit = preferences.edit();
         	    			edit.putString("filepath", "/Gen2-stock.zip");
         	    			edit.commit();
-        	    	        Intent i = new Intent(PickFileGen2.this, MD5sum.class);
+        	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
         	    	        startActivity(i);
-        	    	        PickFileGen2.this.finish();
+        	    	        PickFileGen2Gen3.this.finish();
         	    		} else {
         	    			if (downloadgen2stock.canRead() == true){
             	    	        Editor edit = preferences.edit();
             	    		    edit.putString("filepath", "/download/Gen2-stock.zip");
             	    			edit.commit();
-            	    	        Intent i = new Intent(PickFileGen2.this, MD5sum.class);
+            	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
             	    	        startActivity(i);
-            	    	        PickFileGen2.this.finish();
+            	    	        PickFileGen2Gen3.this.finish();
         	    			} else {
         	    				Editor edit = preferences.edit();
             	    			edit.putString("filepicked", "Gen2-stock.zip");
@@ -146,11 +152,89 @@ public class PickFileGen2 extends Activity {
         	    		}
         	    		break;
         	    	case 3:
-        	    		Intent i = new Intent(PickFileGen2.this, EnterFile.class);
+        	    		editmd5.putString("expectedmd5", "dd3e8ec9133472b04155a1b610011edf");
+        	    		editmd5.commit();
+        	    		if (gen3v1a.canRead() == true){
+        	    		    Editor edit = preferences.edit();
+        	    			edit.putString("filepath", "/Gen3-v1a.zip");
+        	    			edit.commit();
+        	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
+        	    	        startActivity(i);
+        	    	        PickFileGen2Gen3.this.finish();
+        	    		} else {
+        	    			if (downloadgen3v1a.canRead() == true){
+            	    	        Editor edit = preferences.edit();
+            	    		    edit.putString("filepath", "/download/Gen3-v1a.zip");
+            	    			edit.commit();
+            	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
+            	    	        startActivity(i);
+            	    	        PickFileGen2Gen3.this.finish();
+        	    			} else {
+        	    				Editor edit = preferences.edit();
+            	    			edit.putString("filepicked", "Gen3-v1a.zip");
+            	    			edit.commit();
+        	    				showDialog(FILE_UNFOUND);
+        	    			}
+        	    		}
+        	    		break;
+        	    	case 4:
+        	    		editmd5.putString("expectedmd5", "4ad7e95487f31aa08d46a05151bc3fb8");
+        	    		editmd5.commit();
+        	    		if (gen3v2a.canRead() == true){
+        	    		    Editor edit = preferences.edit();
+        	    			edit.putString("filepath", "/Gen3-v2a.zip");
+        	    			edit.commit();
+        	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
+        	    	        startActivity(i);
+        	    	        PickFileGen2Gen3.this.finish();
+        	    		} else {
+        	    			if (downloadgen3v2a.canRead() == true){
+            	    	        Editor edit = preferences.edit();
+            	    		    edit.putString("filepath", "/download/Gen3-v2a.zip");
+            	    			edit.commit();
+            	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
+            	    	        startActivity(i);
+            	    	        PickFileGen2Gen3.this.finish();
+        	    			} else {
+        	    				Editor edit = preferences.edit();
+            	    			edit.putString("filepicked", "Gen3-v2a.zip");
+            	    			edit.commit();
+        	    				showDialog(FILE_UNFOUND);
+        	    			}
+        	    		}
+        	    		break;
+        	    	case 5:
+        	    		editmd5.putString("expectedmd5", "4e8d9c15ac2e640e805fcfdaa44b0579");
+        	    		editmd5.commit();
+        	    		if (gen3stock.canRead() == true){
+        	    		    Editor edit = preferences.edit();
+        	    			edit.putString("filepath", "/Gen3-stock.zip");
+        	    			edit.commit();
+        	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
+        	    	        startActivity(i);
+        	    	        PickFileGen2Gen3.this.finish();
+        	    		} else {
+        	    			if (downloadgen3stock.canRead() == true){
+            	    	        Editor edit = preferences.edit();
+            	    		    edit.putString("filepath", "/download/Gen3-stock.zip");
+            	    			edit.commit();
+            	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
+            	    	        startActivity(i);
+            	    	        PickFileGen2Gen3.this.finish();
+        	    			} else {
+        	    				Editor edit = preferences.edit();
+            	    			edit.putString("filepicked", "Gen3-stock.zip");
+            	    			edit.commit();
+        	    				showDialog(FILE_UNFOUND);
+        	    			}
+        	    		}
+        	    		break;
+        	    	case 6:
+        	    		Intent i = new Intent(PickFileGen2Gen3.this, EnterFile.class);
                 		startActivityForResult(i, 1);
                 		break;
-        	    	case 4:
-                		PickFileGen2.this.finish();
+        	    	case 7:
+                		PickFileGen2Gen3.this.finish();
                 		break;
         	    	}
         	    }
@@ -158,7 +242,7 @@ public class PickFileGen2 extends Activity {
         	return builder1.create();
         case FILE_UNFOUND:
         	String filepicked = preferences.getString("filepicked", "");
-        	Builder builder2 = new AlertDialog.Builder(PickFileGen2.this);
+        	Builder builder2 = new AlertDialog.Builder(PickFileGen2Gen3.this);
             builder2.setTitle(R.string.file_not_found_heading);
             builder2.setCancelable(false);
             CharSequence file_not_found1 = getText(R.string.file_not_found1);
@@ -166,14 +250,14 @@ public class PickFileGen2 extends Activity {
             builder2.setMessage(file_not_found1 + " " + filepicked + "" + file_not_found2);
             builder2.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-              	    Intent i = new Intent(PickFileGen2.this, DownloaderGen2Gen3.class);
+              	    Intent i = new Intent(PickFileGen2Gen3.this, DownloaderGen2Gen3.class);
               	    startActivity(i);
-              	    PickFileGen2.this.finish();
+              	    PickFileGen2Gen3.this.finish();
                 }
             });
             builder2.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-              	    PickFileGen2.this.finish();
+              	    PickFileGen2Gen3.this.finish();
                 }
             });
             return builder2.create();
@@ -191,9 +275,9 @@ public class PickFileGen2 extends Activity {
   	          Editor edit = preferences.edit();
     	      edit.putString("filepath", "/" + filename);
     		  edit.commit();
-    	      Intent i = new Intent(PickFileGen2.this, MD5sum.class);
+    	      Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
     	      startActivity(i);
-    	      PickFileGen2.this.finish();
+    	      PickFileGen2Gen3.this.finish();
           }
           break;
       }

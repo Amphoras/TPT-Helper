@@ -138,12 +138,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_1);
 					          break;
 			    		  case 2:
-			    			  Intent gen_2 = new Intent(HomeActivity.this, AllInOneGen2.class);
+			    			  Intent gen_2 = new Intent(HomeActivity.this, AllInOneGen2Gen3.class);
 					          startActivity(gen_2);
-					          break;
-			    		  case 3:
-			    			  Intent gen_3 = new Intent(HomeActivity.this, AllInOneGen3.class);
-					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -173,12 +169,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_1);
 					          break;
 			    		  case 2:
-			    			  Intent gen_2 = new Intent(HomeActivity.this, Downloader.class);
+			    			  Intent gen_2 = new Intent(HomeActivity.this, DownloaderGen2Gen3.class);
 					          startActivity(gen_2);
-					          break;
-			    		  case 3:
-			    			  Intent gen_3 = new Intent(HomeActivity.this, DownloaderGen3.class);
-					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -208,12 +200,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_1);
 					          break;
 			    		  case 2:
-			    			  Intent gen_2 = new Intent(HomeActivity.this, PickFileGen2.class);
+			    			  Intent gen_2 = new Intent(HomeActivity.this, PickFileGen2Gen3.class);
 					          startActivity(gen_2);
-					          break;
-			    		  case 3:
-			    			  Intent gen_3 = new Intent(HomeActivity.this, PickFileGen3.class);
-					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -243,12 +231,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_1);
 					          break;
 			    		  case 2:
-			    			  Intent gen_2 = new Intent(HomeActivity.this, PickFileUnzipGen2.class);
+			    			  Intent gen_2 = new Intent(HomeActivity.this, PickFileUnzipGen2Gen3.class);
 					          startActivity(gen_2);
-					          break;
-			    		  case 3:
-			    			  Intent gen_3 = new Intent(HomeActivity.this, PickFileUnzipGen3.class);
-					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -285,12 +269,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_1);
 					          break;
 			    		  case 2:
-			    			  Intent gen_2 = new Intent(HomeActivity.this, CustomTPTGen2.class);
+			    			  Intent gen_2 = new Intent(HomeActivity.this, CustomTPTGen2Gen3.class);
 					          startActivity(gen_2);
-					          break;
-			    		  case 3:
-			    			  Intent gen_3 = new Intent(HomeActivity.this, CustomTPTGen3.class);
-					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -351,12 +331,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_1);
 					          break;
 			    		  case 2:
-			    			  Intent gen_2 = new Intent(HomeActivity.this, AllInOneGen2.class);
+			    			  Intent gen_2 = new Intent(HomeActivity.this, AllInOneGen2Gen3.class);
 					          startActivity(gen_2);
-					          break;
-			    		  case 3:
-			    			  Intent gen_3 = new Intent(HomeActivity.this, AllInOneGen3.class);
-					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -386,12 +362,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_1);
 					          break;
 			    		  case 2:
-			    			  Intent gen_2 = new Intent(HomeActivity.this, Downloader.class);
+			    			  Intent gen_2 = new Intent(HomeActivity.this, DownloaderGen2Gen3.class);
 					          startActivity(gen_2);
-					          break;
-			    		  case 3:
-			    			  Intent gen_3 = new Intent(HomeActivity.this, DownloaderGen3.class);
-					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -421,12 +393,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_1);
 					          break;
 			    		  case 2:
-			    			  Intent gen_2 = new Intent(HomeActivity.this, PickFileGen2.class);
+			    			  Intent gen_2 = new Intent(HomeActivity.this, PickFileGen2Gen3.class);
 					          startActivity(gen_2);
-					          break;
-			    		  case 3:
-			    			  Intent gen_3 = new Intent(HomeActivity.this, PickFileGen3.class);
-					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -456,12 +424,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_1);
 					          break;
 			    		  case 2:
-			    			  Intent gen_2 = new Intent(HomeActivity.this, PickFileUnzipGen2.class);
+			    			  Intent gen_2 = new Intent(HomeActivity.this, PickFileUnzipGen2Gen3.class);
 					          startActivity(gen_2);
-					          break;
-			    		  case 3:
-			    			  Intent gen_3 = new Intent(HomeActivity.this, PickFileUnzipGen3.class);
-					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -498,12 +462,8 @@ public class HomeActivity extends ListActivity {
 					          startActivity(gen_1);
 					          break;
 			    		  case 2:
-			    			  Intent gen_2 = new Intent(HomeActivity.this, CustomTPTGen2.class);
+			    			  Intent gen_2 = new Intent(HomeActivity.this, CustomTPTGen2Gen3.class);
 					          startActivity(gen_2);
-					          break;
-			    		  case 3:
-			    			  Intent gen_3 = new Intent(HomeActivity.this, CustomTPTGen3.class);
-					          startActivity(gen_3);
 					          break;
 			    		  }
 			    		  break;
@@ -640,16 +600,15 @@ public class HomeActivity extends ListActivity {
             lowbatbuilder.setCancelable(false);
             lowbatbuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                	Boolean xbin = preferences.getBoolean("xbin", true);
-              	    try {
-  					  if (xbin == true) {
-  						  Runtime.getRuntime().exec(new String[]{"/system/xbin/su","-c","reboot -p"});
-  					  } else {
-  						  Runtime.getRuntime().exec(new String[]{"/system/bin/su","-c","reboot -p"});
-  					  }
-  				    } catch (IOException e) {
-  				    	
-  				    }
+                	try {
+    					Runtime.getRuntime().exec(new String[]{"/system/xbin/su","-c","reboot -p"});
+    				} catch (IOException e) {
+    					try {
+    					    Runtime.getRuntime().exec(new String[]{"/system/bin/su","-c","reboot -p"});
+    					} catch (IOException e1) {
+    					  
+    					}
+    				}
                 }
             });
             lowbatbuilder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
@@ -815,7 +774,9 @@ public class HomeActivity extends ListActivity {
       					    	  type = "European Blade";
       					      }
       		        	  } else {
-      		        		  
+      		        		  if (s.charAt(0) == '9') {
+    				    		  type = "Chinese Blade";
+    				          }
       		        	  }
       	    		  }
       		      }
@@ -918,28 +879,25 @@ public class HomeActivity extends ListActivity {
       	            edit2.commit();
       	    		break;
       	    	case 4:
-      	    		editgen.putInt("gen", 3);
+      	    		editgen.putInt("gen", 2);
       	    		editgen.commit();
       	    		edit2.putBoolean("allchecked", true);
       	            edit2.commit();
       	    		break;
       	    	case 5:
-      	    		editgen.putInt("gen", 3);
+      	    		editgen.putInt("gen", 2);
       	    		editgen.commit();
       	    		edit2.putBoolean("allchecked", true);
       	            edit2.commit();
       	    		break;
       	    	case 6:
-      	    		editgen.putInt("gen", 3);
+      	    		editgen.putInt("gen", 2);
       	    		editgen.commit();
       	    		edit2.putBoolean("allchecked", true);
       	            edit2.commit();
       	    		break;
       	    	case 7:
-      	    		editgen.putInt("gen", 0);
-      	    		editgen.commit();
-      	    		edit2.putBoolean("allchecked", true);
-      	            edit2.commit();
+      	    		showDialog(UNSUPPORTED);
       	    		break;
       	    	}
       	      }
@@ -1115,7 +1073,6 @@ public class HomeActivity extends ListActivity {
           });
           return unsupportedbuilder.create();
         case GEN_1:
-      	    // tell user phone model is not supported
           Builder gen1builder = new AlertDialog.Builder(HomeActivity.this);
           gen1builder.setTitle(R.string.check_gen_heading);
           gen1builder.setMessage("Gen 1");
@@ -1137,7 +1094,6 @@ public class HomeActivity extends ListActivity {
           });
           return gen1builder.create();
         case GEN_2:
-      	    // tell user phone model is not supported
           Builder gen2builder = new AlertDialog.Builder(HomeActivity.this);
           gen2builder.setTitle(R.string.check_gen_heading);
           gen2builder.setCancelable(false);
@@ -1154,7 +1110,7 @@ public class HomeActivity extends ListActivity {
       	            edit2.commit();
       	    		break;
       	    	case 1:
-      	    		editgen.putInt("gen", 3);
+      	    		editgen.putInt("gen", 2);
       	    		editgen.commit();
       	    		edit2.putBoolean("allchecked", true);
       	            edit2.commit();
@@ -1163,10 +1119,7 @@ public class HomeActivity extends ListActivity {
       	    		showDialog(CHECK_GEN);
       	    		break;
       	    	case 3:
-      	    		editgen.putInt("gen", 0);
-      	    		editgen.commit();
-      	    		edit2.putBoolean("allchecked", true);
-      	            edit2.commit();
+      	    		showDialog(UNSUPPORTED);
       	    		break;
       	    	}
       	      }

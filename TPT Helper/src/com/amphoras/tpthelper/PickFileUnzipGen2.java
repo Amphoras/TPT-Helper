@@ -159,7 +159,7 @@ public class PickFileUnzipGen2 extends Activity {
             builder2.setMessage(file_not_found1 + " " + filepicked + "" + file_not_found2);
             builder2.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-              	    Intent i = new Intent(PickFileUnzipGen2.this, Downloader.class);
+              	    Intent i = new Intent(PickFileUnzipGen2.this, DownloaderGen2Gen3.class);
               	    startActivity(i);
               	    PickFileUnzipGen2.this.finish();
                 }

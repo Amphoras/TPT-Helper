@@ -166,7 +166,7 @@ public class PickFileGen3 extends Activity {
             builder2.setMessage(file_not_found1 + " " + filepicked + "" + file_not_found2);
             builder2.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-              	    Intent i = new Intent(PickFileGen3.this, DownloaderGen3.class);
+              	    Intent i = new Intent(PickFileGen3.this, DownloaderGen2Gen3.class);
               	    startActivity(i);
               	    PickFileGen3.this.finish();
                 }
