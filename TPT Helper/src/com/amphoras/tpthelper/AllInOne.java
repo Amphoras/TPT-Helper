@@ -235,7 +235,7 @@ public class AllInOne extends Activity {
         	    		editdownload.commit();
         				editdownloadint.putInt("downloadint", 6);
         	    		editdownloadint.commit();
-        	    		editmd5.putString("expectedmd5", "");
+        	    		editmd5.putString("expectedmd5", "6b98a227d59275b45522153853b3304b");
         	    		editmd5.commit();
         	    		if (mmhmp7.canRead() == true){
         	    			showDialog(TPT_FOUND);
@@ -635,7 +635,7 @@ public class AllInOne extends Activity {
 			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/cm7-n257-blade-gen1-to-gen2-tpt.zip" });
 			break;
 		case 6:
-			task.execute(new String[] { "" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-MMHMP-RLS7.zip" });
 			break;
 		case 7:
 			task.execute(new String[] { "" });

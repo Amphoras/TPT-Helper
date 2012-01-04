@@ -638,7 +638,7 @@ public class DirectDownloader extends ListActivity {
 			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/cm7-n257-blade-gen1-to-gen2-tpt.zip" });
 			break;
 		case 6:
-			task.execute(new String[] { "" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-MMHMP-RLS7.zip" });
 			break;
 		case 7:
 			task.execute(new String[] { "" });
@@ -860,7 +860,7 @@ public class DirectDownloader extends ListActivity {
             case MMHMP7:
                 Builder builder8 = new AlertDialog.Builder(DirectDownloader.this);
                 builder8.setTitle("MMHMP RLS7 Gen 1 to Gen 2");
-                builder8.setMessage(Html.fromHtml("<b>Size:</b> MB<br /><b>Recovery:</b> ClockworkMod v4.0.1.5<br /><b>Splash:</b> Normal Android<br /><b>Partitions:</b> 2mb cache, 138mb system, 316mb data, 0.1mb oem"));
+                builder8.setMessage(Html.fromHtml("<b>Size:</b> 95.42MB<br /><b>Recovery:</b> ClockworkMod v4.0.1.5<br /><b>Splash:</b> Normal Android<br /><b>Partitions:</b> 2mb cache, 138mb system, 316mb data, 0.1mb oem"));
                 builder8.setCancelable(false);
                 builder8.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

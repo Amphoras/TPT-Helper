@@ -234,7 +234,7 @@ public class PickFile extends Activity {
         	    		}
         	    		break;
         	    	case 6:
-        	    		editmd5.putString("expectedmd5", "");
+        	    		editmd5.putString("expectedmd5", "6b98a227d59275b45522153853b3304b");
         	    		editmd5.commit();
         	    		if (mmhmp7.canRead() == true){
         	    		    Editor edit = preferences.edit();
