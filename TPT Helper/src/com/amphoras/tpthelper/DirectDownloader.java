@@ -57,26 +57,22 @@ public class DirectDownloader extends ListActivity {
 	SharedPreferences preferences;
 	private ProgressDialog dialog;
 	final File dir = Environment.getExternalStorageDirectory();
-	final File customTPT = new File(dir, "Gen1-to-Gen2-TPT-v8-custom.zip");
-	final File downloadcustomTPT = new File(dir, "download/Gen1-to-Gen2-TPT-v8-custom.zip");
-	final File stockTPT = new File(dir, "Gen1-to-Gen2-TPT-v8-stock.zip");
-	final File downloadstockTPT = new File(dir, "download/Gen1-to-Gen2-TPT-v8-stock.zip");
-	final File revertTPT = new File(dir, "Gen2-to-Gen1-TPT-v2-stock.zip");
-	final File downloadrevertTPT = new File(dir, "download/Gen2-to-Gen1-TPT-v2-stock.zip");
-	final File cm71rc1TPT = new File(dir, "cm-7.1.0-RC1-Blade-TPT.zip");
-	final File downloadcm71rc1TPT = new File(dir, "download/cm-7.1.0-RC1-Blade-TPT.zip");
-	final File gsfb19TPT = new File(dir, "gsf-blade-b19-tpt.zip");
-	final File downloadgsfb19TPT = new File(dir, "download/gsf-blade-b19-tpt.zip");
-	final File customv7bTPT = new File(dir, "Gen1-to-Gen2-TPT-v7b.zip");
-	final File downloadcustomv7bTPT = new File(dir, "download/Gen1-to-Gen2-TPT-v7b.zip");
-	final File customv4TPT = new File(dir, "Gen1-to-Gen2-TPT-v4.zip");
-	final File downloadcustomv4TPT = new File(dir, "download/Gen1-to-Gen2-TPT-v4.zip");
-	final File gsfb23TPT = new File(dir, "gsf-blade-b23-tpt.zip");
-	final File downloadgsfb23TPT = new File(dir, "download/gsf-blade-b23-tpt.zip");
-	final File gsfb24TPT = new File(dir, "gsf-blade-b24-tpt.zip");
-	final File downloadgsfb24TPT = new File(dir, "download/gsf-blade-b24-tpt.zip");
-	final File custom9TPT = new File(dir, "Gen1-to-Gen2-TPT-v9-custom.zip");
-	final File downloadcustom9TPT = new File(dir, "download/Gen1-to-Gen2-TPT-v9-custom.zip");
+	final File gen1v10a = new File(dir, "Gen1-to-Gen2-TPT-v10a.zip");
+	final File downloadgen1v10a = new File(dir, "download/Gen1-to-Gen2-TPT-v10a.zip");
+	final File gen1v10b = new File(dir, "Gen1-to-Gen2-TPT-v10b.zip");
+	final File downloadgen1v10b = new File(dir, "download/Gen1-to-Gen2-TPT-v10b.zip");
+	final File gen1v10c = new File(dir, "Gen1-to-Gen2-TPT-v10c.zip");
+	final File downloadgen1v10c = new File(dir, "download/Gen1-to-Gen2-TPT-v10c.zip");
+	final File gen1v10stock = new File(dir, "Gen1-to-Gen2-TPT-v10-stock.zip");
+	final File downloadgen1v10stock = new File(dir, "download/Gen1-to-Gen2-TPT-v10-stock.zip");
+	final File revertv2 = new File(dir, "Gen2-to-Gen1-TPT-v2-stock.zip");
+	final File downloadrevertv2 = new File(dir, "download/Gen2-to-Gen1-TPT-v2-stock.zip");
+	final File cm7n257 = new File(dir, "cm7-n257-blade-gen1-to-gen2-tpt.zip");
+	final File downloadcm7n257 = new File(dir, "download/cm7-n257-blade-gen1-to-gen2-tpt.zip");
+	final File mmhmp7 = new File(dir, "Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
+	final File downloadmmhmp7 = new File(dir, "download/Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
+	final File fnc3 = new File(dir, "Gen1-to-Gen2-TPT-FNC-RLS3.zip");
+	final File downloadfnc3 = new File(dir, "download/Gen1-to-Gen2-TPT-FNC-RLS3.zip");
 	private ArrayList <HashMap<String, Object>> tpts;
 	private static final String tptname = "tptname";
 	private static final String tptlayout = "tptlayout";
@@ -85,16 +81,14 @@ public class DirectDownloader extends ListActivity {
 	private final int DOWNLOAD_FAILED = 3;
 	private final int FILE_FOUND = 4;
 	private final int CHANGE_LOCALE = 5;
-	private final int V9CUSTOM = 101;
-	private final int V8CUSTOM = 102;
-	private final int V8STOCK = 103;
-	private final int V7B = 104;
-	private final int V4 = 105;
-	private final int REVERT = 106;
-	private final int CM71RC1 = 107;
-	private final int GSFB24 = 108;
-	private final int GSFB23 = 109;
-	private final int GSFB19 = 110;
+	private final int V10A = 101;
+	private final int V10B = 102;
+	private final int V10C = 103;
+	private final int V10STOCK = 104;
+	private final int V2REVERT = 105;
+	private final int CM7N257 = 106;
+	private final int MMHMP7 = 107;
+	private final int FNC3 = 108;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -117,28 +111,23 @@ public class DirectDownloader extends ListActivity {
               tpts.add(listitem);
               
               listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "Gen 1 to Gen 2 v9 custom");
+	          listitem.put(tptname, "Gen 1 to Gen 2 v10a");
 	          listitem.put(tptlayout, "2mb cache, 160mb system, 294mb data, 0.1mb oem");
 	          tpts.add(listitem);
 	  
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "Gen 1 to Gen 2 v8 custom");
-	          listitem.put(tptlayout, "2mb cache, 160mb system, 294mb data, 0.1mb oem");
-	          tpts.add(listitem);
-	  
-	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "Gen 1 to Gen 2 v8 stock");
-	          listitem.put(tptlayout, "37mb cache, 210mb system, 204mb data, 4mb oem");
-	          tpts.add(listitem);
-	          
-	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "Gen 1 to Gen 2 v7b");
+	          listitem.put(tptname, "Gen 1 to Gen 2 v10b");
 	          listitem.put(tptlayout, "2mb cache, 140mb system, 314mb data, 0.1mb oem");
 	          tpts.add(listitem);
+	  
+	          listitem = new HashMap<String, Object>();
+	          listitem.put(tptname, "Gen 1 to Gen 2 v10c");
+	          listitem.put(tptlayout, "2mb cache, 138mb system, 316mb data, 0.1mb oem");
+	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "Gen 1 to Gen 2 v4");
-	          listitem.put(tptlayout, "2mb cache, 138mb system, 315.6mb data, 0.1mb oem");
+	          listitem.put(tptname, "Gen 1 to Gen 2 v10 stock");
+	          listitem.put(tptlayout, "37mb cache, 210mb system, 204mb data, 4mb oem");
 	          tpts.add(listitem);
 	 
 	          listitem = new HashMap<String, Object>();
@@ -154,23 +143,18 @@ public class DirectDownloader extends ListActivity {
 	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "CM 7.1 RC1 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: CyanogenMod 7.1 RC1");
+	          listitem.put(tptname, "CM 7.1 N257 Gen 1 to Gen 2");
+	          listitem.put(tptlayout, "ROM: CyanogenMod 7.1 Nightly 257");
 	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "GSF B24 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: Ginger Stir Fry Beta 24");
+	          listitem.put(tptname, "MMHMP RLS7 Gen 1 to Gen 2");
+	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS7");
 	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "GSF B23 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: Ginger Stir Fry Beta 23");
-	          tpts.add(listitem);
-	          
-	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "GSF B19 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: Ginger Stir Fry Beta 19");
+	          listitem.put(tptname, "FNC RLS3 Gen 1 to Gen 2");
+	          listitem.put(tptlayout, "ROM: Fish 'n' Chips RLS3");
 	          tpts.add(listitem);
 	       
 	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
@@ -183,34 +167,28 @@ public class DirectDownloader extends ListActivity {
 		public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 			switch (position) {
 		      case 1:
-		    	  showDialog(V9CUSTOM);
+		    	  showDialog(V10A);
 			      break;
 		      case 2:
-		    	  showDialog(V8CUSTOM);
+		    	  showDialog(V10B);
 				  break;
 		      case 3:
-		    	  showDialog(V8STOCK);
+		    	  showDialog(V10C);
 				  break;
 		      case 4:
-		    	  showDialog(V7B);
+		    	  showDialog(V10STOCK);
 				  break;
 		      case 5:
-		    	  showDialog(V4);
+		    	  showDialog(V2REVERT);
 				  break;
-		      case 6:
-		    	  showDialog(REVERT);
+		      case 7:
+		    	  showDialog(CM7N257);
 				  break;
 		      case 8:
-		    	  showDialog(CM71RC1);
+		    	  showDialog(MMHMP7);
 				  break;
 		      case 9:
-		    	  showDialog(GSFB24);
-				  break;
-		      case 10:
-		    	  showDialog(GSFB23);
-				  break;
-		      case 11:
-		    	  showDialog(GSFB19);
+		    	  showDialog(FNC3);
 				  break;
 		      }
 			return false;
@@ -223,29 +201,29 @@ public class DirectDownloader extends ListActivity {
 	    	Editor editdownloadint = preferences.edit();
 	    	switch (position) {
 	    	case 1:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v9-custom.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v10a.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 0);
 	    		editdownloadint.commit();
-	    		if (custom9TPT.canRead() == true){
-	    		    showDialog(FILE_FOUND);
+	    		if (gen1v10a.canRead() == true){
+	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadcustom9TPT.canRead() == true){
-    	    	        showDialog(FILE_FOUND);
+	    			if (downloadgen1v10a.canRead() == true){
+	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
 	    			}
 	    		}
 	    		break;
 	    	case 2:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v8-custom.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v10b.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 1);
 	    		editdownloadint.commit();
-	    		if (customTPT.canRead() == true){
+	    		if (gen1v10b.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadcustomTPT.canRead() == true){
+	    			if (downloadgen1v10b.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -253,14 +231,14 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 3:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v8-stock.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v10c.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 2);
 	    		editdownloadint.commit();
-	    		if (stockTPT.canRead() == true){
+	    		if (gen1v10c.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadstockTPT.canRead() == true){
+	    			if (downloadgen1v10c.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -268,14 +246,14 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 4:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v7b.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v10-stock.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 3);
 	    		editdownloadint.commit();
-	    		if (customv7bTPT.canRead() == true){
+	    		if (gen1v10stock.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadcustomv7bTPT.canRead() == true){
+	    			if (downloadgen1v10stock.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -283,29 +261,29 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 5:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v4.zip");
+	    		editdownload.putString("downloadpicked", "Gen2-to-Gen1-TPT-v2-stock.zip");
 	    		editdownload.commit();
-				editdownloadint.putInt("downloadint", 4);
+	    		editdownloadint.putInt("downloadint", 4);
 	    		editdownloadint.commit();
-	    		if (customv4TPT.canRead() == true){
+	    		if (revertv2.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadcustomv4TPT.canRead() == true){
+	    			if (downloadrevertv2.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
 	    			}
 	    		}
 	    		break;
-	    	case 6:
-	    		editdownload.putString("downloadpicked", "Gen2-to-Gen1-TPT-v2-stock.zip");
+	    	case 7:
+	    		editdownload.putString("downloadpicked", "cm7-n257-blade-gen1-to-gen2-tpt.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 5);
 	    		editdownloadint.commit();
-	    		if (revertTPT.canRead() == true){
+	    		if (cm7n257.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadrevertTPT.canRead() == true){
+	    			if (downloadcm7n257.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -313,14 +291,14 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 8:
-	    		editdownload.putString("downloadpicked", "cm-7.1.0-RC1-Blade-TPT.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 6);
 	    		editdownloadint.commit();
-	    		if (cm71rc1TPT.canRead() == true){
+	    		if (mmhmp7.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadcm71rc1TPT.canRead() == true){
+	    			if (downloadmmhmp7.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -328,44 +306,14 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 9:
-	    		editdownload.putString("downloadpicked", "gsf-blade-b24-tpt.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-FNC-RLS3.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 7);
 	    		editdownloadint.commit();
-	    		if (gsfb24TPT.canRead() == true){
+	    		if (fnc3.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadgsfb24TPT.canRead() == true){
-	    				showDialog(FILE_FOUND);
-	    			} else {
-	    				DownloadFile();
-	    			}
-	    		}
-	    		break;
-	    	case 10:
-	    		editdownload.putString("downloadpicked", "gsf-blade-b23-tpt.zip");
-	    		editdownload.commit();
-				editdownloadint.putInt("downloadint", 8);
-	    		editdownloadint.commit();
-	    		if (gsfb23TPT.canRead() == true){
-	    			showDialog(FILE_FOUND);
-	    		} else {
-	    			if (downloadgsfb23TPT.canRead() == true){
-	    				showDialog(FILE_FOUND);
-	    			} else {
-	    				DownloadFile();
-	    			}
-	    		}
-	    		break;
-	    	case 11:
-	    		editdownload.putString("downloadpicked", "gsf-blade-b19-tpt.zip");
-	    		editdownload.commit();
-	    		editdownloadint.putInt("downloadint", 9);
-	    		editdownloadint.commit();
-	    		if (gsfb19TPT.canRead() == true){
-	    			showDialog(FILE_FOUND);
-	    		} else {
-	    			if (downloadgsfb19TPT.canRead() == true){
+	    			if (downloadfnc3.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -384,7 +332,7 @@ public class DirectDownloader extends ListActivity {
 	    ListView listview = getListView();
 	    listview.setTextFilterEnabled(true);
 	  
-	    tpts = new ArrayList<HashMap<String,Object>>();
+	    tpts = new ArrayList<HashMap<String, Object>>();
 	  
 	    HashMap<String, Object> listitem;
 	          listitem = new HashMap<String, Object>();
@@ -395,28 +343,23 @@ public class DirectDownloader extends ListActivity {
               tpts.add(listitem);
               
               listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "Gen 1 to Gen 2 v9 custom");
+	          listitem.put(tptname, "Gen 1 to Gen 2 v10a");
 	          listitem.put(tptlayout, "2mb cache, 160mb system, 294mb data, 0.1mb oem");
 	          tpts.add(listitem);
 	  
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "Gen 1 to Gen 2 v8 custom");
-	          listitem.put(tptlayout, "2mb cache, 160mb system, 294mb data, 0.1mb oem");
-	          tpts.add(listitem);
-	  
-	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "Gen 1 to Gen 2 v8 stock");
-	          listitem.put(tptlayout, "37mb cache, 210mb system, 204mb data, 4mb oem");
-	          tpts.add(listitem);
-	          
-	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "Gen 1 to Gen 2 v7b");
+	          listitem.put(tptname, "Gen 1 to Gen 2 v10b");
 	          listitem.put(tptlayout, "2mb cache, 140mb system, 314mb data, 0.1mb oem");
 	          tpts.add(listitem);
+	  
+	          listitem = new HashMap<String, Object>();
+	          listitem.put(tptname, "Gen 1 to Gen 2 v10c");
+	          listitem.put(tptlayout, "2mb cache, 138mb system, 316mb data, 0.1mb oem");
+	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "Gen 1 to Gen 2 v4");
-	          listitem.put(tptlayout, "2mb cache, 138mb system, 315.6mb data, 0.1mb oem");
+	          listitem.put(tptname, "Gen 1 to Gen 2 v10 stock");
+	          listitem.put(tptlayout, "37mb cache, 210mb system, 204mb data, 4mb oem");
 	          tpts.add(listitem);
 	 
 	          listitem = new HashMap<String, Object>();
@@ -432,26 +375,22 @@ public class DirectDownloader extends ListActivity {
 	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "CM 7.1 RC1 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: CyanogenMod 7.1 RC1");
+	          listitem.put(tptname, "CM 7.1 N257 Gen 1 to Gen 2");
+	          listitem.put(tptlayout, "ROM: CyanogenMod 7.1 Nightly 257");
 	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "GSF B24 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: Ginger Stir Fry Beta 24");
+	          listitem.put(tptname, "MMHMP RLS7 Gen 1 to Gen 2");
+	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS7");
 	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "GSF B23 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: Ginger Stir Fry Beta 23");
-	          tpts.add(listitem);
-	          
-	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "GSF B19 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: Ginger Stir Fry Beta 19");
+	          listitem.put(tptname, "FNC RLS3 Gen 1 to Gen 2");
+	          listitem.put(tptlayout, "ROM: Fish 'n' Chips RLS3");
 	          tpts.add(listitem);
 	       
-	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item, new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
 	  
 	    listview.setAdapter(adapter);
 	  
@@ -460,34 +399,28 @@ public class DirectDownloader extends ListActivity {
 		public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 			switch (position) {
 		      case 1:
-		    	  showDialog(V9CUSTOM);
+		    	  showDialog(V10A);
 			      break;
 		      case 2:
-		    	  showDialog(V8CUSTOM);
+		    	  showDialog(V10B);
 				  break;
 		      case 3:
-		    	  showDialog(V8STOCK);
+		    	  showDialog(V10C);
 				  break;
 		      case 4:
-		    	  showDialog(V7B);
+		    	  showDialog(V10STOCK);
 				  break;
 		      case 5:
-		    	  showDialog(V4);
+		    	  showDialog(V2REVERT);
 				  break;
-		      case 6:
-		    	  showDialog(REVERT);
+		      case 7:
+		    	  showDialog(CM7N257);
 				  break;
 		      case 8:
-		    	  showDialog(CM71RC1);
+		    	  showDialog(MMHMP7);
 				  break;
 		      case 9:
-		    	  showDialog(GSFB24);
-				  break;
-		      case 10:
-		    	  showDialog(GSFB23);
-				  break;
-		      case 11:
-		    	  showDialog(GSFB19);
+		    	  showDialog(FNC3);
 				  break;
 		      }
 			return false;
@@ -500,29 +433,29 @@ public class DirectDownloader extends ListActivity {
 	    	Editor editdownloadint = preferences.edit();
 	    	switch (position) {
 	    	case 1:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v9-custom.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v10a.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 0);
 	    		editdownloadint.commit();
-	    		if (custom9TPT.canRead() == true){
-	    		    showDialog(FILE_FOUND);
+	    		if (gen1v10a.canRead() == true){
+	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadcustom9TPT.canRead() == true){
-    	    	        showDialog(FILE_FOUND);
+	    			if (downloadgen1v10a.canRead() == true){
+	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
 	    			}
 	    		}
 	    		break;
 	    	case 2:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v8-custom.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v10b.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 1);
 	    		editdownloadint.commit();
-	    		if (customTPT.canRead() == true){
+	    		if (gen1v10b.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadcustomTPT.canRead() == true){
+	    			if (downloadgen1v10b.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -530,14 +463,14 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 3:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v8-stock.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v10c.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 2);
 	    		editdownloadint.commit();
-	    		if (stockTPT.canRead() == true){
+	    		if (gen1v10c.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadstockTPT.canRead() == true){
+	    			if (downloadgen1v10c.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -545,14 +478,14 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 4:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v7b.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v10-stock.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 3);
 	    		editdownloadint.commit();
-	    		if (customv7bTPT.canRead() == true){
+	    		if (gen1v10stock.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadcustomv7bTPT.canRead() == true){
+	    			if (downloadgen1v10stock.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -560,29 +493,29 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 5:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-v4.zip");
+	    		editdownload.putString("downloadpicked", "Gen2-to-Gen1-TPT-v2-stock.zip");
 	    		editdownload.commit();
-				editdownloadint.putInt("downloadint", 4);
+	    		editdownloadint.putInt("downloadint", 4);
 	    		editdownloadint.commit();
-	    		if (customv4TPT.canRead() == true){
+	    		if (revertv2.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadcustomv4TPT.canRead() == true){
+	    			if (downloadrevertv2.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
 	    			}
 	    		}
 	    		break;
-	    	case 6:
-	    		editdownload.putString("downloadpicked", "Gen2-to-Gen1-TPT-v2-stock.zip");
+	    	case 7:
+	    		editdownload.putString("downloadpicked", "cm7-n257-blade-gen1-to-gen2-tpt.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 5);
 	    		editdownloadint.commit();
-	    		if (revertTPT.canRead() == true){
+	    		if (cm7n257.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadrevertTPT.canRead() == true){
+	    			if (downloadcm7n257.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -590,14 +523,14 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 8:
-	    		editdownload.putString("downloadpicked", "cm-7.1.0-RC1-Blade-TPT.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 6);
 	    		editdownloadint.commit();
-	    		if (cm71rc1TPT.canRead() == true){
+	    		if (mmhmp7.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadcm71rc1TPT.canRead() == true){
+	    			if (downloadmmhmp7.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -605,44 +538,14 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 9:
-	    		editdownload.putString("downloadpicked", "gsf-blade-b24-tpt.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-FNC-RLS3.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 7);
 	    		editdownloadint.commit();
-	    		if (gsfb24TPT.canRead() == true){
+	    		if (fnc3.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadgsfb24TPT.canRead() == true){
-	    				showDialog(FILE_FOUND);
-	    			} else {
-	    				DownloadFile();
-	    			}
-	    		}
-	    		break;
-	    	case 10:
-	    		editdownload.putString("downloadpicked", "gsf-blade-b23-tpt.zip");
-	    		editdownload.commit();
-				editdownloadint.putInt("downloadint", 8);
-	    		editdownloadint.commit();
-	    		if (gsfb23TPT.canRead() == true){
-	    			showDialog(FILE_FOUND);
-	    		} else {
-	    			if (downloadgsfb23TPT.canRead() == true){
-	    				showDialog(FILE_FOUND);
-	    			} else {
-	    				DownloadFile();
-	    			}
-	    		}
-	    		break;
-	    	case 11:
-	    		editdownload.putString("downloadpicked", "gsf-blade-b19-tpt.zip");
-	    		editdownload.commit();
-	    		editdownloadint.putInt("downloadint", 9);
-	    		editdownloadint.commit();
-	    		if (gsfb19TPT.canRead() == true){
-	    			showDialog(FILE_FOUND);
-	    		} else {
-	    			if (downloadgsfb19TPT.canRead() == true){
+	    			if (downloadfnc3.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -717,34 +620,28 @@ public class DirectDownloader extends ListActivity {
 		int id = preferences.getInt("downloadint", 0);
 		switch (id) {
 		case 0:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-v9-custom.zip" });
+			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_734040" });
 			break;
 		case 1:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-v8-custom.zip" });
+			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_734042" });
 			break;
 		case 2:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-v8-stock.zip" });
+			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_734044" });
 			break;
 		case 3:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-v7b.zip" });
+			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_734048" });
 			break;
 		case 4:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-v4.zip" });
+			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_734182" });
 			break;
 		case 5:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen2-to-Gen1-TPT-v2-stock.zip" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/cm7-n257-blade-gen1-to-gen2-tpt.zip" });
 			break;
 		case 6:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/cm-7.1.0-RC1-Blade-TPT.zip" });
+			task.execute(new String[] { "" });
 			break;
 		case 7:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/gsf-blade-b24-tpt.zip" });
-			break;
-		case 8:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/gsf-blade-b23-tpt.zip" });
-			break;
-		case 9:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/gsf-blade-b19-tpt.zip" });
+			task.execute(new String[] { "" });
 			break;
 		}
 	}
@@ -886,10 +783,10 @@ public class DirectDownloader extends ListActivity {
           	      }
           	  });
           	  return localebuilder.create();
-            case V9CUSTOM:
+            case V10A:
                 Builder builder1 = new AlertDialog.Builder(DirectDownloader.this);
-                builder1.setTitle("Gen 1 to Gen 2 v9 custom");
-                builder1.setMessage(Html.fromHtml("<b>Size:</b> 16.1MB<br /><b>Recovery:</b> ClockworkMod v5.0.2.0<br /><b>Splash:</b> Big Android"));
+                builder1.setTitle("Gen 1 to Gen 2 v10a");
+                builder1.setMessage(Html.fromHtml("<b>Size:</b> 16.15MB<br /><b>Recovery:</b> ClockworkMod v5.0.2.0<br /><b>Splash:</b> Normal Android"));
                 builder1.setCancelable(false);
                 builder1.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -897,10 +794,10 @@ public class DirectDownloader extends ListActivity {
                     }
                 });
                 return builder1.create();
-            case V8CUSTOM:
+            case V10B:
                 Builder builder2 = new AlertDialog.Builder(DirectDownloader.this);
-                builder2.setTitle("Gen 1 to Gen 2 v8 custom");
-                builder2.setMessage(Html.fromHtml("<b>Size:</b> 16.06MB<br /><b>Recovery:</b> ClockworkMod v3.2.0.7<br /><b>Splash:</b> Big Android"));
+                builder2.setTitle("Gen 1 to Gen 2 v10b");
+                builder2.setMessage(Html.fromHtml("<b>Size:</b> 16.15MB<br /><b>Recovery:</b> ClockworkMod v5.0.2.0<br /><b>Splash:</b> Normal Android"));
                 builder2.setCancelable(false);
                 builder2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -908,10 +805,10 @@ public class DirectDownloader extends ListActivity {
                     }
                 });
                 return builder2.create();
-            case V8STOCK:
+            case V10C:
                 Builder builder3 = new AlertDialog.Builder(DirectDownloader.this);
-                builder3.setTitle("Gen 1 to Gen 2 v8 stock");
-                builder3.setMessage(Html.fromHtml("<b>Size:</b> 16.06MB<br /><b>Recovery:</b> ClockworkMod v3.2.0.7<br /><b>Splash:</b> Big Android"));
+                builder3.setTitle("Gen 1 to Gen 2 v10c");
+                builder3.setMessage(Html.fromHtml("<b>Size:</b> 16.15MB<br /><b>Recovery:</b> ClockworkMod v5.0.2.0<br /><b>Splash:</b> Normal Android"));
                 builder3.setCancelable(false);
                 builder3.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -919,10 +816,10 @@ public class DirectDownloader extends ListActivity {
                     }
                 });
                 return builder3.create();
-            case V7B:
+            case V10STOCK:
                 Builder builder4 = new AlertDialog.Builder(DirectDownloader.this);
-                builder4.setTitle("Gen 1 to Gen 2 v7b");
-                builder4.setMessage(Html.fromHtml("<b>Size:</b> 16.03MB<br /><b>Recovery:</b> ClockworkMod v3.2.0.7<br /><b>Splash:</b> Big Android"));
+                builder4.setTitle("Gen 1 to Gen 2 v10 stock");
+                builder4.setMessage(Html.fromHtml("<b>Size:</b> 16.16MB<br /><b>Recovery:</b> ClockworkMod v5.0.2.0<br /><b>Splash:</b> Normal Android"));
                 builder4.setCancelable(false);
                 builder4.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -930,10 +827,10 @@ public class DirectDownloader extends ListActivity {
                     }
                 });
                 return builder4.create();
-            case V4:
+            case V2REVERT:
                 Builder builder5 = new AlertDialog.Builder(DirectDownloader.this);
-                builder5.setTitle("Gen 1 to Gen 2 v4");
-                builder5.setMessage(Html.fromHtml("<b>Size:</b> 16.12MB<br /><b>Recovery:</b> ClockworkMod v3.2.0.7<br /><b>Splash:</b> Normal Android"));
+                builder5.setTitle("Gen 2 to Gen 1 v2 stock");
+                builder5.setMessage(Html.fromHtml("<b>Size:</b> 16.39MB<br /><b>Recovery:</b> ClockworkMod <br /><b>Splash:</b> Normal Android"));
                 builder5.setCancelable(false);
                 builder5.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -941,10 +838,10 @@ public class DirectDownloader extends ListActivity {
                     }
                 });
                 return builder5.create();
-            case REVERT:
+            case CM7N257:
                 Builder builder6 = new AlertDialog.Builder(DirectDownloader.this);
-                builder6.setTitle("Gen 2 to Gen 1 v2 stock");
-                builder6.setMessage(Html.fromHtml("<b>Size:</b> 16.39MB<br /><b>Recovery:</b> ClockworkMod <br /><b>Splash:</b> Normal Android"));
+                builder6.setTitle("CM 7.1 N257 Gen 1 to Gen 2");
+                builder6.setMessage(Html.fromHtml("<b>Size:</b> 106.57MB<br /><b>Recovery:</b> ClockworkMod v5.0.2.0<br /><b>Splash:</b> CyanogenMod<br /><b>Partitions:</b> 2mb cache, 160mb system, 294mb data, 0.1mb oem"));
                 builder6.setCancelable(false);
                 builder6.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -952,10 +849,10 @@ public class DirectDownloader extends ListActivity {
                     }
                 });
                 return builder6.create();
-            case CM71RC1:
+            case MMHMP7:
                 Builder builder8 = new AlertDialog.Builder(DirectDownloader.this);
-                builder8.setTitle("CM 7.1 RC1 Gen 1 to Gen 2");
-                builder8.setMessage(Html.fromHtml("<b>Size:</b> 104.5MB<br /><b>Recovery:</b> ClockworkMod v3.2.0.7<br /><b>Splash:</b> CyanogenMod<br /><b>Partitions:</b> 2mb cache, 140mb system, 314mb data, 0.1mb oem"));
+                builder8.setTitle("MMHMP RLS7 Gen 1 to Gen 2");
+                builder8.setMessage(Html.fromHtml("<b>Size:</b> MB<br /><b>Recovery:</b> ClockworkMod v4.0.1.5<br /><b>Splash:</b> Normal Android<br /><b>Partitions:</b> 2mb cache, 138mb system, 316mb data, 0.1mb oem"));
                 builder8.setCancelable(false);
                 builder8.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -963,10 +860,10 @@ public class DirectDownloader extends ListActivity {
                     }
                 });
                 return builder8.create();
-            case GSFB24:
+            case FNC3:
                 Builder builder9 = new AlertDialog.Builder(DirectDownloader.this);
-                builder9.setTitle("GSF B24 Gen 1 to Gen 2");
-                builder9.setMessage(Html.fromHtml("<b>Size:</b> 96.88MB<br /><b>Recovery:</b> ClockworkMod v5.0.2.0<br /><b>Splash:</b> Big Android<br /><b>Partitions:</b> 2mb cache, 160mb system, 294mb data, 0.1mb oem"));
+                builder9.setTitle("FNC RLS3 Gen 1 to Gen 2");
+                builder9.setMessage(Html.fromHtml("<b>Size:</b> MB<br /><b>Recovery:</b> ClockworkMod v5.0.2.0<br /><b>Splash:</b> Normal Android<br /><b>Partitions:</b> 2mb cache, 160mb system, 294mb data, 0.1mb oem"));
                 builder9.setCancelable(false);
                 builder9.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -974,28 +871,6 @@ public class DirectDownloader extends ListActivity {
                     }
                 });
                 return builder9.create();
-            case GSFB23:
-                Builder builder10 = new AlertDialog.Builder(DirectDownloader.this);
-                builder10.setTitle("GSF B23 Gen 1 to Gen 2");
-                builder10.setMessage(Html.fromHtml("<b>Size:</b> 98.02MB<br /><b>Recovery:</b> ClockworkMod v5.0.2.0<br /><b>Splash:</b> Big Android<br /><b>Partitions:</b> 2mb cache, 160mb system, 294mb data, 0.1mb oem"));
-                builder10.setCancelable(false);
-                builder10.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                  	    // Do nothing
-                    }
-                });
-                return builder10.create();
-            case GSFB19:
-                Builder builder11 = new AlertDialog.Builder(DirectDownloader.this);
-                builder11.setTitle("GSF B19 Gen 1 to Gen 2");
-                builder11.setMessage(Html.fromHtml("<b>Size:</b> 103.32MB<br /><b>Recovery:</b> ClockworkMod v3.2.0.7<br /><b>Splash:</b> Big Android<br /><b>Partitions:</b> 2mb cache, 160mb system, 294mb data, 0.1mb oem"));
-                builder11.setCancelable(false);
-                builder11.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                  	    // Do nothing
-                    }
-                });
-                return builder11.create();
         }
     }
 	
@@ -1012,7 +887,7 @@ public class DirectDownloader extends ListActivity {
 		case R.id.support:
 			Intent emailIntent = new Intent(Intent.ACTION_SEND);
 	        emailIntent.setType("plain/text");
-	        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@gmail.com"});
+	        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
 	        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
 	        startActivity(emailIntent);
 			break;
