@@ -24,6 +24,10 @@ TPT Helper is designed for ZTE phones to make it easy to repartition and (for ZT
 
 The ZTE Blade Gen 1 to Gen 2 TPTs used were created by wbaw.
 
+Moldovan Mile High Mountain Pie created by KonstaT.
+
+Fish'N'Chips created by n4y4nrules and raverrr.
+
 Thanks to cpg for writing ztepack and for allowing me to use it.
 
 Translations:

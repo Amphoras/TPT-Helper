@@ -24,7 +24,7 @@ public class CustomTPTGen2Gen3 extends Activity {
         switch (id) {
         case PICK_GEN:
         	Builder builder1 = new AlertDialog.Builder(CustomTPTGen2Gen3.this);
-            builder1.setTitle(R.string.pickmd5);
+            builder1.setTitle(R.string.pick_gen);
             builder1.setCancelable(false);
             CharSequence cancel = getText(R.string.cancel);
             final CharSequence[] tpts = {"Gen 2 TPT", "Gen 3 TPT", cancel};

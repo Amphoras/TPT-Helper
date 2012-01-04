@@ -421,7 +421,8 @@ public class AllInOneVivacity extends Activity {
           CharSequence portuguese = getText(R.string.portuguese);
           CharSequence spanish = getText(R.string.spanish);
           CharSequence serbian = getText(R.string.serbian);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, cancel};
+          CharSequence czech = getText(R.string.czech);
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -483,6 +484,13 @@ public class AllInOneVivacity extends Activity {
       	    	    AllInOneVivacity.this.finish();
       	    		break;
       	    	case 8:
+      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.commit();
+      	    		Intent q = new Intent(AllInOneVivacity.this, HomeActivity.class);
+      	    	    startActivity(q);
+      	    	    AllInOneVivacity.this.finish();
+      	    		break;
+      	    	case 9:
       	    		// Do nothing
       	    		break;
       	    	}

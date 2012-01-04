@@ -226,8 +226,9 @@ public class Preferences extends PreferenceActivity {
           CharSequence portuguese = getText(R.string.portuguese);
           CharSequence spanish = getText(R.string.spanish);
           CharSequence serbian = getText(R.string.serbian);
+          CharSequence czech = getText(R.string.czech);
           CharSequence cancel = getText(R.string.cancel);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, cancel};
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -289,6 +290,13 @@ public class Preferences extends PreferenceActivity {
       	    	    Preferences.this.finish();
       	    		break;
       	    	case 8:
+      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.commit();
+      	    		Intent q = new Intent(Preferences.this, HomeActivity.class);
+      	    	    startActivity(q);
+      	    	    Preferences.this.finish();
+      	    		break;
+      	    	case 9:
       	    		// Do nothing
       	    		break;
       	    	}

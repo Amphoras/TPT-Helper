@@ -39,11 +39,12 @@
     <string name="german">German</string>
     <string name="russian">Russian</string>
     <string name="chinese">Chinese</string>
-    <string name="portuguese">Portugues</string>
+    <string name="portuguese">Português</string>
     <string name="spanish">Español</string>
     <string name="serbian">Srpski</string>
+    <string name="czech">Česky</string>
       <!-- HomeActivity type/gen checking strings -->
-    <string name="check_type_heading">Blade Type</string>
+    <string name="check_type_heading">Tip Blade-a</string>
     <string name="check_type">detected. Is this correct?</string>
     <string name="check_gen_heading">Blade Gen</string>
     <string name="check_gen">What gen of Blade do you have?</string>
@@ -173,6 +174,8 @@
     <string name="set_userdata3">MB, and</string>
     <string name="set_userdata4">MB of space left for data. Do you want to use these sizes?</string>
     <string name="writing">Writing partitions. Please wait...</string>
+   <string name="building">Building image.bin. Please wait...</string>
+    <string name="pick_gen">Pick the type of TPT you want to make.</string>
     
       <!-- General strings -->
     <string name="app_name">TPT Helper</string>
@@ -186,4 +189,43 @@
     <string name="feedback">Komentar</string>
     <string name="about">O programu</string>
     <string name="unknown">Unknown</string>
+    <string name="license">License</string>
+    
+      <!-- Preferences Strings -->
+    <string-array name="model">
+        <item>ZTE Blade/Orange San Francisco</item>
+        <item>ZTE Skate/Orange Monte Carlo</item>
+        <item>Orange San Francisco II/T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="models">
+        <item>blade</item>
+        <item>skate</item>
+        <item>blade2</item>
+    </string-array>
+    <string-array name="gen">
+        <item>Gen 1/TPT Upgraded Gen 2</item>
+        <item>Stock Gen 2/3/Windows Upgraded Gen 2</item>
+    </string-array>
+    <string-array name="gens">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="type">
+        <item>European ZTE Blade</item>
+        <item>Chinese ZTE Blade</item>
+    </string-array>
+    <string-array name="types">
+        <item>European Blade</item>
+        <item>Chinese Blade</item>
+    </string-array>
+    <string-array name="blade2">
+        <item>Orange San Francisco II</item>
+        <item>T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="blade2s">
+        <item>SF2</item>
+        <item>TMV</item>
+    </string-array>
+    <string name="gen_title">ZTE Blade Gen</string>
+    <string name="type_title">ZTE Blade Type</string>
 </resources>

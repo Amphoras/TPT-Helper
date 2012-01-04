@@ -315,8 +315,9 @@ public class VerifyImage extends Activity {
           CharSequence portuguese = getText(R.string.portuguese);
           CharSequence spanish = getText(R.string.spanish);
           CharSequence serbian = getText(R.string.serbian);
+          CharSequence czech = getText(R.string.czech);
           CharSequence cancel = getText(R.string.cancel);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, cancel};
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -378,6 +379,13 @@ public class VerifyImage extends Activity {
       	    	    VerifyImage.this.finish();
       	    		break;
       	    	case 8:
+      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.commit();
+      	    		Intent q = new Intent(VerifyImage.this, HomeActivity.class);
+      	    	    startActivity(q);
+      	    	    VerifyImage.this.finish();
+      	    		break;
+      	    	case 9:
       	    		// Do nothing
       	    		break;
       	    	}
@@ -633,7 +641,7 @@ public class VerifyImage extends Activity {
 		case R.id.support:
 			Intent emailIntent = new Intent(Intent.ACTION_SEND);
 	        emailIntent.setType("plain/text");
-	        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@gmail.com"});
+	        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
 	        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
 	        startActivity(emailIntent);
 			break;

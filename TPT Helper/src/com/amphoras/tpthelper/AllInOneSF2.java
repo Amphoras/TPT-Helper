@@ -421,7 +421,8 @@ public class AllInOneSF2 extends Activity {
           CharSequence portuguese = getText(R.string.portuguese);
           CharSequence spanish = getText(R.string.spanish);
           CharSequence serbian = getText(R.string.serbian);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, cancel};
+          CharSequence czech = getText(R.string.czech);
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -483,6 +484,13 @@ public class AllInOneSF2 extends Activity {
       	    	    AllInOneSF2.this.finish();
       	    		break;
       	    	case 8:
+      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.commit();
+      	    		Intent q = new Intent(AllInOneSF2.this, HomeActivity.class);
+      	    	    startActivity(q);
+      	    	    AllInOneSF2.this.finish();
+      	    		break;
+      	    	case 9:
       	    		// Do nothing
       	    		break;
       	    	}

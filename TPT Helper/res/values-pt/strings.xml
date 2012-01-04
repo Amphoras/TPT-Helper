@@ -19,7 +19,7 @@
     <string name="accept">Aceitar</string>
       <!-- HomeActivity start TPT strings -->
     <string name="power_off">Desligar</string>
-    <string name="start_tpt">Uma vez o telefone desligado, pressione Volume+ (ou Volume+ e Menu) e pressione o botão de ligar o telemovel para começar o TPT.</string>
+    <string name="start_tpt">Uma vez o telefone desligado, pressione Volume+ e Menu e pressione o botão de ligar o telemovel para começar o TPT.</string>
       <!-- HomeActivity delete image strings -->
     <string name="delete_image_heading">Apagar Imagem</string>
     <string name="delete_image">De certeza que quer apagar a pasta e todos os fcheiros contidos nela ?</string>
@@ -30,18 +30,19 @@
     <string name="low_battery">A sua bateria está abaixo dos 25%. Tem a certeza que quer continuar com o TPT?</string>
       <!-- HomeActivity auto tpt strings -->
     <string name="auto_tpt_heading">Começar o TPT</string>
-    <string name="auto_tpt">This will start the TPT. If you have not checked the image folder, press no and do so now. Do you want to continue?</string>
-    <string name="auto_tpt_fail">Sorry, this feature is not yet supported for your current ROM.</string>
+    <string name="auto_tpt">Isto vai iniciar o TPT. Se não verificou a pasta image pressione "Não" e verifique.</string>
+    <string name="auto_tpt_fail">Desculpe, esta funcionalidade ainda não está disponível para a sua ROM actual.</string>
       <!-- HomeActivity locale changing strings -->
-    <string name="change_locale_heading">Pick the language to use</string>
+    <string name="change_locale_heading">Seleccione a linguagem a usar</string>
     <string name="english">English</string>
     <string name="french">Français</string>
     <string name="german">German</string>
     <string name="russian">Russian</string>
     <string name="chinese">Chinese</string>
-    <string name="portuguese">Portugues</string>
+    <string name="portuguese">Português</string>
     <string name="spanish">Español</string>
     <string name="serbian">Srpski</string>
+    <string name="czech">Česky</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Blade Type</string>
     <string name="check_type">detected. Is this correct?</string>
@@ -62,21 +63,21 @@
     <string name="unsupported">Sorry, this device is not currently supported. If you think this is an error, please check your phone model and try again.</string>
     
       <!-- Downloader strings -->
-    <string name="standard_tpt_heading">Standard TPTs:</string>
+    <string name="standard_tpt_heading">TPTs padrão:</string>
     <string name="standard_tpt">Converte, mas não inclui uma rom</string>
-    <string name="allinone_tpt_heading">All in one TPTs:</string>
-    <string name="allinone_tpt">Converts and flashes rom in one go</string>
-    <string name="downloader">Download a TPT</string>
+    <string name="allinone_tpt_heading">TPTs tudo em um:</string>
+    <string name="allinone_tpt">Converte e flasha a ROM de uma vez</string>
+    <string name="downloader">Descarregar um TPT</string>
     
       <!-- DirectDownloader strings -->  
-    <string name="downloading">Downloading...</string>
-    <string name="download_finished_heading">Download Complete</string>
-    <string name="download_finished">Successfully downloaded</string>
-    <string name="pick_download">Chose the file to download</string>
+    <string name="downloading">Descarregando...</string>
+    <string name="download_finished_heading">Descarregado</string>
+    <string name="download_finished">Descarregado com sucesso</string>
+    <string name="pick_download">Escolha o ficheiro para descarregar</string>
     <string name="file_there_heading">Ficheiro no cartao de memoria</string>
     <string name="file_there1">Encontrado</string>
     <string name="file_there2">Ja se encontra no cartao de memoria. Pretende efectuar novo download?</string>
-    <string name="download_failed_heading">Download Failed</string>
+    <string name="download_failed_heading">Descarregamento falhou</string>
     <string name="download_failed">Failed to download</string>
     
       <!-- MD5 checking strings -->
@@ -173,17 +174,58 @@
     <string name="set_userdata3">MB, and</string>
     <string name="set_userdata4">MB of space left for data. Do you want to use these sizes?</string>
     <string name="writing">Writing partitions. Please wait...</string>
+    <string name="building">Building image.bin. Please wait...</string>
+    <string name="pick_gen">Pick the type of TPT you want to make.</string>
     
       <!-- General strings -->
     <string name="app_name">Ajuda do TPT</string>
-    <string name="ok">OK</string>
+    <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
     <string name="yes">Sim</string>
-    <string name="no">Nao</string>
+    <string name="no">Não</string>
     <string name="error">Erro</string>
     <string name="other">Outros</string>
     <string name="options">Opções</string>
-    <string name="feedback">Feedback</string>
+    <string name="feedback">Comentários</string>
     <string name="about">Acerca de</string>
     <string name="unknown">Unknown</string>
+    <string name="license">License</string>
+    
+      <!-- Preferences Strings -->
+    <string-array name="model">
+        <item>ZTE Blade/Orange San Francisco</item>
+        <item>ZTE Skate/Orange Monte Carlo</item>
+        <item>Orange San Francisco II/T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="models">
+        <item>blade</item>
+        <item>skate</item>
+        <item>blade2</item>
+    </string-array>
+    <string-array name="gen">
+        <item>Gen 1/TPT Upgraded Gen 2</item>
+        <item>Stock Gen 2/3/Windows Upgraded Gen 2</item>
+    </string-array>
+    <string-array name="gens">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="type">
+        <item>European ZTE Blade</item>
+        <item>Chinese ZTE Blade</item>
+    </string-array>
+    <string-array name="types">
+        <item>European Blade</item>
+        <item>Chinese Blade</item>
+    </string-array>
+    <string-array name="blade2">
+        <item>Orange San Francisco II</item>
+        <item>T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="blade2s">
+        <item>SF2</item>
+        <item>TMV</item>
+    </string-array>
+    <string name="gen_title">ZTE Blade Gen</string>
+    <string name="type_title">ZTE Blade Type</string>
 </resources>

@@ -391,7 +391,8 @@ public class CustomTPTVivacity extends Activity {
           CharSequence portuguese = getText(R.string.portuguese);
           CharSequence spanish = getText(R.string.spanish);
           CharSequence serbian = getText(R.string.serbian);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, cancel};
+          CharSequence czech = getText(R.string.czech);
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -453,6 +454,13 @@ public class CustomTPTVivacity extends Activity {
       	    	    CustomTPTVivacity.this.finish();
       	    		break;
       	    	case 8:
+      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.commit();
+      	    		Intent q = new Intent(CustomTPTVivacity.this, HomeActivity.class);
+      	    	    startActivity(q);
+      	    	    CustomTPTVivacity.this.finish();
+      	    		break;
+      	    	case 9:
       	    		// Do nothing
       	    		break;
       	    	}
@@ -1637,8 +1645,8 @@ public class CustomTPTVivacity extends Activity {
 	private class BuildImageTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected void onPreExecute() {
-			CharSequence writing = getText(R.string.writing);
-			dialog = ProgressDialog.show(CustomTPTVivacity.this, "", writing, true);
+			CharSequence building = getText(R.string.building);
+			dialog = ProgressDialog.show(CustomTPTVivacity.this, "", building, true);
 		}
 		
 		@Override

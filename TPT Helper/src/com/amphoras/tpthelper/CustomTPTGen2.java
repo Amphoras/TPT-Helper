@@ -411,7 +411,8 @@ public class CustomTPTGen2 extends Activity {
           CharSequence portuguese = getText(R.string.portuguese);
           CharSequence spanish = getText(R.string.spanish);
           CharSequence serbian = getText(R.string.serbian);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, cancel};
+          CharSequence czech = getText(R.string.czech);
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -473,6 +474,13 @@ public class CustomTPTGen2 extends Activity {
       	    	    CustomTPTGen2.this.finish();
       	    		break;
       	    	case 8:
+      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.commit();
+      	    		Intent q = new Intent(CustomTPTGen2.this, HomeActivity.class);
+      	    	    startActivity(q);
+      	    	    CustomTPTGen2.this.finish();
+      	    		break;
+      	    	case 9:
       	    		// Do nothing
       	    		break;
       	    	}
@@ -1687,8 +1695,8 @@ public class CustomTPTGen2 extends Activity {
 	private class BuildImageTask extends AsyncTask<String, Void, String> {
 		@Override
 		protected void onPreExecute() {
-			CharSequence writing = getText(R.string.writing);
-			dialog = ProgressDialog.show(CustomTPTGen2.this, "", writing, true);
+			CharSequence building = getText(R.string.building);
+			dialog = ProgressDialog.show(CustomTPTGen2.this, "", building, true);
 		}
 		
 		@Override

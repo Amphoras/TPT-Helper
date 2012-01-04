@@ -19,7 +19,7 @@
     <string name="accept">Accepter</string>
       <!-- HomeActivity start TPT strings -->
     <string name="power_off">Eteindre</string>
-    <string name="start_tpt">Une fois que le téléphone s\'est arrêté, maintenez [volume+] (ou [volume+] et [menu]) et appuyez sur le bouton d\'alimentation pour lancer le TPT.</string>
+    <string name="start_tpt">Une fois que le téléphone s\'est arrêté, maintenez [volume+] et [menu] et appuyez sur le bouton d\'alimentation pour lancer le TPT.</string>
       <!-- HomeActivity delete image strings -->
     <string name="delete_image_heading">Supprimer "image"</string>
     <string name="delete_image">Êtes-vous sûr de vouloir supprimer le dossier "image" et tout son contenu?</string>
@@ -39,9 +39,10 @@
     <string name="german">German</string>
     <string name="russian">Russian</string>
     <string name="chinese">Chinese</string>
-    <string name="portuguese">Portugues</string>
+    <string name="portuguese">Português</string>
     <string name="spanish">Español</string>
     <string name="serbian">Srpski</string>
+    <string name="czech">Česky</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Blade Type</string>
     <string name="check_type">detected. Is this correct?</string>
@@ -136,7 +137,7 @@
     <string name="instruction3">3. Décompressez le ZIP</string>
     <string name="instruction4">4. Vérifiez le contenu du dossier "image" avec le fichier nandroid.md5</string>
     <string name="instruction5">5. Arrêtez votre téléphone</string>
-    <string name="instruction6">6. Maintenez le bouton [volume+] ([menu] et [volume+] sur certains appareils) et appuyez sur le bouton d\'alimentation</string>
+    <string name="instruction6">6. Maintenez le bouton [volume+] et [menu] et appuyez sur le bouton d\'alimentation</string>
     <string name="instruction7">Pour un TPT standard:</string>
     <string name="instruction8">7. Du texte vert devrait apparaître à l\'écran puis le téléphone devrait redémarrer en recovery</string>
     <string name="instruction9">8. Flashez la ROM de votre choix depuis le recovery et redémarrez</string>
@@ -173,6 +174,8 @@
     <string name="set_userdata3">MB, and</string>
     <string name="set_userdata4">MB of space left for data. Do you want to use these sizes?</string>
     <string name="writing">Writing partitions. Please wait...</string>
+    <string name="building">Building image.bin. Please wait...</string>
+    <string name="pick_gen">Pick the type of TPT you want to make.</string>
     
       <!-- General strings -->
     <string name="app_name">Assistant TPT</string>
@@ -184,6 +187,45 @@
     <string name="other">Autre</string>
     <string name="options">Options</string>
     <string name="feedback">Commentaires</string>
-    <string name="about">À propos de</string>
-    <string name="unknown">Unknown</string>
+    <string name="about">About</string>
+    <string name="unknown">À propos de</string>
+    <string name="license">License</string>
+    
+      <!-- Preferences Strings -->
+    <string-array name="model">
+        <item>ZTE Blade/Orange San Francisco</item>
+        <item>ZTE Skate/Orange Monte Carlo</item>
+        <item>Orange San Francisco II/T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="models">
+        <item>blade</item>
+        <item>skate</item>
+        <item>blade2</item>
+    </string-array>
+    <string-array name="gen">
+        <item>Gen 1/TPT Upgraded Gen 2</item>
+        <item>Stock Gen 2/3/Windows Upgraded Gen 2</item>
+    </string-array>
+    <string-array name="gens">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="type">
+        <item>European ZTE Blade</item>
+        <item>Chinese ZTE Blade</item>
+    </string-array>
+    <string-array name="types">
+        <item>European Blade</item>
+        <item>Chinese Blade</item>
+    </string-array>
+    <string-array name="blade2">
+        <item>Orange San Francisco II</item>
+        <item>T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="blade2s">
+        <item>SF2</item>
+        <item>TMV</item>
+    </string-array>
+    <string name="gen_title">ZTE Blade Gen</string>
+    <string name="type_title">ZTE Blade Type</string>
 </resources>

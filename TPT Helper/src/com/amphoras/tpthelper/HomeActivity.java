@@ -667,8 +667,9 @@ public class HomeActivity extends ListActivity {
           CharSequence portuguese = getText(R.string.portuguese);
           CharSequence spanish = getText(R.string.spanish);
           CharSequence serbian = getText(R.string.serbian);
+          CharSequence czech = getText(R.string.czech);
           CharSequence cancel = getText(R.string.cancel);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, cancel};
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -730,12 +731,19 @@ public class HomeActivity extends ListActivity {
       	    	    HomeActivity.this.finish();
       	    		break;
       	    	case 8:
+      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.commit();
+      	    		Intent q = new Intent(HomeActivity.this, HomeActivity.class);
+      	    	    startActivity(q);
+      	    	    HomeActivity.this.finish();
+      	    		break;
+      	    	case 9:
       	    		// Do nothing
       	    		break;
       	    	}
       	      }
       	  });
-          return localebuilder.create();
+      	  return localebuilder.create();
         case CHECK_TYPE:
       	    // check what type of blade user has
           String type = "Unknown Blade";
@@ -1156,7 +1164,7 @@ public class HomeActivity extends ListActivity {
     	case R.id.support:
     		Intent emailIntent = new Intent(Intent.ACTION_SEND);
             emailIntent.setType("plain/text");
-            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@gmail.com"});
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
             startActivity(emailIntent);
     		break;

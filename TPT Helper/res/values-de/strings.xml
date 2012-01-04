@@ -19,7 +19,7 @@
     <string name="accept">Akzeptieren</string>
       <!-- HomeActivity start TPT strings -->
     <string name="power_off">Herunterfahren</string>
-    <string name="start_tpt">Sobald das Gerät heruntergefahren ist, Lautstärke+ (oder Lautstärke+ und Menü) halten und den Einschaltknopf drücken um den TPT zu starten.</string>
+    <string name="start_tpt">Sobald das Gerät heruntergefahren ist, Lautstärke+ und Menü halten und den Einschaltknopf drücken um den TPT zu starten.</string>
       <!-- HomeActivity delete image strings -->
     <string name="delete_image_heading">Image löschen</string>
     <string name="delete_image">Soll der /image-Ordner und seinen gesamter Inhalt wirklich gelöscht werden?</string>
@@ -39,9 +39,10 @@
     <string name="german">German</string>
     <string name="russian">Russian</string>
     <string name="chinese">Chinese</string>
-    <string name="portuguese">Portugues</string>
+    <string name="portuguese">Português</string>
     <string name="spanish">Español</string>
     <string name="serbian">Srpski</string>
+    <string name="czech">Česky</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Blade Type</string>
     <string name="check_type">detected. Is this correct?</string>
@@ -136,7 +137,7 @@
     <string name="instruction3">3. Den TPT entpacken</string>
     <string name="instruction4">4. Die MD5-Summen der Dateien im /image-Ordner mit den Werten in der nandroid.md5-Datei vergleichen</string>
     <string name="instruction5">5. Gerät ausschalten</string>
-    <string name="instruction6">6. Lautstärke+ (Menü und Lautstärke+ bei manchen Geräten) halten und den Einschaltknopf drücken</string>
+    <string name="instruction6">6. Lautstärke+ und Menü halten und den Einschaltknopf drücken</string>
     <string name="instruction7">Wenn ein Standard-TPT verwendet wird:</string>
     <string name="instruction8">7. Grüner Text sollte erscheinen, dann sollte das Gerät ins Recovery booten.</string>
     <string name="instruction9">8. Flashe das ausgewählte ROM vom Recovery, und reboote</string>
@@ -173,6 +174,8 @@
     <string name="set_userdata3">MB, and</string>
     <string name="set_userdata4">MB of space left for data. Do you want to use these sizes?</string>
     <string name="writing">Writing partitions. Please wait...</string>
+    <string name="building">Building image.bin. Please wait...</string>
+    <string name="pick_gen">Pick the type of TPT you want to make.</string>
     
       <!-- General strings -->
     <string name="app_name">TPT-Helfer</string>
@@ -186,4 +189,43 @@
     <string name="feedback">Feedback</string>
     <string name="about">Über diese App</string>
     <string name="unknown">Unknown</string>
+    <string name="license">License</string>
+    
+      <!-- Preferences Strings -->
+    <string-array name="model">
+        <item>ZTE Blade/Orange San Francisco</item>
+        <item>ZTE Skate/Orange Monte Carlo</item>
+        <item>Orange San Francisco II/T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="models">
+        <item>blade</item>
+        <item>skate</item>
+        <item>blade2</item>
+    </string-array>
+    <string-array name="gen">
+        <item>Gen 1/TPT Upgraded Gen 2</item>
+        <item>Stock Gen 2/3/Windows Upgraded Gen 2</item>
+    </string-array>
+    <string-array name="gens">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="type">
+        <item>European ZTE Blade</item>
+        <item>Chinese ZTE Blade</item>
+    </string-array>
+    <string-array name="types">
+        <item>European Blade</item>
+        <item>Chinese Blade</item>
+    </string-array>
+    <string-array name="blade2">
+        <item>Orange San Francisco II</item>
+        <item>T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="blade2s">
+        <item>SF2</item>
+        <item>TMV</item>
+    </string-array>
+    <string name="gen_title">ZTE Blade Gen</string>
+    <string name="type_title">ZTE Blade Type</string>
 </resources>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <!-- HomeActivity list options -->
+    <string-array name="options">
+        <item>Vše v jednom</item>
+        <item>Stáhnout TPT</item>
+        <item>Zkontrolovat Md5SUM</item>
+        <item>Rozbalit soubor</item>
+        <item>Zkontrolovat složku s image</item>
+        <item>Start TPT</item>
+        <item>Vytvořit svůj vlastní TPT</item>
+        <item>Smazat složku s image</item>
+        <item>Vypnout telefon pro start TPT</item>
+        <!-- <item>Testuji</item> -->
+    </string-array>
+      <!-- HomeActivity disclaimer strings -->
+    <string name="disclaimer_heading">zrušit</string>
+    <string name="disclaimer">Tuto aplikaci používáte na své vlastní riziko. Autor nenese žádnou odpovědnost za případné škody!</string>
+    <string name="accept">Potvrdit</string>
+      <!-- HomeActivity start TPT strings -->
+    <string name="power_off">Vypnout</string>
+    <string name="start_tpt">Když je telefon zapnout, držte "volume+ a menu a zmáčkněte tlačítko pro start TPT</string>
+      <!-- HomeActivity delete image strings -->
+    <string name="delete_image_heading">Smazat image</string>
+    <string name="delete_image">Jste si jisti, že chcete smazat složku s image a vše co obsahuje?</string>
+    <string name="deleting">Mažu. Prosím čekejte...</string>
+    <string name="image_deleted">Složka s image byla úspěšně smazána</string>
+      <!-- HomeActivity low battery strings -->
+    <string name="low_battery_heading">Baterie je skoro vybita</string>
+    <string name="low_battery">Baterie je nabita méně než z 25%, opravdu chcete začít TPT?</string>
+      <!-- HomeActivity auto tpt strings -->
+    <string name="auto_tpt_heading">Start TPT</string>
+    <string name="auto_tpt">Toto začne proces flashování. Jestli nemáte zkontrolovanou složku s image, klikněte na NE a zkontrolujte složku. Opravdu chcete začít?</string>
+    <string name="auto_tpt_fail">Tato funkce není podporována vaší ROM.</string>
+      <!-- HomeActivity locale changing strings -->
+    <string name="change_locale_heading">Vyberte jazyk</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="german">German</string>
+    <string name="russian">Russian</string>
+    <string name="chinese">Chinese</string>
+    <string name="portuguese">Português</string>
+    <string name="spanish">Español</string>
+    <string name="serbian">Srpski</string>
+    <string name="czech">Česky</string>
+      <!-- HomeActivity type/gen checking strings -->
+    <string name="check_type_heading">Typ Blade</string>
+    <string name="check_type">detected. Is this correct?</string>
+    <string name="check_gen_heading">Blade Gen</string>
+    <string name="check_gen">What gen of Blade do you have?</string>
+    <string name="manual_type_heading">Enter Blade Type</string>
+    <string name="setting_type_heading">Setting Blade Type</string>
+    <string name="setting_type">Setting type to</string>
+    <string name="check_board_heading">Phone Type</string>
+    <string name="correct">detected, is this correct?</string>
+    <string name="board_blade">ZTE Blade/Orange San Francisco</string>
+    <string name="board_skate">ZTE Skate/Orange Monte Carlo</string>
+    <string name="board_blade2">Orange San Francisco II/T-Mobile Vivacity</string>
+    <string name="phone_type_heading">Enter Phone Type</string>
+    <string name="san_francisco_ii">Orange San Francisco II</string>
+    <string name="vivacity">T-Mobile Vivacity</string>
+    <string name="unsupported_heading">Unsupported Model</string>
+    <string name="unsupported">Sorry, this device is not currently supported. If you think this is an error, please check your phone model and try again.</string>
+    
+      <!-- Downloader strings -->
+    <string name="standard_tpt_heading">Standard TPTs:</string>
+    <string name="standard_tpt">Převést, ale nezahrnout ROM</string>
+    <string name="allinone_tpt_heading">Vše v jednom TPT:</string>
+    <string name="allinone_tpt">Převést a nahrát ROM v jednom kroku</string>
+    <string name="downloader">Stahování TPT</string>
+    
+      <!-- DirectDownloader strings -->  
+    <string name="downloading">Stahování...</string>
+    <string name="download_finished_heading">Stahování dokončeno</string>
+    <string name="download_finished">Stahování úspěšně dokončeno</string>
+    <string name="pick_download">Vyberte soubor ke stažení</string>
+    <string name="file_there_heading">Soubor na SD kartě</string>
+    <string name="file_there1">Nalezeno</string>
+    <string name="file_there2">už je na SD kartě. Chcete ho stáhnout znova?</string>
+    <string name="download_failed_heading">Stahování se nezdařilo</string>
+    <string name="download_failed">Chyba při stahování</string>
+    
+      <!-- MD5 checking strings -->
+    <string name="pickmd5">Vyberte soubor na kontrolu</string>
+    <string name="calculating">Vypočítávám. Prosím čekejte...</string>
+    <string name="md5">MD5sum</string>
+    <string name="md5of">Kontrola MD5sum:</string>
+    <string name="md5is">MD5sum je:</string>
+    <string name="md5matches">Hodnoty odpovídají</string>
+    
+      <!-- PickFile strings -->
+    <string name="file_not_found_heading">Soubor nenalezen</string>
+    <string name="file_not_found1">Nebylo nalezeno</string>
+    <string name="file_not_found2">. Chcete to stáhnout?</string>
+    
+      <!-- Unzipping strings -->
+    <string name="pickunzip">Vyberte soubor na rozbalení</string>
+    <string name="unzipping">Rozbalování. Prosím čekejte...</string>
+    <string name="unzipgood">Rozbalování dokončeno</string>
+    <string name="unzipbad">Rozbalování se nezdařilo</string>
+    <string name="unzip">Rozbalit</string>
+    <string name="unzip_file">Zkouším rozbalit.</string>
+    
+      <!-- EnterFile strings -->
+    <string name="askfile">Prosím zadejte jméno souboru a potom stiskněte enter (soubor musí být na SD kartě)</string>
+    <string name="enterfile">Enter</string>
+    <string name="unfound1">Nemohu najít \'</string>
+    <string name="unfound2">\' Prosím zkontrolujte a poté zkuste znova.</string>
+    
+      <!-- VerifyImage strings -->
+    <string name="nooffiles">Počet zkontrolovaných souborů:</string>
+    <string name="noofmatches">Počet shodujících se MD5:</string>
+    <string name="missingfiles">Počet souborů, které nebyly nalezeny:</string>
+    <string name="filessearched">Soubroy nalezeny:</string>
+    <string name="files_verified">Zkontrolováné soubory</string>
+    <string name="no_of_matches">Počet shod:</string>
+    <string name="files_not_found">Soubory nenalezeny</string>
+    <string name="file_not_found">Soubor nenalezen</string>
+    <string name="no_nandroid">Nemohu najít nandroid.md5 ve složce s image, prosím zkontrolujte jeho existenci a zkuste to znovu.</string>
+    <string name="verifying">Ověřování. Prosím čekejte...</string>
+    
+      <!-- AllInOne strings -->
+    <string name="md5resultaio">Vysledek MD5:</string>
+    <string name="unzipdoneaio">Výsledek rozbalování:</string>
+    <string name="downloadresultaio">Výsledek stahování:</string>
+    <string name="md5_mismatch_heading">MD5sum se neshoduje!</string>
+    <string name="md5_mismatch">MD5sum se neshoduje. Chcete znovu začít stahování?</string>
+    <string name="unzip_fail">Rozbalování selhalo. Zastavuji.</string>
+    <string name="no_nandroid2">Nemohu najít nandroid.md5 ve složce s image. Zastavuji.</string>
+    <string name="working">Pracuji. Prosím čekejte...</string>
+    <string name="pickallinone">Vložte soubor pro použití</string>
+    
+      <!-- Instructions strings -->
+    <string name="instructions">Jak používat?</string>
+    <string name="instruction1">1. Stáhněte TPT</string>
+    <string name="instruction2">2. Zkontrolujte MD5sum</string>
+    <string name="instruction3">3. Rozbalte TPT</string>
+    <string name="instruction4">4. Zkontrolujte obash složky s image</string>
+    <string name="instruction5">5. Vypněte telefon</string>
+    <string name="instruction6">6. Držte Volume+ a Menu a siskněte zapínací tlačítko</string>
+    <string name="instruction7">Jestliže použijete standartní TPT:</string>
+    <string name="instruction8">7. Na displeji by měl být zelený text a poté by měl telefon nabootovat do recovery</string>
+    <string name="instruction9">8. Nainstalujte vybranou ROM z recovery a restartujte</string>
+    <string name="instruction10">Jestliže použijete "Vše v jednom TPT":</string>
+    <string name="instruction11">7.  Na displeji by měl být zelený text a poté by měl telefon nabootovat do vaší ROM</string>
+    
+      <!-- Troubleshooting strings -->
+    <string name="troubleshooting1">Q. I pressed the power off button, but nothing happened.</string>
+    <string name="troubleshooting2">A. You need root (superuser) for this option to work. If you have root and granted su permissions, try unchecking the Auto Power-off option in the Options menu.</string>
+    <string name="troubleshooting3">Q. I followed all the steps and tried to flash the TPT, but now I\'m stuck at the green android.</string>
+    <string name="troubleshooting4">A. You\'re probably in fastboot mode. Trying holding menu and vol+ and try flashing again.</string>
+    <string name="troubleshooting5">Q. I downloaded and unzipped a TPT, but some of the files don\'t match.</string>
+    <string name="troubleshooting6">A. The download may have been corrupted, try downloading again and if they still don\'t match use the feedback email and give details of which file you downloaded and which files don\'t match.</string>
+    <string name="troubleshooting7"></string>
+    <string name="troubleshooting8"></string>
+    <string name="troubleshooting9"></string>
+    <string name="troubleshooting10"></string>
+    <string name="troubleshooting11"></string>
+    
+      <!-- Changelog strings -->
+    <string name="changelog">Novinky</string>
+    
+      <!-- CustomTPT strings -->
+    <string name="finished_heading">TPT dokončeno</string>
+    <string name="finished">Vaše TPT bylo dokončeno</string>
+    <string name="copying">Kopíruji. Prosím čekejte...</string>
+    <string name="pick_cache_heading">Cache</string>
+    <string name="pick_cache">Please enter a value between 2 and 60</string>
+    <string name="pick_system_heading">System</string>
+    <string name="pick_system">Please enter a value between 90 and 220</string>
+    <string name="set_userdata_heading">Data</string>
+    <string name="set_userdata1">Cache:</string>
+    <string name="set_userdata2">MB, System:</string>
+    <string name="set_userdata3">MB, and</string>
+    <string name="set_userdata4">MB of space left for data. Do you want to use these sizes?</string>
+    <string name="writing">Writing partitions. Please wait...</string>
+    <string name="building">Building image.bin. Please wait...</string>
+    <string name="pick_gen">Pick the type of TPT you want to make.</string>
+    
+      <!-- General strings -->
+    <string name="app_name">TPT Helper</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Storno</string>
+    <string name="yes">Ano</string>
+    <string name="no">Ne</string>
+    <string name="error">Chyba</string>
+    <string name="other">Ostatní</string>
+    <string name="options">Nastavení</string>
+    <string name="feedback">Zpětná vazba</string>
+    <string name="about">O programu</string>
+    <string name="unknown">Unknown</string>
+    <string name="license">License</string>
+    
+      <!-- Preferences Strings -->
+    <string-array name="model">
+        <item>ZTE Blade/Orange San Francisco</item>
+        <item>ZTE Skate/Orange Monte Carlo</item>
+        <item>Orange San Francisco II/T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="models">
+        <item>blade</item>
+        <item>skate</item>
+        <item>blade2</item>
+    </string-array>
+    <string-array name="gen">
+        <item>Gen 1/TPT Upgraded Gen 2</item>
+        <item>Stock Gen 2/3/Windows Upgraded Gen 2</item>
+    </string-array>
+    <string-array name="gens">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="type">
+        <item>European ZTE Blade</item>
+        <item>Chinese ZTE Blade</item>
+    </string-array>
+    <string-array name="types">
+        <item>European Blade</item>
+        <item>Chinese Blade</item>
+    </string-array>
+    <string-array name="blade2">
+        <item>Orange San Francisco II</item>
+        <item>T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="blade2s">
+        <item>SF2</item>
+        <item>TMV</item>
+    </string-array>
+    <string name="gen_title">ZTE Blade Gen</string>
+    <string name="type_title">ZTE Blade Type</string>
+</resources>

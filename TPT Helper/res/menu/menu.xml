@@ -39,7 +39,7 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
       android:id="@+id/submenu" android:menuCategory="secondary">
       <item
         android:id="@+id/license"
-        android:title="License"/>
+        android:title="@string/license"/>
       <item
         android:id="@+id/locale"
         android:title="@string/change_locale_heading"/>

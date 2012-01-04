@@ -25,37 +25,37 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <ListPreference
         android:enabled="true"
         android:entries="@array/model"
-        android:dialogTitle="Choose your phone"
+        android:dialogTitle="@string/phone_type_heading"
         android:key="model"
         android:selectable="true"
-        android:title="Phone Model"
+        android:title="@string/check_board_heading"
         android:entryValues="@array/models"
         android:persistent="true"/>
     <ListPreference
         android:enabled="true"
         android:entryValues="@array/gens"
-        android:dialogTitle="Choose which gen your ZTE Blade is."
+        android:dialogTitle="@string/check_gen_heading"
         android:entries="@array/gen"
         android:selectable="true"
         android:key="gens"
         android:persistent="true"
-        android:title="ZTE Blade Gen"/>
+        android:title="@string/gen_title"/>
     <ListPreference
         android:enabled="true"
         android:entryValues="@array/types"
-        android:dialogTitle="Choose which type of ZTE Blade you have."
+        android:dialogTitle="@string/manual_type_heading"
         android:entries="@array/type"
         android:selectable="true"
         android:key="types"
         android:persistent="true"
-        android:title="ZTE Blade Type"/>
+        android:title="@string/type_title"/>
     <ListPreference
         android:enabled="true"
         android:entryValues="@array/blade2s"
-        android:dialogTitle="Choose which type of Blade II you have."
+        android:dialogTitle="@string/phone_type_heading"
         android:entries="@array/blade2"
         android:selectable="true"
-        android:title="ZTE Blade II Model"
+        android:title="@string/check_board_heading"
         android:key="blade2"
         android:persistent="true"/>
 </PreferenceScreen>

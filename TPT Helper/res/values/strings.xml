@@ -62,6 +62,7 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="portuguese">Portugues</string>
     <string name="spanish">Español</string>
     <string name="serbian">Srpski</string>
+    <string name="czech">Česky</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Blade Type</string>
     <string name="check_type">detected. Is this correct?</string>
@@ -156,7 +157,7 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="instruction3">3. Unzip the TPT</string>
     <string name="instruction4">4. Check the contents of the image folder match the values in the nandroid.md5 file</string>
     <string name="instruction5">5. Turn off your phone</string>
-    <string name="instruction6">6. Hold the volume+ (menu and volume+ on some devices) button and press the power button</string>
+    <string name="instruction6">6. Hold the menu and volume+ buttons and press the power button</string>
     <string name="instruction7">If using a standard TPT:</string>
     <string name="instruction8">7. Green text should appear on the screen then the phone should reboot into recovery</string>
     <string name="instruction9">8. Flash your chosen rom from recovery, and reboot</string>
@@ -193,6 +194,8 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="set_userdata3">MB, and</string>
     <string name="set_userdata4">MB of space left for data. Do you want to use these sizes?</string>
     <string name="writing">Writing partitions. Please wait...</string>
+    <string name="building">Building image.bin. Please wait...</string>
+    <string name="pick_gen">Pick the type of TPT you want to make.</string>
     
       <!-- General strings -->
     <string name="app_name">TPT Helper</string>
@@ -206,6 +209,7 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="feedback">Feedback</string>
     <string name="about">About</string>
     <string name="unknown">Unknown</string>
+    <string name="license">License</string>
     
       <!-- Preferences Strings -->
     <string-array name="model">
@@ -242,4 +246,6 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
         <item>SF2</item>
         <item>TMV</item>
     </string-array>
+    <string name="gen_title">ZTE Blade Gen</string>
+    <string name="type_title">ZTE Blade Type</string>
 </resources>
