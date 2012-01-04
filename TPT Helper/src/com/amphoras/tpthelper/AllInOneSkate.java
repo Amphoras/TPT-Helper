@@ -234,7 +234,7 @@ public class AllInOneSkate extends Activity {
             builder3.setMessage(R.string.md5_mismatch);
             builder3.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                	Intent i = new Intent(AllInOneSkate.this, Downloader.class);
+                	Intent i = new Intent(AllInOneSkate.this, DownloaderSkate.class);
               	    startActivity(i);
               	    AllInOneSkate.this.finish();
                 }

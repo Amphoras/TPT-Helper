@@ -215,7 +215,7 @@ public class AllInOneSF2 extends Activity {
             builder3.setMessage(R.string.md5_mismatch);
             builder3.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                	Intent i = new Intent(AllInOneSF2.this, Downloader.class);
+                	Intent i = new Intent(AllInOneSF2.this, DownloaderSF2.class);
               	    startActivity(i);
               	    AllInOneSF2.this.finish();
                 }

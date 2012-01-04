@@ -215,7 +215,7 @@ public class AllInOneVivacity extends Activity {
             builder3.setMessage(R.string.md5_mismatch);
             builder3.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                	Intent i = new Intent(AllInOneVivacity.this, Downloader.class);
+                	Intent i = new Intent(AllInOneVivacity.this, DownloaderVivacity.class);
               	    startActivity(i);
               	    AllInOneVivacity.this.finish();
                 }

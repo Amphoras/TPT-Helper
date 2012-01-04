@@ -272,7 +272,7 @@ public class AllInOneGen2Gen3 extends Activity {
             builder3.setMessage(R.string.md5_mismatch);
             builder3.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                	Intent i = new Intent(AllInOneGen2Gen3.this, Downloader.class);
+                	Intent i = new Intent(AllInOneGen2Gen3.this, DownloaderGen2Gen3.class);
               	    startActivity(i);
               	    AllInOneGen2Gen3.this.finish();
                 }
