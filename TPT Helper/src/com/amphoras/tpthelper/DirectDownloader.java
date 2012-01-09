@@ -33,6 +33,7 @@ import android.app.Dialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.app.AlertDialog.Builder;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -50,6 +51,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
@@ -69,10 +71,8 @@ public class DirectDownloader extends ListActivity {
 	final File downloadrevertv2 = new File(dir, "download/Gen2-to-Gen1-TPT-v2-stock.zip");
 	final File cm7n257 = new File(dir, "cm7-n257-blade-gen1-to-gen2-tpt.zip");
 	final File downloadcm7n257 = new File(dir, "download/cm7-n257-blade-gen1-to-gen2-tpt.zip");
-	final File mmhmp7 = new File(dir, "Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
-	final File downloadmmhmp7 = new File(dir, "download/Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
-	final File fnc3 = new File(dir, "Gen1-to-Gen2-TPT-FNC-RLS3.zip");
-	final File downloadfnc3 = new File(dir, "download/Gen1-to-Gen2-TPT-FNC-RLS3.zip");
+	final File mmhmp8 = new File(dir, "Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
+	final File downloadmmhmp8 = new File(dir, "download/Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
 	private ArrayList <HashMap<String, Object>> tpts;
 	private static final String tptname = "tptname";
 	private static final String tptlayout = "tptlayout";
@@ -87,8 +87,7 @@ public class DirectDownloader extends ListActivity {
 	private final int V10STOCK = 104;
 	private final int V2REVERT = 105;
 	private final int CM7N257 = 106;
-	private final int MMHMP7 = 107;
-	private final int FNC3 = 108;
+	private final int MMHMP8 = 107;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -148,13 +147,8 @@ public class DirectDownloader extends ListActivity {
 	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "MMHMP RLS7 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS7");
-	          tpts.add(listitem);
-	          
-	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "FNC RLS3 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: Fish 'n' Chips RLS3");
+	          listitem.put(tptname, "MMHMP RLS8 Gen 1 to Gen 2");
+	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS8");
 	          tpts.add(listitem);
 	       
 	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
@@ -185,10 +179,7 @@ public class DirectDownloader extends ListActivity {
 		    	  showDialog(CM7N257);
 				  break;
 		      case 8:
-		    	  showDialog(MMHMP7);
-				  break;
-		      case 9:
-		    	  showDialog(FNC3);
+		    	  showDialog(MMHMP8);
 				  break;
 		      }
 			return false;
@@ -291,29 +282,14 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 8:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 6);
 	    		editdownloadint.commit();
-	    		if (mmhmp7.canRead() == true){
+	    		if (mmhmp8.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadmmhmp7.canRead() == true){
-	    				showDialog(FILE_FOUND);
-	    			} else {
-	    				DownloadFile();
-	    			}
-	    		}
-	    		break;
-	    	case 9:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-FNC-RLS3.zip");
-	    		editdownload.commit();
-				editdownloadint.putInt("downloadint", 7);
-	    		editdownloadint.commit();
-	    		if (fnc3.canRead() == true){
-	    			showDialog(FILE_FOUND);
-	    		} else {
-	    			if (downloadfnc3.canRead() == true){
+	    			if (downloadmmhmp8.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -380,13 +356,8 @@ public class DirectDownloader extends ListActivity {
 	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "MMHMP RLS7 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS7");
-	          tpts.add(listitem);
-	          
-	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "FNC RLS3 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: Fish 'n' Chips RLS3");
+	          listitem.put(tptname, "MMHMP RLS8 Gen 1 to Gen 2");
+	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS8");
 	          tpts.add(listitem);
 	       
 	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
@@ -417,10 +388,7 @@ public class DirectDownloader extends ListActivity {
 		    	  showDialog(CM7N257);
 				  break;
 		      case 8:
-		    	  showDialog(MMHMP7);
-				  break;
-		      case 9:
-		    	  showDialog(FNC3);
+		    	  showDialog(MMHMP8);
 				  break;
 		      }
 			return false;
@@ -523,29 +491,14 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 8:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 6);
 	    		editdownloadint.commit();
-	    		if (mmhmp7.canRead() == true){
+	    		if (mmhmp8.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadmmhmp7.canRead() == true){
-	    				showDialog(FILE_FOUND);
-	    			} else {
-	    				DownloadFile();
-	    			}
-	    		}
-	    		break;
-	    	case 9:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-FNC-RLS3.zip");
-	    		editdownload.commit();
-				editdownloadint.putInt("downloadint", 7);
-	    		editdownloadint.commit();
-	    		if (fnc3.canRead() == true){
-	    			showDialog(FILE_FOUND);
-	    		} else {
-	    			if (downloadfnc3.canRead() == true){
+	    			if (downloadmmhmp8.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -638,10 +591,7 @@ public class DirectDownloader extends ListActivity {
 			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/cm7-n257-blade-gen1-to-gen2-tpt.zip" });
 			break;
 		case 6:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-MMHMP-RLS7.zip" });
-			break;
-		case 7:
-			task.execute(new String[] { "" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-MMHMP-RLS8.zip" });
 			break;
 		}
 	}
@@ -778,7 +728,7 @@ public class DirectDownloader extends ListActivity {
           	    	    DirectDownloader.this.finish();
           	    		break;
           	    	case 8:
-          	    		editlocale.putString("locale", "sr");
+          	    		editlocale.putString("locale", "cs");
           	    		editlocale.commit();
           	    		Intent q = new Intent(DirectDownloader.this, HomeActivity.class);
           	    	    startActivity(q);
@@ -857,9 +807,9 @@ public class DirectDownloader extends ListActivity {
                     }
                 });
                 return builder6.create();
-            case MMHMP7:
+            case MMHMP8:
                 Builder builder8 = new AlertDialog.Builder(DirectDownloader.this);
-                builder8.setTitle("MMHMP RLS7 Gen 1 to Gen 2");
+                builder8.setTitle("MMHMP RLS8 Gen 1 to Gen 2");
                 builder8.setMessage(Html.fromHtml("<b>Size:</b> 95.42MB<br /><b>Recovery:</b> ClockworkMod v4.0.1.5<br /><b>Splash:</b> Normal Android<br /><b>Partitions:</b> 2mb cache, 138mb system, 316mb data, 0.1mb oem"));
                 builder8.setCancelable(false);
                 builder8.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -868,17 +818,6 @@ public class DirectDownloader extends ListActivity {
                     }
                 });
                 return builder8.create();
-            case FNC3:
-                Builder builder9 = new AlertDialog.Builder(DirectDownloader.this);
-                builder9.setTitle("FNC RLS3 Gen 1 to Gen 2");
-                builder9.setMessage(Html.fromHtml("<b>Size:</b> MB<br /><b>Recovery:</b> ClockworkMod v5.0.2.0<br /><b>Splash:</b> Normal Android<br /><b>Partitions:</b> 2mb cache, 160mb system, 294mb data, 0.1mb oem"));
-                builder9.setCancelable(false);
-                builder9.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                  	    // Do nothing
-                    }
-                });
-                return builder9.create();
         }
     }
 	
@@ -893,12 +832,16 @@ public class DirectDownloader extends ListActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.support:
-			Intent emailIntent = new Intent(Intent.ACTION_SEND);
-	        emailIntent.setType("plain/text");
-	        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
-	        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
-	        startActivity(emailIntent);
-			break;
+			try {
+    			Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
+                startActivity(emailIntent);
+        		break;
+    		} catch (ActivityNotFoundException e) {
+    			Toast.makeText(DirectDownloader.this, "Unable to send feedback. Make sure you have an email app setup.", Toast.LENGTH_LONG).show();
+    		}
 		/* case R.id.troubleshooting:
 			Intent j = new Intent(HomeActivity.this, Troubleshooting.class);
 			startActivity(j);

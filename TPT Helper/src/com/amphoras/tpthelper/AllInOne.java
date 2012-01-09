@@ -39,6 +39,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.AlertDialog.Builder;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -52,6 +53,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AllInOne extends Activity {
 	SharedPreferences preferences;
@@ -68,10 +70,8 @@ public class AllInOne extends Activity {
 	final File downloadrevertv2 = new File(dir, "download/Gen2-to-Gen1-TPT-v2-stock.zip");
 	final File cm7n257 = new File(dir, "cm7-n257-blade-gen1-to-gen2-tpt.zip");
 	final File downloadcm7n257 = new File(dir, "download/cm7-n257-blade-gen1-to-gen2-tpt.zip");
-	final File mmhmp7 = new File(dir, "Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
-	final File downloadmmhmp7 = new File(dir, "download/Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
-	final File fnc3 = new File(dir, "Gen1-to-Gen2-TPT-FNC-RLS3.zip");
-	final File downloadfnc3 = new File(dir, "download/Gen1-to-Gen2-TPT-FNC-RLS3.zip");
+	final File mmhmp8 = new File(dir, "Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
+	final File downloadmmhmp8 = new File(dir, "download/Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
 	private static ProgressDialog dialog;
 	private String unziplocation = Environment.getExternalStorageDirectory() + "/";
 	private static File nandroid = new File(Environment.getExternalStorageDirectory(), "image/nandroid.md5");
@@ -121,7 +121,7 @@ public class AllInOne extends Activity {
         	Builder builder1 = new AlertDialog.Builder(AllInOne.this);
             builder1.setTitle(R.string.pickallinone);
             builder1.setCancelable(false);
-            final CharSequence[] zips1 = {"Gen 1 to Gen 2 v10a", "Gen1 to Gen2 v10b", "Gen1 to Gen2 v10c", "Gen 1 to Gen 2 v10 stock", "Gen2 to Gen1 v2 stock", "CM7.1 N257 Gen 1 to Gen 2", "MMHMP RLS7 Gen 1 to Gen 2", "FNC RLS3 Gen 1 to Gen 2", cancel};
+            final CharSequence[] zips1 = {"Gen 1 to Gen 2 v10a", "Gen1 to Gen2 v10b", "Gen1 to Gen2 v10c", "Gen 1 to Gen 2 v10 stock", "Gen2 to Gen1 v2 stock", "CM7.1 N257 Gen 1 to Gen 2", "MMHMP RLS8 Gen 1 to Gen 2", cancel};
         	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	Editor editmd5 = preferences.edit();
@@ -231,16 +231,16 @@ public class AllInOne extends Activity {
         	    		}
         	    		break;
         	    	case 6:
-        	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
+        	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
         	    		editdownload.commit();
         				editdownloadint.putInt("downloadint", 6);
         	    		editdownloadint.commit();
-        	    		editmd5.putString("expectedmd5", "6b98a227d59275b45522153853b3304b");
+        	    		editmd5.putString("expectedmd5", "3aac9163152fc7c3444b925099b43f7a");
         	    		editmd5.commit();
-        	    		if (mmhmp7.canRead() == true){
+        	    		if (mmhmp8.canRead() == true){
         	    			showDialog(TPT_FOUND);
         	    		} else {
-        	    			if (downloadmmhmp7.canRead() == true){
+        	    			if (downloadmmhmp8.canRead() == true){
         	    				showDialog(TPT_FOUND);
         	    			} else {
         	    				DownloadFile();
@@ -248,23 +248,6 @@ public class AllInOne extends Activity {
         	    		}
         	    		break;
         	    	case 7:
-        	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-FNC-RLS3.zip");
-        	    		editdownload.commit();
-        				editdownloadint.putInt("downloadint", 7);
-        	    		editdownloadint.commit();
-        	    		editmd5.putString("expectedmd5", "");
-        	    		editmd5.commit();
-        	    		if (fnc3.canRead() == true){
-        	    			showDialog(TPT_FOUND);
-        	    		} else {
-        	    			if (downloadfnc3.canRead() == true){
-        	    				showDialog(TPT_FOUND);
-        	    			} else {
-        	    				DownloadFile();
-        	    			}
-        	    		}
-        	    		break;
-        	    	case 8:
                 		AllInOne.this.finish();
                 		break;
         	    	}
@@ -579,7 +562,7 @@ public class AllInOne extends Activity {
       	    	    AllInOne.this.finish();
       	    		break;
       	    	case 8:
-      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.putString("locale", "cs");
       	    		editlocale.commit();
       	    		Intent q = new Intent(AllInOne.this, HomeActivity.class);
       	    	    startActivity(q);
@@ -635,10 +618,7 @@ public class AllInOne extends Activity {
 			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/cm7-n257-blade-gen1-to-gen2-tpt.zip" });
 			break;
 		case 6:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-MMHMP-RLS7.zip" });
-			break;
-		case 7:
-			task.execute(new String[] { "" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-MMHMP-RLS8.zip" });
 			break;
 		}
 	}
@@ -1172,12 +1152,16 @@ public class AllInOne extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.support:
-			Intent emailIntent = new Intent(Intent.ACTION_SEND);
-	        emailIntent.setType("plain/text");
-	        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
-	        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
-	        startActivity(emailIntent);
-			break;
+			try {
+    			Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
+                startActivity(emailIntent);
+        		break;
+    		} catch (ActivityNotFoundException e) {
+    			Toast.makeText(AllInOne.this, "Unable to send feedback. Make sure you have an email app setup.", Toast.LENGTH_LONG).show();
+    		}
 		/* case R.id.troubleshooting:
 			Intent j = new Intent(HomeActivity.this, Troubleshooting.class);
 			startActivity(j);

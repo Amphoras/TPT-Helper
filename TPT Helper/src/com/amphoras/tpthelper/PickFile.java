@@ -47,10 +47,8 @@ public class PickFile extends Activity {
 	final File downloadrevertv2 = new File(dir, "download/Gen2-to-Gen1-TPT-v2-stock.zip");
 	final File cm7n257 = new File(dir, "cm7-n257-blade-gen1-to-gen2-tpt.zip");
 	final File downloadcm7n257 = new File(dir, "download/cm7-n257-blade-gen1-to-gen2-tpt.zip");
-	final File mmhmp7 = new File(dir, "Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
-	final File downloadmmhmp7 = new File(dir, "download/Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
-	final File fnc3 = new File(dir, "Gen1-to-Gen2-TPT-FNC-RLS3.zip");
-	final File downloadfnc3 = new File(dir, "download/Gen1-to-Gen2-TPT-FNC-RLS3.zip");
+	final File mmhmp8 = new File(dir, "Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
+	final File downloadmmhmp8 = new File(dir, "download/Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
 	private final int PICK_FILE = 1;
 	private final int FILE_UNFOUND = 2;
 	
@@ -72,7 +70,7 @@ public class PickFile extends Activity {
             builder1.setCancelable(false);
             CharSequence cancel = getText(R.string.cancel);
             CharSequence other = getText(R.string.other);
-            final CharSequence[] zips1 = {"Gen 1 to Gen 2 v10a", "Gen1 to Gen2 v10b", "Gen1 to Gen2 v10c", "Gen 1 to Gen 2 v10 stock", "Gen2 to Gen1 v2 stock", "CM7.1 N257 Gen 1 to Gen 2", "MMHMP RLS7 Gen 1 to Gen 2", "FNC RLS3 Gen 1 to Gen 2", other, cancel};
+            final CharSequence[] zips1 = {"Gen 1 to Gen 2 v10a", "Gen1 to Gen2 v10b", "Gen1 to Gen2 v10c", "Gen 1 to Gen 2 v10 stock", "Gen2 to Gen1 v2 stock", "CM7.1 N257 Gen 1 to Gen 2", "MMHMP RLS8 Gen 1 to Gen 2", other, cancel};
         	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	Editor editmd5 = preferences.edit();
@@ -234,62 +232,36 @@ public class PickFile extends Activity {
         	    		}
         	    		break;
         	    	case 6:
-        	    		editmd5.putString("expectedmd5", "6b98a227d59275b45522153853b3304b");
+        	    		editmd5.putString("expectedmd5", "3aac9163152fc7c3444b925099b43f7a");
         	    		editmd5.commit();
-        	    		if (mmhmp7.canRead() == true){
+        	    		if (mmhmp8.canRead() == true){
         	    		    Editor edit = preferences.edit();
-        	    			edit.putString("filepath", "/Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
+        	    			edit.putString("filepath", "/Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
         	    			edit.commit();
         	    	        Intent i = new Intent(PickFile.this, MD5sum.class);
         	    	        startActivity(i);
         	    	        PickFile.this.finish();
         	    		} else {
-        	    			if (downloadmmhmp7.canRead() == true){
+        	    			if (downloadmmhmp8.canRead() == true){
             	    	        Editor edit = preferences.edit();
-            	    		    edit.putString("filepath", "/download/Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
+            	    		    edit.putString("filepath", "/download/Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
             	    			edit.commit();
             	    	        Intent i = new Intent(PickFile.this, MD5sum.class);
             	    	        startActivity(i);
             	    	        PickFile.this.finish();
         	    			} else {
         	    				Editor edit = preferences.edit();
-            	    			edit.putString("filepicked", "Gen1-to-Gen2-TPT-MMHMP-RLS7.zip");
+            	    			edit.putString("filepicked", "Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
             	    			edit.commit();
         	    				showDialog(FILE_UNFOUND);
         	    			}
         	    		}
         	    		break;
         	    	case 7:
-        	    		editmd5.putString("expectedmd5", "");
-        	    		editmd5.commit();
-        	    		if (fnc3.canRead() == true){
-        	    		    Editor edit = preferences.edit();
-        	    			edit.putString("filepath", "/Gen1-to-Gen2-TPT-FNC-RLS3.zip");
-        	    			edit.commit();
-        	    	        Intent i = new Intent(PickFile.this, MD5sum.class);
-        	    	        startActivity(i);
-        	    	        PickFile.this.finish();
-        	    		} else {
-        	    			if (downloadfnc3.canRead() == true){
-            	    	        Editor edit = preferences.edit();
-            	    		    edit.putString("filepath", "/download/Gen1-to-Gen2-TPT-FNC-RLS3.zip");
-            	    			edit.commit();
-            	    	        Intent i = new Intent(PickFile.this, MD5sum.class);
-            	    	        startActivity(i);
-            	    	        PickFile.this.finish();
-        	    			} else {
-        	    				Editor edit = preferences.edit();
-            	    			edit.putString("filepicked", "Gen1-to-Gen2-TPT-FNC-RLS3.zip");
-            	    			edit.commit();
-        	    				showDialog(FILE_UNFOUND);
-        	    			}
-        	    		}
-        	    		break;
-        	    	case 8:
         	    		Intent i = new Intent(PickFile.this, EnterFile.class);
                 		startActivityForResult(i, 1);
                 		break;
-        	    	case 9:
+        	    	case 8:
                 		PickFile.this.finish();
                 		break;
         	    	}

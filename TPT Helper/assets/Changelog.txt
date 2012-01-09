@@ -3,15 +3,15 @@ v2.0
 Added support for ZTE Skate/Orange Monte Carlo.
 Added support for ZTE Blade II/Orange San Francisco II/T-Mobile Vivacity.
 Added support for stock and Windows upgraded gen 2 and 3 European Blades.
-Added support for gen 2 Chinese Blades.
 Attempts to detect phone model (Blade, Skate or Blade II) on first start.
 Attempts to detect type (European/Chinese) and gen (1, 2 or 3) of Blade on first start.
-Should show appropriate TPTs for users model/type/gen.
+Should show appropriate TPTs for users phone model/blade gen.
 Added more all-in-one TPTs for gen 1 and TPT upgraded Blades.
-"Create your own TPT" option now gives much larger choice of partition layouts for all models/types/gens.
+"Create your own TPT" option now gives much larger choice of partition layouts for each phone model/blade gen.
 Updated Spanish and Portuguese translations.
 Added Czech translations.
 Fixed md5sum and unzipping for random files.
+Fix some force closes.
 
 v1.8.3
 

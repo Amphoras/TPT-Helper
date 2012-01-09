@@ -54,6 +54,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class HomeActivity extends ListActivity {
 	SharedPreferences preferences;
@@ -128,6 +129,8 @@ public class HomeActivity extends ListActivity {
 		    	int board = preferences.getInt("board", 1);
 		    	int gen = preferences.getInt("gen", 1);
 		    	String blade2 = preferences.getString("blade2","SF2");
+		    	String type = preferences.getString("blade", "European Blade");
+		    	if (type.equals("European Blade")) {
 		    	switch (position) {
 			      case 0:
 			    	  switch (board) {
@@ -301,6 +304,7 @@ public class HomeActivity extends ListActivity {
 			    	  
 			    	  break;*/
 			    }
+		    	}
 		    }
 	    });
 	}
@@ -321,6 +325,8 @@ public class HomeActivity extends ListActivity {
 		    	int board = preferences.getInt("board", 1);
 		    	int gen = preferences.getInt("gen", 1);
 		    	String blade2 = preferences.getString("blade2", "SF2");
+		    	String type = preferences.getString("blade", "European Blade");
+		    	if (type.equals("European Blade")) {
 		    	switch (position) {
 			      case 0:
 			    	  switch (board) {
@@ -494,6 +500,7 @@ public class HomeActivity extends ListActivity {
 			    	  
 			    	  break;*/
 			    }
+		    	}
 		    }
 		});
 	}
@@ -731,7 +738,7 @@ public class HomeActivity extends ListActivity {
       	    	    HomeActivity.this.finish();
       	    		break;
       	    	case 8:
-      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.putString("locale", "cs");
       	    		editlocale.commit();
       	    		Intent q = new Intent(HomeActivity.this, HomeActivity.class);
       	    	    startActivity(q);
@@ -754,6 +761,7 @@ public class HomeActivity extends ListActivity {
       	      BufferedReader br = new BufferedReader(isr);
       	      StringBuffer buffer = new StringBuffer();
       	      StringBuffer buffer2 = new StringBuffer();
+      	      checked_type: {
       	      for (int i = 1; i < 7; i++) {
       		      String s = br.readLine();
       		      if (s != null) {
@@ -765,10 +773,12 @@ public class HomeActivity extends ListActivity {
       		        	  if (check.equals("System RAM")) {
       		    		      if (s.charAt(0) == '2') {
       				    	      type = "European Blade";
+      				    	      break checked_type;
       				          } 
       		        	  } else {
       				    	  if (s.charAt(0) == '9') {
       				    		  type = "Chinese Blade";
+      				    		  break checked_type;
       				          }
       				      }
       		    	  }
@@ -780,10 +790,17 @@ public class HomeActivity extends ListActivity {
       		        	  if (check.equals("System RAM")) {
       		        		  if (s.charAt(0) == '2') {
       					    	  type = "European Blade";
+      					    	  break checked_type;
       					      }
-      		        	  }
+      		        	  } else {
+    				    	  if (s.charAt(0) == '9') {
+    				    		  type = "Chinese Blade";
+    				    		  break checked_type;
+    				          }
+    				      }
       	    		  }
       		      }
+      	      }
       	      }
       	  } catch (FileNotFoundException e) {
       	    	
@@ -801,36 +818,40 @@ public class HomeActivity extends ListActivity {
       	          Editor edit = preferences.edit();
       	          edit.putString("blade", bladetype);
       	          edit.commit();
-      	          String gen = "";
-                  try {
-              	    File iomem = new File("/proc/iomem");
-              	    FileInputStream fis = new FileInputStream(iomem);
-              	    InputStreamReader isr = new InputStreamReader(fis);
-              	    BufferedReader br = new BufferedReader(isr);
-              	    String s = br.readLine();
-                      if (s != null) {
-                  	      if (s.charAt(2) == '5') {
-              			      gen = "Gen 2";
-              		      } else {
-              			      if (s.charAt(2) == '9') {
-              			          gen = "Gen 1";
-              		          }
-              		      }
-            	      }   
-                  } catch (FileNotFoundException e) {
-              	    	
-                  } catch (IOException e) {
+      	          if (bladetype.equals("European Blade")) {
+      	        	  String gen = "";
+                      try {
+                	      File iomem = new File("/proc/iomem");
+                	      FileInputStream fis = new FileInputStream(iomem);
+                	      InputStreamReader isr = new InputStreamReader(fis);
+                	      BufferedReader br = new BufferedReader(isr);
+                	      String s = br.readLine();
+                          if (s != null) {
+                    	      if (s.charAt(2) == '5') {
+                			      gen = "Gen 2";
+                		      } else {
+                			      if (s.charAt(2) == '9') {
+                			          gen = "Gen 1";
+                		          }
+                		      }
+              	      }   
+                      } catch (FileNotFoundException e) {
+                	    	
+                      } catch (IOException e) {
 
-                  }
-                  if (gen.equals("Gen 1")) {
-                	  showDialog(GEN_1);
-                  } else {
-                	  if (gen.equals("Gen 2")) {
-                    	  showDialog(GEN_2);
-                      } else {
-                    	  showDialog(CHECK_GEN);
                       }
-                  }
+                      if (gen.equals("Gen 1")) {
+                  	      showDialog(GEN_1);
+                      } else {
+                  	      if (gen.equals("Gen 2")) {
+                      	      showDialog(GEN_2);
+                          } else {
+                      	      showDialog(CHECK_GEN);
+                          }
+                      }
+      	          } else {
+      	        	  showDialog(UNSUPPORTED);
+      	          }
               }
           });
           checktypebuilder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
@@ -925,12 +946,12 @@ public class HomeActivity extends ListActivity {
       	    	case 1:
       	    		edit.putString("blade", "Chinese Blade");
         	        edit.commit();
-        	        showDialog(CHECK_GEN);
+        	        showDialog(UNSUPPORTED);
       	    		break;
       	    	case 2:
       	    		edit.putString("blade", "Unknown Blade");
         	        edit.commit();
-        	        showDialog(CHECK_GEN);
+        	        showDialog(UNSUPPORTED);
       	    		break;
       	    	}
       	      }
@@ -940,13 +961,17 @@ public class HomeActivity extends ListActivity {
       	    // tell the user that detected type is being set
           Builder unknowntypebuilder = new AlertDialog.Builder(HomeActivity.this);
           unknowntypebuilder.setTitle(R.string.setting_type_heading);
-          String unknowntype = preferences.getString("blade", "Unknown Blade");
+          final String unknowntype = preferences.getString("blade", "Unknown Blade");
           CharSequence setting_type = getText(R.string.setting_type);
           unknowntypebuilder.setMessage(setting_type + " " + unknowntype);
           unknowntypebuilder.setCancelable(false);
           unknowntypebuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
               public void onClick(DialogInterface dialog, int id) {
-    	          showDialog(CHECK_GEN);
+            	  if (unknowntype.equals("European Blade")) {
+            		  showDialog(CHECK_GEN);
+            	  } else {
+            		  showDialog(UNSUPPORTED);
+            	  }
               }
           });
           return unknowntypebuilder.create();
@@ -1162,12 +1187,16 @@ public class HomeActivity extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
     	switch (item.getItemId()) {
     	case R.id.support:
-    		Intent emailIntent = new Intent(Intent.ACTION_SEND);
-            emailIntent.setType("plain/text");
-            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
-            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
-            startActivity(emailIntent);
-    		break;
+    		try {
+    			Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
+                startActivity(emailIntent);
+        		break;
+    		} catch (ActivityNotFoundException e) {
+    			Toast.makeText(HomeActivity.this, "Unable to send feedback. Make sure you have an email app setup.", Toast.LENGTH_LONG).show();
+    		}
     	/* case R.id.troubleshooting:
     		Intent j = new Intent(HomeActivity.this, Troubleshooting.class);
     		startActivity(j);

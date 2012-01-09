@@ -45,22 +45,22 @@
     <string name="czech">Česky</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Typ Blade</string>
-    <string name="check_type">detected. Is this correct?</string>
+    <string name="check_type">detekován. Je to správně?</string>
     <string name="check_gen_heading">Blade Gen</string>
-    <string name="check_gen">What gen of Blade do you have?</string>
-    <string name="manual_type_heading">Enter Blade Type</string>
-    <string name="setting_type_heading">Setting Blade Type</string>
-    <string name="setting_type">Setting type to</string>
-    <string name="check_board_heading">Phone Type</string>
-    <string name="correct">detected, is this correct?</string>
+    <string name="check_gen">Jaký GEN Blade máte?</string>
+    <string name="manual_type_heading">Vlože typ Blade</string>
+    <string name="setting_type_heading">Nastavení typu Blade</string>
+    <string name="setting_type">Nasatvuji typ na</string>
+    <string name="check_board_heading">Typ telefonu</string>
+    <string name="correct">detekován, je to správně?</string>
     <string name="board_blade">ZTE Blade/Orange San Francisco</string>
     <string name="board_skate">ZTE Skate/Orange Monte Carlo</string>
     <string name="board_blade2">Orange San Francisco II/T-Mobile Vivacity</string>
-    <string name="phone_type_heading">Enter Phone Type</string>
+    <string name="phone_type_heading">Vlože typ telefonu</string>
     <string name="san_francisco_ii">Orange San Francisco II</string>
     <string name="vivacity">T-Mobile Vivacity</string>
-    <string name="unsupported_heading">Unsupported Model</string>
-    <string name="unsupported">Sorry, this device is not currently supported. If you think this is an error, please check your phone model and try again.</string>
+    <string name="unsupported_heading">Nepodporovaný model</string>
+    <string name="unsupported">Promiňte, vaše zařízení není v tuto chvíli podporováno. Jestli si myslíte, že toto je chyba, prosím zkontrolujte typ vašeho telefonu a zkuste to znovu.</string>
     
       <!-- Downloader strings -->
     <string name="standard_tpt_heading">Standard TPTs:</string>
@@ -165,17 +165,17 @@
     <string name="finished">Vaše TPT bylo dokončeno</string>
     <string name="copying">Kopíruji. Prosím čekejte...</string>
     <string name="pick_cache_heading">Cache</string>
-    <string name="pick_cache">Please enter a value between 2 and 60</string>
+    <string name="pick_cache">Prosím vložte hodnotu mezi 2 a 60.</string>
     <string name="pick_system_heading">System</string>
-    <string name="pick_system">Please enter a value between 90 and 220</string>
+    <string name="pick_system">Prosím vlože hodnotu mezi 90 a 220</string>
     <string name="set_userdata_heading">Data</string>
     <string name="set_userdata1">Cache:</string>
     <string name="set_userdata2">MB, System:</string>
     <string name="set_userdata3">MB, and</string>
-    <string name="set_userdata4">MB of space left for data. Do you want to use these sizes?</string>
-    <string name="writing">Writing partitions. Please wait...</string>
-    <string name="building">Building image.bin. Please wait...</string>
-    <string name="pick_gen">Pick the type of TPT you want to make.</string>
+    <string name="set_userdata4">MB místa zbývá pro data. Chcete použít tyto velikosti?</string>
+    <string name="writing">Zapisuji oddíly. Prosím čekejte...</string>
+    <string name="building">Vytvářím image.bin. Prosím čekejte...</string>
+    <string name="pick_gen">Označte typ TPT který chcete vytvořit.</string>
     
       <!-- General strings -->
     <string name="app_name">TPT Helper</string>
@@ -188,8 +188,8 @@
     <string name="options">Nastavení</string>
     <string name="feedback">Zpětná vazba</string>
     <string name="about">O programu</string>
-    <string name="unknown">Unknown</string>
-    <string name="license">License</string>
+    <string name="unknown">Neznámý</string>
+    <string name="license">Licence</string>
     
       <!-- Preferences Strings -->
     <string-array name="model">
@@ -203,16 +203,16 @@
         <item>blade2</item>
     </string-array>
     <string-array name="gen">
-        <item>Gen 1/TPT Upgraded Gen 2</item>
-        <item>Stock Gen 2/3/Windows Upgraded Gen 2</item>
+        <item>GEN1/Upgradovaný pomocí TPT na GEN2</item>
+        <item>Výchozí GEN2/3/GEN2 upgradovaný pomocí Windows</item>
     </string-array>
     <string-array name="gens">
         <item>1</item>
         <item>2</item>
     </string-array>
     <string-array name="type">
-        <item>European ZTE Blade</item>
-        <item>Chinese ZTE Blade</item>
+        <item>Evropský ZTE Blade</item>
+        <item>Čínský ZTE Blade</item>
     </string-array>
     <string-array name="types">
         <item>European Blade</item>
@@ -226,6 +226,6 @@
         <item>SF2</item>
         <item>TMV</item>
     </string-array>
-    <string name="gen_title">ZTE Blade Gen</string>
-    <string name="type_title">ZTE Blade Type</string>
+    <string name="gen_title">GEN ZTE Blade</string>
+    <string name="type_title">Typ ZTE Blade</string>
 </resources>

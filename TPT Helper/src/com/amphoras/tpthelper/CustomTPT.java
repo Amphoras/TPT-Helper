@@ -40,6 +40,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.AlertDialog.Builder;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -54,6 +55,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class CustomTPT extends Activity {
 	SharedPreferences preferences;
@@ -103,12 +105,16 @@ public class CustomTPT extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.support:
-			Intent emailIntent = new Intent(Intent.ACTION_SEND);
-	        emailIntent.setType("plain/text");
-	        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
-	        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
-	        startActivity(emailIntent);
-			break;
+			try {
+    			Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
+                startActivity(emailIntent);
+        		break;
+    		} catch (ActivityNotFoundException e) {
+    			Toast.makeText(CustomTPT.this, "Unable to send feedback. Make sure you have an email app setup.", Toast.LENGTH_LONG).show();
+    		}
 		/* case R.id.troubleshooting:
 			Intent j = new Intent(HomeActivity.this, Troubleshooting.class);
 			startActivity(j);
@@ -478,7 +484,7 @@ public class CustomTPT extends Activity {
       	    	    CustomTPT.this.finish();
       	    		break;
       	    	case 8:
-      	    		editlocale.putString("locale", "sr");
+      	    		editlocale.putString("locale", "cs");
       	    		editlocale.commit();
       	    		Intent q = new Intent(CustomTPT.this, HomeActivity.class);
       	    	    startActivity(q);

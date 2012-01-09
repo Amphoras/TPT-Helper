@@ -33,6 +33,7 @@ import android.app.Dialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.app.AlertDialog.Builder;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -50,6 +51,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
@@ -59,10 +61,10 @@ public class DownloaderVivacity extends ListActivity {
 	final File dir = Environment.getExternalStorageDirectory();
 	final File vivacityv1a = new File(dir, "Vivacity-v1a.zip");
 	final File downloadvivacityv1a = new File(dir, "download/Vivacity-v1a.zip");
-	final File vivacityv1b = new File(dir, "Vivacity-v1a.zip");
-	final File downloadvivacityv1b = new File(dir, "download/Vivacity-v1a.zip");
-	final File vivacityv1c = new File(dir, "Vivacity-v1a.zip");
-	final File downloadvivacityv1c = new File(dir, "download/Vivacity-v1a.zip");
+	final File vivacityv1b = new File(dir, "Vivacity-v1b.zip");
+	final File downloadvivacityv1b = new File(dir, "download/Vivacity-v1b.zip");
+	final File vivacityv1c = new File(dir, "Vivacity-v1c.zip");
+	final File downloadvivacityv1c = new File(dir, "download/Vivacity-v1c.zip");
 	private ArrayList <HashMap<String, Object>> tpts;
 	private static final String tptname = "tptname";
 	private static final String tptlayout = "tptlayout";
@@ -504,7 +506,7 @@ public class DownloaderVivacity extends ListActivity {
           	    	    DownloaderVivacity.this.finish();
           	    		break;
           	    	case 8:
-          	    		editlocale.putString("locale", "sr");
+          	    		editlocale.putString("locale", "cs");
           	    		editlocale.commit();
           	    		Intent q = new Intent(DownloaderVivacity.this, HomeActivity.class);
           	    	    startActivity(q);
@@ -564,12 +566,16 @@ public class DownloaderVivacity extends ListActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.support:
-			Intent emailIntent = new Intent(Intent.ACTION_SEND);
-	        emailIntent.setType("plain/text");
-	        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
-	        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
-	        startActivity(emailIntent);
-			break;
+			try {
+    			Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"tpthelper@amphoras.co.uk"});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "App Feedback");
+                startActivity(emailIntent);
+        		break;
+    		} catch (ActivityNotFoundException e) {
+    			Toast.makeText(DownloaderVivacity.this, "Unable to send feedback. Make sure you have an email app setup.", Toast.LENGTH_LONG).show();
+    		}
 		/* case R.id.troubleshooting:
 			Intent j = new Intent(HomeActivity.this, Troubleshooting.class);
 			startActivity(j);
