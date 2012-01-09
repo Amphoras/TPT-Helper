@@ -176,7 +176,7 @@ public class CustomTPTSkate extends Activity {
         	Builder builder3 = new AlertDialog.Builder(CustomTPTSkate.this);
             builder3.setTitle(R.string.pickmd5);
             builder3.setCancelable(false);
-            final CharSequence[] zips3 = {"ClockworkMod v4.0.1.4", cancel};
+            final CharSequence[] zips3 = {"ClockworkMod v4.0.1.4", "ClockworkMod v4.0.1.5", cancel};
         	builder3.setItems(zips3, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	Editor editrecovery = preferences.edit();
@@ -187,6 +187,11 @@ public class CustomTPTSkate extends Activity {
         	    		showDialog(PICK_CACHE);
         	    		break;
         	    	case 1:
+        	    		editrecovery.putInt("recoverypicked", 2);
+        	    		editrecovery.commit();
+        	    		showDialog(PICK_CACHE);
+        	    		break;
+        	    	case 2:
         	    		CustomTPTSkate.this.finish();
         	    		break;
         	    	}
@@ -627,7 +632,7 @@ public class CustomTPTSkate extends Activity {
 	
 	public void DownloadFile2() {
 		DownloadFileTask2 task = new DownloadFileTask2();
-		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_754252" });
+		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_868928" });
 	}
 	
 	private class DownloadFileTask2 extends AsyncTask<String, String, String> {
@@ -1145,6 +1150,9 @@ public class CustomTPTSkate extends Activity {
 			case 1:
 				CopyAssets("SkateCWMv4.img", "recovery.img");
 				break;
+			case 2:
+				CopyAssets("SkateCWMv4.0.1.5.img", "recovery.img");
+				break;
 			}
 			//switch (system) {
 			//case 1:
@@ -1255,6 +1263,9 @@ public class CustomTPTSkate extends Activity {
 		switch (recovery) {
 		case 1:
 			recoverymd5 = "2aa061fded14f186fffe479b9fc7f3e5";
+			break;
+		case 2:
+			recoverymd5 = "4ce4bc8f8bc93e736e7e0cddf3e2111f";
 			break;
 		}
 		//switch (system) {
