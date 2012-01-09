@@ -153,7 +153,7 @@ public class CustomTPTGen3 extends Activity {
         switch (id) {
         case PICK_SPLASH:
         	Builder builder1 = new AlertDialog.Builder(CustomTPTGen3.this);
-            builder1.setTitle(R.string.pickmd5);
+            builder1.setTitle(R.string.pick_splash);
             builder1.setCancelable(false);
             final CharSequence[] zips1 = {"Normal Android", "Big Android", "CyanogenMod", "Unchanged", cancel};
         	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
@@ -189,7 +189,7 @@ public class CustomTPTGen3 extends Activity {
         	return builder1.create();
         case PICK_RECOVERY:
         	Builder builder3 = new AlertDialog.Builder(CustomTPTGen3.this);
-            builder3.setTitle(R.string.pickmd5);
+            builder3.setTitle(R.string.pick_recovery);
             builder3.setCancelable(false);
             final CharSequence[] zips3 = {"ClockworkMod v5.0.2.0", "ClockWorkMod v3.0.2.4", "PhoTom v4.0.1.5", cancel};
         	builder3.setItems(zips3, new DialogInterface.OnClickListener() {

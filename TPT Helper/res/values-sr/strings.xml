@@ -174,8 +174,10 @@
     <string name="set_userdata3">MB, and</string>
     <string name="set_userdata4">MB of space left for data. Do you want to use these sizes?</string>
     <string name="writing">Writing partitions. Please wait...</string>
-   <string name="building">Building image.bin. Please wait...</string>
+    <string name="building">Building image.bin. Please wait...</string>
     <string name="pick_gen">Pick the type of TPT you want to make.</string>
+    <string name="pick_splash">Pick the splash image to use.</string>
+    <string name="pick_recovery">Pick the recovery version to use.</string>
     
       <!-- General strings -->
     <string name="app_name">TPT Helper</string>

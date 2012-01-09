@@ -153,7 +153,7 @@ public class CustomTPTVivacity extends Activity {
         switch (id) {
         case PICK_SPLASH:
         	Builder builder1 = new AlertDialog.Builder(CustomTPTVivacity.this);
-            builder1.setTitle(R.string.pickmd5);
+            builder1.setTitle(R.string.pick_splash);
             builder1.setCancelable(false);
             final CharSequence[] zips1 = {"Unchanged", cancel};
         	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
@@ -174,7 +174,7 @@ public class CustomTPTVivacity extends Activity {
         	return builder1.create();
         case PICK_RECOVERY:
         	Builder builder3 = new AlertDialog.Builder(CustomTPTVivacity.this);
-            builder3.setTitle(R.string.pickmd5);
+            builder3.setTitle(R.string.pick_recovery);
             builder3.setCancelable(false);
             final CharSequence[] zips3 = {"ClockworkMod v4.0.1.5", "ClockworkMod v5.0.2.7", cancel};
         	builder3.setItems(zips3, new DialogInterface.OnClickListener() {

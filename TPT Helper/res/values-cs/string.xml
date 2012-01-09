@@ -176,6 +176,8 @@
     <string name="writing">Zapisuji oddíly. Prosím čekejte...</string>
     <string name="building">Vytvářím image.bin. Prosím čekejte...</string>
     <string name="pick_gen">Označte typ TPT který chcete vytvořit.</string>
+    <string name="pick_splash">Pick the splash image to use.</string>
+    <string name="pick_recovery">Pick the recovery version to use.</string>
     
       <!-- General strings -->
     <string name="app_name">TPT Helper</string>

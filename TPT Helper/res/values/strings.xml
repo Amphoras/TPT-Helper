@@ -196,6 +196,8 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="writing">Writing partitions. Please wait...</string>
     <string name="building">Building image.bin. Please wait...</string>
     <string name="pick_gen">Pick the type of TPT you want to make.</string>
+    <string name="pick_splash">Pick the splash image to use.</string>
+    <string name="pick_recovery">Pick the recovery version to use.</string>
     
       <!-- General strings -->
     <string name="app_name">TPT Helper</string>
