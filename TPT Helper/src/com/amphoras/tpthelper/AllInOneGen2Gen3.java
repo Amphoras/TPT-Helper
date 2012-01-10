@@ -70,6 +70,8 @@ public class AllInOneGen2Gen3 extends Activity {
 	final File downloadgen3v2a = new File(dir, "download/Gen3-v2a.zip");
 	final File gen3stock = new File(dir, "Gen3-stock.zip");
 	final File downloadgen3stock = new File(dir, "download/Gen3-stock.zip");
+	final File gen2mmhmp8 = new File(dir, "Gen2-MMHMP-RLS8.zip");
+	final File downloadgen2mmhmp8 = new File(dir, "download/Gen2-MMHMP-RLS8.zip");
 	private static ProgressDialog dialog;
 	private String unziplocation = Environment.getExternalStorageDirectory() + "/";
 	private static File nandroid = new File(Environment.getExternalStorageDirectory(), "image/nandroid.md5");
@@ -119,7 +121,7 @@ public class AllInOneGen2Gen3 extends Activity {
         	Builder builder1 = new AlertDialog.Builder(AllInOneGen2Gen3.this);
             builder1.setTitle(R.string.pickallinone);
             builder1.setCancelable(false);
-            final CharSequence[] zips1 = {"Gen2-v1a.zip", "Gen2-v2a.zip", "Gen2-stock.zip", "Gen3-v1a.zip", "Gen3-v2a.zip", "Gen3-stock.zip", cancel};
+            final CharSequence[] zips1 = {"Gen2-v1a.zip", "Gen2-v2a.zip", "Gen2-stock.zip", "Gen3-v1a.zip", "Gen3-v2a.zip", "Gen3-stock.zip", "Gen2-MMHMP-RLS8.zip", cancel};
         	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	Editor editmd5 = preferences.edit();
@@ -229,6 +231,23 @@ public class AllInOneGen2Gen3 extends Activity {
         	    		}
         	    		break;
         	    	case 6:
+        	    		editdownload.putString("downloadpicked", "Gen2-MMHMP-RLS8.zip");
+        	    		editdownload.commit();
+        				editdownloadint.putInt("downloadint", 6);
+        	    		editdownloadint.commit();
+        	    		editmd5.putString("expectedmd5", "b06ed1a5cf139c99c38ed9889edef170");
+        	    		editmd5.commit();
+        	    		if (gen2mmhmp8.canRead() == true){
+        	    			showDialog(TPT_FOUND);
+        	    		} else {
+        	    			if (downloadgen2mmhmp8.canRead() == true){
+        	    				showDialog(TPT_FOUND);
+        	    			} else {
+        	    				DownloadFile();
+        	    			}
+        	    		}
+        	    		break;
+        	    	case 7:
                 		AllInOneGen2Gen3.this.finish();
                 		break;
         	    	}
@@ -597,6 +616,9 @@ public class AllInOneGen2Gen3 extends Activity {
 			break;
 		case 5:
 			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_779071" });
+			break;
+		case 6:
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen2-MMHMP-RLS8.zip" });
 			break;
 		}
 	}

@@ -71,6 +71,8 @@ public class DownloaderGen2Gen3 extends ListActivity {
 	final File downloadgen3v2a = new File(dir, "download/Gen3-v2a.zip");
 	final File gen3stock = new File(dir, "Gen3-stock.zip");
 	final File downloadgen3stock = new File(dir, "download/Gen3-stock.zip");
+	final File gen2mmhmp8 = new File(dir, "Gen2-MMHMP-RLS8.zip");
+	final File downloadgen2mmhmp8 = new File(dir, "download/Gen2-MMHMP-RLS8.zip");
 	private ArrayList <HashMap<String, Object>> tpts;
 	private static final String tptname = "tptname";
 	private static final String tptlayout = "tptlayout";
@@ -85,6 +87,7 @@ public class DownloaderGen2Gen3 extends ListActivity {
 	private final int GEN3V1A = 104;
 	private final int GEN3V2A = 105;
 	private final int GEN3STOCK = 106;
+	private final int GEN2MMHMP8 = 107;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -135,6 +138,18 @@ public class DownloaderGen2Gen3 extends ListActivity {
 	          listitem.put(tptname, "Gen 3 stock");
 	          listitem.put(tptlayout, "37mb cache, 210mb system, 204mb data, 4mb oem");
 	          tpts.add(listitem);
+	          
+	          listitem = new HashMap<String, Object>();
+	          CharSequence allinone_tpt_heading = getText(R.string.allinone_tpt_heading);
+	          CharSequence allinone_tpt = getText(R.string.allinone_tpt);
+	          listitem.put(tptname, allinone_tpt_heading);
+	          listitem.put(tptlayout, allinone_tpt);
+	          tpts.add(listitem);
+	          
+	          listitem = new HashMap<String, Object>();
+	          listitem.put(tptname, "Gen 2 MMHMP RLS8");
+	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS8");
+	          tpts.add(listitem);
 	       
 	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
 	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
@@ -163,6 +178,8 @@ public class DownloaderGen2Gen3 extends ListActivity {
 		      case 6:
 		    	  showDialog(GEN3STOCK);
 		    	  break;
+		      case 8:
+		    	  showDialog(GEN2MMHMP8);
 		      }
 			return false;
 		  }
@@ -257,6 +274,21 @@ public class DownloaderGen2Gen3 extends ListActivity {
 	    			showDialog(FILE_FOUND);
 	    		} else {
 	    			if (downloadgen3stock.canRead() == true){
+	    				showDialog(FILE_FOUND);
+	    			} else {
+	    				DownloadFile();
+	    			}
+	    		}
+	    		break;
+	    	case 8:
+	    		editdownload.putString("downloadpicked", "Gen2-MMHMP-RLS8.zip");
+	    		editdownload.commit();
+				editdownloadint.putInt("downloadint", 6);
+	    		editdownloadint.commit();
+	    		if (gen2mmhmp8.canRead() == true){
+	    			showDialog(FILE_FOUND);
+	    		} else {
+	    			if (downloadgen2mmhmp8.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -314,6 +346,18 @@ public class DownloaderGen2Gen3 extends ListActivity {
 	          listitem.put(tptname, "Gen 3 stock");
 	          listitem.put(tptlayout, "37mb cache, 210mb system, 204mb data, 4mb oem");
 	          tpts.add(listitem);
+	          
+	          listitem = new HashMap<String, Object>();
+	          CharSequence allinone_tpt_heading = getText(R.string.allinone_tpt_heading);
+	          CharSequence allinone_tpt = getText(R.string.allinone_tpt);
+	          listitem.put(tptname, allinone_tpt_heading);
+	          listitem.put(tptlayout, allinone_tpt);
+	          tpts.add(listitem);
+	          
+	          listitem = new HashMap<String, Object>();
+	          listitem.put(tptname, "Gen 2 MMHMP RLS8");
+	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS8");
+	          tpts.add(listitem);
 	       
 	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
 	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
@@ -342,6 +386,8 @@ public class DownloaderGen2Gen3 extends ListActivity {
 		      case 6:
 		    	  showDialog(GEN3STOCK);
 		    	  break;
+		      case 8:
+		    	  showDialog(GEN2MMHMP8);
 		      }
 			return false;
 		  }
@@ -436,6 +482,21 @@ public class DownloaderGen2Gen3 extends ListActivity {
 	    			showDialog(FILE_FOUND);
 	    		} else {
 	    			if (downloadgen3stock.canRead() == true){
+	    				showDialog(FILE_FOUND);
+	    			} else {
+	    				DownloadFile();
+	    			}
+	    		}
+	    		break;
+	    	case 8:
+	    		editdownload.putString("downloadpicked", "Gen2-MMHMP-RLS8.zip");
+	    		editdownload.commit();
+				editdownloadint.putInt("downloadint", 6);
+	    		editdownloadint.commit();
+	    		if (gen2mmhmp8.canRead() == true){
+	    			showDialog(FILE_FOUND);
+	    		} else {
+	    			if (downloadgen2mmhmp8.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -526,6 +587,9 @@ public class DownloaderGen2Gen3 extends ListActivity {
 			break;
 		case 5:
 			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_779071" });
+			break;
+		case 6:
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen2-MMHMP-RLS8.zip" });
 			break;
 		}
 	}
@@ -741,6 +805,17 @@ public class DownloaderGen2Gen3 extends ListActivity {
                     }
                 });
                 return builder6.create();
+            case GEN2MMHMP8:
+                Builder builder7 = new AlertDialog.Builder(DownloaderGen2Gen3.this);
+                builder7.setTitle("Gen 2 MMHMP RLS8");
+                builder7.setMessage(Html.fromHtml("<b>Size:</b> 95.42MB<br /><b>Recovery:</b> ClockworkMod v4.0.1.5<br /><b>Splash:</b> Normal Android<br /><b>Partitions:</b> 2mb cache, 128mb system, 311mb data, 0.1mb oem"));
+                builder7.setCancelable(false);
+                builder7.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    	// Do nothing
+                    }
+                });
+                return builder7.create();
         }
     }
 	

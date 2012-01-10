@@ -130,11 +130,11 @@ public class HomeActivity extends ListActivity {
 		    	int gen = preferences.getInt("gen", 1);
 		    	String blade2 = preferences.getString("blade2","SF2");
 		    	String type = preferences.getString("blade", "European Blade");
-		    	if (type.equals("European Blade")) {
 		    	switch (position) {
 			      case 0:
 			    	  switch (board) {
 			    	  case 1:
+			    		  if (type.equals("European Blade")) {
 			    		  switch (gen) {
 			    		  case 1:
 			    			  Intent gen_1 = new Intent(HomeActivity.this, AllInOne.class);
@@ -144,6 +144,7 @@ public class HomeActivity extends ListActivity {
 			    			  Intent gen_2 = new Intent(HomeActivity.this, AllInOneGen2Gen3.class);
 					          startActivity(gen_2);
 					          break;
+			    		  }
 			    		  }
 			    		  break;
 			    	  case 2:
@@ -166,6 +167,7 @@ public class HomeActivity extends ListActivity {
 			      case 1:
 			    	  switch (board) {
 			    	  case 1:
+			    		  if (type.equals("European Blade")) {
 			    		  switch (gen) {
 			    		  case 1:
 			    			  Intent gen_1 = new Intent(HomeActivity.this, DirectDownloader.class);
@@ -175,6 +177,7 @@ public class HomeActivity extends ListActivity {
 			    			  Intent gen_2 = new Intent(HomeActivity.this, DownloaderGen2Gen3.class);
 					          startActivity(gen_2);
 					          break;
+			    		  }
 			    		  }
 			    		  break;
 			    	  case 2:
@@ -197,6 +200,7 @@ public class HomeActivity extends ListActivity {
 			      case 2:
 			    	  switch (board) {
 			    	  case 1:
+			    		  if (type.equals("European Blade")) {
 			    		  switch (gen) {
 			    		  case 1:
 			    			  Intent gen_1 = new Intent(HomeActivity.this, PickFile.class);
@@ -206,6 +210,7 @@ public class HomeActivity extends ListActivity {
 			    			  Intent gen_2 = new Intent(HomeActivity.this, PickFileGen2Gen3.class);
 					          startActivity(gen_2);
 					          break;
+			    		  }
 			    		  }
 			    		  break;
 			    	  case 2:
@@ -228,6 +233,7 @@ public class HomeActivity extends ListActivity {
 			      case 3:
 			    	  switch (board) {
 			    	  case 1:
+			    		  if (type.equals("European Blade")) {
 			    		  switch (gen) {
 			    		  case 1:
 			    			  Intent gen_1 = new Intent(HomeActivity.this, PickFileUnzip.class);
@@ -237,6 +243,7 @@ public class HomeActivity extends ListActivity {
 			    			  Intent gen_2 = new Intent(HomeActivity.this, PickFileUnzipGen2Gen3.class);
 					          startActivity(gen_2);
 					          break;
+			    		  }
 			    		  }
 			    		  break;
 			    	  case 2:
@@ -266,6 +273,7 @@ public class HomeActivity extends ListActivity {
 			      case 6:
 			    	  switch (board) {
 			    	  case 1:
+			    		  if (type.equals("European Blade")) {
 			    		  switch (gen) {
 			    		  case 1:
 			    			  Intent gen_1 = new Intent(HomeActivity.this, CustomTPT.class);
@@ -275,6 +283,7 @@ public class HomeActivity extends ListActivity {
 			    			  Intent gen_2 = new Intent(HomeActivity.this, CustomTPTGen2Gen3.class);
 					          startActivity(gen_2);
 					          break;
+			    		  }
 			    		  }
 			    		  break;
 			    	  case 2:
@@ -304,7 +313,6 @@ public class HomeActivity extends ListActivity {
 			    	  
 			    	  break;*/
 			    }
-		    	}
 		    }
 	    });
 	}
@@ -324,13 +332,13 @@ public class HomeActivity extends ListActivity {
 		    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		    	int board = preferences.getInt("board", 1);
 		    	int gen = preferences.getInt("gen", 1);
-		    	String blade2 = preferences.getString("blade2", "SF2");
+		    	String blade2 = preferences.getString("blade2","SF2");
 		    	String type = preferences.getString("blade", "European Blade");
-		    	if (type.equals("European Blade")) {
 		    	switch (position) {
 			      case 0:
 			    	  switch (board) {
 			    	  case 1:
+			    		  if (type.equals("European Blade")) {
 			    		  switch (gen) {
 			    		  case 1:
 			    			  Intent gen_1 = new Intent(HomeActivity.this, AllInOne.class);
@@ -340,6 +348,7 @@ public class HomeActivity extends ListActivity {
 			    			  Intent gen_2 = new Intent(HomeActivity.this, AllInOneGen2Gen3.class);
 					          startActivity(gen_2);
 					          break;
+			    		  }
 			    		  }
 			    		  break;
 			    	  case 2:
@@ -362,6 +371,7 @@ public class HomeActivity extends ListActivity {
 			      case 1:
 			    	  switch (board) {
 			    	  case 1:
+			    		  if (type.equals("European Blade")) {
 			    		  switch (gen) {
 			    		  case 1:
 			    			  Intent gen_1 = new Intent(HomeActivity.this, DirectDownloader.class);
@@ -371,6 +381,7 @@ public class HomeActivity extends ListActivity {
 			    			  Intent gen_2 = new Intent(HomeActivity.this, DownloaderGen2Gen3.class);
 					          startActivity(gen_2);
 					          break;
+			    		  }
 			    		  }
 			    		  break;
 			    	  case 2:
@@ -393,6 +404,7 @@ public class HomeActivity extends ListActivity {
 			      case 2:
 			    	  switch (board) {
 			    	  case 1:
+			    		  if (type.equals("European Blade")) {
 			    		  switch (gen) {
 			    		  case 1:
 			    			  Intent gen_1 = new Intent(HomeActivity.this, PickFile.class);
@@ -402,6 +414,7 @@ public class HomeActivity extends ListActivity {
 			    			  Intent gen_2 = new Intent(HomeActivity.this, PickFileGen2Gen3.class);
 					          startActivity(gen_2);
 					          break;
+			    		  }
 			    		  }
 			    		  break;
 			    	  case 2:
@@ -424,6 +437,7 @@ public class HomeActivity extends ListActivity {
 			      case 3:
 			    	  switch (board) {
 			    	  case 1:
+			    		  if (type.equals("European Blade")) {
 			    		  switch (gen) {
 			    		  case 1:
 			    			  Intent gen_1 = new Intent(HomeActivity.this, PickFileUnzip.class);
@@ -433,6 +447,7 @@ public class HomeActivity extends ListActivity {
 			    			  Intent gen_2 = new Intent(HomeActivity.this, PickFileUnzipGen2Gen3.class);
 					          startActivity(gen_2);
 					          break;
+			    		  }
 			    		  }
 			    		  break;
 			    	  case 2:
@@ -462,6 +477,7 @@ public class HomeActivity extends ListActivity {
 			      case 6:
 			    	  switch (board) {
 			    	  case 1:
+			    		  if (type.equals("European Blade")) {
 			    		  switch (gen) {
 			    		  case 1:
 			    			  Intent gen_1 = new Intent(HomeActivity.this, CustomTPT.class);
@@ -471,6 +487,7 @@ public class HomeActivity extends ListActivity {
 			    			  Intent gen_2 = new Intent(HomeActivity.this, CustomTPTGen2Gen3.class);
 					          startActivity(gen_2);
 					          break;
+			    		  }
 			    		  }
 			    		  break;
 			    	  case 2:
@@ -500,9 +517,8 @@ public class HomeActivity extends ListActivity {
 			    	  
 			    	  break;*/
 			    }
-		    	}
 		    }
-		});
+	    });
 	}
     
     @Override
