@@ -808,7 +808,7 @@ public class DownloaderGen2Gen3 extends ListActivity {
             case GEN2MMHMP8:
                 Builder builder7 = new AlertDialog.Builder(DownloaderGen2Gen3.this);
                 builder7.setTitle("Gen 2 MMHMP RLS8");
-                builder7.setMessage(Html.fromHtml("<b>Size:</b> 95.42MB<br /><b>Recovery:</b> ClockworkMod v4.0.1.5<br /><b>Splash:</b> Normal Android<br /><b>Partitions:</b> 2mb cache, 128mb system, 311mb data, 0.1mb oem"));
+                builder7.setMessage(Html.fromHtml("<b>Size:</b> 95.86MB<br /><b>Recovery:</b> ClockworkMod v4.0.1.5<br /><b>Splash:</b> Normal Android<br /><b>Partitions:</b> 2mb cache, 128mb system, 311mb data, 0.1mb oem"));
                 builder7.setCancelable(false);
                 builder7.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
