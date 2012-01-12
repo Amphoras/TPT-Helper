@@ -4,7 +4,7 @@
     <string-array name="options">
         <item>Vše v jednom</item>
         <item>Stáhnout TPT</item>
-        <item>Zkontrolovat Md5SUM</item>
+        <item>Zkontrolovat Md5sum</item>
         <item>Rozbalit soubor</item>
         <item>Zkontrolovat složku s image</item>
         <item>Start TPT</item>
@@ -14,12 +14,12 @@
         <!-- <item>Testuji</item> -->
     </string-array>
       <!-- HomeActivity disclaimer strings -->
-    <string name="disclaimer_heading">zrušit</string>
+    <string name="disclaimer_heading">Upozornění</string>
     <string name="disclaimer">Tuto aplikaci používáte na své vlastní riziko. Autor nenese žádnou odpovědnost za případné škody!</string>
     <string name="accept">Potvrdit</string>
       <!-- HomeActivity start TPT strings -->
     <string name="power_off">Vypnout</string>
-    <string name="start_tpt">Když je telefon zapnout, držte "volume+ a menu a zmáčkněte tlačítko pro start TPT</string>
+    <string name="start_tpt">Když je telefon vypnut, držte "volume+" a "menu" a zmáčkněte tlačítko zapínání pro start TPT</string>
       <!-- HomeActivity delete image strings -->
     <string name="delete_image_heading">Smazat image</string>
     <string name="delete_image">Jste si jisti, že chcete smazat složku s image a vše co obsahuje?</string>
@@ -76,7 +76,7 @@
     <string name="pick_download">Vyberte soubor ke stažení</string>
     <string name="file_there_heading">Soubor na SD kartě</string>
     <string name="file_there1">Nalezeno</string>
-    <string name="file_there2">už je na SD kartě. Chcete ho stáhnout znova?</string>
+    <string name="file_there2">už je na SD kartě. Chcete ho stáhnout znovu?</string>
     <string name="download_failed_heading">Stahování se nezdařilo</string>
     <string name="download_failed">Chyba při stahování</string>
     
@@ -102,7 +102,7 @@
     <string name="unzip_file">Zkouším rozbalit.</string>
     
       <!-- EnterFile strings -->
-    <string name="askfile">Prosím zadejte jméno souboru a potom stiskněte enter (soubor musí být na SD kartě)</string>
+    <string name="askfile">Prosím zadejte jméno souboru a poté stiskněte enter (soubor musí být na SD kartě)</string>
     <string name="enterfile">Enter</string>
     <string name="unfound1">Nemohu najít \'</string>
     <string name="unfound2">\' Prosím zkontrolujte a poté zkuste znova.</string>
@@ -131,13 +131,13 @@
     <string name="pickallinone">Vložte soubor pro použití</string>
     
       <!-- Instructions strings -->
-    <string name="instructions">Jak používat?</string>
+    <string name="instructions">Jak používat TPT Helper?</string>
     <string name="instruction1">1. Stáhněte TPT</string>
     <string name="instruction2">2. Zkontrolujte MD5sum</string>
     <string name="instruction3">3. Rozbalte TPT</string>
     <string name="instruction4">4. Zkontrolujte obash složky s image</string>
     <string name="instruction5">5. Vypněte telefon</string>
-    <string name="instruction6">6. Držte Volume+ a Menu a siskněte zapínací tlačítko</string>
+    <string name="instruction6">6. Držte Volume+ a Menu a stiskněte zapínací tlačítko</string>
     <string name="instruction7">Jestliže použijete standartní TPT:</string>
     <string name="instruction8">7. Na displeji by měl být zelený text a poté by měl telefon nabootovat do recovery</string>
     <string name="instruction9">8. Nainstalujte vybranou ROM z recovery a restartujte</string>
@@ -145,12 +145,12 @@
     <string name="instruction11">7.  Na displeji by měl být zelený text a poté by měl telefon nabootovat do vaší ROM</string>
     
       <!-- Troubleshooting strings -->
-    <string name="troubleshooting1">Q. I pressed the power off button, but nothing happened.</string>
-    <string name="troubleshooting2">A. You need root (superuser) for this option to work. If you have root and granted su permissions, try unchecking the Auto Power-off option in the Options menu.</string>
-    <string name="troubleshooting3">Q. I followed all the steps and tried to flash the TPT, but now I\'m stuck at the green android.</string>
-    <string name="troubleshooting4">A. You\'re probably in fastboot mode. Trying holding menu and vol+ and try flashing again.</string>
-    <string name="troubleshooting5">Q. I downloaded and unzipped a TPT, but some of the files don\'t match.</string>
-    <string name="troubleshooting6">A. The download may have been corrupted, try downloading again and if they still don\'t match use the feedback email and give details of which file you downloaded and which files don\'t match.</string>
+    <string name="troubleshooting1">Q. Stiknul jsem zapínací tlačítko, ale nic se nestalo.</string>
+    <string name="troubleshooting2">A. Potřebujete root (superuser), aby tato funkce fungovala. Jestliže máte root a přidělil jste superuživatelské oprávnění, zkuste vypnout možnost automatického vypínání v menu Nastavení.</string>
+    <string name="troubleshooting3">Q. Postupoval jsem podle všech kroků a zkusil jsem flashnout TPT, ale teď se telefon zasekne na obrázku zeleného Androida.</string>
+    <string name="troubleshooting4">A. Pravděpodobně jste ve fastboot módu. Zkuste držet Vol+ a Menu a zkuste začít flashování znovu.</string>
+    <string name="troubleshooting5">Q. Stáhnul a rozbalil jsem soubory TPT, ale některé soubory se neshodují.</string>
+    <string name="troubleshooting6">A. Stáhnuté soubory mohou být poškozené, zkuste stáhnout soubory znovu a jestliže se opět nebudou shodovat, prosím napište email pomocí tlačítka "Zpětná vazba" a napiště jaké soubory jste stáhl které se neshodují.</string>
     <string name="troubleshooting7"></string>
     <string name="troubleshooting8"></string>
     <string name="troubleshooting9"></string>
