@@ -34,6 +34,7 @@ German translations by FelixL.
 Russian translations by top4ek.
 Chinese translations by wuxipaopao.
 Serbian translations by Sokobeg.
+Czech translations by dejf.
 
 Auto TPT Mode:
 Auto TPT mode is currently a work in progress. It is confirmed working on Ginger Stir Fry and CAE. It should also work on any ZTE rom or roms based on these (Swedish Spring etc.).
