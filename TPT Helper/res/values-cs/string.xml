@@ -4,7 +4,7 @@
     <string-array name="options">
         <item>Vše v jednom</item>
         <item>Stáhnout TPT</item>
-        <item>Zkontrolovat Md5sum</item>
+        <item>Zkontrolovat MD5sum</item>
         <item>Rozbalit soubor</item>
         <item>Zkontrolovat složku s image</item>
         <item>Start TPT</item>
@@ -15,16 +15,16 @@
     </string-array>
       <!-- HomeActivity disclaimer strings -->
     <string name="disclaimer_heading">Upozornění</string>
-    <string name="disclaimer">Tuto aplikaci používáte na své vlastní riziko. Autor nenese žádnou odpovědnost za případné škody!</string>
+    <string name="disclaimer">Tuto aplikaci používáte na své vlastní riziko. Autor nenese žádnou zodpovědnost za případné škody!</string>
     <string name="accept">Potvrdit</string>
       <!-- HomeActivity start TPT strings -->
     <string name="power_off">Vypnout</string>
     <string name="start_tpt">Když je telefon vypnut, držte "volume+" a "menu" a zmáčkněte tlačítko zapínání pro start TPT</string>
       <!-- HomeActivity delete image strings -->
-    <string name="delete_image_heading">Smazat image</string>
-    <string name="delete_image">Jste si jisti, že chcete smazat složku s image a vše co obsahuje?</string>
+    <string name="delete_image_heading">Smazat složku image</string>
+    <string name="delete_image">Jste si jisti, že chcete smazat složku image a vše co obsahuje?</string>
     <string name="deleting">Mažu. Prosím čekejte...</string>
-    <string name="image_deleted">Složka s image byla úspěšně smazána</string>
+    <string name="image_deleted">Složka image byla úspěšně smazána</string>
       <!-- HomeActivity low battery strings -->
     <string name="low_battery_heading">Baterie je skoro vybita</string>
     <string name="low_battery">Baterie je nabita méně než z 25%, opravdu chcete začít TPT?</string>
@@ -63,7 +63,7 @@
     <string name="unsupported">Promiňte, vaše zařízení není v tuto chvíli podporováno. Jestli si myslíte, že toto je chyba, prosím zkontrolujte typ vašeho telefonu a zkuste to znovu.</string>
     
       <!-- Downloader strings -->
-    <string name="standard_tpt_heading">Standard TPTs:</string>
+    <string name="standard_tpt_heading">Standartní TPT:</string>
     <string name="standard_tpt">Převést, ale nezahrnout ROM</string>
     <string name="allinone_tpt_heading">Vše v jednom TPT:</string>
     <string name="allinone_tpt">Převést a nahrát ROM v jednom kroku</string>
@@ -72,7 +72,7 @@
       <!-- DirectDownloader strings -->  
     <string name="downloading">Stahování...</string>
     <string name="download_finished_heading">Stahování dokončeno</string>
-    <string name="download_finished">Stahování úspěšně dokončeno</string>
+    <string name="download_finished">Stahování bylo úspěšně dokončeno</string>
     <string name="pick_download">Vyberte soubor ke stažení</string>
     <string name="file_there_heading">Soubor na SD kartě</string>
     <string name="file_there1">Nalezeno</string>
@@ -102,7 +102,7 @@
     <string name="unzip_file">Zkouším rozbalit.</string>
     
       <!-- EnterFile strings -->
-    <string name="askfile">Prosím zadejte jméno souboru a poté stiskněte enter (soubor musí být na SD kartě)</string>
+    <string name="askfile">Prosím zadejte jméno souboru a poté stiskněte "enter" (soubor musí být na SD kartě)</string>
     <string name="enterfile">Enter</string>
     <string name="unfound1">Nemohu najít \'</string>
     <string name="unfound2">\' Prosím zkontrolujte a poté zkuste znova.</string>
@@ -116,7 +116,7 @@
     <string name="no_of_matches">Počet shod:</string>
     <string name="files_not_found">Soubory nenalezeny</string>
     <string name="file_not_found">Soubor nenalezen</string>
-    <string name="no_nandroid">Nemohu najít nandroid.md5 ve složce s image, prosím zkontrolujte jeho existenci a zkuste to znovu.</string>
+    <string name="no_nandroid">Nemohu najít nandroid.md5 ve složce s image, prosím zkontrolujte, jestli se nacházi ve složce image a zkuste to znovu.</string>
     <string name="verifying">Ověřování. Prosím čekejte...</string>
     
       <!-- AllInOne strings -->
@@ -124,7 +124,7 @@
     <string name="unzipdoneaio">Výsledek rozbalování:</string>
     <string name="downloadresultaio">Výsledek stahování:</string>
     <string name="md5_mismatch_heading">MD5sum se neshoduje!</string>
-    <string name="md5_mismatch">MD5sum se neshoduje. Chcete znovu začít stahování?</string>
+    <string name="md5_mismatch">MD5sum se neshoduje. Chcete začít stahování znovu?</string>
     <string name="unzip_fail">Rozbalování selhalo. Zastavuji.</string>
     <string name="no_nandroid2">Nemohu najít nandroid.md5 ve složce s image. Zastavuji.</string>
     <string name="working">Pracuji. Prosím čekejte...</string>
@@ -139,7 +139,7 @@
     <string name="instruction5">5. Vypněte telefon</string>
     <string name="instruction6">6. Držte Volume+ a Menu a stiskněte zapínací tlačítko</string>
     <string name="instruction7">Jestliže použijete standartní TPT:</string>
-    <string name="instruction8">7. Na displeji by měl být zelený text a poté by měl telefon nabootovat do recovery</string>
+    <string name="instruction8">7. Na displeji by se měl objevit zelený text a poté by měl telefon nabootovat do recovery</string>
     <string name="instruction9">8. Nainstalujte vybranou ROM z recovery a restartujte</string>
     <string name="instruction10">Jestliže použijete "Vše v jednom TPT":</string>
     <string name="instruction11">7.  Na displeji by měl být zelený text a poté by měl telefon nabootovat do vaší ROM</string>
@@ -150,7 +150,7 @@
     <string name="troubleshooting3">Q. Postupoval jsem podle všech kroků a zkusil jsem flashnout TPT, ale teď se telefon zasekne na obrázku zeleného Androida.</string>
     <string name="troubleshooting4">A. Pravděpodobně jste ve fastboot módu. Zkuste držet Vol+ a Menu a zkuste začít flashování znovu.</string>
     <string name="troubleshooting5">Q. Stáhnul a rozbalil jsem soubory TPT, ale některé soubory se neshodují.</string>
-    <string name="troubleshooting6">A. Stáhnuté soubory mohou být poškozené, zkuste stáhnout soubory znovu a jestliže se opět nebudou shodovat, prosím napište email pomocí tlačítka "Zpětná vazba" a napiště jaké soubory jste stáhl které se neshodují.</string>
+    <string name="troubleshooting6">A. Stáhnuté soubory mohou být poškozené, zkuste stáhnout soubory znovu a jestliže se soubory opět nebudou shodovat, prosím napište email pomocí tlačítka "Zpětná vazba", ve zprávě napište jaké soubory jste stáhl a které se neshodují (anglicky).</string>
     <string name="troubleshooting7"></string>
     <string name="troubleshooting8"></string>
     <string name="troubleshooting9"></string>
@@ -161,8 +161,8 @@
     <string name="changelog">Novinky</string>
     
       <!-- CustomTPT strings -->
-    <string name="finished_heading">TPT dokončeno</string>
-    <string name="finished">Vaše TPT bylo dokončeno</string>
+    <string name="finished_heading">Dokončeno!</string>
+    <string name="finished">Flash TPT byl dokončen</string>
     <string name="copying">Kopíruji. Prosím čekejte...</string>
     <string name="pick_cache_heading">Cache</string>
     <string name="pick_cache">Prosím vložte hodnotu mezi 2 a 60.</string>
@@ -172,12 +172,12 @@
     <string name="set_userdata1">Cache:</string>
     <string name="set_userdata2">MB, System:</string>
     <string name="set_userdata3">MB, and</string>
-    <string name="set_userdata4">MB místa zbývá pro data. Chcete použít tyto velikosti?</string>
+    <string name="set_userdata4">MB místa zbývá pro data. Chcete použít tyto velikosti oddílů?</string>
     <string name="writing">Zapisuji oddíly. Prosím čekejte...</string>
     <string name="building">Vytvářím image.bin. Prosím čekejte...</string>
-    <string name="pick_gen">Označte typ TPT který chcete vytvořit.</string>
-    <string name="pick_splash">Označte splash image který chcete použít.</string>
-    <string name="pick_recovery">Označte verzi recovery kterou chcete použít.</string>
+    <string name="pick_gen">Vyberte typ TPT který chcete vytvořit.</string>
+    <string name="pick_splash">Vyberte typ splashe.</string>
+    <string name="pick_recovery">Vyberte verzi recovery, kterou chcete použít.</string>
     
       <!-- General strings -->
     <string name="app_name">TPT Helper</string>
@@ -205,8 +205,8 @@
         <item>blade2</item>
     </string-array>
     <string-array name="gen">
-        <item>GEN1/Upgradovaný pomocí TPT na GEN2</item>
-        <item>Výchozí GEN2/3/GEN2 upgradovaný pomocí Windows</item>
+        <item>GEN1 nebo GEN2 upgradovaný pomocí TPT</item>
+        <item>Výchozí GEN2, GEN3 nebo GEN2 upgradovaný pomocí Windows</item>
     </string-array>
     <string-array name="gens">
         <item>1</item>
