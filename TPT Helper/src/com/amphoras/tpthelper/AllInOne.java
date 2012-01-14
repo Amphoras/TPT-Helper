@@ -70,8 +70,8 @@ public class AllInOne extends Activity {
 	final File downloadrevertv2 = new File(dir, "download/Gen2-to-Gen1-TPT-v2-stock.zip");
 	final File cm7n257 = new File(dir, "cm7-n257-blade-gen1-to-gen2-tpt.zip");
 	final File downloadcm7n257 = new File(dir, "download/cm7-n257-blade-gen1-to-gen2-tpt.zip");
-	final File mmhmp8 = new File(dir, "Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
-	final File downloadmmhmp8 = new File(dir, "download/Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
+	final File mmhmp9 = new File(dir, "Gen1-to-Gen2-TPT-MMHMP-RLS9.zip");
+	final File downloadmmhmp9 = new File(dir, "download/Gen1-to-Gen2-TPT-MMHMP-RLS9.zip");
 	private static ProgressDialog dialog;
 	private String unziplocation = Environment.getExternalStorageDirectory() + "/";
 	private static File nandroid = new File(Environment.getExternalStorageDirectory(), "image/nandroid.md5");
@@ -121,7 +121,7 @@ public class AllInOne extends Activity {
         	Builder builder1 = new AlertDialog.Builder(AllInOne.this);
             builder1.setTitle(R.string.pickallinone);
             builder1.setCancelable(false);
-            final CharSequence[] zips1 = {"Gen 1 to Gen 2 v10a", "Gen1 to Gen2 v10b", "Gen1 to Gen2 v10c", "Gen 1 to Gen 2 v10 stock", "Gen2 to Gen1 v2 stock", "CM7.1 N257 Gen 1 to Gen 2", "MMHMP RLS8 Gen 1 to Gen 2", cancel};
+            final CharSequence[] zips1 = {"Gen 1 to Gen 2 v10a", "Gen1 to Gen2 v10b", "Gen1 to Gen2 v10c", "Gen 1 to Gen 2 v10 stock", "Gen2 to Gen1 v2 stock", "CM7.1 N257 Gen 1 to Gen 2", "MMHMP RLS9 Gen 1 to Gen 2", cancel};
         	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	Editor editmd5 = preferences.edit();
@@ -231,16 +231,16 @@ public class AllInOne extends Activity {
         	    		}
         	    		break;
         	    	case 6:
-        	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
+        	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS9.zip");
         	    		editdownload.commit();
         				editdownloadint.putInt("downloadint", 6);
         	    		editdownloadint.commit();
-        	    		editmd5.putString("expectedmd5", "3aac9163152fc7c3444b925099b43f7a");
+        	    		editmd5.putString("expectedmd5", "c318d936c68d5588284a9352f08d5876");
         	    		editmd5.commit();
-        	    		if (mmhmp8.canRead() == true){
+        	    		if (mmhmp9.canRead() == true){
         	    			showDialog(TPT_FOUND);
         	    		} else {
-        	    			if (downloadmmhmp8.canRead() == true){
+        	    			if (downloadmmhmp9.canRead() == true){
         	    				showDialog(TPT_FOUND);
         	    			} else {
         	    				DownloadFile();
@@ -618,7 +618,7 @@ public class AllInOne extends Activity {
 			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/cm7-n257-blade-gen1-to-gen2-tpt.zip" });
 			break;
 		case 6:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-MMHMP-RLS8.zip" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-MMHMP-RLS9.zip" });
 			break;
 		}
 	}

@@ -71,8 +71,8 @@ public class DirectDownloader extends ListActivity {
 	final File downloadrevertv2 = new File(dir, "download/Gen2-to-Gen1-TPT-v2-stock.zip");
 	final File cm7n257 = new File(dir, "cm7-n257-blade-gen1-to-gen2-tpt.zip");
 	final File downloadcm7n257 = new File(dir, "download/cm7-n257-blade-gen1-to-gen2-tpt.zip");
-	final File mmhmp8 = new File(dir, "Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
-	final File downloadmmhmp8 = new File(dir, "download/Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
+	final File mmhmp9 = new File(dir, "Gen1-to-Gen2-TPT-MMHMP-RLS9.zip");
+	final File downloadmmhmp9 = new File(dir, "download/Gen1-to-Gen2-TPT-MMHMP-RLS9.zip");
 	private ArrayList <HashMap<String, Object>> tpts;
 	private static final String tptname = "tptname";
 	private static final String tptlayout = "tptlayout";
@@ -87,7 +87,7 @@ public class DirectDownloader extends ListActivity {
 	private final int V10STOCK = 104;
 	private final int V2REVERT = 105;
 	private final int CM7N257 = 106;
-	private final int MMHMP8 = 107;
+	private final int MMHMP9 = 107;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -147,8 +147,8 @@ public class DirectDownloader extends ListActivity {
 	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "MMHMP RLS8 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS8");
+	          listitem.put(tptname, "MMHMP RLS9 Gen 1 to Gen 2");
+	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS9");
 	          tpts.add(listitem);
 	       
 	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
@@ -179,7 +179,7 @@ public class DirectDownloader extends ListActivity {
 		    	  showDialog(CM7N257);
 				  break;
 		      case 8:
-		    	  showDialog(MMHMP8);
+		    	  showDialog(MMHMP9);
 				  break;
 		      }
 			return false;
@@ -282,14 +282,14 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 8:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS9.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 6);
 	    		editdownloadint.commit();
-	    		if (mmhmp8.canRead() == true){
+	    		if (mmhmp9.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadmmhmp8.canRead() == true){
+	    			if (downloadmmhmp9.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -356,8 +356,8 @@ public class DirectDownloader extends ListActivity {
 	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "MMHMP RLS8 Gen 1 to Gen 2");
-	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS8");
+	          listitem.put(tptname, "MMHMP RLS9 Gen 1 to Gen 2");
+	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS9");
 	          tpts.add(listitem);
 	       
 	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
@@ -388,7 +388,7 @@ public class DirectDownloader extends ListActivity {
 		    	  showDialog(CM7N257);
 				  break;
 		      case 8:
-		    	  showDialog(MMHMP8);
+		    	  showDialog(MMHMP9);
 				  break;
 		      }
 			return false;
@@ -491,14 +491,14 @@ public class DirectDownloader extends ListActivity {
 	    		}
 	    		break;
 	    	case 8:
-	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS8.zip");
+	    		editdownload.putString("downloadpicked", "Gen1-to-Gen2-TPT-MMHMP-RLS9.zip");
 	    		editdownload.commit();
 				editdownloadint.putInt("downloadint", 6);
 	    		editdownloadint.commit();
-	    		if (mmhmp8.canRead() == true){
+	    		if (mmhmp9.canRead() == true){
 	    			showDialog(FILE_FOUND);
 	    		} else {
-	    			if (downloadmmhmp8.canRead() == true){
+	    			if (downloadmmhmp9.canRead() == true){
 	    				showDialog(FILE_FOUND);
 	    			} else {
 	    				DownloadFile();
@@ -591,7 +591,7 @@ public class DirectDownloader extends ListActivity {
 			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/cm7-n257-blade-gen1-to-gen2-tpt.zip" });
 			break;
 		case 6:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-MMHMP-RLS8.zip" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-MMHMP-RLS9.zip" });
 			break;
 		}
 	}
@@ -807,10 +807,10 @@ public class DirectDownloader extends ListActivity {
                     }
                 });
                 return builder6.create();
-            case MMHMP8:
+            case MMHMP9:
                 Builder builder8 = new AlertDialog.Builder(DirectDownloader.this);
-                builder8.setTitle("MMHMP RLS8 Gen 1 to Gen 2");
-                builder8.setMessage(Html.fromHtml("<b>Size:</b> 95.42MB<br /><b>Recovery:</b> ClockworkMod v4.0.1.5<br /><b>Splash:</b> Normal Android<br /><b>Partitions:</b> 2mb cache, 138mb system, 316mb data, 0.1mb oem"));
+                builder8.setTitle("MMHMP RLS9 Gen 1 to Gen 2");
+                builder8.setMessage(Html.fromHtml("<b>Size:</b> 96.06MB<br /><b>Recovery:</b> ClockworkMod v4.0.1.5<br /><b>Splash:</b> Normal Android<br /><b>Partitions:</b> 2mb cache, 138mb system, 316mb data, 0.1mb oem"));
                 builder8.setCancelable(false);
                 builder8.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

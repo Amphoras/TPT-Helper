@@ -45,10 +45,10 @@ public class PickFileGen2Gen3 extends Activity {
 	final File downloadgen3v1a = new File(dir, "download/Gen3-v1a.zip");
 	final File gen3v2a = new File(dir, "Gen3-v2a.zip");
 	final File downloadgen3v2a = new File(dir, "download/Gen3-v2a.zip");
-	final File gen3stock = new File(dir, "Gen3-stock.zip");
-	final File downloadgen3stock = new File(dir, "download/Gen3-stock.zip.zip");
-	final File gen2mmhmp8 = new File(dir, "Gen2-MMHMP-RLS8.zip");
-	final File downloadgen2mmhmp8 = new File(dir, "download/Gen2-MMHMP-RLS8.zip");
+	//final File gen3stock = new File(dir, "Gen3-stock.zip");
+	//final File downloadgen3stock = new File(dir, "download/Gen3-stock.zip.zip");
+	final File gen2mmhmp9 = new File(dir, "Gen2-MMHMP-RLS9.zip");
+	final File downloadgen2mmhmp9 = new File(dir, "download/Gen2-MMHMP-RLS9.zip");
 	private final int PICK_FILE = 1;
 	private final int FILE_UNFOUND = 2;
 	
@@ -70,7 +70,7 @@ public class PickFileGen2Gen3 extends Activity {
             builder1.setCancelable(false);
             CharSequence cancel = getText(R.string.cancel);
             CharSequence other = getText(R.string.other);
-            final CharSequence[] zips1 = {"Gen2-v1a.zip", "Gen2-v2a.zip", "Gen2-stock.zip", "Gen3-v1a.zip", "Gen3-v2a.zip", "Gen3-stock.zip", "Gen2-MMHMP-RLS8.zip", other, cancel};
+            final CharSequence[] zips1 = {"Gen2-v1a.zip", "Gen2-v2a.zip", "Gen2-stock.zip", "Gen3-v1a.zip", "Gen3-v2a.zip", /*"Gen3-stock.zip",*/ "Gen2-MMHMP-RLS9.zip", other, cancel};
         	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	Editor editmd5 = preferences.edit();
@@ -205,7 +205,7 @@ public class PickFileGen2Gen3 extends Activity {
         	    			}
         	    		}
         	    		break;
-        	    	case 5:
+        	    	/*case 5:
         	    		editmd5.putString("expectedmd5", "4e8d9c15ac2e640e805fcfdaa44b0579");
         	    		editmd5.commit();
         	    		if (gen3stock.canRead() == true){
@@ -230,38 +230,38 @@ public class PickFileGen2Gen3 extends Activity {
         	    				showDialog(FILE_UNFOUND);
         	    			}
         	    		}
-        	    		break;
-        	    	case 6:
-        	    		editmd5.putString("expectedmd5", "b06ed1a5cf139c99c38ed9889edef170");
+        	    		break;*/
+        	    	case 5:
+        	    		editmd5.putString("expectedmd5", "14e38fc044fc3eced6955121c7a0bfd2");
         	    		editmd5.commit();
-        	    		if (gen2mmhmp8.canRead() == true){
+        	    		if (gen2mmhmp9.canRead() == true){
         	    		    Editor edit = preferences.edit();
-        	    			edit.putString("filepath", "/Gen2-MMHMP-RLS8.zip");
+        	    			edit.putString("filepath", "/Gen2-MMHMP-RLS9.zip");
         	    			edit.commit();
         	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
         	    	        startActivity(i);
         	    	        PickFileGen2Gen3.this.finish();
         	    		} else {
-        	    			if (downloadgen2mmhmp8.canRead() == true){
+        	    			if (downloadgen2mmhmp9.canRead() == true){
             	    	        Editor edit = preferences.edit();
-            	    		    edit.putString("filepath", "/download/Gen2-MMHMP-RLS8.zip");
+            	    		    edit.putString("filepath", "/download/Gen2-MMHMP-RLS9.zip");
             	    			edit.commit();
             	    	        Intent i = new Intent(PickFileGen2Gen3.this, MD5sum.class);
             	    	        startActivity(i);
             	    	        PickFileGen2Gen3.this.finish();
         	    			} else {
         	    				Editor edit = preferences.edit();
-            	    			edit.putString("filepicked", "Gen2-MMHMP-RLS8.zip");
+            	    			edit.putString("filepicked", "Gen2-MMHMP-RLS9.zip");
             	    			edit.commit();
         	    				showDialog(FILE_UNFOUND);
         	    			}
         	    		}
         	    		break;
-        	    	case 7:
+        	    	case 6:
         	    		Intent i = new Intent(PickFileGen2Gen3.this, EnterFile.class);
                 		startActivityForResult(i, 1);
                 		break;
-        	    	case 8:
+        	    	case 7:
                 		PickFileGen2Gen3.this.finish();
                 		break;
         	    	}
