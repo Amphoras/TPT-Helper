@@ -212,6 +212,7 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="about">About</string>
     <string name="unknown">Unknown</string>
     <string name="license">License</string>
+    <string name="rate">Rate</string>
     
       <!-- Preferences Strings -->
     <string-array name="model">

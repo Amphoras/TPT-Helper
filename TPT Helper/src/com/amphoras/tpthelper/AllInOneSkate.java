@@ -45,6 +45,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -1123,6 +1124,11 @@ public class AllInOneSkate extends Activity {
 			Intent n = new Intent(AllInOneSkate.this, License.class);
 			startActivity(n);
 			break;
+		case R.id.rate:
+			Intent rate = new Intent(Intent.ACTION_VIEW);
+    		rate.setData(Uri.parse("market://details?id=com.amphoras.tpthelper"));
+    		startActivity(rate);
+    		break;
 		}
 		return true;
 	}

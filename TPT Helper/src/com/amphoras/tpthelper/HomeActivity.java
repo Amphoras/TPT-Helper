@@ -41,6 +41,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -1240,6 +1241,11 @@ public class HomeActivity extends ListActivity {
 			Intent n = new Intent(HomeActivity.this, License.class);
 			startActivity(n);
 			break;
+		case R.id.rate:
+			Intent rate = new Intent(Intent.ACTION_VIEW);
+    		rate.setData(Uri.parse("market://details?id=com.amphoras.tpthelper"));
+    		startActivity(rate);
+    		break;
     	}
     	return true;
     }

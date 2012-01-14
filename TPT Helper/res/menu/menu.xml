@@ -46,5 +46,8 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
       <item
         android:id="@+id/preferences"
         android:title="@string/options"/>
+      <item
+        android:id="@+id/rate"
+        android:title="@string/rate"/>
     </group>
 </menu>

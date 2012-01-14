@@ -192,6 +192,7 @@
     <string name="about">About</string>
     <string name="unknown">À propos de</string>
     <string name="license">License</string>
+    <string name="rate">Rate</string>
     
       <!-- Preferences Strings -->
     <string-array name="model">

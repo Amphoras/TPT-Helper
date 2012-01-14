@@ -192,6 +192,7 @@
     <string name="about">O programu</string>
     <string name="unknown">Neznámý</string>
     <string name="license">Licence</string>
+    <string name="rate">Rate</string>
     
       <!-- Preferences Strings -->
     <string-array name="model">

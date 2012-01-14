@@ -192,6 +192,7 @@
     <string name="about">关于</string>
     <string name="unknown">Unknown</string>
     <string name="license">License</string>
+    <string name="rate">Rate</string>
     
       <!-- Preferences Strings -->
     <string-array name="model">

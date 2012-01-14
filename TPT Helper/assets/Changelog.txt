@@ -7,7 +7,7 @@ Attempts to detect phone model (Blade, Skate or Blade II) on first start.
 Attempts to detect type (European/Chinese) and gen (1, 2 or 3) of Blade on first start.
 Should show appropriate TPTs for users phone model/blade gen.
 Added more all-in-one TPTs for gen 1 and TPT upgraded Blades.
-"Create your own TPT" option now gives much larger choice of partition layouts for each phone model/blade gen.
+"Create your own TPT" option now gives much larger choice of partition layouts for gen 1/2 European Blades and for Skates.
 Updated Spanish and Portuguese translations.
 Added Czech translations.
 Fixed md5sum and unzipping for random files.
