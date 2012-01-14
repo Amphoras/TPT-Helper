@@ -27,7 +27,7 @@ public class CustomTPTGen2Gen3 extends Activity {
             builder1.setTitle(R.string.pick_gen);
             builder1.setCancelable(false);
             CharSequence cancel = getText(R.string.cancel);
-            final CharSequence[] tpts = {"Gen 2 TPT", "Gen 3 TPT", cancel};
+            final CharSequence[] tpts = {"Gen 2 TPT", /*"Gen 3 TPT",*/ cancel};
         	builder1.setItems(tpts, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	switch (item) {
@@ -36,12 +36,12 @@ public class CustomTPTGen2Gen3 extends Activity {
         	    		startActivity(gen_2);
         	    		CustomTPTGen2Gen3.this.finish();
         	    		break;
-        	    	case 1:
+        	    	/*case 1:
         	    		Intent gen_3 = new Intent(CustomTPTGen2Gen3.this, CustomTPTGen2.class);
         	    		startActivity(gen_3);
         	    		CustomTPTGen2Gen3.this.finish();
-        	    		break;
-        	    	case 2:
+        	    		break;*/
+        	    	case 1:
                 		CustomTPTGen2Gen3.this.finish();
                 		break;
         	    	}
