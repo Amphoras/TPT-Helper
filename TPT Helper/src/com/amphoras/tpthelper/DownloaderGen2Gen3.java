@@ -148,8 +148,8 @@ public class DownloaderGen2Gen3 extends ListActivity {
 	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "Gen 2 MMHMP RLS8");
-	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS8");
+	          listitem.put(tptname, "Gen 2 MMHMP RLS9");
+	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS9");
 	          tpts.add(listitem);
 	       
 	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
@@ -356,8 +356,8 @@ public class DownloaderGen2Gen3 extends ListActivity {
 	          tpts.add(listitem);
 	          
 	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "Gen 2 MMHMP RLS8");
-	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS8");
+	          listitem.put(tptname, "Gen 2 MMHMP RLS9");
+	          listitem.put(tptlayout, "ROM: Moldovan Mile High Mountain Pie RLS9");
 	          tpts.add(listitem);
 	       
 	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
