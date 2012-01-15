@@ -70,7 +70,7 @@ public class PickFile extends Activity {
             builder1.setCancelable(false);
             CharSequence cancel = getText(R.string.cancel);
             CharSequence other = getText(R.string.other);
-            final CharSequence[] zips1 = {"Gen 1 to Gen 2 v10a", "Gen1 to Gen2 v10b", "Gen1 to Gen2 v10c", "Gen 1 to Gen 2 v10 stock", "Gen2 to Gen1 v2 stock", "CM7.1 N257 Gen 1 to Gen 2", "MMHMP RLS9 Gen 1 to Gen 2", other, cancel};
+            final CharSequence[] zips1 = {"Gen 1 to Gen 2 v10a", "Gen 1 to Gen 2 v10b", "Gen 1 to Gen 2 v10c", "Gen 1 to Gen 2 v10 stock", "Gen2 to Gen1 v2 stock", "CM7.1 N257 Gen 1 to Gen 2", "MMHMP RLS9 Gen 1 to Gen 2", other, cancel};
         	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	Editor editmd5 = preferences.edit();
@@ -232,7 +232,7 @@ public class PickFile extends Activity {
         	    		}
         	    		break;
         	    	case 6:
-        	    		editmd5.putString("expectedmd5", "c318d936c68d5588284a9352f08d5876");
+        	    		editmd5.putString("expectedmd5", "e16e2848f3d700c8e8e2561a6f07df76");
         	    		editmd5.commit();
         	    		if (mmhmp9.canRead() == true){
         	    		    Editor edit = preferences.edit();
