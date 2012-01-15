@@ -574,25 +574,25 @@ public class DirectDownloader extends ListActivity {
 		int id = preferences.getInt("downloadint", 0);
 		switch (id) {
 		case 0:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_734040" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/Gen1-to-Gen2-TPT-v10a.zip" });
 			break;
 		case 1:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_734042" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/Gen1-to-Gen2-TPT-v10b.zip" });
 			break;
 		case 2:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_734044" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/Gen1-to-Gen2-TPT-v10c.zip" });
 			break;
 		case 3:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_734048" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/Gen1-to-Gen2-TPT-v10-stock.zip" });
 			break;
 		case 4:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_734182" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/Gen2-to-Gen1-TPT-v2-stock.zip" });
 			break;
 		case 5:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/cm7-n257-blade-gen1-to-gen2-tpt.zip" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/cm7-n257-blade-gen1-to-gen2-tpt.zip" });
 			break;
 		case 6:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Gen1-to-Gen2-TPT-MMHMP-RLS9.zip" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/Gen1-to-Gen2-TPT-MMHMP-RLS9.zip" });
 			break;
 		}
 	}

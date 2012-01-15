@@ -525,13 +525,13 @@ public class AllInOneSF2 extends Activity {
 		int id = preferences.getInt("downloadint", 0);
 		switch (id) {
 		case 0:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752092" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade%20II/San%20Francisco%20II/SF2-v1a.zip" });
 			break;
 		case 1:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752094" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade%20II/San%20Francisco%20II/SF2-v1b.zip" });
 			break;
 		case 2:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752006" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade%20II/San%20Francisco%20II/SF2-v1c.zip" });
 			break;
 		}
 	}

@@ -565,7 +565,7 @@ public class CustomTPTSkate extends Activity {
 	
 	public void DownloadFile() {
 		DownloadFileTask task = new DownloadFileTask();
-		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_753272" });
+		task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Skate/Skate-TPT-base.zip" });
 	}
 	
 	private class DownloadFileTask extends AsyncTask<String, String, String> {
@@ -638,7 +638,7 @@ public class CustomTPTSkate extends Activity {
 	
 	public void DownloadFile2() {
 		DownloadFileTask2 task = new DownloadFileTask2();
-		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_868928" });
+		task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Skate/Skate-tpt-files.zip" });
 	}
 	
 	private class DownloadFileTask2 extends AsyncTask<String, String, String> {
@@ -863,7 +863,7 @@ public class CustomTPTSkate extends Activity {
 			FileReader in = new FileReader(new File(dir, "image/nandroid.md5"));
 			task.execute(new FileReader[] {in});
 		} catch (FileNotFoundException e) {
-
+			Toast.makeText(CustomTPTSkate.this, "error", Toast.LENGTH_LONG).show();
 		}
 	}
 	
@@ -1167,6 +1167,9 @@ public class CustomTPTSkate extends Activity {
 				case 1:
 					CopyAssets("SkateCWMv4.img", "boot.img");
 					break;
+				case 2:
+					CopyAssets("SkateCWMv4.0.1.5.img", "boot.img");
+					break;
 				}
 				//break;
 			/*case 2:
@@ -1280,6 +1283,9 @@ public class CustomTPTSkate extends Activity {
 		    switch (recovery) {
 			case 1:
 				bootmd5 = "2aa061fded14f186fffe479b9fc7f3e5";
+				break;
+			case 2:
+				bootmd5 = "4ce4bc8f8bc93e736e7e0cddf3e2111f";
 				break;
 			}
 			//break;

@@ -544,16 +544,16 @@ public class AllInOneSkate extends Activity {
 		int id = preferences.getInt("downloadint", 0);
 		switch (id) {
 		case 0:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752084" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Skate/Skate-v1a.zip" });
 			break;
 		case 1:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752040" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Skate/Skate-v2a.zip" });
 			break;
 		case 2:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752088" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Skate/Skate-v1b.zip" });
 			break;
 		case 3:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752096" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Skate/Skate-v2b.zip" });
 			break;
 		}
 	}

@@ -364,13 +364,13 @@ public class DownloaderVivacity extends ListActivity {
 		int id = preferences.getInt("downloadint", 0);
 		switch (id) {
 		case 0:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752008" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade%20II/T-Mobile%20Vivacity/Vivacity-v1a.zip" });
 			break;
 		case 1:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752000" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade%20II/T-Mobile%20Vivacity/Vivacity-v1b.zip" });
 			break;
 		case 2:
-			task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_752090" });
+			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade%20II/T-Mobile%20Vivacity/Vivacity-v1c.zip" });
 			break;
 		}
 	}

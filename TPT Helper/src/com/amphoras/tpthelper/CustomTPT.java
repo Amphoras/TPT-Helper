@@ -589,7 +589,7 @@ public class CustomTPT extends Activity {
 	
 	public void DownloadFile() {
 		DownloadFileTask task = new DownloadFileTask();
-		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_739817" });
+		task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/custom-TPT-base.zip" });
 	}
 	
 	private class DownloadFileTask extends AsyncTask<String, String, String> {
@@ -662,7 +662,7 @@ public class CustomTPT extends Activity {
 	
 	public void DownloadFile2() {
 		DownloadFileTask2 task = new DownloadFileTask2();
-		task.execute(new String[] { "https://www.sugarsync.com/pf/D6476836_1861667_738344" });
+		task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/custom-tpt-files.zip" });
 	}
 	
 	private class DownloadFileTask2 extends AsyncTask<String, String, String> {
