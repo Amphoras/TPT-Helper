@@ -1,3 +1,8 @@
+v2.0.1
+
+Added Polish translations, thanks to arnoldziq.
+Should fix some bugs in custom TPT mode.
+
 v2.0
 
 Added support for ZTE Skate/Orange Monte Carlo.
@@ -9,7 +14,7 @@ Should show appropriate TPTs for users phone model/blade gen.
 Added more all-in-one TPTs for gen 1 and TPT upgraded Blades.
 "Create your own TPT" option now gives much larger choice of partition layouts for gen 1/2 European Blades and for Skates.
 Updated Spanish and Portuguese translations.
-Added Czech translations.
+Added Czech translations, thanks to dejf.
 Fixed md5sum and unzipping for random files.
 Fix some force closes.
 

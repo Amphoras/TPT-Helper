@@ -75,6 +75,8 @@ public class CustomTPTGen2 extends Activity {
     private final int CHANGE_LOCALE = 12;
     private final int PICK_CACHE2 = 13;
     private final int PICK_SYSTEM2 = 14;
+    private final int ZTEPACK_FAILED = 15;
+    private final int IMAGEBIN_FAILED = 16;
     private String unziplocation = Environment.getExternalStorageDirectory() + "/";
     private String unziplocationfiles = Environment.getExternalStorageDirectory() + "/TPT Helper/Blade/Gen2/";
     private static ProgressDialog dialog;
@@ -424,7 +426,8 @@ public class CustomTPTGen2 extends Activity {
           CharSequence spanish = getText(R.string.spanish);
           CharSequence serbian = getText(R.string.serbian);
           CharSequence czech = getText(R.string.czech);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, cancel};
+          CharSequence polish = getText(R.string.polish);
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, polish, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -493,6 +496,13 @@ public class CustomTPTGen2 extends Activity {
       	    	    CustomTPTGen2.this.finish();
       	    		break;
       	    	case 9:
+      	    		editlocale.putString("locale", "pl");
+      	    		editlocale.commit();
+      	    		Intent r = new Intent(CustomTPTGen2.this, HomeActivity.class);
+      	    	    startActivity(r);
+      	    	    CustomTPTGen2.this.finish();
+      	    		break;
+      	    	case 10:
       	    		// Do nothing
       	    		break;
       	    	}
@@ -567,6 +577,26 @@ public class CustomTPTGen2 extends Activity {
                 }
             });
             return enter_system2.create();
+        case ZTEPACK_FAILED:
+        	Builder ztepackbuilder = new AlertDialog.Builder(CustomTPTGen2.this);
+        	ztepackbuilder.setTitle(R.string.error);
+            ztepackbuilder.setMessage(R.string.ztepack_failed);
+            ztepackbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                	// Do nothing
+                }
+            });
+            return ztepackbuilder.create();
+        case IMAGEBIN_FAILED:
+        	Builder imagebinbuilder = new AlertDialog.Builder(CustomTPTGen2.this);
+        	imagebinbuilder.setTitle(R.string.error);
+            imagebinbuilder.setMessage(R.string.image_bin_failed);
+            imagebinbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                	// Do nothing
+                }
+            });
+            return imagebinbuilder.create();
         }
         return super.onCreateDialog(id);
     }
@@ -1691,10 +1721,12 @@ public class CustomTPTGen2 extends Activity {
 			if (ztepack.canRead()) {
 				buildImage();
 			} else {
-				copyZTEPack();
+				Log.i(TAG, "Failed to copy ztepack: Runtime completed but file not present");
+				showDialog(ZTEPACK_FAILED);
 			}
 		} catch (Exception e) {
 			Log.i(TAG, "Failed to copy ztepack: " + e);
+			showDialog(ZTEPACK_FAILED);
 		}
 	}
 	
@@ -1721,6 +1753,7 @@ public class CustomTPTGen2 extends Activity {
 			    build_image.waitFor();
 			} catch (Exception e) {
 				Log.i(TAG, "Failed to build image: " + e);
+				showDialog(IMAGEBIN_FAILED);
 			}
 			return response;
 		}

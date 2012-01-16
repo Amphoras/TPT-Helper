@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <!-- HomeActivity list options -->
+    <string-array name="options">
+        <item>Wszystko w jednym</item>
+        <item>Pobranie TPT</item>
+        <item>Sprawdź sumę kontrolną MD5</item>
+        <item>Rozpakuj archiwum ZIP</item>
+        <item>Sprawdź folder "image"</item>
+        <item>Rozpocznij TPT</item>
+        <item>Stwórz Twój własny TPT</item>
+        <item>Usuń folder "image"</item>
+        <item>Wyłącz aby wystartować TPT</item>
+        <!-- <item>Tests</item> -->
+    </string-array>
+      <!-- HomeActivity disclaimer strings -->
+    <string name="disclaimer_heading">Warunki użytkowania</string>
+    <string name="disclaimer">Używasz tej aplikacji na własną odpowiedzialność. Nie ponoszę żadnej odpowiedzialności, za zniszczenie urządzenia lub inne szkody.</string>
+    <string name="accept">Akceptuję</string>
+      <!-- HomeActivity start TPT strings -->
+    <string name="power_off">Wyłącz</string>
+    <string name="start_tpt">Kiedy telefon się wyłączy, przytrzymaj przyciski : "zwiększenie głośności" oraz "menu". Następnie przyciśnij przycisk włączania, aby rozpocząć TPT</string>
+      <!-- HomeActivity delete image strings -->
+    <string name="delete_image_heading">Usuń obraz.</string>
+    <string name="delete_image">Czy na pewno usunąć folder "image" wraz z całą zawartością ?</string>
+    <string name="deleting">Usuwam. Proszę czekać...</string>
+    <string name="image_deleted">Folder "image" został usunięty.</string>
+      <!-- HomeActivity low battery strings -->
+    <string name="low_battery_heading">Niski poziom naładowania baterii.</string>
+    <string name="low_battery">Wskaźnik naładowania baterii jest poniżej 25%. Czy chcesz, mimo wszystko, rozpocząć TPT?</string>
+      <!-- HomeActivity auto tpt strings -->
+    <string name="auto_tpt_heading">Start TPT</string>
+    <string name="auto_tpt">Za chwilę rozpocznie się proces TPT. Jeżeli nie sprawdziłeś(aś) katalogu "image", naciśnij NIE i zrób to teraz. Czy chcesz kontynuować ?</string>
+    <string name="auto_tpt_fail">Przykro mi, ale ta opcja nie jest dostępna w twoim aktualnym ROM-ie.</string>
+      <!-- HomeActivity locale changing strings -->
+    <string name="change_locale_heading">Wybierz język, którego chcesz używać</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="german">German</string>
+    <string name="russian">Russian</string>
+    <string name="chinese">Chinese</string>
+    <string name="portuguese">Portugues</string>
+    <string name="spanish">Español</string>
+    <string name="serbian">Srpski</string>
+    <string name="czech">Česky</string>
+    <string name="polish">Polish</string>
+      <!-- HomeActivity type/gen checking strings -->
+    <string name="check_type_heading">Blade typu</string>
+    <string name="check_type">został odnaleziony. Czy to się zgadza?</string>
+    <string name="check_gen_heading">Blade Gen</string>
+    <string name="check_gen">Którą generację Blade-a posiadasz ?</string>
+    <string name="manual_type_heading">Wprowadź typ Blade-a</string>
+    <string name="setting_type_heading">Ustawiam typ Blade-a</string>
+    <string name="setting_type">Ustawiono typ na</string>
+    <string name="check_board_heading">Typ telefonu</string>
+    <string name="correct">został odnaleziony. Czy to się zgadza?</string>
+    <string name="board_blade">ZTE Blade/Orange San Francisco</string>
+    <string name="board_skate">ZTE Skate/Orange Monte Carlo</string>
+    <string name="board_blade2">Orange San Francisco II/T-Mobile Vivacity</string>
+    <string name="phone_type_heading">Wprowadź typ telefonu</string>
+    <string name="san_francisco_ii">Orange San Francisco II</string>
+    <string name="vivacity">T-Mobile Vivacity</string>
+    <string name="unsupported_heading">Nieobsługiwany model</string>
+    <string name="unsupported">Przepraszamy, ale ten telefon nie jest w tej chwili obsługiwany. Jeżeli uważasz, że to jakiś błąd, sprawdź swój telefon i spróbuj ponownie.</string>
+    
+      <!-- Downloader strings -->
+    <string name="standard_tpt_heading">Standardowe TPT:</string>
+    <string name="standard_tpt">Konwertuj, ale nie dołączaj ROM-u</string>
+    <string name="allinone_tpt_heading">TPT-y "wszystko w jednym":</string>
+    <string name="allinone_tpt">Konwertuj i wgraj ROM za jednym razem</string>
+    <string name="downloader">Pobierz TPT</string>
+    
+      <!-- DirectDownloader strings -->  
+    <string name="downloading">Pobieranie...</string>
+    <string name="download_finished_heading">Pobieranie zakończone</string>
+    <string name="download_finished">Pobieranie zakończone sukcesem</string>
+    <string name="pick_download">Wybierz plik do pobrania</string>
+    <string name="file_there_heading">Plik na karcie SD</string>
+    <string name="file_there1">Znaleziono</string>
+    <string name="file_there2">na karcie SD. Czy chcesz pobrać ponownie ?</string>
+    <string name="download_failed_heading">Pobieranie nie powiodło się</string>
+    <string name="download_failed">Nie udało się pobrać</string>
+    
+      <!-- MD5 checking strings -->
+    <string name="pickmd5">Wybierz plik, który chcesz sprawdzić</string>
+    <string name="calculating">Obliczam. Proszę czekać...</string>
+    <string name="md5">Suma MD5</string>
+    <string name="md5of">Sprawdzam sumę kontrolną pliku:</string>
+    <string name="md5is">Suma kontrolna to:</string>
+    <string name="md5matches">Suma zgadza się z oczekiwaną.</string>
+    
+      <!-- PickFile strings -->
+    <string name="file_not_found_heading">Plik nie został znaleziony</string>
+    <string name="file_not_found1">Nie znalazłem</string>
+    <string name="file_not_found2">. Czy chciałbyś pobrać ?</string>
+    
+      <!-- Unzipping strings -->
+    <string name="pickunzip">Wybierz plik archiwum, do rozpakowania</string>
+    <string name="unzipping">Rozpakowuję plik. Proszę czekać...</string>
+    <string name="unzipgood">Rozpakowywanie zakończone.</string>
+    <string name="unzipbad">Rozpakowywanie nie powiodło się</string>
+    <string name="unzip">Unzip</string>
+    <string name="unzip_file">Próbuję rozpakować</string>
+    
+      <!-- EnterFile strings -->
+    <string name="askfile">Proszę wprowadzić nazwę i kliknąć Enter (plik musi się znajdować w głównym katalogu karty SD)</string>
+    <string name="enterfile">Enter</string>
+    <string name="unfound1">Nie mogę znaleźć \'</string>
+    <string name="unfound2">\'. Proszę sprawdzić i spróbować ponownie.</string>
+    
+      <!-- VerifyImage strings -->
+    <string name="nooffiles">Ilość sprawdzonych plików:</string>
+    <string name="noofmatches">Ilość poprawnych sum MD5:</string>
+    <string name="missingfiles">Ilość nie znalezionych plików:</string>
+    <string name="filessearched">Wyszukiwanie plików z :</string>
+    <string name="files_verified">Pliki zweryfikowane</string>
+    <string name="no_of_matches">Ilość pasujących:</string>
+    <string name="files_not_found">pliki nie znalezione.</string>
+    <string name="file_not_found">plik nie znaleziony</string>
+    <string name="no_nandroid">Nie mogę odnaleźć pliku "nandoid.md5" w katalogu "image", proszę sprawdzić, czy plik istnieje i spróbować jeszcze raz.</string>
+    <string name="verifying">Sprawdzam. Proszę czekać...</string>
+    
+      <!-- AllInOne strings -->
+    <string name="md5resultaio">Wynik MD5:</string>
+    <string name="unzipdoneaio">Wynik rozpakowania:</string>
+    <string name="downloadresultaio">Wynik pobrania:</string>
+    <string name="md5_mismatch_heading">Błąd sumy kontrolnej</string>
+    <string name="md5_mismatch">Suma kontrolna nie jest zgodna z oczekiwaną. Czy chcesz pobrać plik ponownie ?</string>
+    <string name="unzip_fail">Rozpakowywanie nie powiodło się. Nie mogę kontynuować.</string>
+    <string name="no_nandroid2">Nie mogę odnaleźć pliku "nandoid.md5" w katalogu "image". Nie mogę kontynuować.</string>
+    <string name="working">Pracuję. Proszę czekać...</string>
+    <string name="pickallinone">Wybierz plik, który chcesz użyć</string>
+    
+      <!-- Instructions strings -->
+    <string name="instructions">Jak używać...</string>
+    <string name="instruction1">1. Pobierz TPT</string>
+    <string name="instruction2">2. Sprawdź czy suma kontrolna pliku archiwum jest poprawna.</string>
+    <string name="instruction3">3. Rozpakuj archiwum ZIP.</string>
+    <string name="instruction4">4. Sprawdz, czy zawartość "image" jest zgodna z zawartością pliku "nandoid.md5".</string>
+    <string name="instruction5">5. Wyłącz telefon</string>
+    <string name="instruction6">6. Przytrzymaj przycisk zwiększenia głośności oraz naciśnij przycisk włączenia telefonu.</string>
+    <string name="instruction7">Jeżeli używasz standardowego TPT:</string>
+    <string name="instruction8">7. Na ekranie, powinny pokazać się zielone napisy, a następnie telefon wejdzie w tryb recovery.</string>
+    <string name="instruction9">8. Wgraj wybrany ROM i przeładuj telefon.</string>
+    <string name="instruction10">Jeżeli używasz "wszystko w jednym" TPT:</string>
+    <string name="instruction11">7. Na ekranie powinny pojawić się zielone napisy, a następnie telefon powinien uruchomić się z Twoim ROM-em.</string>
+    
+      <!-- Troubleshooting strings -->
+    <string name="troubleshooting1">Q. I pressed the power off button, but nothing happened.</string>
+    <string name="troubleshooting2">A. You need root (superuser) for this option to work. If you have root and granted su permissions, try unchecking the Auto Power-off option in the Options menu.</string>
+    <string name="troubleshooting3">Q. I followed all the steps and tried to flash the TPT, but now I\'m stuck at the green android.</string>
+    <string name="troubleshooting4">A. You\'re probably in fastboot mode. Trying holding menu and vol+ and try flashing again.</string>
+    <string name="troubleshooting5">Q. I downloaded and unzipped a TPT, but some of the files don\'t match.</string>
+    <string name="troubleshooting6">A. The download may have been corrupted, try downloading again and if they still don\'t match use the feedback email and give details of which file you downloaded and which files don\'t match.</string>
+    <string name="troubleshooting7"></string>
+    <string name="troubleshooting8"></string>
+    <string name="troubleshooting9"></string>
+    <string name="troubleshooting10"></string>
+    <string name="troubleshooting11"></string>
+    
+      <!-- Changelog strings -->
+    <string name="changelog">Ostatnie zmiany</string>
+    
+      <!-- CustomTPT strings -->
+    <string name="finished_heading">Tworzę TPT</string>
+    <string name="finished">TPT zostało utworzone.</string>
+    <string name="copying">Kopiuję. Proszę czekać...</string>
+    <string name="pick_cache_heading">Cache</string>
+    <string name="pick_cache">Proszę wprowadzić wartość pomiędzy 2 a 60</string>
+    <string name="pick_system_heading">System</string>
+    <string name="pick_system">Proszę wprowadzić wartość pomiędzy 90 a 220</string>
+    <string name="set_userdata_heading">Data</string>
+    <string name="set_userdata1">Cache:</string>
+    <string name="set_userdata2">MB, System:</string>
+    <string name="set_userdata3">MB oraz</string>
+    <string name="set_userdata4">MB miejsca pozostawione na Twoje dane. Czy chcesz użyć tych rozmiarów?</string>
+    <string name="writing">Zapisuję partycje. Proszę czekać...</string>
+    <string name="building">Tworzę plik "image.bin". Proszę czekać...</string>
+    <string name="pick_gen">Wybierz rodzaj TPT, które chcesz stworzyć.</string>
+    <string name="pick_splash">Wybierz ekran początkowy, który chcesz użyć.</string>
+    <string name="pick_recovery">Wybierz wersję recovery, którą chcesz użyć.</string>
+    <string name="ztepack_failed">Failed to copy ztepack. Please make sure you are rooted and gave superuser permissions.</string>
+    <string name="image_bin_failed">Failed to build the image.bin.</string>
+    
+      <!-- General strings -->
+    <string name="app_name">TPT Helper</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Zaniechaj</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+    <string name="error">Błąd</string>
+    <string name="other">Inny</string>
+    <string name="options">Opcje</string>
+    <string name="feedback">Komentarz</string>
+    <string name="about">O programie</string>
+    <string name="unknown">Nieznany</string>
+    <string name="license">Licencja</string>
+    <string name="rate">Ocena</string>
+    
+      <!-- Preferences Strings -->
+    <string-array name="model">
+        <item>ZTE Blade/Orange San Francisco</item>
+        <item>ZTE Skate/Orange Monte Carlo</item>
+        <item>Orange San Francisco II/T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="models">
+        <item>blade</item>
+        <item>skate</item>
+        <item>blade2</item>
+    </string-array>
+    <string-array name="gen">
+        <item>Gen 1/Gen 2 upg. poprzez TPT</item>
+        <item>Fabryczna generacja 2/3/Gen 2 upg. poprzez Windows</item>
+    </string-array>
+    <string-array name="gens">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="type">
+        <item>Europejski ZTE Blade</item>
+        <item>Chiński ZTE Blade</item>
+    </string-array>
+    <string-array name="types">
+        <item>European Blade</item>
+        <item>Chinese Blade</item>
+    </string-array>
+    <string-array name="blade2">
+        <item>Orange San Francisco II</item>
+        <item>T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="blade2s">
+        <item>SF2</item>
+        <item>TMV</item>
+    </string-array>
+    <string name="gen_title">ZTE Blade Gen</string>
+    <string name="type_title">ZTE Blade typu</string>
+</resources>

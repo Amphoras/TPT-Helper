@@ -43,6 +43,7 @@
     <string name="spanish">Español</string>
     <string name="serbian">Srpski</string>
     <string name="czech">Česky</string>
+    <string name="polish">Polish</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Blade Type</string>
     <string name="check_type">detected. Is this correct?</string>
@@ -178,6 +179,8 @@
     <string name="pick_gen">Pick the type of TPT you want to make.</string>
     <string name="pick_splash">Pick the splash image to use.</string>
     <string name="pick_recovery">Pick the recovery version to use.</string>
+    <string name="ztepack_failed">Failed to copy ztepack. Please make sure you are rooted and gave superuser permissions.</string>
+    <string name="image_bin_failed">Failed to build the image.bin.</string>
     
       <!-- General strings -->
     <string name="app_name">TPT Helper</string>

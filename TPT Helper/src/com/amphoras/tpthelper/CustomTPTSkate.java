@@ -75,6 +75,8 @@ public class CustomTPTSkate extends Activity {
     private final int CHANGE_LOCALE = 12;
     private final int PICK_CACHE2 = 13;
     private final int PICK_SYSTEM2 = 14;
+    private final int ZTEPACK_FAILED = 15;
+    private final int IMAGEBIN_FAILED = 16;
     private String unziplocation = Environment.getExternalStorageDirectory() + "/";
     private String unziplocationfiles = Environment.getExternalStorageDirectory() + "/TPT Helper/Skate/";
     private static ProgressDialog dialog;
@@ -404,7 +406,8 @@ public class CustomTPTSkate extends Activity {
           CharSequence spanish = getText(R.string.spanish);
           CharSequence serbian = getText(R.string.serbian);
           CharSequence czech = getText(R.string.czech);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, cancel};
+          CharSequence polish = getText(R.string.polish);
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, polish, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -473,6 +476,13 @@ public class CustomTPTSkate extends Activity {
       	    	    CustomTPTSkate.this.finish();
       	    		break;
       	    	case 9:
+      	    		editlocale.putString("locale", "pl");
+      	    		editlocale.commit();
+      	    		Intent r = new Intent(CustomTPTSkate.this, HomeActivity.class);
+      	    	    startActivity(r);
+      	    	    CustomTPTSkate.this.finish();
+      	    		break;
+      	    	case 10:
       	    		// Do nothing
       	    		break;
       	    	}
@@ -547,6 +557,26 @@ public class CustomTPTSkate extends Activity {
                 }
             });
             return enter_system2.create();
+        case ZTEPACK_FAILED:
+        	Builder ztepackbuilder = new AlertDialog.Builder(CustomTPTSkate.this);
+        	ztepackbuilder.setTitle(R.string.error);
+            ztepackbuilder.setMessage(R.string.ztepack_failed);
+            ztepackbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                	// Do nothing
+                }
+            });
+            return ztepackbuilder.create();
+        case IMAGEBIN_FAILED:
+        	Builder imagebinbuilder = new AlertDialog.Builder(CustomTPTSkate.this);
+        	imagebinbuilder.setTitle(R.string.error);
+            imagebinbuilder.setMessage(R.string.image_bin_failed);
+            imagebinbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                	// Do nothing
+                }
+            });
+            return imagebinbuilder.create();
         }
         return super.onCreateDialog(id);
     }
@@ -1641,10 +1671,12 @@ public class CustomTPTSkate extends Activity {
 			if (ztepack.canRead()) {
 				buildImage();
 			} else {
-				copyZTEPack();
+				Log.i(TAG, "Failed to copy ztepack: Runtime completed but file not present");
+				showDialog(ZTEPACK_FAILED);
 			}
 		} catch (Exception e) {
 			Log.i(TAG, "Failed to copy ztepack: " + e);
+			showDialog(ZTEPACK_FAILED);
 		}
 	}
 	
@@ -1671,6 +1703,7 @@ public class CustomTPTSkate extends Activity {
 			    build_image.waitFor();
 			} catch (Exception e) {
 				Log.i(TAG, "Failed to build image: " + e);
+				showDialog(IMAGEBIN_FAILED);
 			}
 			return response;
 		}
