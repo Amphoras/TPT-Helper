@@ -46,22 +46,22 @@
     <string name="polish">Polish</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Blade Type</string>
-    <string name="check_type">detected. Is this correct?</string>
+    <string name="check_type">détecté. Est-ce correct ?</string>
     <string name="check_gen_heading">Blade Gen</string>
-    <string name="check_gen">What gen of Blade do you have?</string>
-    <string name="manual_type_heading">Enter Blade Type</string>
-    <string name="setting_type_heading">Setting Blade Type</string>
-    <string name="setting_type">Setting type to</string>
-    <string name="check_board_heading">Phone Type</string>
-    <string name="correct">detected, is this correct?</string>
+    <string name="check_gen">Quel est le type de votre Blade ?</string>
+    <string name="manual_type_heading">Indiquez le type de votre Blade</string>
+    <string name="setting_type_heading">Réglage du type de votre Blade</string>
+    <string name="setting_type">Réglage du type de</string>
+    <string name="check_board_heading">Téléphone type</string>
+    <string name="correct">détecté, est-ce correct ?</string>
     <string name="board_blade">ZTE Blade/Orange San Francisco</string>
-    <string name="board_skate">ZTE Skate/Orange Monte Carlo</string>
+    <string name="board_skate">ZTE Skate/Staraddict</string>
     <string name="board_blade2">Orange San Francisco II/T-Mobile Vivacity</string>
-    <string name="phone_type_heading">Enter Phone Type</string>
+    <string name="phone_type_heading">Indiquez le type de téléphone</string>
     <string name="san_francisco_ii">Orange San Francisco II</string>
     <string name="vivacity">T-Mobile Vivacity</string>
-    <string name="unsupported_heading">Unsupported Model</string>
-    <string name="unsupported">Sorry, this device is not currently supported. If you think this is an error, please check your phone model and try again.</string>
+    <string name="unsupported_heading">Modèle non supporté</string>
+    <string name="unsupported">Désolé, ce modèle n\'est pas actuellement pris en charge. Si vous pensez que c\'est une erreur, s\'il vous plaît vérifier votre modèle de téléphone et essayez à nouveau.</string>
     
       <!-- Downloader strings -->
     <string name="standard_tpt_heading">TPTs standard:</string>
@@ -166,21 +166,21 @@
     <string name="finished">Votre TPT a fini d\'être construit.</string>
     <string name="copying">Copie en cours. Veuillez patienter...</string>
     <string name="pick_cache_heading">Cache</string>
-    <string name="pick_cache">Please enter a value between 2 and 50</string>
-    <string name="pick_system_heading">System</string>
-    <string name="pick_system">Please enter a value between 90 and 220</string>
-    <string name="set_userdata_heading">Data</string>
-    <string name="set_userdata1">Cache:</string>
-    <string name="set_userdata2">MB, System:</string>
-    <string name="set_userdata3">MB, and</string>
-    <string name="set_userdata4">MB of space left for data. Do you want to use these sizes?</string>
-    <string name="writing">Writing partitions. Please wait...</string>
-    <string name="building">Building image.bin. Please wait...</string>
-    <string name="pick_gen">Pick the type of TPT you want to make.</string>
-    <string name="pick_splash">Pick the splash image to use.</string>
-    <string name="pick_recovery">Pick the recovery version to use.</string>
-    <string name="ztepack_failed">Failed to copy ztepack. Please make sure you are rooted and gave superuser permissions.</string>
-    <string name="image_bin_failed">Failed to build the image.bin.</string>
+    <string name="pick_cache">Veuillez saisir une valeur entre 2 et 60</string>
+    <string name="pick_system_heading">/system</string>
+    <string name="pick_system">Veuillez saisir une valeur entre 90 et 220</string>
+    <string name="set_userdata_heading">/data</string>
+    <string name="set_userdata1">/cache:</string>
+    <string name="set_userdata2">Mo, System:</string>
+    <string name="set_userdata3">Mo, et</string>
+    <string name="set_userdata4">Mo d'espace restant pour vos données. Désirez-vous conserver cette taille ?</string>
+    <string name="writing">Écriture des partitions. Veuillez patienter...</string>
+    <string name="building">Construction de image.bin. Veuillez patienter...</string>
+    <string name="pick_gen">Choisissez le type de TPT que vous désirez utiliser</string>
+    <string name="pick_splash">Choisissez l'image de démarrage à utiliser.</string>
+    <string name="pick_recovery">Choisissez la version du recovery à utiliser.</string>
+    <string name="ztepack_failed">Impossible de copier ztepack. Vérifiez que votre téléphone est rooté et que vous avez donné les permissions superuser.</string>
+    <string name="image_bin_failed">Impossible de construire le fichier image.bin.</string>
     
       <!-- General strings -->
     <string name="app_name">Assistant TPT</string>
@@ -193,14 +193,14 @@
     <string name="options">Options</string>
     <string name="feedback">Commentaires</string>
     <string name="about">About</string>
-    <string name="unknown">À propos de</string>
+    <string name="unknown">Inconnu</string>
     <string name="license">License</string>
-    <string name="rate">Rate</string>
+    <string name="rate">Taux</string>
     
       <!-- Preferences Strings -->
     <string-array name="model">
         <item>ZTE Blade/Orange San Francisco</item>
-        <item>ZTE Skate/Orange Monte Carlo</item>
+        <item>ZTE Skate/Staraddict</item>
         <item>Orange San Francisco II/T-Mobile Vivacity</item>
     </string-array>
     <string-array name="models">
@@ -209,16 +209,16 @@
         <item>blade2</item>
     </string-array>
     <string-array name="gen">
-        <item>Gen 1/TPT Upgraded Gen 2</item>
-        <item>Stock Gen 2/3/Windows Upgraded Gen 2</item>
+        <item>Gen 1/Gen 2 mis à jour par TPT</item>
+        <item>Gen 2/3 Stock / Mis à jour Gen 2 par Windows</item>
     </string-array>
     <string-array name="gens">
         <item>1</item>
         <item>2</item>
     </string-array>
     <string-array name="type">
-        <item>European ZTE Blade</item>
-        <item>Chinese ZTE Blade</item>
+        <item>ZTE Blade Européen</item>
+        <item>ZTE Blade Chinois</item>
     </string-array>
     <string-array name="types">
         <item>European Blade</item>

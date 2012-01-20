@@ -8,7 +8,7 @@
         <item>Zip-Datei entpacken</item>
         <item>/image-Ordner prüfen</item>
         <item>TPT auslösen</item>
-        <item>Create your own TPT</item>
+        <item>Eigenen TPT erzeugen</item>
         <item>/image-Ordner löschen</item>
         <item>Herunterfahren um den TPT zu starten</item>
         <!-- <item>Tests</item> -->
@@ -33,7 +33,7 @@
     <string name="auto_tpt">Dies wird den TPT starten. Wenn der /image-Ordner noch nicht überprüft wurde, jetzt "Nein" auswählen und erst nachholen! Soll fortgefahren werden?</string>
     <string name="auto_tpt_fail">Dieses Feature ist für das momentane ROM leider noch nicht verfügbar. Sorry!</string>
       <!-- HomeActivity locale changing strings -->
-    <string name="change_locale_heading">Pick the language to use</string>
+    <string name="change_locale_heading">Wähle deine Sprache</string>
     <string name="english">English</string>
     <string name="french">Français</string>
     <string name="german">German</string>
@@ -45,23 +45,23 @@
     <string name="czech">Česky</string>
     <string name="polish">Polish</string>
       <!-- HomeActivity type/gen checking strings -->
-    <string name="check_type_heading">Blade Type</string>
-    <string name="check_type">detected. Is this correct?</string>
+    <string name="check_type_heading">Blade-Sorte</string>
+    <string name="check_type">ermittelt. Ist dies richtig?</string>
     <string name="check_gen_heading">Blade Gen</string>
-    <string name="check_gen">What gen of Blade do you have?</string>
-    <string name="manual_type_heading">Enter Blade Type</string>
-    <string name="setting_type_heading">Setting Blade Type</string>
-    <string name="setting_type">Setting type to</string>
-    <string name="check_board_heading">Phone Type</string>
-    <string name="correct">detected, is this correct?</string>
+    <string name="check_gen">Welche Generation des Blades hast du?</string>
+    <string name="manual_type_heading">Blade-Sorte eingeben</string>
+    <string name="setting_type_heading">Blade-Sorte setzen</string>
+    <string name="setting_type">Sorte wird gesetzt auf</string>
+    <string name="check_board_heading">Handy-Sorte</string>
+    <string name="correct">ermittelt, ist das richtig?</string>
     <string name="board_blade">ZTE Blade/Orange San Francisco</string>
     <string name="board_skate">ZTE Skate/Orange Monte Carlo</string>
     <string name="board_blade2">Orange San Francisco II/T-Mobile Vivacity</string>
-    <string name="phone_type_heading">Enter Phone Type</string>
+    <string name="phone_type_heading">Handy-Sorte eingeben</string>
     <string name="san_francisco_ii">Orange San Francisco II</string>
     <string name="vivacity">T-Mobile Vivacity</string>
-    <string name="unsupported_heading">Unsupported Model</string>
-    <string name="unsupported">Sorry, this device is not currently supported. If you think this is an error, please check your phone model and try again.</string>
+    <string name="unsupported_heading">Nicht unterstützes Modell</string>
+    <string name="unsupported">Sorry, dieses Modell wird zur Zeit nicht unterstützt. Wenn du glaubst, dass das das ein Fehler ist überprüfe bitte nochmal das Modell und versuche es nochmal.</string>
     
       <!-- Downloader strings -->
     <string name="standard_tpt_heading">Standard TPTs:</string>
@@ -162,25 +162,25 @@
     <string name="changelog">Changelog</string>
     
       <!-- CustomTPT strings -->
-    <string name="finished_heading">TPT Built</string>
-    <string name="finished">Finished building your TPT.</string>
-    <string name="copying">Copying. Please wait...</string>
+    <string name="finished_heading">TPT erzeugt</string>
+    <string name="finished">TPT erfolgreich erzeugt.</string>
+    <string name="copying">Kopiere. Bitte warten...</string>
     <string name="pick_cache_heading">Cache</string>
-    <string name="pick_cache">Please enter a value between 2 and 50</string>
-    <string name="pick_system_heading">System</string>
-    <string name="pick_system">Please enter a value between 90 and 220</string>
-    <string name="set_userdata_heading">Data</string>
-    <string name="set_userdata1">Cache:</string>
+    <string name="pick_cache">Bitte einen Wert zwischen 2 und 60 eingeben</string>
+    <string name="pick_system_heading">/system</string>
+    <string name="pick_system">Bitte einen Wert zwischen 90 und 220 eingeben</string>
+    <string name="set_userdata_heading">/data</string>
+    <string name="set_userdata1">/cache:</string>
     <string name="set_userdata2">MB, System:</string>
-    <string name="set_userdata3">MB, and</string>
-    <string name="set_userdata4">MB of space left for data. Do you want to use these sizes?</string>
-    <string name="writing">Writing partitions. Please wait...</string>
-    <string name="building">Building image.bin. Please wait...</string>
-    <string name="pick_gen">Pick the type of TPT you want to make.</string>
-    <string name="pick_splash">Pick the splash image to use.</string>
-    <string name="pick_recovery">Pick the recovery version to use.</string>
-    <string name="ztepack_failed">Failed to copy ztepack. Please make sure you are rooted and gave superuser permissions.</string>
-    <string name="image_bin_failed">Failed to build the image.bin.</string>
+    <string name="set_userdata3">MB, und</string>
+    <string name="set_userdata4">MB Platz frei für /data. Willst do diese Größen nutzen?</string>
+    <string name="writing">Schreibe Partitionen. Bitte warten...</string>
+    <string name="building">Erzeuge image.bin. Bitte warten...</string>
+    <string name="pick_gen">Wähle die TPT-Sorte die du erzeugen willst.</string>
+    <string name="pick_splash">Wähle das Bild das vor dem Booten angezeigt werden soll</string>
+    <string name="pick_recovery">Zu verwendendes Recovery wählen.</string>
+    <string name="ztepack_failed">Fehler beim Kopieren des ZTE-Packs. Bitte versichere dich das du Root besitzt und dieser App Rootrechte gegeben hast.</string>
+    <string name="image_bin_failed">Fehler beim Erzeugen des image.bin.</string>
     
       <!-- General strings -->
     <string name="app_name">TPT-Helfer</string>
@@ -194,8 +194,8 @@
     <string name="feedback">Feedback</string>
     <string name="about">Über diese App</string>
     <string name="unknown">Unknown</string>
-    <string name="license">License</string>
-    <string name="rate">Rate</string>
+    <string name="license">Lizenz</string>
+    <string name="rate">Bewertung</string>
     
       <!-- Preferences Strings -->
     <string-array name="model">
@@ -209,16 +209,16 @@
         <item>blade2</item>
     </string-array>
     <string-array name="gen">
-        <item>Gen 1/TPT Upgraded Gen 2</item>
-        <item>Stock Gen 2/3/Windows Upgraded Gen 2</item>
+        <item>Gen 1/durch TPT upgegradetes Gen 2</item>
+        <item>Stock Gen 2/3/durch Windows upgegradetes Gen 2</item>
     </string-array>
     <string-array name="gens">
         <item>1</item>
         <item>2</item>
     </string-array>
     <string-array name="type">
-        <item>European ZTE Blade</item>
-        <item>Chinese ZTE Blade</item>
+        <item>Europäisches ZTE Blade</item>
+        <item>Chinesisches ZTE Blade</item>
     </string-array>
     <string-array name="types">
         <item>European Blade</item>
@@ -233,5 +233,5 @@
         <item>TMV</item>
     </string-array>
     <string name="gen_title">ZTE Blade Gen</string>
-    <string name="type_title">ZTE Blade Type</string>
+    <string name="type_title">ZTE Blade Sorte</string>
 </resources>
