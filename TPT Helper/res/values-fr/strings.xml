@@ -44,6 +44,7 @@
     <string name="serbian">Srpski</string>
     <string name="czech">Česky</string>
     <string name="polish">Polish</string>
+    <string name="hungarian">Hungarian</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Blade Type</string>
     <string name="check_type">détecté. Est-ce correct ?</string>
@@ -173,11 +174,11 @@
     <string name="set_userdata1">/cache:</string>
     <string name="set_userdata2">Mo, System:</string>
     <string name="set_userdata3">Mo, et</string>
-    <string name="set_userdata4">Mo d'espace restant pour vos données. Désirez-vous conserver cette taille ?</string>
+    <string name="set_userdata4">Mo d\'espace restant pour vos données. Désirez-vous conserver cette taille ?</string>
     <string name="writing">Écriture des partitions. Veuillez patienter...</string>
     <string name="building">Construction de image.bin. Veuillez patienter...</string>
     <string name="pick_gen">Choisissez le type de TPT que vous désirez utiliser</string>
-    <string name="pick_splash">Choisissez l'image de démarrage à utiliser.</string>
+    <string name="pick_splash">Choisissez l\'image de démarrage à utiliser.</string>
     <string name="pick_recovery">Choisissez la version du recovery à utiliser.</string>
     <string name="ztepack_failed">Impossible de copier ztepack. Vérifiez que votre téléphone est rooté et que vous avez donné les permissions superuser.</string>
     <string name="image_bin_failed">Impossible de construire le fichier image.bin.</string>

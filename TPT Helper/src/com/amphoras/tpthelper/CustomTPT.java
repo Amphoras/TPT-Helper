@@ -505,6 +505,13 @@ public class CustomTPT extends Activity {
       	    	    CustomTPT.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(CustomTPT.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    CustomTPT.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

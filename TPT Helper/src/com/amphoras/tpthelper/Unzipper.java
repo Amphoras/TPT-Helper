@@ -276,6 +276,13 @@ public class Unzipper extends Activity {
       	    	    Unzipper.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(Unzipper.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    Unzipper.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

@@ -186,6 +186,13 @@ public class EnterFile extends Activity {
       	    	    EnterFile.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(EnterFile.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    EnterFile.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

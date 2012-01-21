@@ -252,6 +252,13 @@ public class License extends Activity {
       	    	    License.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(License.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    License.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

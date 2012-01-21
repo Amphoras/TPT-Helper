@@ -483,6 +483,13 @@ public class CustomTPTSkate extends Activity {
       	    	    CustomTPTSkate.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(CustomTPTSkate.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    CustomTPTSkate.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

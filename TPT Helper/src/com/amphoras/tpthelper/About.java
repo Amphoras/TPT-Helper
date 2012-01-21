@@ -252,6 +252,13 @@ public class About extends Activity {
       	    	    About.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(About.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    About.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

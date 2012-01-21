@@ -502,6 +502,13 @@ public class AllInOneSF2 extends Activity {
       	    	    AllInOneSF2.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(AllInOneSF2.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    AllInOneSF2.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

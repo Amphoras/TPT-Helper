@@ -187,6 +187,13 @@ public class EnterFileUnzip extends Activity {
       	    	    EnterFileUnzip.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(EnterFileUnzip.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    EnterFileUnzip.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

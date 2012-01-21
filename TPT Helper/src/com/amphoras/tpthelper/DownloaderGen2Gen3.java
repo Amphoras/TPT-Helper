@@ -742,6 +742,13 @@ public class DownloaderGen2Gen3 extends ListActivity {
           	    	    DownloaderGen2Gen3.this.finish();
           	    		break;
           	    	case 10:
+          	    		editlocale.putString("locale", "hu");
+          	    		editlocale.commit();
+          	    		Intent s = new Intent(DownloaderGen2Gen3.this, HomeActivity.class);
+          	    	    startActivity(s);
+          	    	    DownloaderGen2Gen3.this.finish();
+          	    		break;
+          	    	case 11:
           	    		// Do nothing
           	    		break;
           	    	}

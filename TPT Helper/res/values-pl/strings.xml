@@ -44,6 +44,7 @@
     <string name="serbian">Srpski</string>
     <string name="czech">Česky</string>
     <string name="polish">Polish</string>
+    <string name="hungarian">Hungarian</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Blade typu</string>
     <string name="check_type">został odnaleziony. Czy to się zgadza?</string>

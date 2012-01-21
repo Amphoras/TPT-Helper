@@ -207,6 +207,13 @@ public class Instructions extends Activity {
       	    	    Instructions.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(Instructions.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    Instructions.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

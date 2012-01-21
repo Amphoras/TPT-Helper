@@ -483,6 +483,13 @@ public class CustomTPTVivacity extends Activity {
       	    	    CustomTPTVivacity.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(CustomTPTVivacity.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    CustomTPTVivacity.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

@@ -317,6 +317,13 @@ public class Preferences extends PreferenceActivity {
       	    	    Preferences.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(Preferences.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    Preferences.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

@@ -521,6 +521,13 @@ public class AllInOneSkate extends Activity {
       	    	    AllInOneSkate.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(AllInOneSkate.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    AllInOneSkate.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

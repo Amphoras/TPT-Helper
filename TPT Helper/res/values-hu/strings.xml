@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <!-- HomeActivity list options -->
+    <string-array name="options">
+        <item>Mindent egybe</item>
+        <item>TPT letöltése</item>
+        <item>MD5 érték ellenőrzése</item>
+        <item>ZIP fájl kicsomagolása</item>
+        <item>image\' könyvtár ellenőrzése</item>
+        <item>TPT megkezdése</item>
+        <item>Saját TPT készítése</item>
+        <item>image\' könyvtár törlése</item>
+        <item>Kikapcsolás a TPT megkezdéséhez</item>
+        <!-- <item>Tesztek</item> -->
+    </string-array>
+      <!-- HomeActivity disclaimer strings -->
+    <string name="disclaimer_heading">Jogi nyilatkozat</string>
+    <string name="disclaimer">Csak saját felelősségre. A telefonban keletkezett sérülésekért nem vállalok felelősséget.</string>
+    <string name="accept">Elfogad</string>
+      <!-- HomeActivity start TPT strings -->
+    <string name="power_off">Kikapcsolás</string>
+    <string name="start_tpt">Miután a telefon kikapcsolt, tartsa nyomva a hangerő fel, a menü és a bekapcsoló gombokat a TPT megkezdéséhez.</string>
+      <!-- HomeActivity delete image strings -->
+    <string name="delete_image_heading">Image fájl törlése</string>
+    <string name="delete_image">Biztosan törli az \'image\' mappát és annak tartalmát?</string>
+    <string name="deleting">Törlés. Kérem várjon...</string>
+    <string name="image_deleted">image\' mappa törölve.</string>
+      <!-- HomeActivity low battery strings -->
+    <string name="low_battery_heading">Alacsony akkutöltés</string>
+    <string name="low_battery">Az akkumulátor töltése 25% alatti. Biztosan elindítja a TPT műveletet?</string>
+      <!-- HomeActivity auto tpt strings -->
+    <string name="auto_tpt_heading">TPT megkezdése</string>
+    <string name="auto_tpt">Ez megkezdi a TPT műveletet. Ha még nem ellenőrizte az \'image\' mappát nyomja meg a Nemet és tegye meg. Akarja folytatni?</string>
+    <string name="auto_tpt_fail">Sajnálom, ez a funkció jelenleg nem támogatott a jelenlegi ROM-mal.</string>
+      <!-- HomeActivity locale changing strings -->
+    <string name="change_locale_heading">Nyelv kiválasztása</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="german">German</string>
+    <string name="russian">Russian</string>
+    <string name="chinese">Chinese</string>
+    <string name="portuguese">Portugues</string>
+    <string name="spanish">Español</string>
+    <string name="serbian">Srpski</string>
+    <string name="czech">Česky</string>
+    <string name="polish">Polish</string>
+    <string name="hungarian">Hungarian</string>
+      <!-- HomeActivity type/gen checking strings -->
+    <string name="check_type_heading">Blade típusa</string>
+    <string name="check_type">érzékelve. Igaz ez?</string>
+    <string name="check_gen_heading">Blade Gen</string>
+    <string name="check_gen">Melyik generációs Blade az öné?</string>
+    <string name="manual_type_heading">Blade típus beírása</string>
+    <string name="setting_type_heading">Blade típus beállítása</string>
+    <string name="setting_type">Típus beállítása</string>
+    <string name="check_board_heading">Telefon típusa</string>
+    <string name="correct">érzékelve. Igaz ez?</string>
+    <string name="board_blade">ZTE Blade/Orange San Francisco</string>
+    <string name="board_skate">ZTE Skate/Orange Monte Carlo</string>
+    <string name="board_blade2">Orange San Francisco II/T-Mobile Vivacity</string>
+    <string name="phone_type_heading">Írja be a telefon típusát</string>
+    <string name="san_francisco_ii">Orange San Francisco II</string>
+    <string name="vivacity">T-Mobile Vivacity</string>
+    <string name="unsupported_heading">Nem támogatott modell</string>
+    <string name="unsupported">Sajnálom, ez az eszköz jelenleg nem támogatott. Ha úgy gondolja, hogy ez hiba kérem ellenőrizze újra a telefon típusát és próbálja újra.</string>
+    
+      <!-- Downloader strings -->
+    <string name="standard_tpt_heading">Standard TPT-k:</string>
+    <string name="standard_tpt">Konvertál, de nem tartalmaz ROM-t</string>
+    <string name="allinone_tpt_heading">Mindent egybe TPT-k:</string>
+    <string name="allinone_tpt">Egy menetben konvertálja és telepíti a ROM-ot</string>
+    <string name="downloader">TPT letöltése</string>
+    
+      <!-- DirectDownloader strings -->  
+    <string name="downloading">Letöltés...</string>
+    <string name="download_finished_heading">Letöltés kész</string>
+    <string name="download_finished">Sikeresen letöltve</string>
+    <string name="pick_download">Letöltendő fájl kiválasztása</string>
+    <string name="file_there_heading">Az SD-kártyán lévő fájl</string>
+    <string name="file_there1">Találat</string>
+    <string name="file_there2">a fájl már megtalálható az SD-kártyán. Újra le akarja tölteni?</string>
+    <string name="download_failed_heading">Letöltés sikertelen</string>
+    <string name="download_failed">Hiba a letöltéskor.</string>
+    
+      <!-- MD5 checking strings -->
+    <string name="pickmd5">Válasszon fájlt az ellenőrzéshez</string>
+    <string name="calculating">Számolás. Kérem várjon...</string>
+    <string name="md5">MD5 érték</string>
+    <string name="md5of">MD5 érték ellenőrzése:</string>
+    <string name="md5is">MD5 érték:</string>
+    <string name="md5matches">A kapott eredmények megegyeznek.</string>
+    
+      <!-- PickFile strings -->
+    <string name="file_not_found_heading">Fájl nem található</string>
+    <string name="file_not_found1">Nem található</string>
+    <string name="file_not_found2">. Le akarja tölteni?</string>
+    
+      <!-- Unzipping strings -->
+    <string name="pickunzip">Válassza ki a zip fájlt a kicsomagoláshoz</string>
+    <string name="unzipping">Kicsomagolás. Kérem várjon...</string>
+    <string name="unzipgood">Kicsomagolás kész</string>
+    <string name="unzipbad">Kicsomagolás sikertelen</string>
+    <string name="unzip">Kicsomagolás</string>
+    <string name="unzip_file">Kicsomagolás folyamatban</string>
+    
+      <!-- EnterFile strings -->
+    <string name="askfile">Adja meg a fájl nevét és kattintson az enterre (a fájlnak az SD-kártya gyökerében kell lennie)</string>
+    <string name="enterfile">Enter</string>
+    <string name="unfound1">Nem található \'</string>
+    <string name="unfound2">\'. Kérem ellenőrizze és próbálja újra.</string>
+    
+      <!-- VerifyImage strings -->
+    <string name="nooffiles">Ellenőrzött fájlok száma:</string>
+    <string name="noofmatches">Egyező MD5 értékek száma:</string>
+    <string name="missingfiles">Nem található fájlok száma:</string>
+    <string name="filessearched">Fájlkeresés előzménye:</string>
+    <string name="files_verified">Ellenőrzött fájlok</string>
+    <string name="no_of_matches">Egyezések száma:</string>
+    <string name="files_not_found">fájlok nem találhatók.</string>
+    <string name="file_not_found">fájl nem található.</string>
+    <string name="no_nandroid">A nandroid.md5 fájl nem található az \'image\' könyvtárban, kérem ellenőrizze és próbálja újra.</string>
+    <string name="verifying">Ellenőrzés. Kérem várjon...</string>
+    
+      <!-- AllInOne strings -->
+    <string name="md5resultaio">MD5 érték:</string>
+    <string name="unzipdoneaio">Kicsomagolás eredménye:</string>
+    <string name="downloadresultaio">Letöltés eredménye:</string>
+    <string name="md5_mismatch_heading">MD5 érték hiba</string>
+    <string name="md5_mismatch">Az MD5 érték nem egyezett meg. Újra letölti?</string>
+    <string name="unzip_fail">Kicsomagolás sikertelen, folyamat megszakítása.</string>
+    <string name="no_nandroid2">A nandroid.md5 fájl nem található az \'image\' könyvtárban, folyamat megszakítása.</string>
+    <string name="working">Dolgozom. Kérem várjon...</string>
+    <string name="pickallinone">Válassza ki a használni kívánt fájlt:</string>
+    
+      <!-- Instructions strings -->
+    <string name="instructions">Hogyan használjam</string>
+    <string name="instruction1">1. TPT letöltése</string>
+    <string name="instruction2">2. MD5 érték ellenőrzése</string>
+    <string name="instruction3">3. A TPT kicsomagolása</string>
+    <string name="instruction4">4. Az \'image\' mappa tartalmának összehasonlítása a nandroid.md5 fájlban található értékekkel</string>
+    <string name="instruction5">5. Telefon kikapcsolása</string>
+    <string name="instruction6">6. Tartsa nyomva a menü, a hangerő fel és a bekapcsoló gombokat</string>
+    <string name="instruction7">Standard TPT használatakor:</string>
+    <string name="instruction8">7. Zöld felirat jelenik meg a képernyőn, majd a telefon recovery módban indul újra</string>
+    <string name="instruction9">8. Telepítse a kiválasztott ROM-ot és indítsa újra a telefont</string>
+    <string name="instruction10">Mindent egybe TPT-k esetén:</string>
+    <string name="instruction11">7. Zöld felirat jelenik meg a képernyőn, az újraindulás után a kiválasztott ROM töltődik be</string>
+    
+      <!-- Troubleshooting strings -->
+    <string name="troubleshooting1">Q. I pressed the power off button, but nothing happened.</string>
+    <string name="troubleshooting2">A. You need root (superuser) for this option to work. If you have root and granted su permissions, try unchecking the Auto Power-off option in the Options menu.</string>
+    <string name="troubleshooting3">Q. I followed all the steps and tried to flash the TPT, but now I\'m stuck at the green android.</string>
+    <string name="troubleshooting4">A. You\'re probably in fastboot mode. Trying holding menu and vol+ and try flashing again.</string>
+    <string name="troubleshooting5">Q. I downloaded and unzipped a TPT, but some of the files don\'t match.</string>
+    <string name="troubleshooting6">A. The download may have been corrupted, try downloading again and if they still don\'t match use the feedback email and give details of which file you downloaded and which files don\'t match.</string>
+    <string name="troubleshooting7"></string>
+    <string name="troubleshooting8"></string>
+    <string name="troubleshooting9"></string>
+    <string name="troubleshooting10"></string>
+    <string name="troubleshooting11"></string>
+    
+      <!-- Changelog strings -->
+    <string name="changelog">Változások listája:</string>
+    
+      <!-- CustomTPT strings -->
+    <string name="finished_heading">A TPT elkészült</string>
+    <string name="finished">A TPT összeállítása befejeződött.</string>
+    <string name="copying">Másolás, kérem várjon...</string>
+    <string name="pick_cache_heading">Cache</string>
+    <string name="pick_cache">Írjon be egy értéket 2 és 60 között.</string>
+    <string name="pick_system_heading">System</string>
+    <string name="pick_system">Írjon be egy értéket 90 és 260 között.</string>
+    <string name="set_userdata_heading">Data</string>
+    <string name="set_userdata1">Cache:</string>
+    <string name="set_userdata2">MB, System:</string>
+    <string name="set_userdata3">MB, és</string>
+    <string name="set_userdata4">MB szabad terület a \'data\' számára. Használni kívánja ezeket a méreteket?</string>
+    <string name="writing">Partíciók írása. Kérem várjon...</string>
+    <string name="building">image.bin készítése. Kérem várjon...</string>
+    <string name="pick_gen">Válassza ki az elkészítendő TPT típusát.</string>
+    <string name="pick_splash">Válassza ki a használni kívánt splash képet.</string>
+    <string name="pick_recovery">Válassza ki a használni kívánt recovery verziót.</string>
+    <string name="ztepack_failed">A ztepack másolása sikertelen volt. Ellenőrizze a root állapotát és a superuser engedélyeket.</string>
+    <string name="image_bin_failed">Az image.bin fájlt nem sikerült elkészíteni.</string>
+    
+      <!-- General strings -->
+    <string name="app_name">TPT Helper</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Mégse</string>
+    <string name="yes">Igen</string>
+    <string name="no">Nem</string>
+    <string name="error">Hiba</string>
+    <string name="other">Másik</string>
+    <string name="options">Beállítások</string>
+    <string name="feedback">Visszajelzés</string>
+    <string name="about">Az alkalmazásról</string>
+    <string name="unknown">Ismeretlen</string>
+    <string name="license">Licenc</string>
+    <string name="rate">Értékelés</string>
+    
+      <!-- Preferences Strings -->
+    <string-array name="model">
+        <item>ZTE Blade/Orange San Francisco</item>
+        <item>ZTE Skate/Orange Monte Carlo</item>
+        <item>Orange San Francisco II/T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="models">
+        <item>blade</item>
+        <item>skate</item>
+        <item>blade2</item>
+    </string-array>
+    <string-array name="gen">
+        <item>Gen 1/TPT frissítése Gen 2-re</item>
+        <item>Gyári Gen 2/3/windowssal Gen 2-re frissített</item>
+    </string-array>
+    <string-array name="gens">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="type">
+        <item>Európai ZTE Blade</item>
+        <item>Kínai ZTE Blade</item>
+    </string-array>
+    <string-array name="types">
+        <item>European Blade</item>
+        <item>Chinese Blade</item>
+    </string-array>
+    <string-array name="blade2">
+        <item>Orange San Francisco II</item>
+        <item>T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="blade2s">
+        <item>SF2</item>
+        <item>TMV</item>
+    </string-array>
+    <string name="gen_title">ZTE Blade Gen</string>
+    <string name="type_title">ZTE Blade típus</string>
+</resources>

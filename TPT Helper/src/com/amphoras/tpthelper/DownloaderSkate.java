@@ -574,6 +574,13 @@ public class DownloaderSkate extends ListActivity {
           	    	    DownloaderSkate.this.finish();
           	    		break;
           	    	case 10:
+          	    		editlocale.putString("locale", "hu");
+          	    		editlocale.commit();
+          	    		Intent s = new Intent(DownloaderSkate.this, HomeActivity.class);
+          	    	    startActivity(s);
+          	    	    DownloaderSkate.this.finish();
+          	    		break;
+          	    	case 11:
           	    		// Do nothing
           	    		break;
           	    	}

@@ -522,6 +522,13 @@ public class DownloaderSF2 extends ListActivity {
           	    	    DownloaderSF2.this.finish();
           	    		break;
           	    	case 10:
+          	    		editlocale.putString("locale", "hu");
+          	    		editlocale.commit();
+          	    		Intent s = new Intent(DownloaderSF2.this, HomeActivity.class);
+          	    	    startActivity(s);
+          	    	    DownloaderSF2.this.finish();
+          	    		break;
+          	    	case 11:
           	    		// Do nothing
           	    		break;
           	    	}

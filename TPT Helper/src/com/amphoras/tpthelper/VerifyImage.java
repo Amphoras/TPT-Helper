@@ -397,6 +397,13 @@ public class VerifyImage extends Activity {
       	    	    VerifyImage.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(VerifyImage.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    VerifyImage.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

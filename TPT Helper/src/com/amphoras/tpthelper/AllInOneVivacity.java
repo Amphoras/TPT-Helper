@@ -502,6 +502,13 @@ public class AllInOneVivacity extends Activity {
       	    	    AllInOneVivacity.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(AllInOneVivacity.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    AllInOneVivacity.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

@@ -578,6 +578,13 @@ public class AllInOne extends Activity {
       	    	    AllInOne.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(AllInOne.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    AllInOne.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

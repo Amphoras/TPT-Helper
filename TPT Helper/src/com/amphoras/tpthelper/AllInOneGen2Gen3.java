@@ -578,6 +578,13 @@ public class AllInOneGen2Gen3 extends Activity {
       	    	    AllInOneGen2Gen3.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(AllInOneGen2Gen3.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    AllInOneGen2Gen3.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

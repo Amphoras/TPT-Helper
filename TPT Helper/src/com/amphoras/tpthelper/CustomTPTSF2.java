@@ -483,6 +483,13 @@ public class CustomTPTSF2 extends Activity {
       	    	    CustomTPTSF2.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(CustomTPTSF2.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    CustomTPTSF2.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

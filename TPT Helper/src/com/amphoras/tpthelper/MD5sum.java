@@ -265,6 +265,13 @@ public class MD5sum extends Activity {
       	    	    MD5sum.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(MD5sum.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    MD5sum.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}

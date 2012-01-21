@@ -522,6 +522,13 @@ public class DownloaderVivacity extends ListActivity {
           	    	    DownloaderVivacity.this.finish();
           	    		break;
           	    	case 10:
+          	    		editlocale.putString("locale", "hu");
+          	    		editlocale.commit();
+          	    		Intent s = new Intent(DownloaderVivacity.this, HomeActivity.class);
+          	    	    startActivity(s);
+          	    	    DownloaderVivacity.this.finish();
+          	    		break;
+          	    	case 11:
           	    		// Do nothing
           	    		break;
           	    	}

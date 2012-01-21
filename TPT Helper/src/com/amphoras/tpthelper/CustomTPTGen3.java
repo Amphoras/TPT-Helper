@@ -503,6 +503,13 @@ public class CustomTPTGen3 extends Activity {
       	    	    CustomTPTGen3.this.finish();
       	    		break;
       	    	case 10:
+      	    		editlocale.putString("locale", "hu");
+      	    		editlocale.commit();
+      	    		Intent s = new Intent(CustomTPTGen3.this, HomeActivity.class);
+      	    	    startActivity(s);
+      	    	    CustomTPTGen3.this.finish();
+      	    		break;
+      	    	case 11:
       	    		// Do nothing
       	    		break;
       	    	}
