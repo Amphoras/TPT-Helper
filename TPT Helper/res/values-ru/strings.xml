@@ -166,9 +166,9 @@
     <string name="finished">Finished building your TPT.</string>
     <string name="copying">Copying. Please wait...</string>
     <string name="pick_cache_heading">Cache</string>
-    <string name="pick_cache">Please enter a value between 2 and 50</string>
+    <string name="pick_cache">Please enter a value between 2 and 60</string>
     <string name="pick_system_heading">System</string>
-    <string name="pick_system">Please enter a value between 90 and 220</string>
+    <string name="pick_system">Please enter a value between 90 and 260</string>
     <string name="set_userdata_heading">Data</string>
     <string name="set_userdata1">Cache:</string>
     <string name="set_userdata2">MB, System:</string>

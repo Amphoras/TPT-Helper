@@ -274,7 +274,7 @@ public class CustomTPTGen3 extends Activity {
               	      if (system < 90) {
               	    	showDialog(PICK_SYSTEM2);
               	      } else {
-              		      if (system > 220) {
+              		      if (system > 260) {
               		    	showDialog(PICK_SYSTEM2);
               		      } else {
               			      Editor set_system = preferences.edit();
@@ -557,7 +557,7 @@ public class CustomTPTGen3 extends Activity {
               	      if (system < 90) {
               	    	showDialog(PICK_SYSTEM);
               	      } else {
-              		      if (system > 220) {
+              		      if (system > 260) {
               		    	showDialog(PICK_SYSTEM);
               		      } else {
               			      Editor set_system = preferences.edit();

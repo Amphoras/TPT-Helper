@@ -168,7 +168,7 @@
     <string name="pick_cache_heading">Cache</string>
     <string name="pick_cache">Veuillez saisir une valeur entre 2 et 60</string>
     <string name="pick_system_heading">/system</string>
-    <string name="pick_system">Veuillez saisir une valeur entre 90 et 220</string>
+    <string name="pick_system">Veuillez saisir une valeur entre 90 et 260</string>
     <string name="set_userdata_heading">/data</string>
     <string name="set_userdata1">/cache:</string>
     <string name="set_userdata2">Mo, System:</string>
