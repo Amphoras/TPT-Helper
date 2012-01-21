@@ -1,3 +1,10 @@
+v2.0.2
+
+Updated French translations, thanks to jp33.
+Updated German translations, thanks to FelixL.
+Added Hungarian translations, thanks to agpoli.
+Can now choose a system partition size between 90 and 260MB.
+
 v2.0.1
 
 Added Polish translations, thanks to arnoldziq.
