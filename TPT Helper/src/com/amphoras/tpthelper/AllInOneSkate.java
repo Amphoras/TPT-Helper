@@ -769,12 +769,10 @@ public class AllInOneSkate extends Activity {
 			      }
 			      zin.close();
 			        // if end reached without errors, return success
-			      CharSequence unzipgood = getText(R.string.unzipgood);
-			      response = (String) unzipgood;
+			      response = "Unzip completed";
 			    } catch(Exception e) {
 			        // if there was an error, return failure
-			      CharSequence unzipbad = getText(R.string.unzipbad);
-			      response = (String) unzipbad;
+			      response = "Unzip failed";
 			    }
 			}
 			return response;
