@@ -1674,8 +1674,42 @@ public class CustomTPTSkate extends Activity {
 			if (ztepack.canRead()) {
 				buildImage();
 			} else {
-				Log.i(TAG, "Failed to copy ztepack: Runtime completed but file not present");
-				showDialog(ZTEPACK_FAILED);
+				try {
+				    Process copy_ztepack2 = Runtime.getRuntime().exec("su");
+				    DataOutputStream dos2 = new DataOutputStream(copy_ztepack2.getOutputStream());
+				    dos2.writeBytes("mount -o remount,rw /dev/mtdblock5 /system\n");
+				    dos2.writeBytes("cat /sdcard/ztepack>/system/bin/ztepack\n");
+				    dos2.writeBytes("chmod 0777 /system/bin/ztepack\n");
+				    dos2.writeBytes("mount -o remount,ro /dev/mtdblock5 /system\n");
+				    dos2.writeBytes("exit\n");
+				    copy_ztepack2.waitFor();
+					if (ztepack.canRead()) {
+						buildImage();
+					} else {
+						try {
+						    Process copy_ztepack3 = Runtime.getRuntime().exec("su");
+						    DataOutputStream dos3 = new DataOutputStream(copy_ztepack3.getOutputStream());
+						    dos3.writeBytes("mount -o remount,rw /dev/mtdblock5 /system\n");
+						    dos3.writeBytes("dd if=/sdcard/ztepack of=/system/bin/ztepack\n");
+						    dos3.writeBytes("chmod 0777 /system/bin/ztepack\n");
+						    dos3.writeBytes("mount -o remount,ro /dev/mtdblock5 /system\n");
+						    dos3.writeBytes("exit\n");
+						    copy_ztepack3.waitFor();
+							if (ztepack.canRead()) {
+								buildImage();
+							} else {
+								Log.i(TAG, "Failed to copy ztepack: Runtime completed but file not present");
+								showDialog(ZTEPACK_FAILED);
+							}
+						} catch (Exception e) {
+							Log.i(TAG, "Failed to copy ztepack: " + e);
+							showDialog(ZTEPACK_FAILED);
+						}
+					}
+				} catch (Exception e) {
+					Log.i(TAG, "Failed to copy ztepack: " + e);
+					showDialog(ZTEPACK_FAILED);
+				}
 			}
 		} catch (Exception e) {
 			Log.i(TAG, "Failed to copy ztepack: " + e);
