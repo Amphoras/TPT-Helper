@@ -130,8 +130,10 @@ public class Instructions extends Activity {
           CharSequence serbian = getText(R.string.serbian);
           CharSequence czech = getText(R.string.czech);
           CharSequence polish = getText(R.string.polish);
+          CharSequence hungarian = getText(R.string.hungarian);
+          CharSequence swedish = getText(R.string.swedish);
           CharSequence cancel = getText(R.string.cancel);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, polish, cancel};
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, polish, hungarian, swedish, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -214,6 +216,13 @@ public class Instructions extends Activity {
       	    	    Instructions.this.finish();
       	    		break;
       	    	case 11:
+      	    		editlocale.putString("locale", "sv");
+      	    		editlocale.commit();
+      	    		Intent t = new Intent(Instructions.this, HomeActivity.class);
+      	    	    startActivity(t);
+      	    	    Instructions.this.finish();
+      	    		break;
+      	    	case 12:
       	    		// Do nothing
       	    		break;
       	    	}

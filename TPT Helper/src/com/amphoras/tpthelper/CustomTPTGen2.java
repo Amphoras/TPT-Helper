@@ -427,7 +427,9 @@ public class CustomTPTGen2 extends Activity {
           CharSequence serbian = getText(R.string.serbian);
           CharSequence czech = getText(R.string.czech);
           CharSequence polish = getText(R.string.polish);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, polish, cancel};
+          CharSequence hungarian = getText(R.string.hungarian);
+          CharSequence swedish = getText(R.string.swedish);
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, polish, hungarian, swedish, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -510,6 +512,13 @@ public class CustomTPTGen2 extends Activity {
       	    	    CustomTPTGen2.this.finish();
       	    		break;
       	    	case 11:
+      	    		editlocale.putString("locale", "sv");
+      	    		editlocale.commit();
+      	    		Intent t = new Intent(CustomTPTGen2.this, HomeActivity.class);
+      	    	    startActivity(t);
+      	    	    CustomTPTGen2.this.finish();
+      	    		break;
+      	    	case 12:
       	    		// Do nothing
       	    		break;
       	    	}

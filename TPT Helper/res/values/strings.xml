@@ -58,13 +58,14 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="french">Français</string>
     <string name="german">German</string>
     <string name="russian">Russian</string>
-    <string name="chinese">Chinese</string>
+    <string name="chinese">中文</string>
     <string name="portuguese">Portugues</string>
     <string name="spanish">Español</string>
     <string name="serbian">Srpski</string>
     <string name="czech">Česky</string>
     <string name="polish">Polish</string>
     <string name="hungarian">Hungarian</string>
+    <string name="swedish">Svenska</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Blade Type</string>
     <string name="check_type">detected. Is this correct?</string>
@@ -95,7 +96,7 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="downloading">Downloading...</string>
     <string name="download_finished_heading">Download Complete</string>
     <string name="download_finished">Successfully downloaded</string>
-    <string name="pick_download">Chose the file to download</string>
+    <string name="pick_download">Choose the file to download</string>
     <string name="file_there_heading">File on sdcard</string>
     <string name="file_there1">Found</string>
     <string name="file_there2">on the sdcard already. Do you still want to download it again?</string>
@@ -103,7 +104,7 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="download_failed">Failed to download</string>
     
       <!-- MD5 checking strings -->
-    <string name="pickmd5">Chose the file to check</string>
+    <string name="pickmd5">Choose the file to check</string>
     <string name="calculating">Calculating. Please wait...</string>
     <string name="md5">MD5sum</string>
     <string name="md5of">Checking md5sum of: </string>
@@ -116,7 +117,7 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="file_not_found2">. Would you like to download it?</string>
     
       <!-- Unzipping strings -->
-    <string name="pickunzip">Chose the zip to unzip</string>
+    <string name="pickunzip">Choose the zip to unzip</string>
     <string name="unzipping">Unzipping. Please wait...</string>
     <string name="unzipgood">Unzip completed</string>
     <string name="unzipbad">Unzip failed</string>

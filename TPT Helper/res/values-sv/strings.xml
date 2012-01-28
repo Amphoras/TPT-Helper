@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <!-- HomeActivity list options -->
+    <string-array name="options">
+        <item>Allt-i-ett</item>
+        <item>Ladda ner en TPT</item>
+        <item>Kontrollera en fils MD5-summa</item>
+        <item>Packa upp en zipfil</item>
+        <item>Kontrollera imagebiblioteket</item>
+        <item>Starta TPT</item>
+        <item>Skapa din egen TPT</item>
+        <item>Radera imagebiblioteket</item>
+        <item>Stäng av för att starta TPTn</item>
+        <!-- <item>Tests</item> -->
+    </string-array>
+      <!-- HomeActivity disclaimer strings -->
+    <string name="disclaimer_heading">Disclaimer</string>
+    <string name="disclaimer">Använd denna app på egen risk. Jag tar inget ansvar för någon form av skada på din telefon. </string>
+    <string name="accept">Acceptera</string>
+      <!-- HomeActivity start TPT strings -->
+    <string name="power_off">Stäng av</string>
+    <string name="start_tpt">När telefonen har stängt av, håll ned volym+, meny och tryck på påknappen för att starta TPTn.</string>
+      <!-- HomeActivity delete image strings -->
+    <string name="delete_image_heading">Radera image</string>
+    <string name="delete_image">Är du säker på att du vill radera imagemappen och allt dess innehåll?</string>
+    <string name="deleting">Raderar. Var god vänta...</string>
+    <string name="image_deleted">Imagemappen raderad</string>
+      <!-- HomeActivity low battery strings -->
+    <string name="low_battery_heading">Låg batteristyrka</string>
+    <string name="low_battery">Din batteristyrka är under 25%, vill du fortfarande starta TPTn?</string>
+      <!-- HomeActivity auto tpt strings -->
+    <string name="auto_tpt_heading">Starta TPT</string>
+    <string name="auto_tpt">Detta kommer starta TPTn. Om du inte har kontrollerat imagemappen, tryck nej och gör så nu. Vill du fortsätta?</string>
+    <string name="auto_tpt_fail">Beklagar, denna funktion stöds för närvarande inte för din nuvarande ROM.</string>
+      <!-- HomeActivity locale changing strings -->
+    <string name="change_locale_heading">Välj språk</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="german">German</string>
+    <string name="russian">Russian</string>
+    <string name="chinese">中文</string>
+    <string name="portuguese">Portugues</string>
+    <string name="spanish">Español</string>
+    <string name="serbian">Srpski</string>
+    <string name="czech">Česky</string>
+    <string name="polish">Polish</string>
+    <string name="hungarian">Hungarian</string>
+    <string name="swedish">Svenska</string>
+      <!-- HomeActivity type/gen checking strings -->
+    <string name="check_type_heading">Typ av Blade</string>
+    <string name="check_type">Upptäckt. Är detta korrekt?</string>
+    <string name="check_gen_heading">Bladegeneration</string>
+    <string name="check_gen">Vilken generation av Blade har du?</string>
+    <string name="manual_type_heading">Mata in Bladetyp</string>
+    <string name="setting_type_heading">Ställ in Bladetyp</string>
+    <string name="setting_type">Ställ in typ till</string>
+    <string name="check_board_heading">Telefontyp</string>
+    <string name="correct">Upptäckt. Är detta korrekt?</string>
+    <string name="board_blade">ZTE Blade/Orange San Francisco</string>
+    <string name="board_skate">ZTE Skate/Orange Monte Carlo</string>
+    <string name="board_blade2">Orange San Francisco II/T-Mobile Vivacity</string>
+    <string name="phone_type_heading">Mata in telefontyp</string>
+    <string name="san_francisco_ii">Orange San Francisco II</string>
+    <string name="vivacity">T-Mobile Vivacity</string>
+    <string name="unsupported_heading">Modell utan stöd</string>
+    <string name="unsupported">Beklagar, denna enhet stöds för närvarande inte. Om du tror att detta är ett fel, var god kontrollera din telefonmodell och försök igen.</string>
+    
+      <!-- Downloader strings -->
+    <string name="standard_tpt_heading">Standard-TPTs:</string>
+    <string name="standard_tpt">Konverterar, men inkluderar inte någon ROM</string>
+    <string name="allinone_tpt_heading">Allt-i-ett TPTs:</string>
+    <string name="allinone_tpt">Konverterar och flashar ROM i ett svep</string>
+    <string name="downloader">Ladda ner en TPT</string>
+    
+      <!-- DirectDownloader strings -->  
+    <string name="downloading">Laddar ner...</string>
+    <string name="download_finished_heading">Nedladdning klar</string>
+    <string name="download_finished">Framgångsrikt nedladdad</string>
+    <string name="pick_download">Välj fil att ladda ner</string>
+    <string name="file_there_heading">Fil på SD-kort</string>
+    <string name="file_there1">Hittad</string>
+    <string name="file_there2">Finns redan på SD-kortet. Vill du fortfarande ladda ner det igen?</string>
+    <string name="download_failed_heading">Nedladdningen misslyckades</string>
+    <string name="download_failed">Nedladdningen misslyckades</string>
+    
+      <!-- MD5 checking strings -->
+    <string name="pickmd5">Välj fil att kontrollera</string>
+    <string name="calculating">Beräknar. Var god vänta...</string>
+    <string name="md5">MD5-summa</string>
+    <string name="md5of">Kontrollerar MD5-summa hos:</string>
+    <string name="md5is">MD5-summan är:</string>
+    <string name="md5matches">Matchar förväntat värde.</string>
+    
+      <!-- PickFile strings -->
+    <string name="file_not_found_heading">Filen hittades inte</string>
+    <string name="file_not_found1">Hittade inte</string>
+    <string name="file_not_found2">. Vill du ladda ner den?</string>
+    
+      <!-- Unzipping strings -->
+    <string name="pickunzip">Välj zipfil att packa upp</string>
+    <string name="unzipping">Packar upp. Var god vänta...</string>
+    <string name="unzipgood">Uppackning klar</string>
+    <string name="unzipbad">Uppackning misslyckades</string>
+    <string name="unzip">Packa upp</string>
+    <string name="unzip_file">Försöker packa upp</string>
+    
+      <!-- EnterFile strings -->
+    <string name="askfile">Var god mata in filnamnet och tryck sedan på enter (filen måste finnas på SD-kortets rotkatalog)</string>
+    <string name="enterfile">Mata in</string>
+    <string name="unfound1">Hittar inte \'</string>
+    <string name="unfound2">\'. Var god kontrollera och försök igen.</string>
+    
+      <!-- VerifyImage strings -->
+    <string name="nooffiles">Antal kontrollerade filer:</string>
+    <string name="noofmatches">Antal matchande MD5-summor:</string>
+    <string name="missingfiles">Antal filer som inte hittades:</string>
+    <string name="filessearched">Sökta filer:</string>
+    <string name="files_verified">Verifierade filer</string>
+    <string name="no_of_matches">Antal matchar:</string>
+    <string name="files_not_found">Filerna hittades inte. </string>
+    <string name="file_not_found">Filen hittades inte.</string>
+    <string name="no_nandroid">Kan inte hitta nandroid.md5-filen i imagemappen. Var god kontrollera att den finns och försök igen. </string>
+    <string name="verifying">Verifierar. Var god vänta...</string>
+    
+      <!-- AllInOne strings -->
+    <string name="md5resultaio">MD5-resultat:</string>
+    <string name="unzipdoneaio">Uppackningsresultat:</string>
+    <string name="downloadresultaio">Nedladdningsresultat:</string>
+    <string name="md5_mismatch_heading">Omatchande MD5-summa</string>
+    <string name="md5_mismatch">MD5-summan stämmer inte överens med det förväntade värdet. Vill du försöka ladda ner igen?</string>
+    <string name="unzip_fail">Uppackning misslyckades, stoppar aktivitet.</string>
+    <string name="no_nandroid2">Kan inte hitta nandroid.md5-filen i imagemappen, stoppar aktivitet.</string>
+    <string name="working">Arbetar. Var god vänta...</string>
+    <string name="pickallinone">Välj fil att använda</string>
+    
+      <!-- Instructions strings -->
+    <string name="instructions">Instruktion</string>
+    <string name="instruction1">1. Ladda ner en TPT</string>
+    <string name="instruction2">2. Kontrollera att MD5-summan av zipfilen matchar.</string>
+    <string name="instruction3">3. Packa upp TPTn.</string>
+    <string name="instruction4">4. Kontrollera att innehållet i imagemappen matchar med värdena i filen nandroid.md5</string>
+    <string name="instruction5">5. Stäng av din telefon</string>
+    <string name="instruction6">6. Håll ned meny och volym+ och tryck på påknappen</string>
+    <string name="instruction7">Om du använder en standard-TPT:</string>
+    <string name="instruction8">7. Grön text borde dyka upp på skärmen och sedan kommer telefonen starta om till recovery</string>
+    <string name="instruction9">8. Flasha ditt val av ROM från recovery, och starta sedan om</string>
+    <string name="instruction10">Om du använder en allt-i-ett-TPT:</string>
+    <string name="instruction11">7. Grön text borde dyka upp på skärmen, sedan borde telefonen starta om till din ROM</string>
+    
+      <!-- Troubleshooting strings -->
+    <string name="troubleshooting1">Q. I pressed the power off button, but nothing happened.</string>
+    <string name="troubleshooting2">A. You need root (superuser) for this option to work. If you have root and granted su permissions, try unchecking the Auto Power-off option in the Options menu.</string>
+    <string name="troubleshooting3">Q. I followed all the steps and tried to flash the TPT, but now I\'m stuck at the green android.</string>
+    <string name="troubleshooting4">A. You\'re probably in fastboot mode. Trying holding menu and vol+ and try flashing again.</string>
+    <string name="troubleshooting5">Q. I downloaded and unzipped a TPT, but some of the files don\'t match.</string>
+    <string name="troubleshooting6">A. The download may have been corrupted, try downloading again and if they still don\'t match use the feedback email and give details of which file you downloaded and which files don\'t match.</string>
+    <string name="troubleshooting7"></string>
+    <string name="troubleshooting8"></string>
+    <string name="troubleshooting9"></string>
+    <string name="troubleshooting10"></string>
+    <string name="troubleshooting11"></string>
+    
+      <!-- Changelog strings -->
+    <string name="changelog">Versionshistorik</string>
+    
+      <!-- CustomTPT strings -->
+    <string name="finished_heading">TPT skapad</string>
+    <string name="finished">Klar med att skapa din TPT.</string>
+    <string name="copying">Kopierar. Var god vänta...</string>
+    <string name="pick_cache_heading">Cache</string>
+    <string name="pick_cache">Var god mata in ett värde mellan 2 och 60</string>
+    <string name="pick_system_heading">System</string>
+    <string name="pick_system">Var god mata in ett värde mellan 90 och 260</string>
+    <string name="set_userdata_heading">Data</string>
+    <string name="set_userdata1">Cache:</string>
+    <string name="set_userdata2">MB, System:</string>
+    <string name="set_userdata3">MB, och</string>
+    <string name="set_userdata4">Kvarvarande MB för data. Vill du använda dessa storlekar?</string>
+    <string name="writing">Skriver partitioner. Var god vänta...</string>
+    <string name="building">Skapar image.bin. Var god vänta...</string>
+    <string name="pick_gen">Välj den typ av TPT du vill skapa. </string>
+    <string name="pick_splash">Välj önskad splashbild.</string>
+    <string name="pick_recovery">Välj önskad recoveryversion.</string>
+    <string name="ztepack_failed">Misslyckades att kopiera ztepack. Var god kontrollera att din telefon är rootad och att du har superuserbehörighet.</string>
+    <string name="image_bin_failed">Misslyckades att skapa image.bin.</string>
+    
+      <!-- General strings -->
+    <string name="app_name">TPT-assistenten</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Avbryt</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nej</string>
+    <string name="error">Fel</string>
+    <string name="other">Annat</string>
+    <string name="options">Inställningar</string>
+    <string name="feedback">Feedback</string>
+    <string name="about">Om</string>
+    <string name="unknown">Okänd</string>
+    <string name="license">Licens</string>
+    <string name="rate">Utvärdera</string>
+    
+      <!-- Preferences Strings -->
+    <string-array name="model">
+        <item>ZTE Blade/Orange San Francisco</item>
+        <item>ZTE Skate/Orange Monte Carlo</item>
+        <item>Orange San Francisco II/T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="models">
+        <item>blade</item>
+        <item>skate</item>
+        <item>blade2</item>
+    </string-array>
+    <string-array name="gen">
+        <item>Gen 1/TPT uppgraderad TPT Gen 2</item>
+        <item>Stock Gen 2/3/Windows uppgraderad Gen 2</item>
+    </string-array>
+    <string-array name="gens">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="type">
+        <item>Europeisk ZTE Blade</item>
+        <item>Kinesisk ZTE Blade</item>
+    </string-array>
+    <string-array name="types">
+        <item>European Blade</item>
+        <item>Chinese Blade</item>
+    </string-array>
+    <string-array name="blade2">
+        <item>Orange San Francisco II</item>
+        <item>T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="blade2s">
+        <item>SF2</item>
+        <item>TMV</item>
+    </string-array>
+    <string name="gen_title">ZTE Blade Gen</string>
+    <string name="type_title">ZTE Blade-typ</string>
+</resources>

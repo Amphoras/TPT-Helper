@@ -38,13 +38,14 @@
     <string name="french">Français</string>
     <string name="german">German</string>
     <string name="russian">Russian</string>
-    <string name="chinese">Chinese</string>
+    <string name="chinese">中文</string>
     <string name="portuguese">Português</string>
     <string name="spanish">Español</string>
     <string name="serbian">Srpski</string>
     <string name="czech">Česky</string>
     <string name="polish">Polish</string>
     <string name="hungarian">Hungarian</string>
+    <string name="swedish">Svenska</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Typ Blade</string>
     <string name="check_type">detekován. Je to správně?</string>

@@ -8,7 +8,7 @@
         <item>解压缩一个 zip 文件</item>
         <item>检查"image"文件夹</item>
         <item>开始 TPT</item>
-        <item>Create your own TPT</item>
+        <item>创建你自己的TPT</item>
         <item>删除"image"文件夹</item>
         <item>关闭电源以启动 TPT</item>
         <!-- <item>测试</item> -->
@@ -33,36 +33,37 @@
     <string name="auto_tpt">即将开始 TPT 。如果你尚未检查 "image" 文件夹，请按“否”并检查它。你希望继续操作吗？</string>
     <string name="auto_tpt_fail">对不起，你目前的 ROM 还不支持此特性。</string>
       <!-- HomeActivity locale changing strings -->
-    <string name="change_locale_heading">Pick the language to use</string>
+    <string name="change_locale_heading">选择语言</string>
     <string name="english">English</string>
     <string name="french">Français</string>
     <string name="german">German</string>
     <string name="russian">Russian</string>
-    <string name="chinese">Chinese</string>
+    <string name="chinese">中文</string>
     <string name="portuguese">Português</string>
     <string name="spanish">Español</string>
     <string name="serbian">Srpski</string>
     <string name="czech">Česky</string>
     <string name="polish">Polish</string>
     <string name="hungarian">Hungarian</string>
+    <string name="swedish">Svenska</string>
       <!-- HomeActivity type/gen checking strings -->
-    <string name="check_type_heading">Blade Type</string>
-    <string name="check_type">detected. Is this correct?</string>
-    <string name="check_gen_heading">Blade Gen</string>
-    <string name="check_gen">What gen of Blade do you have?</string>
-    <string name="manual_type_heading">Enter Blade Type</string>
-    <string name="setting_type_heading">Setting Blade Type</string>
-    <string name="setting_type">Setting type to</string>
-    <string name="check_board_heading">Phone Type</string>
-    <string name="correct">detected, is this correct?</string>
+    <string name="check_type_heading">Blade 型号</string>
+    <string name="check_type">侦测到。是否正确？</string>
+    <string name="check_gen_heading">Blade Gen版本</string>
+    <string name="check_gen">你的Blade Gen版本是？</string>
+    <string name="manual_type_heading">输入Blade型号</string>
+    <string name="setting_type_heading">设置Blade型号</string>
+    <string name="setting_type">设置型号为</string>
+    <string name="check_board_heading">手机型号</string>
+    <string name="correct">侦测到，是否正确？</string>
     <string name="board_blade">ZTE Blade/Orange San Francisco</string>
     <string name="board_skate">ZTE Skate/Orange Monte Carlo</string>
     <string name="board_blade2">Orange San Francisco II/T-Mobile Vivacity</string>
-    <string name="phone_type_heading">Enter Phone Type</string>
+    <string name="phone_type_heading">输入手机型号</string>
     <string name="san_francisco_ii">Orange San Francisco II</string>
     <string name="vivacity">T-Mobile Vivacity</string>
-    <string name="unsupported_heading">Unsupported Model</string>
-    <string name="unsupported">Sorry, this device is not currently supported. If you think this is an error, please check your phone model and try again.</string>
+    <string name="unsupported_heading">不支持的型号</string>
+    <string name="unsupported">抱歉，此手机当前不被支持。如果你认为有误，请检查你手机型号并重试。</string>
     
       <!-- Downloader strings -->
     <string name="standard_tpt_heading">标准 TPT 文件:</string>
@@ -160,31 +161,31 @@
     <string name="troubleshooting11"></string>
     
       <!-- Changelog strings -->
-    <string name="changelog">Changelog</string>
+    <string name="changelog">更新记录</string>
     
       <!-- CustomTPT strings -->
-    <string name="finished_heading">TPT Built</string>
-    <string name="finished">Finished building your TPT.</string>
-    <string name="copying">Copying. Please wait...</string>
-    <string name="pick_cache_heading">Cache</string>
-    <string name="pick_cache">Please enter a value between 2 and 60</string>
-    <string name="pick_system_heading">System</string>
-    <string name="pick_system">Please enter a value between 90 and 260</string>
-    <string name="set_userdata_heading">Data</string>
+    <string name="finished_heading">创建TPT</string>
+    <string name="finished">完成创建TPT</string>
+    <string name="copying">拷贝中，请稍候...</string>
+    <string name="pick_cache_heading">Cache分区</string>
+    <string name="pick_cache">请输入一个2到60之前的数值</string>
+    <string name="pick_system_heading">System分区</string>
+    <string name="pick_system">请输入一个90到260之间的数值</string>
+    <string name="set_userdata_heading">Data分区</string>
     <string name="set_userdata1">Cache:</string>
     <string name="set_userdata2">MB, System:</string>
-    <string name="set_userdata3">MB, and</string>
-    <string name="set_userdata4">MB of space left for data. Do you want to use these sizes?</string>
-    <string name="writing">Writing partitions. Please wait...</string>
-    <string name="building">Building image.bin. Please wait...</string>
-    <string name="pick_gen">Pick the type of TPT you want to make.</string>
-    <string name="pick_splash">Pick the splash image to use.</string>
-    <string name="pick_recovery">Pick the recovery version to use.</string>
-    <string name="ztepack_failed">Failed to copy ztepack. Please make sure you are rooted and gave superuser permissions.</string>
-    <string name="image_bin_failed">Failed to build the image.bin.</string>
+    <string name="set_userdata3">MB，还剩</string>
+    <string name="set_userdata4">MB空间留给用户数据分区。你想使用这样的分区大小吗？</string>
+    <string name="writing">写入分区。请稍候...</string>
+    <string name="building">创建image.bin文件。请稍候...</string>
+    <string name="pick_gen">选择你想使用的TPT类型</string>
+    <string name="pick_splash">选择开机画面</string>
+    <string name="pick_recovery">选择要使用的recovery版本</string>
+    <string name="ztepack_failed">拷贝ztepack失败。请确认你手机已root并具有超级用户权限</string>
+    <string name="image_bin_failed">创建image.bin文件失败</string>
     
       <!-- General strings -->
-    <string name="app_name">TPT Helper</string>
+    <string name="app_name">TPT助手</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
     <string name="yes">是</string>
@@ -194,9 +195,9 @@
     <string name="options">选项</string>
     <string name="feedback">选项</string>
     <string name="about">关于</string>
-    <string name="unknown">Unknown</string>
-    <string name="license">License</string>
-    <string name="rate">Rate</string>
+    <string name="unknown">未知</string>
+    <string name="license">授权协议</string>
+    <string name="rate">评分</string>
     
       <!-- Preferences Strings -->
     <string-array name="model">
