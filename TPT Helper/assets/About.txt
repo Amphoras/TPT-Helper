@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
 
 You can see a copy of the full license by picking the "License" option from the menu.
-You can get a copy of the source code for this version from https://github.com/Amphoras/TPT-Helper/tree/V2.0.2
+You can get a copy of the source code for this version from https://github.com/Amphoras/TPT-Helper/tree/V2.0.3
 
 ---------------------------------------------------------
 
@@ -32,11 +32,12 @@ Translations:
 French translations by Alex131089 and jp33.
 German translations by FelixL.
 Russian translations by top4ek.
-Chinese translations by wuxipaopao.
+Chinese translations by wuxipaopao and xiaoyaoswim.
 Serbian translations by Sokobeg.
 Czech translations by dejf.
 Polish translations by arnoldziq.
 Hungarian translations by agpoli.
+Swedish translations by Ipecac9.
 
 Auto TPT Mode:
 Auto TPT mode is currently a work in progress. It is confirmed working on Ginger Stir Fry and CAE. It should also work on any ZTE rom or roms based on these (Swedish Spring etc.).

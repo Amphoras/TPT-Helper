@@ -1,3 +1,10 @@
+v2.0.3
+
+Updated Chinese translations, thanks to xiaoyaoswim.
+Added Swedish translations, thanks to Ipecac9.
+Hungarian translations should actually be enabled now.
+Attempt to use other methods to copy ztepack on the Orange Monte Carlo/ZTE Skate.
+
 v2.0.2
 
 Updated French translations, thanks to jp33.
