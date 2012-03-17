@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <!-- HomeActivity list options -->
+    <string-array name="options">
+        <item>Όλα σε ένα</item>
+        <item>Κατέβασμα TPT</item>
+        <item>Έλεγχος md5sum του αρχείου </item>
+        <item>Αποσυμπίεση αρχείου </item>
+        <item>Έλεγχος του καταλόγου εικόνας </item>
+        <item>Έναρξη TPT</item>
+        <item>Δημιούργησε το δικό σου TPT</item>
+        <item>Διαγραφή του καταλόγου εικόνας </item>
+        <item>Απενεργοποίηση για έναρξη του TPT</item>
+        <!-- <item>Tests</item> -->
+    </string-array>
+      <!-- HomeActivity disclaimer strings -->
+    <string name="disclaimer_heading">Αποποίηση</string>
+    <string name="disclaimer">Χρησιμοποιήστε αυτή την εφαρμογή με δική σας ευθύνη. Δεν φέρνω καμία ευθύνη για οποιαδήποτε ζημία γίνει στο κινητό σας.</string>
+    <string name="accept">Συμφωνώ!</string>
+      <!-- HomeActivity start TPT strings -->
+    <string name="power_off">Απενεργοποίηση.</string>
+    <string name="start_tpt">Όταν απενεργοποιηθεί το κινητό , κρατήστε πατημένα το πλήκτρο της έντασης + και του μενού και πιέστε το πλήκτρο εκκίνησης για να ξεκινήσει το TPT.</string>
+      <!-- HomeActivity delete image strings -->
+    <string name="delete_image_heading">Διαγραφή εικόνας.</string>
+    <string name="delete_image">Είσαι σίγουρος ότι θέλεις να διαγράψεις τον κατάλογο της εικόνας και όλα τα περιεχόμενα;</string>
+    <string name="deleting">Διαγραφή , παρακαλώ περιμένετε ……</string>
+    <string name="image_deleted">Ο κατάλογος της εικόνας διαγράφηκε.</string>
+      <!-- HomeActivity low battery strings -->
+    <string name="low_battery_heading">Χαμηλή μπαταρία.</string>
+    <string name="low_battery">Η μπαταρία είναι κάτω από το 25%, είσαι σίγουρος ότι θέλεις να ξεκινήσεις την διαδικασία TPT;</string>
+      <!-- HomeActivity auto tpt strings -->
+    <string name="auto_tpt_heading">Έναρξη TPT.</string>
+    <string name="auto_tpt">Έναρξη TPT. Αν δεν έχεις κάνει έλεγχο του καταλόγου της εικόνας, πάτα ΟΧΙ και κάνε το τώρα. Θέλεις να συνεχίσεις ;</string>
+    <string name="auto_tpt_fail">Συγνώμη αυτό το χαρακτηριστικό δεν υποστηρίζεται από την συγκεκριμένη ROM.</string>
+      <!-- HomeActivity locale changing strings -->
+    <string name="change_locale_heading">Διάλεξε γλώσσα..</string>
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="german">German</string>
+    <string name="russian">Russian</string>
+    <string name="chinese">中文</string>
+    <string name="portuguese">Portugues</string>
+    <string name="spanish">Español</string>
+    <string name="serbian">Srpski</string>
+    <string name="czech">Česky</string>
+    <string name="polish">Polish</string>
+    <string name="hungarian">Hungarian</string>
+    <string name="swedish">Svenska</string>
+    <string name="italian">Italian</string>
+    <string name="dutch_be">Dutch (Belgium)</string>
+    <string name="portuguese_br">Portuguese (BR)</string>
+    <string name="greek">Greek</string>
+      <!-- HomeActivity type/gen checking strings -->
+    <string name="check_type_heading">Τύπου Blade</string>
+    <string name="check_type">Ανιχνεύθηκε. Είναι σωστό;</string>
+    <string name="check_gen_heading">Γενιά Blade ;</string>
+    <string name="check_gen">Τι γενιάς είναι το Blade;</string>
+    <string name="manual_type_heading">Δώσε τον τύπο του Blade.</string>
+    <string name="setting_type_heading">Ρύθμισε τον τύπο του Blade.</string>
+    <string name="setting_type">Ρύθμισε τον τύπο του </string>
+    <string name="check_board_heading">Τύπος κινητού.</string>
+    <string name="correct">Ανιχνεύθει, είναι σωστό? </string>
+    <string name="board_blade">ZTE Blade/Orange San Francisco</string>
+    <string name="board_skate">ZTE Skate/Orange Monte Carlo</string>
+    <string name="board_blade2">Orange San Francisco II/T-Mobile Vivacity</string>
+    <string name="phone_type_heading">Εισήγαγε τύπο κινητού.</string>
+    <string name="san_francisco_ii">Orange San Francisco II</string>
+    <string name="vivacity">T-Mobile Vivacity</string>
+    <string name="unsupported_heading">Μη υποστηριζόμενο μοντέλο.</string>
+    <string name="unsupported">Συγνώμη , αυτή η συσκευή δεν υποστηρίζεται. Αν νομίζεις ότι αυτό είναι σφάλμα , έλεγξε τον μοντέλο του κινητού και ξαναπροσπάθησε .</string>
+    
+      <!-- Downloader strings -->
+    <string name="standard_tpt_heading">Βασικά TPTs:</string>
+    <string name="standard_tpt">Μετατρέπει , αλλά δεν περιέχει ROM</string>
+    <string name="allinone_tpt_heading">Όλα σε ένα TPTs:</string>
+    <string name="allinone_tpt">Μετατρέπει και περνάει την ROM με μια κίνηση.</string>
+    <string name="downloader">Λήψη TPT.</string>
+    
+      <!-- DirectDownloader strings -->  
+    <string name="downloading">Μεταφόρτωση</string>
+    <string name="download_finished_heading">Μεταφόρτωση ολοκληρώθηκε.</string>
+    <string name="download_finished">Επιτυχημένη μεταμόρφωση.</string>
+    <string name="pick_download">Διάλεξε αρχείο για κατέβασμα </string>
+    <string name="file_there_heading">Αρχείο στην εξωτερική κάρτα.</string>
+    <string name="file_there1">Βρέθηκε</string>
+    <string name="file_there2">στην εξωτερική κάρτα. Θέλεις να το ξανακατεβάσεις;</string>
+    <string name="download_failed_heading">Η μεταμόρφωση απέτυχε.</string>
+    <string name="download_failed">Αποτυχία μεταμόρφωσης.</string>
+    
+      <!-- MD5 checking strings -->
+    <string name="pickmd5">Διάλεξε αρχείο για έλεγχο </string>
+    <string name="calculating">Υπολογισμός .Παρακαλώ περιμένετε</string>
+    <string name="md5">MD5sum</string>
+    <string name="md5of">Έλεγχος του md5sum:</string>
+    <string name="md5is">To MD5sum είναι :</string>
+    <string name="md5matches">Η τιμή ταιριάζει.</string>
+    
+      <!-- PickFile strings -->
+    <string name="file_not_found_heading">Το αρχείο δεν βρέθηκε</string>
+    <string name="file_not_found1">Δεν βρέθηκε</string>
+    <string name="file_not_found2">Θέλεις να το μεταμορφώσεις;</string>
+    
+      <!-- Unzipping strings -->
+    <string name="pickunzip">Διάλεξε αρχείο για αποσυμπίεση </string>
+    <string name="unzipping">.Αποσυμπίεση. Παρακαλώ περιμένετε…</string>
+    <string name="unzipgood">Η αποσυμπίεση ολοκληρώθηκε</string>
+    <string name="unzipbad">Αποτυχία αποσυμπίεσης </string>
+    <string name="unzip">Αποσυμπίεση</string>
+    <string name="unzip_file">Προσπάθεια  αποσυμπίεσης </string>
+    
+      <!-- EnterFile strings -->
+    <string name="askfile">Βάλτε το όνομα του αρχείου και πατήστε enter(το αρχείο πρέπει να βρίσκετε στην ρίζα (root) της εξωτερικής κάρτας)</string>
+    <string name="enterfile">Enter</string>
+    <string name="unfound1">Δεν μπορεί να βρει \'</string>
+    <string name="unfound2">\'. Παρακαλούμε ελέγξτε και προσπαθήστε ξανά.</string>
+    
+      <!-- VerifyImage strings -->
+    <string name="nooffiles">Αριθμός φακέλων που ελέγχθηκαν:</string>
+    <string name="noofmatches">Αριθμός md5sums που ταιριάζουν:</string>
+    <string name="missingfiles">Αριθμός αρχείων που δεν βρέθηκαν:</string>
+    <string name="filessearched">Αχρεία που αναζητήθηκαν για :</string>
+    <string name="files_verified">Αχρεία που επαληθεύτηκαν </string>
+    <string name="no_of_matches">Αριθμός αντιστοιχιών:</string>
+    <string name="files_not_found">τα αρχεία δεν βρέθηκαν.</string>
+    <string name="file_not_found">τα αρχείο δεν βρέθηκε.</string>
+    <string name="no_nandroid">Δεν βρέθηκε nandroid.md5 αρχείο στον κατάλογο , παρακαλώ ελέγξτε και προσπαθήστε ξανά.</string>
+    <string name="verifying">Επαλήθευση. Παρακαλώ περιμένετε …..</string>
+    
+      <!-- AllInOne strings -->
+    <string name="md5resultaio">Αποτελέσματα MD5:</string>
+    <string name="unzipdoneaio">Αποτελέσματα αποσυμπίεσης :</string>
+    <string name="downloadresultaio">Αποτελέσματα μεταμόρφωσης :</string>
+    <string name="md5_mismatch_heading">Ασυμφωνία MD5sum</string>
+    <string name="md5_mismatch">Το md5sum δεν ταιριάζει . Θέλετε να το ξανακατεβάσετε ;</string>
+    <string name="unzip_fail">Η αποσυμπίεση απέτυχε , διακοπή δραστηριότητας.</string>
+    <string name="no_nandroid2">Δεν βρέθηκε nandroid.md5 αρχείο στον κατάλογο, διακοπή δραστηριότητας.</string>
+    <string name="working">Σε λειτουργία .Παρακαλώ περιμένετε……</string>
+    <string name="pickallinone">Επιλέξτε το αρχείο που θα χρησιμοποιηθεί </string>
+    
+      <!-- Instructions strings -->
+    <string name="instructions">Πώς να το χρησιμοποιήσετε</string>
+    <string name="instruction1">1. Λήψη TPT.</string>
+    <string name="instruction2">2. Ελέγξτε αν ταιριάζει το md5sum του συμπιεσμένου αρχείου </string>
+    <string name="instruction3">3. Αποσυμπίεση του TPT</string>
+    <string name="instruction4">4. Ελέγξτε το περιεχόμενο του φακέλου εικόνας αν ταιριάζουν με την τιμή md5 του αρχείου nandroid</string>
+    <string name="instruction5">5. Απενεργοποιήστε το κινητό σας.</string>
+    <string name="instruction6">6. Κρατήστε πατημένο το κουμπί του μενού και το πλήκτρο αύξησης ήχου (+) και πιέστε το κουμπί εκκίνησης (power) του κινητού.</string>
+    <string name="instruction7">αν χρησιμοποιείτε κανονικό TPT:</string>
+    <string name="instruction8">7. Θα εμφανιστεί ένα πράσινο κείμενο στην οθόνη και το κινητό θα επανεκκινήσει σε λειτουργία ανάκτησης </string>
+    <string name="instruction9">8. Εγκατέστησε μία rom από την λειτουργία ανάκτησης και επανεκκίνησε το κινητό </string>
+    <string name="instruction10">Αν χρησιμοποιείς ένα-σε-όλα TPT:</string>
+    <string name="instruction11">7. Θα εμφανιστεί ένα πράσινο κείμενο στην οθόνη και το κινητό θα επανεκκινήσει στο λειτουργικό android </string>
+    
+      <!-- Troubleshooting strings -->
+    <string name="troubleshooting1">Ε. Πάτησα το κουμπί ενεργοποίησης, αλλά δεν έγινε τίποτα.</string>
+    <string name="troubleshooting2">Α. Πρέπει να έχετε δικαιώματα διαχειριστή (root) για να δουλέψει αυτή η επιλογή. Αν έχετε δικαιώματα διαχειριστή (root) και έχετε πάρει και δικαιώματα su (superuser) , προσπαθήστε να απενεργοποιήσετε την επιλογή «Αυτόματη απενεργοποίηση» από το μενού.</string>
+    <string name="troubleshooting3">Ε. Ακολούθησα όλα τα βήματα για την εγκατάσταση του TPT, αλλά έχει κολλήσει στο πράσινο android.</string>
+    <string name="troubleshooting4">A. Μπορεί να είσαι σε fastboot . Προσπάθησε να κρατήσεις το πλήκτρο μενού και αύξησης έντασης ήχου (+) και να κάνεις εγκατάσταση ξανά.</string>
+    <string name="troubleshooting5">Ε. Κατέβασα και αποσυμπίεσα το TPT, αλλά μερικά αρχεία δεν ταιριάζουν .</string>
+    <string name="troubleshooting6">Α. Μάλλον το αρχείο που κατέβηκε είναι μερικός κατεστραμμένο, προσπάθησε να ξανακατεβάσεις το αρχείο , αν πάλι δεν ταιριάζουν επικοινώνησε μαζί μας στο email για να μας δώσεις λεπτομέρειες για το αρχείο-α που κατέβασες.</string>
+    <string name="troubleshooting7"></string>
+    <string name="troubleshooting8"></string>
+    <string name="troubleshooting9"></string>
+    <string name="troubleshooting10"></string>
+    <string name="troubleshooting11"></string>
+    
+      <!-- Changelog strings -->
+    <string name="changelog">Αρχείο αλλαγών</string>
+    
+      <!-- CustomTPT strings -->
+    <string name="finished_heading">Δημιουργία TPT</string>
+    <string name="finished">Ολοκληρώθηκε  η δημιουργία TPT</string>
+    <string name="copying">Αντιγραφή. Παρακαλώ περιμένετε ...</string>
+    <string name="pick_cache_heading">Cache</string>
+    <string name="pick_cache">Παρακαλώ δώστε μια τιμή ανάμεσα στο 2 και το 60 </string>
+    <string name="pick_system_heading">Σύστημα </string>
+    <string name="pick_system">Παρακαλώ δώστε μια τιμή ανάμεσα στο 90 και το 260</string>
+    <string name="set_userdata_heading">Δεδομένα </string>
+    <string name="set_userdata1">Μνήμη Cache:</string>
+    <string name="set_userdata2">MB,Σύστημα :</string>
+    <string name="set_userdata3">MB, και</string>
+    <string name="set_userdata4">MB χώρου έχουν απομείνει για τα δεδομένα. Θέλετε να χρησιμοποιήσετε αυτά τα μεγέθη;</string>
+    <string name="writing">Γράφονται οι κατατμήσεις. Παρακαλώ περιμένετε ...</string>
+    <string name="building">Δημιουργία image.bin. Παρακαλώ περιμένετε ...</string>
+    <string name="pick_gen">Διαλέξτε τον τύπο TPT που θέλετε να κάνετε.</string>
+    <string name="pick_splash">Επιλέξτε την εικόνα splash για χρήση.</string>
+    <string name="pick_recovery">Διαλέξτε την έκδοση ανάκτησης για χρήση.</string>
+    <string name="ztepack_failed">Απέτυχε η αντιγραφή του ztepack. Παρακαλώ βεβαιωθείτε ότι είστε root και δώσατε δικαιώματα υπερχρήστη.</string>
+    <string name="image_bin_failed">Αποτυχία δημιουργίας του ιmage.bin.</string>
+    
+      <!-- General strings -->
+    <string name="app_name">Βοηθός TPT.</string>
+    <string name="ok">Οκ</string>
+    <string name="cancel">Ακύρωση.</string>
+    <string name="yes">Ναι</string>
+    <string name="no">Όχι</string>
+    <string name="error">Λάθος </string>
+    <string name="other">Άλλο </string>
+    <string name="options">Επιλογές </string>
+    <string name="feedback">Κριτική </string>
+    <string name="about">Περί </string>
+    <string name="unknown">Άγνωστο </string>
+    <string name="license">Άδεια</string>
+    <string name="rate">Βαθμολόγηση </string>
+    
+      <!-- Preferences Strings -->
+    <string-array name="model">
+        <item>ZTE Blade/Orange San Francisco</item>
+        <item>ZTE Skate/Orange Monte Carlo</item>
+        <item>Orange San Francisco II/T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="models">
+        <item>blade</item>
+        <item>skate</item>
+        <item>blade2</item>
+    </string-array>
+    <string-array name="gen">
+        <item>Gen 1/TPT αναβάθμιση σε Gen 2</item>
+        <item>Εργοστασιακό Gen 2/3/Windows αναβάθμιση σε Gen 2</item>
+    </string-array>
+    <string-array name="gens">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="type">
+        <item>Ευρωπαϊκό ZTE Blade</item>
+        <item>Κινέζικο ZTE Blade</item>
+    </string-array>
+    <string-array name="types">
+        <item>European Blade</item>
+        <item>Chinese Blade</item>
+    </string-array>
+    <string-array name="blade2">
+        <item>Orange San Francisco II</item>
+        <item>T-Mobile Vivacity</item>
+    </string-array>
+    <string-array name="blade2s">
+        <item>SF2</item>
+        <item>TMV</item>
+    </string-array>
+    <string name="gen_title">Γενιά ZTE Blade</string>
+    <string name="type_title">Τύπος ZTE Blade</string>
+</resources>

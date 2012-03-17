@@ -46,6 +46,10 @@
     <string name="polish">Polish</string>
     <string name="hungarian">Hungarian</string>
     <string name="swedish">Svenska</string>
+    <string name="italian">Italian</string>
+    <string name="dutch_be">Dutch (Belgium)</string>
+    <string name="portuguese_br">Portuguese (BR)</string>
+    <string name="greek">Greek</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Blade typu</string>
     <string name="check_type">został odnaleziony. Czy to się zgadza?</string>

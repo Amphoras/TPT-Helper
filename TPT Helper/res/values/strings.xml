@@ -66,6 +66,10 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="polish">Polish</string>
     <string name="hungarian">Hungarian</string>
     <string name="swedish">Svenska</string>
+    <string name="italian">Italian</string>
+    <string name="dutch_be">Dutch (Belgium)</string>
+    <string name="portuguese_br">Portuguese (BR)</string>
+    <string name="greek">Greek</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Blade Type</string>
     <string name="check_type">detected. Is this correct?</string>

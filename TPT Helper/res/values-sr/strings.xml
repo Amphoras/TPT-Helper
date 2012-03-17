@@ -39,13 +39,17 @@
     <string name="german">German</string>
     <string name="russian">Russian</string>
     <string name="chinese">中文</string>
-    <string name="portuguese">Português</string>
+    <string name="portuguese">Portugues</string>
     <string name="spanish">Español</string>
     <string name="serbian">Srpski</string>
     <string name="czech">Česky</string>
     <string name="polish">Polish</string>
     <string name="hungarian">Hungarian</string>
     <string name="swedish">Svenska</string>
+    <string name="italian">Italian</string>
+    <string name="dutch_be">Dutch (Belgium)</string>
+    <string name="portuguese_br">Portuguese (BR)</string>
+    <string name="greek">Greek</string>
       <!-- HomeActivity type/gen checking strings -->
     <string name="check_type_heading">Tip Blade-a</string>
     <string name="check_type">detected. Is this correct?</string>

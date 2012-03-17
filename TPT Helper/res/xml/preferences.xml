@@ -58,4 +58,4 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
         android:title="@string/check_board_heading"
         android:key="blade2"
         android:persistent="true"/>
-</PreferenceScreen>
+ </PreferenceScreen>
