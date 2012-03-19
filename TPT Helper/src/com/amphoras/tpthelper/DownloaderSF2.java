@@ -1,7 +1,7 @@
 package com.amphoras.tpthelper;
 
 /*  
-TPT Helper  Copyright (C) 2011  David Phillips
+TPT Helper  Copyright (C) 2011-2012  David Phillips
 
 This file is part of TPT Helper.
 
@@ -19,10 +19,13 @@ You should have received a copy of the GNU General Public License
 along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -59,24 +62,14 @@ import android.widget.AdapterView.OnItemLongClickListener;
 public class DownloaderSF2 extends ListActivity {
 	SharedPreferences preferences;
 	private ProgressDialog dialog;
-	final File dir = Environment.getExternalStorageDirectory();
-	final File sf2v1a = new File(dir, "SF2-v1a.zip");
-	final File downloadsf2v1a = new File(dir, "download/SF2-v1a.zip");
-	final File sf2v1b = new File(dir, "SF2-v1b.zip");
-	final File downloadsf2v1b = new File(dir, "download/SF2-v1b.zip");
-	final File sf2v1c = new File(dir, "SF2-v1c.zip");
-	final File downloadsf2v1c = new File(dir, "download/SF2-v1c.zip");
 	private ArrayList <HashMap<String, Object>> tpts;
 	private static final String tptname = "tptname";
 	private static final String tptlayout = "tptlayout";
-	private final int DOWNLOADING = 1;
-	private final int DOWNLOAD_COMPLETE = 2;
-	private final int DOWNLOAD_FAILED = 3;
-	private final int FILE_FOUND = 4;
-	private final int CHANGE_LOCALE = 5;
-	private final int V1A = 101;
-	private final int V1B = 102;
-	private final int V1C = 103;
+	private final int DOWNLOADING = 11;
+	private final int DOWNLOAD_COMPLETE = 12;
+	private final int DOWNLOAD_FAILED = 13;
+	private final int FILE_FOUND = 14;
+	private final int CHANGE_LOCALE = 15;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -98,21 +91,39 @@ public class DownloaderSF2 extends ListActivity {
               listitem.put(tptlayout, standard_tpt);
               tpts.add(listitem);
               
-              listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "San Francisco II v1a");
-	          listitem.put(tptlayout, "2mb cache, 160mb system, 278mb data, 1mb oem");
-	          tpts.add(listitem);
-	  
-	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "San Francisco II v1b");
-	          listitem.put(tptlayout, "15mb cache, 160mb system, 265mb data, 1mb oem");
-	          tpts.add(listitem);
-	  
-	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "San Francisco II v1c");
-	          listitem.put(tptlayout, "40mb cache, 160mb system, 240mb data, 1mb oem");
-	          tpts.add(listitem);
-	 
+              try {
+    	          URL url = new URL("http://amphoras.co.uk/SF2-TPTs.txt");
+    	          HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    	          connection.connect();
+    	          File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    	          FileOutputStream fos = new FileOutputStream(file);
+    	          InputStream is = connection.getInputStream();
+    	          byte[] buffer = new byte[1024];
+    	          int length = 0;
+    	          while ((length = is.read(buffer)) > 0 ) {
+    	              fos.write(buffer, 0, length);
+    	          }
+    	          fos.close();
+        	      FileInputStream fis = new FileInputStream(file);
+        	      InputStreamReader isr = new InputStreamReader(fis);
+        	      BufferedReader br = new BufferedReader(isr);
+        	      String s = "";
+        	      while((s = br.readLine()) != null) {
+        	          String[] mounts = s.split("\"");
+        	    	  if (mounts[0].equals("AllInOne")) {
+        	    		  listitem = new HashMap<String, Object>();
+        		          CharSequence allinone_tpt_heading = getText(R.string.allinone_tpt_heading);
+        		          CharSequence allinone_tpt = getText(R.string.allinone_tpt);
+        		          listitem.put(tptname, allinone_tpt_heading);
+        		          listitem.put(tptlayout, allinone_tpt);
+        		          tpts.add(listitem);
+        	    	  } else {
+        	    		  listitem = new HashMap<String, Object>();
+          	              listitem.put(tptname, mounts[0]);
+          	              listitem.put(tptlayout, mounts[1]);
+          	              tpts.add(listitem);
+        	    	  }
+        	      }
 	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
 	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
 	  
@@ -121,17 +132,25 @@ public class DownloaderSF2 extends ListActivity {
 	    listview.setOnItemLongClickListener(new OnItemLongClickListener() {
 		@Override
 		public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-			switch (position) {
-		      case 1:
-		    	  showDialog(V1A);
-			      break;
-		      case 2:
-		    	  showDialog(V1B);
-				  break;
-		      case 3:
-		    	  showDialog(V1C);
-				  break;
-		      }
+			if (position > 0) {
+				try {
+		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+			    	FileInputStream fis = new FileInputStream(file);
+		  	        InputStreamReader isr = new InputStreamReader(fis);
+		  	        BufferedReader br = new BufferedReader(isr);
+		  	        String s = "";
+		  	        while((s = br.readLine()) != null) {
+		  	            String[] mounts = s.split("\"");
+		  	            if (mounts[0].equals("AllInOne")) {
+		  	            	// Do nothing
+		  	            } else {
+		  	            	showDialog(position);
+		  	            }
+		  	        }
+		    	} catch (IOException e) {
+	  	            e.printStackTrace();
+	  	        }
+			}
 			return false;
 		  }
 	    });
@@ -140,55 +159,66 @@ public class DownloaderSF2 extends ListActivity {
 	    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 	    	Editor editdownload = preferences.edit();
 	    	Editor editdownloadint = preferences.edit();
-	    	switch (position) {
-	    	case 1:
-	    		editdownload.putString("downloadpicked", "SF2-v1a.zip");
-	    		editdownload.commit();
-				editdownloadint.putInt("downloadint", 0);
-	    		editdownloadint.commit();
-	    		if (sf2v1a.canRead() == true){
-	    		    showDialog(FILE_FOUND);
-	    		} else {
-	    			if (downloadsf2v1a.canRead() == true){
-    	    	        showDialog(FILE_FOUND);
-	    			} else {
-	    				DownloadFile();
-	    			}
-	    		}
-	    		break;
-	    	case 2:
-	    		editdownload.putString("downloadpicked", "SF2-v1b.zip");
-	    		editdownload.commit();
-				editdownloadint.putInt("downloadint", 1);
-	    		editdownloadint.commit();
-	    		if (sf2v1b.canRead() == true){
-	    			showDialog(FILE_FOUND);
-	    		} else {
-	    			if (downloadsf2v1b.canRead() == true){
-	    				showDialog(FILE_FOUND);
-	    			} else {
-	    				DownloadFile();
-	    			}
-	    		}
-	    		break;
-	    	case 3:
-	    		editdownload.putString("downloadpicked", "SF2-v1c.zip");
-	    		editdownload.commit();
-				editdownloadint.putInt("downloadint", 2);
-	    		editdownloadint.commit();
-	    		if (sf2v1c.canRead() == true){
-	    			showDialog(FILE_FOUND);
-	    		} else {
-	    			if (downloadsf2v1c.canRead() == true){
-	    				showDialog(FILE_FOUND);
-	    			} else {
-	    				DownloadFile();
-	    			}
-	    		}
-	    		break;
-	        }
+	    	if (position > 0) {
+	    		try {
+	    			int number = 0;
+		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+			    	FileInputStream fis = new FileInputStream(file);
+		  	        InputStreamReader isr = new InputStreamReader(fis);
+		  	        BufferedReader br = new BufferedReader(isr);
+		  	        String s = "";
+		  	        while((s = br.readLine()) != null) {
+		  	        	number = number + 1;
+		  	            String[] mounts = s.split("\"");
+		  	            if (mounts[0].equals("AllInOne")) {
+		  	            	// Do nothing
+		  	            } else {
+		  	            	if (position == number) {
+			  	            	editdownload.putString("downloadpicked", mounts[2]);
+			  		    		editdownload.commit();
+			  					editdownloadint.putInt("downloadint", position);
+			  		    		editdownloadint.commit();
+			  		    		File tpt = new File(Environment.getExternalStorageDirectory(), "/" + mounts[2]);
+			  		    		File downloadtpt = new File(Environment.getExternalStorageDirectory(), "/download/" + mounts[2]);
+			  		    		if (tpt.canRead() == true){
+			  		    		    showDialog(FILE_FOUND);
+			  		    		} else {
+			  		    			if (downloadtpt.canRead() == true){
+			  	    	    	        showDialog(FILE_FOUND);
+			  		    			} else {
+			  		    				DownloadFile();
+			  		    			}
+			  		    		}
+			  	            }
+		  	            }
+		  	        }
+		    	} catch (IOException e) {
+	  	            e.printStackTrace();
+	  	        }
+            }
 	      }
 	    });
+              } catch (MalformedURLException e) {
+            	  listitem = new HashMap<String, Object>();
+  	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection and try again.");
+  	              listitem.put(tptlayout, "");
+  	              tpts.add(listitem);
+  	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+  	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+  	      	  
+  	      	      listview.setAdapter(adapter);
+    	          e.printStackTrace();
+    	      } catch (IOException e) {
+    	    	  listitem = new HashMap<String, Object>();
+  	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection and try again.");
+  	              listitem.put(tptlayout, "");
+  	              tpts.add(listitem);
+  	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+  	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+  	      	  
+  	      	      listview.setAdapter(adapter);
+    	          e.printStackTrace();
+    	      }
 	}
 	
 	@Override
@@ -208,21 +238,39 @@ public class DownloaderSF2 extends ListActivity {
               listitem.put(tptlayout, standard_tpt);
               tpts.add(listitem);
               
-              listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "San Francisco II v1a");
-	          listitem.put(tptlayout, "2mb cache, 160mb system, 278mb data, 1mb oem");
-	          tpts.add(listitem);
-	  
-	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "San Francisco II v1b");
-	          listitem.put(tptlayout, "15mb cache, 160mb system, 265mb data, 1mb oem");
-	          tpts.add(listitem);
-	  
-	          listitem = new HashMap<String, Object>();
-	          listitem.put(tptname, "San Francisco II v1c");
-	          listitem.put(tptlayout, "40mb cache, 160mb system, 240mb data, 1mb oem");
-	          tpts.add(listitem);
-	 
+              try {
+    	          URL url = new URL("http://amphoras.co.uk/tpts.txt");
+    	          HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    	          connection.connect();
+    	          File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    	          FileOutputStream fos = new FileOutputStream(file);
+    	          InputStream is = connection.getInputStream();
+    	          byte[] buffer = new byte[1024];
+    	          int length = 0;
+    	          while ((length = is.read(buffer)) > 0 ) {
+    	              fos.write(buffer, 0, length);
+    	          }
+    	          fos.close();
+        	      FileInputStream fis = new FileInputStream(file);
+        	      InputStreamReader isr = new InputStreamReader(fis);
+        	      BufferedReader br = new BufferedReader(isr);
+        	      String s = "";
+        	      while((s = br.readLine()) != null) {
+        	          String[] mounts = s.split("\"");
+        	    	  if (mounts[0].equals("AllInOne")) {
+        	    		  listitem = new HashMap<String, Object>();
+        		          CharSequence allinone_tpt_heading = getText(R.string.allinone_tpt_heading);
+        		          CharSequence allinone_tpt = getText(R.string.allinone_tpt);
+        		          listitem.put(tptname, allinone_tpt_heading);
+        		          listitem.put(tptlayout, allinone_tpt);
+        		          tpts.add(listitem);
+        	    	  } else {
+        	    		  listitem = new HashMap<String, Object>();
+          	              listitem.put(tptname, mounts[0]);
+          	              listitem.put(tptlayout, mounts[1]);
+          	              tpts.add(listitem);
+        	    	  }
+        	      }
 	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
 	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
 	  
@@ -231,17 +279,25 @@ public class DownloaderSF2 extends ListActivity {
 	    listview.setOnItemLongClickListener(new OnItemLongClickListener() {
 		@Override
 		public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-			switch (position) {
-		      case 1:
-		    	  showDialog(V1A);
-			      break;
-		      case 2:
-		    	  showDialog(V1B);
-				  break;
-		      case 3:
-		    	  showDialog(V1C);
-				  break;
-		      }
+			if (position > 0) {
+				try {
+		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+			    	FileInputStream fis = new FileInputStream(file);
+		  	        InputStreamReader isr = new InputStreamReader(fis);
+		  	        BufferedReader br = new BufferedReader(isr);
+		  	        String s = "";
+		  	        while((s = br.readLine()) != null) {
+		  	            String[] mounts = s.split("\"");
+		  	            if (mounts[0].equals("AllInOne")) {
+		  	            	// Do nothing
+		  	            } else {
+		  	            	showDialog(position);
+		  	            }
+		  	        }
+		    	} catch (IOException e) {
+	  	            e.printStackTrace();
+	  	        }
+			}
 			return false;
 		  }
 	    });
@@ -250,55 +306,92 @@ public class DownloaderSF2 extends ListActivity {
 	    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 	    	Editor editdownload = preferences.edit();
 	    	Editor editdownloadint = preferences.edit();
-	    	switch (position) {
-	    	case 1:
-	    		editdownload.putString("downloadpicked", "SF2-v1a.zip");
-	    		editdownload.commit();
-				editdownloadint.putInt("downloadint", 0);
-	    		editdownloadint.commit();
-	    		if (sf2v1a.canRead() == true){
-	    		    showDialog(FILE_FOUND);
-	    		} else {
-	    			if (downloadsf2v1a.canRead() == true){
-    	    	        showDialog(FILE_FOUND);
-	    			} else {
-	    				DownloadFile();
-	    			}
-	    		}
-	    		break;
-	    	case 2:
-	    		editdownload.putString("downloadpicked", "SF2-v1b.zip");
-	    		editdownload.commit();
-				editdownloadint.putInt("downloadint", 1);
-	    		editdownloadint.commit();
-	    		if (sf2v1b.canRead() == true){
-	    			showDialog(FILE_FOUND);
-	    		} else {
-	    			if (downloadsf2v1b.canRead() == true){
-	    				showDialog(FILE_FOUND);
-	    			} else {
-	    				DownloadFile();
-	    			}
-	    		}
-	    		break;
-	    	case 3:
-	    		editdownload.putString("downloadpicked", "SF2-v1c.zip");
-	    		editdownload.commit();
-				editdownloadint.putInt("downloadint", 2);
-	    		editdownloadint.commit();
-	    		if (sf2v1c.canRead() == true){
-	    			showDialog(FILE_FOUND);
-	    		} else {
-	    			if (downloadsf2v1c.canRead() == true){
-	    				showDialog(FILE_FOUND);
-	    			} else {
-	    				DownloadFile();
-	    			}
-	    		}
-	    		break;
-	        }
+	    	if (position > 0) {
+	    		try {
+	    			int number = 0;
+		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+			    	FileInputStream fis = new FileInputStream(file);
+		  	        InputStreamReader isr = new InputStreamReader(fis);
+		  	        BufferedReader br = new BufferedReader(isr);
+		  	        String s = "";
+		  	        while((s = br.readLine()) != null) {
+		  	        	number = number + 1;
+		  	            String[] mounts = s.split("\"");
+		  	            if (mounts[0].equals("AllInOne")) {
+		  	            	// Do nothing
+		  	            } else {
+		  	            	if (position == number) {
+			  	            	editdownload.putString("downloadpicked", mounts[2]);
+			  		    		editdownload.commit();
+			  					editdownloadint.putInt("downloadint", position);
+			  		    		editdownloadint.commit();
+			  		    		File tpt = new File(Environment.getExternalStorageDirectory(), "/" + mounts[2]);
+			  		    		File downloadtpt = new File(Environment.getExternalStorageDirectory(), "/download/" + mounts[2]);
+			  		    		if (tpt.canRead() == true){
+			  		    		    showDialog(FILE_FOUND);
+			  		    		} else {
+			  		    			if (downloadtpt.canRead() == true){
+			  	    	    	        showDialog(FILE_FOUND);
+			  		    			} else {
+			  		    				DownloadFile();
+			  		    			}
+			  		    		}
+			  	            }
+		  	            }
+		  	        }
+		    	} catch (IOException e) {
+	  	            e.printStackTrace();
+	  	        }
+            }
 	      }
 	    });
+              } catch (MalformedURLException e) {
+            	  listitem = new HashMap<String, Object>();
+  	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection.");
+  	              listitem.put(tptlayout, "");
+  	              tpts.add(listitem);
+  	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+  	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+  	      	  
+  	      	      listview.setAdapter(adapter);
+    	          e.printStackTrace();
+    	      } catch (IOException e) {
+    	    	  listitem = new HashMap<String, Object>();
+  	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection.");
+  	              listitem.put(tptlayout, "");
+  	              tpts.add(listitem);
+  	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+  	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+  	      	  
+  	      	      listview.setAdapter(adapter);
+    	          e.printStackTrace();
+    	      }
+	}
+	
+	public void DownloadFile() {
+		DownloadFileTask task = new DownloadFileTask();
+		int id = preferences.getInt("downloadint", 1);
+		try {
+			int number = 0;
+    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+	    	FileInputStream fis = new FileInputStream(file);
+  	        InputStreamReader isr = new InputStreamReader(fis);
+  	        BufferedReader br = new BufferedReader(isr);
+  	        String s = "";
+  	        while((s = br.readLine()) != null) {
+  	        	number = number + 1;
+  	            String[] mounts = s.split("\"");
+  	            if (mounts[0].equals("AllInOne")) {
+  	            	// Do nothing
+  	            } else {
+  	            	if (id == number) {
+  	  	            	task.execute(new String[] { mounts[3] });
+  	  	            }
+  	            }
+  	        }
+    	} catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	private class DownloadFileTask extends AsyncTask<String, String, String> {
@@ -358,79 +451,333 @@ public class DownloaderSF2 extends ListActivity {
 			}
 		}
 	}
-
-	public void DownloadFile() {
-		DownloadFileTask task = new DownloadFileTask();
-		int id = preferences.getInt("downloadint", 0);
-		switch (id) {
-		case 0:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade%20II/San%20Francisco%20II/SF2-v1a.zip" });
-			break;
-		case 1:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade%20II/San%20Francisco%20II/SF2-v1b.zip" });
-			break;
-		case 2:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade%20II/San%20Francisco%20II/SF2-v1c.zip" });
-			break;
-		}
-	}
 	
 	@Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
-            case DOWNLOADING:
-                dialog = new ProgressDialog(DownloaderSF2.this);
-                CharSequence downloadmessage = getText(R.string.downloading);
-                dialog.setMessage(downloadmessage);
-                dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                dialog.setCancelable(false);
-                return dialog;
-            default:
-                return null;
-            case DOWNLOAD_COMPLETE:
-            	String downloadpicked = preferences.getString("downloadpicked", "");
-            	Builder downloadbuilder = new AlertDialog.Builder(DownloaderSF2.this);
-            	downloadbuilder.setTitle(R.string.download_finished_heading);
-                CharSequence download_finished = getText(R.string.download_finished);
-                downloadbuilder.setMessage(download_finished + " " + downloadpicked);
-                downloadbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                    	// Do nothing
-                    }
-                });
-                return downloadbuilder.create();
-            case DOWNLOAD_FAILED:
-            	String downloadfailed = preferences.getString("downloadpicked", "");
-            	Builder downloadfailedbuilder = new AlertDialog.Builder(DownloaderSF2.this);
-            	downloadfailedbuilder.setTitle(R.string.download_failed_heading);
-                CharSequence download_failed = getText(R.string.download_failed);
-                downloadfailedbuilder.setMessage(download_failed + " " + downloadfailed);
-                downloadfailedbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                    	// Do nothing
-                    }
-                });
-                return downloadfailedbuilder.create();
-            case FILE_FOUND:
-            	String filepicked = preferences.getString("downloadpicked", "");
-            	Builder filetherebuilder = new AlertDialog.Builder(DownloaderSF2.this);
-            	filetherebuilder.setTitle(R.string.file_there_heading);
-            	CharSequence filethere1 = getText(R.string.file_there1);
-            	CharSequence filethere2 = getText(R.string.file_there2);
-            	filetherebuilder.setMessage(filethere1 + " " + filepicked + " " + filethere2);
-            	filetherebuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                    	dialog.cancel();
-                    	DownloadFile();
-                    }
-                });
-            	filetherebuilder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                    	DownloaderSF2.this.finish();
-                    }
-                });
-                return filetherebuilder.create();
-            case CHANGE_LOCALE:
+        case 1:
+        	Builder builder1 = new AlertDialog.Builder(DownloaderSF2.this);
+        	try {
+    			int number = 0;
+        		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    	    	FileInputStream fis = new FileInputStream(file);
+      	        InputStreamReader isr = new InputStreamReader(fis);
+      	        BufferedReader br = new BufferedReader(isr);
+      	        String s = "";
+      	        while((s = br.readLine()) != null) {
+      	        	number = number + 1;
+      	            String[] mounts = s.split("\"");
+      	            if (id == number) {
+      	            	builder1.setTitle(mounts[0]);
+      	                builder1.setMessage(Html.fromHtml(mounts[4]));
+      	            }
+      	        }
+        	} catch (IOException e) {
+    	        e.printStackTrace();
+    	    }
+            builder1.setCancelable(false);
+            builder1.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                	// Do nothing
+                }
+            });
+            return builder1.create();
+        case 2:
+            Builder builder2 = new AlertDialog.Builder(DownloaderSF2.this);
+            try {
+    			int number = 0;
+        		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    	    	FileInputStream fis = new FileInputStream(file);
+      	        InputStreamReader isr = new InputStreamReader(fis);
+      	        BufferedReader br = new BufferedReader(isr);
+      	        String s = "";
+      	        while((s = br.readLine()) != null) {
+      	        	number = number + 1;
+      	            String[] mounts = s.split("\"");
+      	            if (id == number) {
+      	            	builder2.setTitle(mounts[0]);
+      	                builder2.setMessage(Html.fromHtml(mounts[4]));
+      	            }
+      	        }
+        	} catch (IOException e) {
+    	        e.printStackTrace();
+    	    }
+            builder2.setCancelable(false);
+            builder2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                	// Do nothing
+                }
+            });
+            return builder2.create();
+        case 3:
+            Builder builder3 = new AlertDialog.Builder(DownloaderSF2.this);
+            try {
+    			int number = 0;
+        		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    	    	FileInputStream fis = new FileInputStream(file);
+      	        InputStreamReader isr = new InputStreamReader(fis);
+      	        BufferedReader br = new BufferedReader(isr);
+      	        String s = "";
+      	        while((s = br.readLine()) != null) {
+      	        	number = number + 1;
+      	            String[] mounts = s.split("\"");
+      	            if (id == number) {
+      	            	builder3.setTitle(mounts[0]);
+      	                builder3.setMessage(Html.fromHtml(mounts[4]));
+      	            }
+      	        }
+        	} catch (IOException e) {
+    	        e.printStackTrace();
+    	    }
+            builder3.setCancelable(false);
+            builder3.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+              	    // Do nothing
+                }
+            });
+            return builder3.create();
+        case 4:
+        	Builder builder4 = new AlertDialog.Builder(DownloaderSF2.this);
+        	try {
+    			int number = 0;
+        		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    	    	FileInputStream fis = new FileInputStream(file);
+      	        InputStreamReader isr = new InputStreamReader(fis);
+      	        BufferedReader br = new BufferedReader(isr);
+      	        String s = "";
+      	        while((s = br.readLine()) != null) {
+      	        	number = number + 1;
+      	            String[] mounts = s.split("\"");
+      	            if (id == number) {
+      	            	builder4.setTitle(mounts[0]);
+      	                builder4.setMessage(Html.fromHtml(mounts[4]));
+      	            }
+      	        }
+        	} catch (IOException e) {
+    	        e.printStackTrace();
+    	    }
+            builder4.setCancelable(false);
+            builder4.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                	// Do nothing
+                }
+            });
+            return builder4.create();
+        case 5:
+            Builder builder5 = new AlertDialog.Builder(DownloaderSF2.this);
+            try {
+    			int number = 0;
+        		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    	    	FileInputStream fis = new FileInputStream(file);
+      	        InputStreamReader isr = new InputStreamReader(fis);
+      	        BufferedReader br = new BufferedReader(isr);
+      	        String s = "";
+      	        while((s = br.readLine()) != null) {
+      	        	number = number + 1;
+      	            String[] mounts = s.split("\"");
+      	            if (id == number) {
+      	            	builder5.setTitle(mounts[0]);
+      	                builder5.setMessage(Html.fromHtml(mounts[4]));
+      	            }
+      	        }
+        	} catch (IOException e) {
+    	        e.printStackTrace();
+    	    }
+            builder5.setCancelable(false);
+            builder5.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                	// Do nothing
+                }
+            });
+            return builder5.create();
+        case 6:
+            Builder builder6 = new AlertDialog.Builder(DownloaderSF2.this);
+            try {
+    			int number = 0;
+        		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    	    	FileInputStream fis = new FileInputStream(file);
+      	        InputStreamReader isr = new InputStreamReader(fis);
+      	        BufferedReader br = new BufferedReader(isr);
+      	        String s = "";
+      	        while((s = br.readLine()) != null) {
+      	        	number = number + 1;
+      	            String[] mounts = s.split("\"");
+      	            if (id == number) {
+      	            	builder6.setTitle(mounts[0]);
+      	                builder6.setMessage(Html.fromHtml(mounts[4]));
+      	            }
+      	        }
+        	} catch (IOException e) {
+    	        e.printStackTrace();
+    	    }
+            builder6.setCancelable(false);
+            builder6.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+              	    // Do nothing
+                }
+            });
+            return builder6.create();
+        case 7:
+        	Builder builder7 = new AlertDialog.Builder(DownloaderSF2.this);
+        	try {
+    			int number = 0;
+        		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    	    	FileInputStream fis = new FileInputStream(file);
+      	        InputStreamReader isr = new InputStreamReader(fis);
+      	        BufferedReader br = new BufferedReader(isr);
+      	        String s = "";
+      	        while((s = br.readLine()) != null) {
+      	        	number = number + 1;
+      	            String[] mounts = s.split("\"");
+      	            if (id == number) {
+      	            	builder7.setTitle(mounts[0]);
+      	                builder7.setMessage(Html.fromHtml(mounts[4]));
+      	            }
+      	        }
+        	} catch (IOException e) {
+    	        e.printStackTrace();
+    	    }
+            builder7.setCancelable(false);
+            builder7.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                	// Do nothing
+                }
+            });
+            return builder7.create();
+        case 8:
+            Builder builder8 = new AlertDialog.Builder(DownloaderSF2.this);
+            try {
+    			int number = 0;
+        		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    	    	FileInputStream fis = new FileInputStream(file);
+      	        InputStreamReader isr = new InputStreamReader(fis);
+      	        BufferedReader br = new BufferedReader(isr);
+      	        String s = "";
+      	        while((s = br.readLine()) != null) {
+      	        	number = number + 1;
+      	            String[] mounts = s.split("\"");
+      	            if (id == number) {
+      	            	builder8.setTitle(mounts[0]);
+      	                builder8.setMessage(Html.fromHtml(mounts[4]));
+      	            }
+      	        }
+        	} catch (IOException e) {
+    	        e.printStackTrace();
+    	    }
+            builder8.setCancelable(false);
+            builder8.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                	// Do nothing
+                }
+            });
+            return builder8.create();
+        case 9:
+            Builder builder9 = new AlertDialog.Builder(DownloaderSF2.this);
+            try {
+    			int number = 0;
+        		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    	    	FileInputStream fis = new FileInputStream(file);
+      	        InputStreamReader isr = new InputStreamReader(fis);
+      	        BufferedReader br = new BufferedReader(isr);
+      	        String s = "";
+      	        while((s = br.readLine()) != null) {
+      	        	number = number + 1;
+      	            String[] mounts = s.split("\"");
+      	            if (id == number) {
+      	            	builder9.setTitle(mounts[0]);
+      	                builder9.setMessage(Html.fromHtml(mounts[4]));
+      	            }
+      	        }
+        	} catch (IOException e) {
+    	        e.printStackTrace();
+    	    }
+            builder9.setCancelable(false);
+            builder9.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+              	    // Do nothing
+                }
+            });
+            return builder9.create();
+        case 10:
+        	Builder builder10 = new AlertDialog.Builder(DownloaderSF2.this);
+        	try {
+    			int number = 0;
+        		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    	    	FileInputStream fis = new FileInputStream(file);
+      	        InputStreamReader isr = new InputStreamReader(fis);
+      	        BufferedReader br = new BufferedReader(isr);
+      	        String s = "";
+      	        while((s = br.readLine()) != null) {
+      	        	number = number + 1;
+      	            String[] mounts = s.split("\"");
+      	            if (id == number) {
+      	            	builder10.setTitle(mounts[0]);
+      	                builder10.setMessage(Html.fromHtml(mounts[4]));
+      	            }
+      	        }
+        	} catch (IOException e) {
+    	        e.printStackTrace();
+    	    }
+            builder10.setCancelable(false);
+            builder10.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                	// Do nothing
+                }
+            });
+            return builder10.create();
+        case DOWNLOADING:
+            dialog = new ProgressDialog(DownloaderSF2.this);
+            CharSequence downloadmessage = getText(R.string.downloading);
+            dialog.setMessage(downloadmessage);
+            dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            dialog.setCancelable(false);
+            return dialog;
+        default:
+            return null;
+        case DOWNLOAD_COMPLETE:
+            String downloadpicked = preferences.getString("downloadpicked", "");
+            Builder downloadbuilder = new AlertDialog.Builder(DownloaderSF2.this);
+            downloadbuilder.setTitle(R.string.download_finished_heading);
+            CharSequence download_finished = getText(R.string.download_finished);
+            downloadbuilder.setMessage(download_finished + " " + downloadpicked);
+            downloadbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // Do nothing
+                }
+            });
+            return downloadbuilder.create();
+        case DOWNLOAD_FAILED:
+            String downloadfailed = preferences.getString("downloadpicked", "");
+            Builder downloadfailedbuilder = new AlertDialog.Builder(DownloaderSF2.this);
+            downloadfailedbuilder.setTitle(R.string.download_failed_heading);
+            CharSequence download_failed = getText(R.string.download_failed);
+            downloadfailedbuilder.setMessage(download_failed + " " + downloadfailed);
+            downloadfailedbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // Do nothing
+                }
+            });
+            return downloadfailedbuilder.create();
+        case FILE_FOUND:
+            String filepicked = preferences.getString("downloadpicked", "");
+            Builder filetherebuilder = new AlertDialog.Builder(DownloaderSF2.this);
+            filetherebuilder.setTitle(R.string.file_there_heading);
+            CharSequence filethere1 = getText(R.string.file_there1);
+            CharSequence filethere2 = getText(R.string.file_there2);
+            filetherebuilder.setMessage(filethere1 + " " + filepicked + " " + filethere2);
+            filetherebuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                    DownloadFile();
+                }
+            });
+            filetherebuilder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    DownloaderSF2.this.finish();
+                }
+            });
+            return filetherebuilder.create();
+        case CHANGE_LOCALE:
           	    // change the locale used in the app
               Builder localebuilder = new AlertDialog.Builder(DownloaderSF2.this);
               localebuilder.setTitle(R.string.change_locale_heading);
@@ -576,39 +923,6 @@ public class DownloaderSF2 extends ListActivity {
           	      }
           	  });
           	  return localebuilder.create();
-            case V1A:
-                Builder builder1 = new AlertDialog.Builder(DownloaderSF2.this);
-                builder1.setTitle("SF2 v1a");
-                builder1.setMessage(Html.fromHtml("<b>Size:</b> 7.74MB<br /><b>Recovery:</b> ClockworkMod v4.0.1.4<br /><b>Splash:</b> Unchanged"));
-                builder1.setCancelable(false);
-                builder1.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                    	// Do nothing
-                    }
-                });
-                return builder1.create();
-            case V1B:
-                Builder builder2 = new AlertDialog.Builder(DownloaderSF2.this);
-                builder2.setTitle("SF2 v1b");
-                builder2.setMessage(Html.fromHtml("<b>Size:</b> 7.74MB<br /><b>Recovery:</b> ClockworkMod v4.0.1.4<br /><b>Splash:</b> Unchanged"));
-                builder2.setCancelable(false);
-                builder2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                    	// Do nothing
-                    }
-                });
-                return builder2.create();
-            case V1C:
-                Builder builder3 = new AlertDialog.Builder(DownloaderSF2.this);
-                builder3.setTitle("SF2 v2a");
-                builder3.setMessage(Html.fromHtml("<b>Size:</b> 7.74MB<br /><b>Recovery:</b> ClockworkMod v4.0.1.4<br /><b>Splash:</b> Unchanged"));
-                builder3.setCancelable(false);
-                builder3.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                  	    // Do nothing
-                    }
-                });
-                return builder3.create();
         }
     }
 	
