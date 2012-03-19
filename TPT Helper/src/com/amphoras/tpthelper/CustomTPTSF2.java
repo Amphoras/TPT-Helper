@@ -411,7 +411,11 @@ public class CustomTPTSF2 extends Activity {
           CharSequence polish = getText(R.string.polish);
           CharSequence hungarian = getText(R.string.hungarian);
           CharSequence swedish = getText(R.string.swedish);
-          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, polish, hungarian, swedish, cancel};
+          CharSequence italian = getText(R.string.italian);
+          CharSequence dutch_be = getText(R.string.dutch_be);
+          CharSequence portuguese_br = getText(R.string.portuguese_br);
+          CharSequence greek = getText(R.string.greek);
+          final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, polish, hungarian, swedish, italian, dutch_be, portuguese_br, greek, cancel};
       	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
       	    public void onClick(DialogInterface dialog, int item) {
       	    	Editor editlocale = preferences.edit();
@@ -501,6 +505,34 @@ public class CustomTPTSF2 extends Activity {
       	    	    CustomTPTSF2.this.finish();
       	    		break;
       	    	case 12:
+      	    		editlocale.putString("locale", "it");
+      	    		editlocale.commit();
+      	    		Intent u = new Intent(CustomTPTSF2.this, HomeActivity.class);
+      	    	    startActivity(u);
+      	    	    CustomTPTSF2.this.finish();
+      	    		break;
+      	    	case 13:
+      	    		editlocale.putString("locale", "nl");
+      	    		editlocale.commit();
+      	    		Intent v = new Intent(CustomTPTSF2.this, HomeActivity.class);
+      	    	    startActivity(v);
+      	    	    CustomTPTSF2.this.finish();
+      	    		break;
+      	    	case 14:
+      	    		editlocale.putString("locale", "pt_BR");
+      	    		editlocale.commit();
+      	    		Intent w = new Intent(CustomTPTSF2.this, HomeActivity.class);
+      	    	    startActivity(w);
+      	    	    CustomTPTSF2.this.finish();
+      	    		break;
+      	    	case 15:
+      	    		editlocale.putString("locale", "el");
+      	    		editlocale.commit();
+      	    		Intent x = new Intent(CustomTPTSF2.this, HomeActivity.class);
+      	    	    startActivity(x);
+      	    	    CustomTPTSF2.this.finish();
+      	    		break;
+      	    	case 16:
       	    		// Do nothing
       	    		break;
       	    	}

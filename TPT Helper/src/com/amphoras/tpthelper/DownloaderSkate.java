@@ -499,8 +499,12 @@ public class DownloaderSkate extends ListActivity {
               CharSequence polish = getText(R.string.polish);
               CharSequence hungarian = getText(R.string.hungarian);
               CharSequence swedish = getText(R.string.swedish);
+              CharSequence italian = getText(R.string.italian);
+              CharSequence dutch_be = getText(R.string.dutch_be);
+              CharSequence portuguese_br = getText(R.string.portuguese_br);
+              CharSequence greek = getText(R.string.greek);
               CharSequence cancel = getText(R.string.cancel);
-              final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, polish, hungarian, swedish, cancel};
+              final CharSequence[] locales = {english, french, german, russian, chinese, portuguese, spanish, serbian, czech, polish, hungarian, swedish, italian, dutch_be, portuguese_br, greek, cancel};
           	  localebuilder.setItems(locales, new DialogInterface.OnClickListener() {
           	    public void onClick(DialogInterface dialog, int item) {
           	    	Editor editlocale = preferences.edit();
@@ -590,6 +594,34 @@ public class DownloaderSkate extends ListActivity {
           	    	    DownloaderSkate.this.finish();
           	    		break;
           	    	case 12:
+          	    		editlocale.putString("locale", "it");
+          	    		editlocale.commit();
+          	    		Intent u = new Intent(DownloaderSkate.this, HomeActivity.class);
+          	    	    startActivity(u);
+          	    	    DownloaderSkate.this.finish();
+          	    		break;
+          	    	case 13:
+          	    		editlocale.putString("locale", "nl");
+          	    		editlocale.commit();
+          	    		Intent v = new Intent(DownloaderSkate.this, HomeActivity.class);
+          	    	    startActivity(v);
+          	    	    DownloaderSkate.this.finish();
+          	    		break;
+          	    	case 14:
+          	    		editlocale.putString("locale", "pt_BR");
+          	    		editlocale.commit();
+          	    		Intent w = new Intent(DownloaderSkate.this, HomeActivity.class);
+          	    	    startActivity(w);
+          	    	    DownloaderSkate.this.finish();
+          	    		break;
+          	    	case 15:
+          	    		editlocale.putString("locale", "el");
+          	    		editlocale.commit();
+          	    		Intent x = new Intent(DownloaderSkate.this, HomeActivity.class);
+          	    	    startActivity(x);
+          	    	    DownloaderSkate.this.finish();
+          	    		break;
+          	    	case 16:
           	    		// Do nothing
           	    		break;
           	    	}
