@@ -366,6 +366,8 @@ public class CustomTPTSkate extends Activity {
             downloadfailedbuilder.setMessage(download_failed + " " + download_file);
             downloadfailedbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
+    				File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Skate/");
+    				deleteDirectory(file);
                 	CustomTPTSkate.this.finish();
                 }
             });
@@ -675,8 +677,6 @@ public class CustomTPTSkate extends Activity {
 				Editor edit = preferences.edit();
 				edit.putString("download_failed", "Skate-TPT-base.zip");
 				edit.commit();
-				File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Skate/Skate-TPT-base.zip");
-				deleteDirectory(file);
 				showDialog(DOWNLOAD_FAILED);
 			}
 		}
@@ -744,8 +744,6 @@ public class CustomTPTSkate extends Activity {
 				Editor edit = preferences.edit();
 				edit.putString("download_failed", "Skate-tpt-files.zip");
 				edit.commit();
-				File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Skate/Skate-tpt-files.zip");
-				deleteDirectory(file);
 				showDialog(DOWNLOAD_FAILED);
 			}
 		}

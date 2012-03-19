@@ -366,6 +366,8 @@ public class CustomTPTVivacity extends Activity {
             downloadfailedbuilder.setMessage(download_failed + " " + download_file);
             downloadfailedbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
+    				File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity/");
+    				deleteDirectory(file);
                 	CustomTPTVivacity.this.finish();
                 }
             });
@@ -675,8 +677,6 @@ public class CustomTPTVivacity extends Activity {
 				Editor edit = preferences.edit();
 				edit.putString("download_failed", "Vivacity-TPT-base.zip");
 				edit.commit();
-				File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity/Vivacity-TPT-base.zip");
-				deleteDirectory(file);
 				showDialog(DOWNLOAD_FAILED);
 			}
 		}
@@ -744,8 +744,6 @@ public class CustomTPTVivacity extends Activity {
 				Editor edit = preferences.edit();
 				edit.putString("download_failed", "Vivacity-tpt-files.zip");
 				edit.commit();
-				File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity/Vivacity-tpt-files.zip");
-				deleteDirectory(file);
 				showDialog(DOWNLOAD_FAILED);
 			}
 		}

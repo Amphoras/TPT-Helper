@@ -386,6 +386,8 @@ public class CustomTPTGen3 extends Activity {
             downloadfailedbuilder.setMessage(download_failed + " " + download_file);
             downloadfailedbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
+    				File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Blade/Gen3/");
+    				deleteDirectory(file);
                 	CustomTPTGen3.this.finish();
                 }
             });
@@ -695,8 +697,6 @@ public class CustomTPTGen3 extends Activity {
 				Editor edit = preferences.edit();
 				edit.putString("download_failed", "Gen3-TPT-base.zip");
 				edit.commit();
-				File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Blade/Gen3/Gen3-TPT-base.zip");
-				deleteDirectory(file);
 				showDialog(DOWNLOAD_FAILED);
 			}
 		}
@@ -764,8 +764,6 @@ public class CustomTPTGen3 extends Activity {
 				Editor edit = preferences.edit();
 				edit.putString("download_failed", "Gen3-tpt-files.zip");
 				edit.commit();
-				File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Blade/Gen3/Gen3-tpt-files.zip");
-				deleteDirectory(file);
 				showDialog(DOWNLOAD_FAILED);
 			}
 		}

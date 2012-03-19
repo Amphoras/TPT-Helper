@@ -388,6 +388,8 @@ public class CustomTPT extends Activity {
             downloadfailedbuilder.setMessage(download_failed + " " + download_file);
             downloadfailedbuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
+                	File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Blade/");
+    				deleteDirectory(file);
                 	CustomTPT.this.finish();
                 }
             });
@@ -677,8 +679,6 @@ public class CustomTPT extends Activity {
 				Editor edit = preferences.edit();
 				edit.putString("download_failed", "custom-TPT-base.zip");
 				edit.commit();
-				File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Blade/custom-TPT-base.zip");
-				deleteDirectory(file);
 				showDialog(DOWNLOAD_FAILED);
 			}
 		}
@@ -746,8 +746,6 @@ public class CustomTPT extends Activity {
 				Editor edit = preferences.edit();
 				edit.putString("download_failed", "custom-tpt-files.zip");
 				edit.commit();
-				File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Blade/custom-tpt-files.zip");
-				deleteDirectory(file);
 				showDialog(DOWNLOAD_FAILED);
 			}
 		}

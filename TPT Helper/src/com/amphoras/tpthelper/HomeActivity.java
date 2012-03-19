@@ -47,6 +47,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -77,7 +78,10 @@ public class HomeActivity extends ListActivity {
 	private final int CHECK_BLADE2 = 15;
 	private final int UNSUPPORTED = 16;
 	private final int GEN_1 = 17;
-	private final int GEN_2 = 18;
+	private final int GEN_2_TPT = 18;
+	private final int GEN_2_STOCK = 19;
+	private final int GEN_3 = 20;
+	String TAG = "HomeActivity";
 	
 	private BroadcastReceiver BatInfoReceiver = new BroadcastReceiver(){
 
@@ -897,19 +901,435 @@ public class HomeActivity extends ListActivity {
       	          edit.putString("blade", bladetype);
       	          edit.commit();
       	          if (bladetype.equals("European Blade")) {
-      	        	  String gen = "";
                       try {
                 	      File iomem = new File("/proc/iomem");
                 	      FileInputStream fis = new FileInputStream(iomem);
                 	      InputStreamReader isr = new InputStreamReader(fis);
                 	      BufferedReader br = new BufferedReader(isr);
-                	      String s = br.readLine();
-                          if (s != null) {
-                    	      if (s.charAt(2) == '5') {
-                			      gen = "Gen 2";
+                	      String s1 = br.readLine();
+                          if (s1 != null) {
+                    	      if (s1.charAt(2) == '5') {
+                    	    	File lib = new File("/system/lib/libloc.so");
+                    	    	StringBuffer buffer = new StringBuffer();
+                    	  	    StringBuffer recovery = new StringBuffer();
+                    	  	    StringBuffer boot = new StringBuffer();
+                    	  	    StringBuffer splash = new StringBuffer();
+                    	  	    StringBuffer misc = new StringBuffer();
+                    	  	    StringBuffer cache = new StringBuffer();
+                    	  	    StringBuffer system = new StringBuffer();
+                    	  	    StringBuffer userdata = new StringBuffer();
+                    	  	    StringBuffer oem = new StringBuffer();
+                    	  	    StringBuffer persist = new StringBuffer();
+                    	  		try {
+                    	  	    	File partitions = new File("/proc/partitions");
+                    	  	    	FileInputStream fis2 = new FileInputStream(partitions);
+                    	  		    InputStreamReader isr2 = new InputStreamReader(fis2);
+                    	  		    BufferedReader br2 = new BufferedReader(isr2);
+                    	  		    for (int i = 1; i < 50; i++) {
+                    	  			    String s = br2.readLine();
+                    	  			    if (i > 2) {
+                    	  			      if (s != null) {
+                    	  			    	  String b = s.charAt(3) + "";
+                    	  			    	  if (b.equals("1")) {
+                    	  			    		  String a = s.charAt(2) + "";
+                    	  			    		  if (a.equals("3")) {
+                    	  			    			  String c = s.charAt(12) + "";
+                    	  					    	  if (c.equals("0")) {
+                    	  						    	  buffer.append("\nRecovery: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      recovery.append(s.charAt(23));
+                    	  							      int recovery1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (recovery1 != 32) {
+                    	  							    	  recovery.append(s.charAt(22));
+                    	  							      }
+                    	  							      int recovery2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (recovery2 != 32) {
+                    	  							    	  recovery.append(s.charAt(21));
+                    	  							      }
+                    	  							      int recovery3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (recovery3 != 32) {
+                    	  							    	  recovery.append(s.charAt(20));
+                    	  							      }
+                    	  							      int recovery4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (recovery4 != 32) {
+                    	  							    	  recovery.append(s.charAt(19));
+                    	  							      }
+                    	  							      int recovery5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (recovery5 != 32) {
+                    	  							    	  recovery.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; recovery.length() - counter > -1; counter++) {
+                    	  							    	  size.append(recovery.charAt(recovery.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("recovery", Integer.parseInt(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("recovery_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("1")) {
+                    	  						    	  buffer.append("\nBoot: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      boot.append(s.charAt(23));
+                    	  							      int boot1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (boot1 != 32) {
+                    	  							    	  boot.append(s.charAt(22));
+                    	  							      }
+                    	  							      int boot2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (boot2 != 32) {
+                    	  							    	  boot.append(s.charAt(21));
+                    	  							      }
+                    	  							      int boot3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (boot3 != 32) {
+                    	  							    	  boot.append(s.charAt(20));
+                    	  							      }
+                    	  							      int boot4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (boot4 != 32) {
+                    	  							    	  boot.append(s.charAt(19));
+                    	  							      }
+                    	  							      int boot5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (boot5 != 32) {
+                    	  							    	  boot.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; boot.length() - counter > -1; counter++) {
+                    	  							    	  size.append(boot.charAt(boot.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("boot", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("boot_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("2")) {
+                    	  						    	  buffer.append("\nSplash: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      splash.append(s.charAt(23));
+                    	  							      int splash1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (splash1 != 32) {
+                    	  							    	  splash.append(s.charAt(22));
+                    	  							      }
+                    	  							      int splash2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (splash2 != 32) {
+                    	  							    	  splash.append(s.charAt(21));
+                    	  							      }
+                    	  							      int splash3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (splash3 != 32) {
+                    	  							    	  splash.append(s.charAt(20));
+                    	  							      }
+                    	  							      int splash4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (splash4 != 32) {
+                    	  							    	  splash.append(s.charAt(19));
+                    	  							      }
+                    	  							      int splash5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (splash5 != 32) {
+                    	  							    	  splash.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; splash.length() - counter > -1; counter++) {
+                    	  							    	  size.append(splash.charAt(splash.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("splash", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("splash_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("3")) {
+                    	  						    	  buffer.append("\nMisc: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      misc.append(s.charAt(23));
+                    	  							      int misc1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (misc1 != 32) {
+                    	  							    	  misc.append(s.charAt(22));
+                    	  							      }
+                    	  							      int misc2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (misc2 != 32) {
+                    	  							    	  misc.append(s.charAt(21));
+                    	  							      }
+                    	  							      int misc3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (misc3 != 32) {
+                    	  							    	  misc.append(s.charAt(20));
+                    	  							      }
+                    	  							      int misc4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (misc4 != 32) {
+                    	  							    	  misc.append(s.charAt(19));
+                    	  							      }
+                    	  							      int misc5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (misc5 != 32) {
+                    	  							    	  misc.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; misc.length() - counter > -1; counter++) {
+                    	  							    	  size.append(misc.charAt(misc.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("misc", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("misc_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("4")) {
+                    	  						    	  buffer.append("\nCache: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      cache.append(s.charAt(23));
+                    	  							      int cache1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (cache1 != 32) {
+                    	  							    	  cache.append(s.charAt(22));
+                    	  							      }
+                    	  							      int cache2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (cache2 != 32) {
+                    	  							    	  cache.append(s.charAt(21));
+                    	  							      }
+                    	  							      int cache3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (cache3 != 32) {
+                    	  							    	  cache.append(s.charAt(20));
+                    	  							      }
+                    	  							      int cache4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (cache4 != 32) {
+                    	  							    	  cache.append(s.charAt(19));
+                    	  							      }
+                    	  							      int cache5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (cache5 != 32) {
+                    	  							    	  cache.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; cache.length() - counter > -1; counter++) {
+                    	  							    	  size.append(cache.charAt(cache.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("cache", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("cache_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("5")) {
+                    	  						    	  buffer.append("\nSystem: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      system.append(s.charAt(23));
+                    	  							      int system1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (system1 != 32) {
+                    	  							    	  system.append(s.charAt(22));
+                    	  							      }
+                    	  							      int system2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (system2 != 32) {
+                    	  							    	  system.append(s.charAt(21));
+                    	  							      }
+                    	  							      int system3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (system3 != 32) {
+                    	  							    	  system.append(s.charAt(20));
+                    	  							      }
+                    	  							      int system4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (system4 != 32) {
+                    	  							    	  system.append(s.charAt(19));
+                    	  							      }
+                    	  							      int system5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (system5 != 32) {
+                    	  							    	  system.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; system.length() - counter > -1; counter++) {
+                    	  							    	  size.append(system.charAt(system.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("system", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("system_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("6")) {
+                    	  						    	  buffer.append("\nUserdata: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      userdata.append(s.charAt(23));
+                    	  							      int userdata1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (userdata1 != 32) {
+                    	  							    	  userdata.append(s.charAt(22));
+                    	  							      }
+                    	  							      int userdata2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (userdata2 != 32) {
+                    	  							    	  userdata.append(s.charAt(21));
+                    	  							      }
+                    	  							      int userdata3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (userdata3 != 32) {
+                    	  							    	  userdata.append(s.charAt(20));
+                    	  							      }
+                    	  							      int userdata4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (userdata4 != 32) {
+                    	  							    	  userdata.append(s.charAt(19));
+                    	  							      }
+                    	  							      int userdata5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (userdata5 != 32) {
+                    	  							    	  userdata.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; userdata.length() - counter > -1; counter++) {
+                    	  							    	  size.append(userdata.charAt(userdata.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("userdata", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("userdata_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("7")) {
+                    	  						    	  buffer.append("\nOEM: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      oem.append(s.charAt(23));
+                    	  							      int oem1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (oem1 != 32) {
+                    	  							    	  oem.append(s.charAt(22));
+                    	  							      }
+                    	  							      int oem2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (oem2 != 32) {
+                    	  							    	  oem.append(s.charAt(21));
+                    	  							      }
+                    	  							      int oem3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (oem3 != 32) {
+                    	  							    	  oem.append(s.charAt(20));
+                    	  							      }
+                    	  							      int oem4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (oem4 != 32) {
+                    	  							    	  oem.append(s.charAt(19));
+                    	  							      }
+                    	  							      int oem5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (oem5 != 32) {
+                    	  							    	  oem.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; oem.length() - counter > -1; counter++) {
+                    	  							    	  size.append(oem.charAt(oem.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("oem", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("oem_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("8")) {
+                    	  						    	  buffer.append("\nPersist: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      persist.append(s.charAt(23));
+                    	  							      int persist1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (persist1 != 32) {
+                    	  							    	  persist.append(s.charAt(22));
+                    	  							      }
+                    	  							      int persist2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (persist2 != 32) {
+                    	  							    	  persist.append(s.charAt(21));
+                    	  							      }
+                    	  							      int persist3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (persist3 != 32) {
+                    	  							    	  persist.append(s.charAt(20));
+                    	  							      }
+                    	  							      int persist4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (persist4 != 32) {
+                    	  							    	  persist.append(s.charAt(19));
+                    	  							      }
+                    	  							      int persist5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (persist5 != 32) {
+                    	  							    	  persist.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; persist.length() - counter > -1; counter++) {
+                    	  							    	  size.append(persist.charAt(persist.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("persist", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("persist_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					      }
+                    	  			    	  }
+                    	  			      }
+                    	  			    }
+                    	  		    }
+                    	  		    int recoveryint = preferences.getInt("recovery", 0);
+                    	  		    int bootint = preferences.getInt("boot", 0);
+                    	  		    int splashint = preferences.getInt("splash", 0);
+                    	  		    int miscint = preferences.getInt("misc", 0);
+                    	  		    int cacheint = preferences.getInt("cache", 0);
+                    	  		    int systemint = preferences.getInt("system", 0);
+                    	  		    int userdataint = preferences.getInt("userdata", 0);
+                    	  		    int oemint = preferences.getInt("oem", 0);
+                    	  		    int persistint = preferences.getInt("persist", 0);
+                    	      	    int total = ((recoveryint + bootint + splashint + miscint + cacheint + systemint + userdataint + oemint + persistint)/1024);
+                    	      		if (total > 468) {
+                    	      			if (lib.canRead()) {
+                    	      				showDialog(GEN_2_TPT);
+                    	        		    } else {
+                    	        		    	showDialog(CHECK_GEN);
+                    	        		    }
+                    	      		} else {
+                    	      			if (lib.canRead()) {
+                    	      				showDialog(GEN_2_STOCK);
+                    	        		    } else {
+                    	        		    	showDialog(GEN_3);
+                    	        		    }
+                    	      		}
+                    	  	    } catch (IOException e) {
+                    	  	    	Log.i(TAG, "" + e);
+                    	  	    } catch (Exception e) {
+                    	  	    	Log.i(TAG, "" + e);
+                    	  	    }
                 		      } else {
-                			      if (s.charAt(2) == '9') {
-                			          gen = "Gen 1";
+                			      if (s1.charAt(2) == '9') {
+                			    	  showDialog(GEN_1);
                 		          }
                 		      }
               	      }   
@@ -917,15 +1337,6 @@ public class HomeActivity extends ListActivity {
                 	    	
                       } catch (IOException e) {
 
-                      }
-                      if (gen.equals("Gen 1")) {
-                  	      showDialog(GEN_1);
-                      } else {
-                  	      if (gen.equals("Gen 2")) {
-                      	      showDialog(GEN_2);
-                          } else {
-                      	      showDialog(CHECK_GEN);
-                          }
                       }
       	          } else {
       	        	  showDialog(UNSUPPORTED);
@@ -1019,7 +1430,443 @@ public class HomeActivity extends ListActivity {
       	    	case 0:
       	    		edit.putString("blade", "European Blade");
         	        edit.commit();
-        	        showDialog(CHECK_GEN);
+        	        try {
+              	      File iomem = new File("/proc/iomem");
+              	      FileInputStream fis = new FileInputStream(iomem);
+              	      InputStreamReader isr = new InputStreamReader(fis);
+              	      BufferedReader br = new BufferedReader(isr);
+              	      String s1 = br.readLine();
+                        if (s1 != null) {
+                  	      if (s1.charAt(2) == '5') {
+                  	    	File lib = new File("/system/lib/libloc.so");
+                  	    	StringBuffer buffer = new StringBuffer();
+                  	  	    StringBuffer recovery = new StringBuffer();
+                  	  	    StringBuffer boot = new StringBuffer();
+                  	  	    StringBuffer splash = new StringBuffer();
+                  	  	    StringBuffer misc = new StringBuffer();
+                  	  	    StringBuffer cache = new StringBuffer();
+                  	  	    StringBuffer system = new StringBuffer();
+                  	  	    StringBuffer userdata = new StringBuffer();
+                  	  	    StringBuffer oem = new StringBuffer();
+                  	  	    StringBuffer persist = new StringBuffer();
+                  	  		try {
+                  	  	    	File partitions = new File("/proc/partitions");
+                  	  	    	FileInputStream fis2 = new FileInputStream(partitions);
+                  	  		    InputStreamReader isr2 = new InputStreamReader(fis2);
+                  	  		    BufferedReader br2 = new BufferedReader(isr2);
+                  	  		    for (int i = 1; i < 50; i++) {
+                  	  			    String s = br2.readLine();
+                  	  			    if (i > 2) {
+                  	  			      if (s != null) {
+                  	  			    	  String b = s.charAt(3) + "";
+                  	  			    	  if (b.equals("1")) {
+                  	  			    		  String a = s.charAt(2) + "";
+                  	  			    		  if (a.equals("3")) {
+                  	  			    			  String c = s.charAt(12) + "";
+                  	  					    	  if (c.equals("0")) {
+                  	  						    	  buffer.append("\nRecovery: ");
+                  	  						          buffer.append(s.charAt(18));
+                  	  							      buffer.append(s.charAt(19));
+                  	  							      buffer.append(s.charAt(20));
+                  	  							      buffer.append(s.charAt(21));
+                  	  							      buffer.append(s.charAt(22));
+                  	  							      buffer.append(s.charAt(23));
+                  	  							      recovery.append(s.charAt(23));
+                  	  							      int recovery1 = Integer.valueOf(s.charAt(22));
+                  	  							      if (recovery1 != 32) {
+                  	  							    	  recovery.append(s.charAt(22));
+                  	  							      }
+                  	  							      int recovery2 = Integer.valueOf(s.charAt(21));
+                  	  							      if (recovery2 != 32) {
+                  	  							    	  recovery.append(s.charAt(21));
+                  	  							      }
+                  	  							      int recovery3 = Integer.valueOf(s.charAt(20));
+                  	  							      if (recovery3 != 32) {
+                  	  							    	  recovery.append(s.charAt(20));
+                  	  							      }
+                  	  							      int recovery4 = Integer.valueOf(s.charAt(19));
+                  	  							      if (recovery4 != 32) {
+                  	  							    	  recovery.append(s.charAt(19));
+                  	  							      }
+                  	  							      int recovery5 = Integer.valueOf(s.charAt(18));
+                  	  							      if (recovery5 != 32) {
+                  	  							    	  recovery.append(s.charAt(18));
+                  	  							      }
+                  	  							      StringBuffer size = new StringBuffer();
+                  	  							      for (int counter = 1; recovery.length() - counter > -1; counter++) {
+                  	  							    	  size.append(recovery.charAt(recovery.length() - counter));
+                  	  							    	  Editor edit2 = preferences.edit();
+                  	  							    	  edit2.putInt("recovery", Integer.parseInt(size.toString()));
+                  	  							    	  edit2.commit();
+                  	  							      }
+                  	  							      Editor edit3 = preferences.edit();
+                  	  							      edit3.putBoolean("recovery_done", true);
+                  	  							      edit3.commit();
+                  	  						      }
+                  	  					    	  if (c.equals("1")) {
+                  	  						    	  buffer.append("\nBoot: ");
+                  	  						          buffer.append(s.charAt(18));
+                  	  							      buffer.append(s.charAt(19));
+                  	  							      buffer.append(s.charAt(20));
+                  	  							      buffer.append(s.charAt(21));
+                  	  							      buffer.append(s.charAt(22));
+                  	  							      buffer.append(s.charAt(23));
+                  	  							      boot.append(s.charAt(23));
+                  	  							      int boot1 = Integer.valueOf(s.charAt(22));
+                  	  							      if (boot1 != 32) {
+                  	  							    	  boot.append(s.charAt(22));
+                  	  							      }
+                  	  							      int boot2 = Integer.valueOf(s.charAt(21));
+                  	  							      if (boot2 != 32) {
+                  	  							    	  boot.append(s.charAt(21));
+                  	  							      }
+                  	  							      int boot3 = Integer.valueOf(s.charAt(20));
+                  	  							      if (boot3 != 32) {
+                  	  							    	  boot.append(s.charAt(20));
+                  	  							      }
+                  	  							      int boot4 = Integer.valueOf(s.charAt(19));
+                  	  							      if (boot4 != 32) {
+                  	  							    	  boot.append(s.charAt(19));
+                  	  							      }
+                  	  							      int boot5 = Integer.valueOf(s.charAt(18));
+                  	  							      if (boot5 != 32) {
+                  	  							    	  boot.append(s.charAt(18));
+                  	  							      }
+                  	  							      StringBuffer size = new StringBuffer();
+                  	  							      for (int counter = 1; boot.length() - counter > -1; counter++) {
+                  	  							    	  size.append(boot.charAt(boot.length() - counter));
+                  	  							    	  Editor edit2 = preferences.edit();
+                  	  							    	  edit2.putInt("boot", Integer.valueOf(size.toString()));
+                  	  							    	  edit2.commit();
+                  	  							      }
+                  	  							      Editor edit3 = preferences.edit();
+                  	  							      edit3.putBoolean("boot_done", true);
+                  	  							      edit3.commit();
+                  	  						      }
+                  	  					    	  if (c.equals("2")) {
+                  	  						    	  buffer.append("\nSplash: ");
+                  	  						          buffer.append(s.charAt(18));
+                  	  							      buffer.append(s.charAt(19));
+                  	  							      buffer.append(s.charAt(20));
+                  	  							      buffer.append(s.charAt(21));
+                  	  							      buffer.append(s.charAt(22));
+                  	  							      buffer.append(s.charAt(23));
+                  	  							      splash.append(s.charAt(23));
+                  	  							      int splash1 = Integer.valueOf(s.charAt(22));
+                  	  							      if (splash1 != 32) {
+                  	  							    	  splash.append(s.charAt(22));
+                  	  							      }
+                  	  							      int splash2 = Integer.valueOf(s.charAt(21));
+                  	  							      if (splash2 != 32) {
+                  	  							    	  splash.append(s.charAt(21));
+                  	  							      }
+                  	  							      int splash3 = Integer.valueOf(s.charAt(20));
+                  	  							      if (splash3 != 32) {
+                  	  							    	  splash.append(s.charAt(20));
+                  	  							      }
+                  	  							      int splash4 = Integer.valueOf(s.charAt(19));
+                  	  							      if (splash4 != 32) {
+                  	  							    	  splash.append(s.charAt(19));
+                  	  							      }
+                  	  							      int splash5 = Integer.valueOf(s.charAt(18));
+                  	  							      if (splash5 != 32) {
+                  	  							    	  splash.append(s.charAt(18));
+                  	  							      }
+                  	  							      StringBuffer size = new StringBuffer();
+                  	  							      for (int counter = 1; splash.length() - counter > -1; counter++) {
+                  	  							    	  size.append(splash.charAt(splash.length() - counter));
+                  	  							    	  Editor edit2 = preferences.edit();
+                  	  							    	  edit2.putInt("splash", Integer.valueOf(size.toString()));
+                  	  							    	  edit2.commit();
+                  	  							      }
+                  	  							      Editor edit3 = preferences.edit();
+                  	  							      edit3.putBoolean("splash_done", true);
+                  	  							      edit3.commit();
+                  	  						      }
+                  	  					    	  if (c.equals("3")) {
+                  	  						    	  buffer.append("\nMisc: ");
+                  	  						          buffer.append(s.charAt(18));
+                  	  							      buffer.append(s.charAt(19));
+                  	  							      buffer.append(s.charAt(20));
+                  	  							      buffer.append(s.charAt(21));
+                  	  							      buffer.append(s.charAt(22));
+                  	  							      buffer.append(s.charAt(23));
+                  	  							      misc.append(s.charAt(23));
+                  	  							      int misc1 = Integer.valueOf(s.charAt(22));
+                  	  							      if (misc1 != 32) {
+                  	  							    	  misc.append(s.charAt(22));
+                  	  							      }
+                  	  							      int misc2 = Integer.valueOf(s.charAt(21));
+                  	  							      if (misc2 != 32) {
+                  	  							    	  misc.append(s.charAt(21));
+                  	  							      }
+                  	  							      int misc3 = Integer.valueOf(s.charAt(20));
+                  	  							      if (misc3 != 32) {
+                  	  							    	  misc.append(s.charAt(20));
+                  	  							      }
+                  	  							      int misc4 = Integer.valueOf(s.charAt(19));
+                  	  							      if (misc4 != 32) {
+                  	  							    	  misc.append(s.charAt(19));
+                  	  							      }
+                  	  							      int misc5 = Integer.valueOf(s.charAt(18));
+                  	  							      if (misc5 != 32) {
+                  	  							    	  misc.append(s.charAt(18));
+                  	  							      }
+                  	  							      StringBuffer size = new StringBuffer();
+                  	  							      for (int counter = 1; misc.length() - counter > -1; counter++) {
+                  	  							    	  size.append(misc.charAt(misc.length() - counter));
+                  	  							    	  Editor edit2 = preferences.edit();
+                  	  							    	  edit2.putInt("misc", Integer.valueOf(size.toString()));
+                  	  							    	  edit2.commit();
+                  	  							      }
+                  	  							      Editor edit3 = preferences.edit();
+                  	  							      edit3.putBoolean("misc_done", true);
+                  	  							      edit3.commit();
+                  	  						      }
+                  	  					    	  if (c.equals("4")) {
+                  	  						    	  buffer.append("\nCache: ");
+                  	  						          buffer.append(s.charAt(18));
+                  	  							      buffer.append(s.charAt(19));
+                  	  							      buffer.append(s.charAt(20));
+                  	  							      buffer.append(s.charAt(21));
+                  	  							      buffer.append(s.charAt(22));
+                  	  							      buffer.append(s.charAt(23));
+                  	  							      cache.append(s.charAt(23));
+                  	  							      int cache1 = Integer.valueOf(s.charAt(22));
+                  	  							      if (cache1 != 32) {
+                  	  							    	  cache.append(s.charAt(22));
+                  	  							      }
+                  	  							      int cache2 = Integer.valueOf(s.charAt(21));
+                  	  							      if (cache2 != 32) {
+                  	  							    	  cache.append(s.charAt(21));
+                  	  							      }
+                  	  							      int cache3 = Integer.valueOf(s.charAt(20));
+                  	  							      if (cache3 != 32) {
+                  	  							    	  cache.append(s.charAt(20));
+                  	  							      }
+                  	  							      int cache4 = Integer.valueOf(s.charAt(19));
+                  	  							      if (cache4 != 32) {
+                  	  							    	  cache.append(s.charAt(19));
+                  	  							      }
+                  	  							      int cache5 = Integer.valueOf(s.charAt(18));
+                  	  							      if (cache5 != 32) {
+                  	  							    	  cache.append(s.charAt(18));
+                  	  							      }
+                  	  							      StringBuffer size = new StringBuffer();
+                  	  							      for (int counter = 1; cache.length() - counter > -1; counter++) {
+                  	  							    	  size.append(cache.charAt(cache.length() - counter));
+                  	  							    	  Editor edit2 = preferences.edit();
+                  	  							    	  edit2.putInt("cache", Integer.valueOf(size.toString()));
+                  	  							    	  edit2.commit();
+                  	  							      }
+                  	  							      Editor edit3 = preferences.edit();
+                  	  							      edit3.putBoolean("cache_done", true);
+                  	  							      edit3.commit();
+                  	  						      }
+                  	  					    	  if (c.equals("5")) {
+                  	  						    	  buffer.append("\nSystem: ");
+                  	  						          buffer.append(s.charAt(18));
+                  	  							      buffer.append(s.charAt(19));
+                  	  							      buffer.append(s.charAt(20));
+                  	  							      buffer.append(s.charAt(21));
+                  	  							      buffer.append(s.charAt(22));
+                  	  							      buffer.append(s.charAt(23));
+                  	  							      system.append(s.charAt(23));
+                  	  							      int system1 = Integer.valueOf(s.charAt(22));
+                  	  							      if (system1 != 32) {
+                  	  							    	  system.append(s.charAt(22));
+                  	  							      }
+                  	  							      int system2 = Integer.valueOf(s.charAt(21));
+                  	  							      if (system2 != 32) {
+                  	  							    	  system.append(s.charAt(21));
+                  	  							      }
+                  	  							      int system3 = Integer.valueOf(s.charAt(20));
+                  	  							      if (system3 != 32) {
+                  	  							    	  system.append(s.charAt(20));
+                  	  							      }
+                  	  							      int system4 = Integer.valueOf(s.charAt(19));
+                  	  							      if (system4 != 32) {
+                  	  							    	  system.append(s.charAt(19));
+                  	  							      }
+                  	  							      int system5 = Integer.valueOf(s.charAt(18));
+                  	  							      if (system5 != 32) {
+                  	  							    	  system.append(s.charAt(18));
+                  	  							      }
+                  	  							      StringBuffer size = new StringBuffer();
+                  	  							      for (int counter = 1; system.length() - counter > -1; counter++) {
+                  	  							    	  size.append(system.charAt(system.length() - counter));
+                  	  							    	  Editor edit2 = preferences.edit();
+                  	  							    	  edit2.putInt("system", Integer.valueOf(size.toString()));
+                  	  							    	  edit2.commit();
+                  	  							      }
+                  	  							      Editor edit3 = preferences.edit();
+                  	  							      edit3.putBoolean("system_done", true);
+                  	  							      edit3.commit();
+                  	  						      }
+                  	  					    	  if (c.equals("6")) {
+                  	  						    	  buffer.append("\nUserdata: ");
+                  	  						          buffer.append(s.charAt(18));
+                  	  							      buffer.append(s.charAt(19));
+                  	  							      buffer.append(s.charAt(20));
+                  	  							      buffer.append(s.charAt(21));
+                  	  							      buffer.append(s.charAt(22));
+                  	  							      buffer.append(s.charAt(23));
+                  	  							      userdata.append(s.charAt(23));
+                  	  							      int userdata1 = Integer.valueOf(s.charAt(22));
+                  	  							      if (userdata1 != 32) {
+                  	  							    	  userdata.append(s.charAt(22));
+                  	  							      }
+                  	  							      int userdata2 = Integer.valueOf(s.charAt(21));
+                  	  							      if (userdata2 != 32) {
+                  	  							    	  userdata.append(s.charAt(21));
+                  	  							      }
+                  	  							      int userdata3 = Integer.valueOf(s.charAt(20));
+                  	  							      if (userdata3 != 32) {
+                  	  							    	  userdata.append(s.charAt(20));
+                  	  							      }
+                  	  							      int userdata4 = Integer.valueOf(s.charAt(19));
+                  	  							      if (userdata4 != 32) {
+                  	  							    	  userdata.append(s.charAt(19));
+                  	  							      }
+                  	  							      int userdata5 = Integer.valueOf(s.charAt(18));
+                  	  							      if (userdata5 != 32) {
+                  	  							    	  userdata.append(s.charAt(18));
+                  	  							      }
+                  	  							      StringBuffer size = new StringBuffer();
+                  	  							      for (int counter = 1; userdata.length() - counter > -1; counter++) {
+                  	  							    	  size.append(userdata.charAt(userdata.length() - counter));
+                  	  							    	  Editor edit2 = preferences.edit();
+                  	  							    	  edit2.putInt("userdata", Integer.valueOf(size.toString()));
+                  	  							    	  edit2.commit();
+                  	  							      }
+                  	  							      Editor edit3 = preferences.edit();
+                  	  							      edit3.putBoolean("userdata_done", true);
+                  	  							      edit3.commit();
+                  	  						      }
+                  	  					    	  if (c.equals("7")) {
+                  	  						    	  buffer.append("\nOEM: ");
+                  	  						          buffer.append(s.charAt(18));
+                  	  							      buffer.append(s.charAt(19));
+                  	  							      buffer.append(s.charAt(20));
+                  	  							      buffer.append(s.charAt(21));
+                  	  							      buffer.append(s.charAt(22));
+                  	  							      buffer.append(s.charAt(23));
+                  	  							      oem.append(s.charAt(23));
+                  	  							      int oem1 = Integer.valueOf(s.charAt(22));
+                  	  							      if (oem1 != 32) {
+                  	  							    	  oem.append(s.charAt(22));
+                  	  							      }
+                  	  							      int oem2 = Integer.valueOf(s.charAt(21));
+                  	  							      if (oem2 != 32) {
+                  	  							    	  oem.append(s.charAt(21));
+                  	  							      }
+                  	  							      int oem3 = Integer.valueOf(s.charAt(20));
+                  	  							      if (oem3 != 32) {
+                  	  							    	  oem.append(s.charAt(20));
+                  	  							      }
+                  	  							      int oem4 = Integer.valueOf(s.charAt(19));
+                  	  							      if (oem4 != 32) {
+                  	  							    	  oem.append(s.charAt(19));
+                  	  							      }
+                  	  							      int oem5 = Integer.valueOf(s.charAt(18));
+                  	  							      if (oem5 != 32) {
+                  	  							    	  oem.append(s.charAt(18));
+                  	  							      }
+                  	  							      StringBuffer size = new StringBuffer();
+                  	  							      for (int counter = 1; oem.length() - counter > -1; counter++) {
+                  	  							    	  size.append(oem.charAt(oem.length() - counter));
+                  	  							    	  Editor edit2 = preferences.edit();
+                  	  							    	  edit2.putInt("oem", Integer.valueOf(size.toString()));
+                  	  							    	  edit2.commit();
+                  	  							      }
+                  	  							      Editor edit3 = preferences.edit();
+                  	  							      edit3.putBoolean("oem_done", true);
+                  	  							      edit3.commit();
+                  	  						      }
+                  	  					    	  if (c.equals("8")) {
+                  	  						    	  buffer.append("\nPersist: ");
+                  	  						          buffer.append(s.charAt(18));
+                  	  							      buffer.append(s.charAt(19));
+                  	  							      buffer.append(s.charAt(20));
+                  	  							      buffer.append(s.charAt(21));
+                  	  							      buffer.append(s.charAt(22));
+                  	  							      buffer.append(s.charAt(23));
+                  	  							      persist.append(s.charAt(23));
+                  	  							      int persist1 = Integer.valueOf(s.charAt(22));
+                  	  							      if (persist1 != 32) {
+                  	  							    	  persist.append(s.charAt(22));
+                  	  							      }
+                  	  							      int persist2 = Integer.valueOf(s.charAt(21));
+                  	  							      if (persist2 != 32) {
+                  	  							    	  persist.append(s.charAt(21));
+                  	  							      }
+                  	  							      int persist3 = Integer.valueOf(s.charAt(20));
+                  	  							      if (persist3 != 32) {
+                  	  							    	  persist.append(s.charAt(20));
+                  	  							      }
+                  	  							      int persist4 = Integer.valueOf(s.charAt(19));
+                  	  							      if (persist4 != 32) {
+                  	  							    	  persist.append(s.charAt(19));
+                  	  							      }
+                  	  							      int persist5 = Integer.valueOf(s.charAt(18));
+                  	  							      if (persist5 != 32) {
+                  	  							    	  persist.append(s.charAt(18));
+                  	  							      }
+                  	  							      StringBuffer size = new StringBuffer();
+                  	  							      for (int counter = 1; persist.length() - counter > -1; counter++) {
+                  	  							    	  size.append(persist.charAt(persist.length() - counter));
+                  	  							    	  Editor edit2 = preferences.edit();
+                  	  							    	  edit2.putInt("persist", Integer.valueOf(size.toString()));
+                  	  							    	  edit2.commit();
+                  	  							      }
+                  	  							      Editor edit3 = preferences.edit();
+                  	  							      edit3.putBoolean("persist_done", true);
+                  	  							      edit3.commit();
+                  	  						      }
+                  	  					      }
+                  	  			    	  }
+                  	  			      }
+                  	  			    }
+                  	  		    }
+                  	  		    int recoveryint = preferences.getInt("recovery", 0);
+                  	  		    int bootint = preferences.getInt("boot", 0);
+                  	  		    int splashint = preferences.getInt("splash", 0);
+                  	  		    int miscint = preferences.getInt("misc", 0);
+                  	  		    int cacheint = preferences.getInt("cache", 0);
+                  	  		    int systemint = preferences.getInt("system", 0);
+                  	  		    int userdataint = preferences.getInt("userdata", 0);
+                  	  		    int oemint = preferences.getInt("oem", 0);
+                  	  		    int persistint = preferences.getInt("persist", 0);
+                  	      	    int total = ((recoveryint + bootint + splashint + miscint + cacheint + systemint + userdataint + oemint + persistint)/1024);
+                  	      		if (total > 468) {
+                  	      			if (lib.canRead()) {
+                  	      				showDialog(GEN_2_TPT);
+                  	        		    } else {
+                  	        		    	showDialog(CHECK_GEN);
+                  	        		    }
+                  	      		} else {
+                  	      			if (lib.canRead()) {
+                  	      				showDialog(GEN_2_STOCK);
+                  	        		    } else {
+                  	        		    	showDialog(GEN_3);
+                  	        		    }
+                  	      		}
+                  	  	    } catch (IOException e) {
+                  	  	    	Log.i(TAG, "" + e);
+                  	  	    } catch (Exception e) {
+                  	  	    	Log.i(TAG, "" + e);
+                  	  	    }
+              		      } else {
+              			      if (s1.charAt(2) == '9') {
+              			    	  showDialog(GEN_1);
+              		          }
+              		      }
+            	      }   
+                    } catch (FileNotFoundException e) {
+              	    	
+                    } catch (IOException e) {
+
+                    }
       	    		break;
       	    	case 1:
       	    		edit.putString("blade", "Chinese Blade");
@@ -1046,7 +1893,443 @@ public class HomeActivity extends ListActivity {
           unknowntypebuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
               public void onClick(DialogInterface dialog, int id) {
             	  if (unknowntype.equals("European Blade")) {
-            		  showDialog(CHECK_GEN);
+            		  try {
+                	      File iomem = new File("/proc/iomem");
+                	      FileInputStream fis = new FileInputStream(iomem);
+                	      InputStreamReader isr = new InputStreamReader(fis);
+                	      BufferedReader br = new BufferedReader(isr);
+                	      String s1 = br.readLine();
+                          if (s1 != null) {
+                    	      if (s1.charAt(2) == '5') {
+                    	    	File lib = new File("/system/lib/libloc.so");
+                    	    	StringBuffer buffer = new StringBuffer();
+                    	  	    StringBuffer recovery = new StringBuffer();
+                    	  	    StringBuffer boot = new StringBuffer();
+                    	  	    StringBuffer splash = new StringBuffer();
+                    	  	    StringBuffer misc = new StringBuffer();
+                    	  	    StringBuffer cache = new StringBuffer();
+                    	  	    StringBuffer system = new StringBuffer();
+                    	  	    StringBuffer userdata = new StringBuffer();
+                    	  	    StringBuffer oem = new StringBuffer();
+                    	  	    StringBuffer persist = new StringBuffer();
+                    	  		try {
+                    	  	    	File partitions = new File("/proc/partitions");
+                    	  	    	FileInputStream fis2 = new FileInputStream(partitions);
+                    	  		    InputStreamReader isr2 = new InputStreamReader(fis2);
+                    	  		    BufferedReader br2 = new BufferedReader(isr2);
+                    	  		    for (int i = 1; i < 50; i++) {
+                    	  			    String s = br2.readLine();
+                    	  			    if (i > 2) {
+                    	  			      if (s != null) {
+                    	  			    	  String b = s.charAt(3) + "";
+                    	  			    	  if (b.equals("1")) {
+                    	  			    		  String a = s.charAt(2) + "";
+                    	  			    		  if (a.equals("3")) {
+                    	  			    			  String c = s.charAt(12) + "";
+                    	  					    	  if (c.equals("0")) {
+                    	  						    	  buffer.append("\nRecovery: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      recovery.append(s.charAt(23));
+                    	  							      int recovery1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (recovery1 != 32) {
+                    	  							    	  recovery.append(s.charAt(22));
+                    	  							      }
+                    	  							      int recovery2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (recovery2 != 32) {
+                    	  							    	  recovery.append(s.charAt(21));
+                    	  							      }
+                    	  							      int recovery3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (recovery3 != 32) {
+                    	  							    	  recovery.append(s.charAt(20));
+                    	  							      }
+                    	  							      int recovery4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (recovery4 != 32) {
+                    	  							    	  recovery.append(s.charAt(19));
+                    	  							      }
+                    	  							      int recovery5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (recovery5 != 32) {
+                    	  							    	  recovery.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; recovery.length() - counter > -1; counter++) {
+                    	  							    	  size.append(recovery.charAt(recovery.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("recovery", Integer.parseInt(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("recovery_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("1")) {
+                    	  						    	  buffer.append("\nBoot: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      boot.append(s.charAt(23));
+                    	  							      int boot1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (boot1 != 32) {
+                    	  							    	  boot.append(s.charAt(22));
+                    	  							      }
+                    	  							      int boot2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (boot2 != 32) {
+                    	  							    	  boot.append(s.charAt(21));
+                    	  							      }
+                    	  							      int boot3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (boot3 != 32) {
+                    	  							    	  boot.append(s.charAt(20));
+                    	  							      }
+                    	  							      int boot4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (boot4 != 32) {
+                    	  							    	  boot.append(s.charAt(19));
+                    	  							      }
+                    	  							      int boot5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (boot5 != 32) {
+                    	  							    	  boot.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; boot.length() - counter > -1; counter++) {
+                    	  							    	  size.append(boot.charAt(boot.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("boot", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("boot_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("2")) {
+                    	  						    	  buffer.append("\nSplash: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      splash.append(s.charAt(23));
+                    	  							      int splash1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (splash1 != 32) {
+                    	  							    	  splash.append(s.charAt(22));
+                    	  							      }
+                    	  							      int splash2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (splash2 != 32) {
+                    	  							    	  splash.append(s.charAt(21));
+                    	  							      }
+                    	  							      int splash3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (splash3 != 32) {
+                    	  							    	  splash.append(s.charAt(20));
+                    	  							      }
+                    	  							      int splash4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (splash4 != 32) {
+                    	  							    	  splash.append(s.charAt(19));
+                    	  							      }
+                    	  							      int splash5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (splash5 != 32) {
+                    	  							    	  splash.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; splash.length() - counter > -1; counter++) {
+                    	  							    	  size.append(splash.charAt(splash.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("splash", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("splash_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("3")) {
+                    	  						    	  buffer.append("\nMisc: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      misc.append(s.charAt(23));
+                    	  							      int misc1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (misc1 != 32) {
+                    	  							    	  misc.append(s.charAt(22));
+                    	  							      }
+                    	  							      int misc2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (misc2 != 32) {
+                    	  							    	  misc.append(s.charAt(21));
+                    	  							      }
+                    	  							      int misc3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (misc3 != 32) {
+                    	  							    	  misc.append(s.charAt(20));
+                    	  							      }
+                    	  							      int misc4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (misc4 != 32) {
+                    	  							    	  misc.append(s.charAt(19));
+                    	  							      }
+                    	  							      int misc5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (misc5 != 32) {
+                    	  							    	  misc.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; misc.length() - counter > -1; counter++) {
+                    	  							    	  size.append(misc.charAt(misc.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("misc", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("misc_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("4")) {
+                    	  						    	  buffer.append("\nCache: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      cache.append(s.charAt(23));
+                    	  							      int cache1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (cache1 != 32) {
+                    	  							    	  cache.append(s.charAt(22));
+                    	  							      }
+                    	  							      int cache2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (cache2 != 32) {
+                    	  							    	  cache.append(s.charAt(21));
+                    	  							      }
+                    	  							      int cache3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (cache3 != 32) {
+                    	  							    	  cache.append(s.charAt(20));
+                    	  							      }
+                    	  							      int cache4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (cache4 != 32) {
+                    	  							    	  cache.append(s.charAt(19));
+                    	  							      }
+                    	  							      int cache5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (cache5 != 32) {
+                    	  							    	  cache.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; cache.length() - counter > -1; counter++) {
+                    	  							    	  size.append(cache.charAt(cache.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("cache", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("cache_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("5")) {
+                    	  						    	  buffer.append("\nSystem: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      system.append(s.charAt(23));
+                    	  							      int system1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (system1 != 32) {
+                    	  							    	  system.append(s.charAt(22));
+                    	  							      }
+                    	  							      int system2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (system2 != 32) {
+                    	  							    	  system.append(s.charAt(21));
+                    	  							      }
+                    	  							      int system3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (system3 != 32) {
+                    	  							    	  system.append(s.charAt(20));
+                    	  							      }
+                    	  							      int system4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (system4 != 32) {
+                    	  							    	  system.append(s.charAt(19));
+                    	  							      }
+                    	  							      int system5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (system5 != 32) {
+                    	  							    	  system.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; system.length() - counter > -1; counter++) {
+                    	  							    	  size.append(system.charAt(system.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("system", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("system_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("6")) {
+                    	  						    	  buffer.append("\nUserdata: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      userdata.append(s.charAt(23));
+                    	  							      int userdata1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (userdata1 != 32) {
+                    	  							    	  userdata.append(s.charAt(22));
+                    	  							      }
+                    	  							      int userdata2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (userdata2 != 32) {
+                    	  							    	  userdata.append(s.charAt(21));
+                    	  							      }
+                    	  							      int userdata3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (userdata3 != 32) {
+                    	  							    	  userdata.append(s.charAt(20));
+                    	  							      }
+                    	  							      int userdata4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (userdata4 != 32) {
+                    	  							    	  userdata.append(s.charAt(19));
+                    	  							      }
+                    	  							      int userdata5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (userdata5 != 32) {
+                    	  							    	  userdata.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; userdata.length() - counter > -1; counter++) {
+                    	  							    	  size.append(userdata.charAt(userdata.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("userdata", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("userdata_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("7")) {
+                    	  						    	  buffer.append("\nOEM: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      oem.append(s.charAt(23));
+                    	  							      int oem1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (oem1 != 32) {
+                    	  							    	  oem.append(s.charAt(22));
+                    	  							      }
+                    	  							      int oem2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (oem2 != 32) {
+                    	  							    	  oem.append(s.charAt(21));
+                    	  							      }
+                    	  							      int oem3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (oem3 != 32) {
+                    	  							    	  oem.append(s.charAt(20));
+                    	  							      }
+                    	  							      int oem4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (oem4 != 32) {
+                    	  							    	  oem.append(s.charAt(19));
+                    	  							      }
+                    	  							      int oem5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (oem5 != 32) {
+                    	  							    	  oem.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; oem.length() - counter > -1; counter++) {
+                    	  							    	  size.append(oem.charAt(oem.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("oem", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("oem_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					    	  if (c.equals("8")) {
+                    	  						    	  buffer.append("\nPersist: ");
+                    	  						          buffer.append(s.charAt(18));
+                    	  							      buffer.append(s.charAt(19));
+                    	  							      buffer.append(s.charAt(20));
+                    	  							      buffer.append(s.charAt(21));
+                    	  							      buffer.append(s.charAt(22));
+                    	  							      buffer.append(s.charAt(23));
+                    	  							      persist.append(s.charAt(23));
+                    	  							      int persist1 = Integer.valueOf(s.charAt(22));
+                    	  							      if (persist1 != 32) {
+                    	  							    	  persist.append(s.charAt(22));
+                    	  							      }
+                    	  							      int persist2 = Integer.valueOf(s.charAt(21));
+                    	  							      if (persist2 != 32) {
+                    	  							    	  persist.append(s.charAt(21));
+                    	  							      }
+                    	  							      int persist3 = Integer.valueOf(s.charAt(20));
+                    	  							      if (persist3 != 32) {
+                    	  							    	  persist.append(s.charAt(20));
+                    	  							      }
+                    	  							      int persist4 = Integer.valueOf(s.charAt(19));
+                    	  							      if (persist4 != 32) {
+                    	  							    	  persist.append(s.charAt(19));
+                    	  							      }
+                    	  							      int persist5 = Integer.valueOf(s.charAt(18));
+                    	  							      if (persist5 != 32) {
+                    	  							    	  persist.append(s.charAt(18));
+                    	  							      }
+                    	  							      StringBuffer size = new StringBuffer();
+                    	  							      for (int counter = 1; persist.length() - counter > -1; counter++) {
+                    	  							    	  size.append(persist.charAt(persist.length() - counter));
+                    	  							    	  Editor edit2 = preferences.edit();
+                    	  							    	  edit2.putInt("persist", Integer.valueOf(size.toString()));
+                    	  							    	  edit2.commit();
+                    	  							      }
+                    	  							      Editor edit3 = preferences.edit();
+                    	  							      edit3.putBoolean("persist_done", true);
+                    	  							      edit3.commit();
+                    	  						      }
+                    	  					      }
+                    	  			    	  }
+                    	  			      }
+                    	  			    }
+                    	  		    }
+                    	  		    int recoveryint = preferences.getInt("recovery", 0);
+                    	  		    int bootint = preferences.getInt("boot", 0);
+                    	  		    int splashint = preferences.getInt("splash", 0);
+                    	  		    int miscint = preferences.getInt("misc", 0);
+                    	  		    int cacheint = preferences.getInt("cache", 0);
+                    	  		    int systemint = preferences.getInt("system", 0);
+                    	  		    int userdataint = preferences.getInt("userdata", 0);
+                    	  		    int oemint = preferences.getInt("oem", 0);
+                    	  		    int persistint = preferences.getInt("persist", 0);
+                    	      	    int total = ((recoveryint + bootint + splashint + miscint + cacheint + systemint + userdataint + oemint + persistint)/1024);
+                    	      		if (total > 468) {
+                    	      			if (lib.canRead()) {
+                    	      				showDialog(GEN_2_TPT);
+                    	        		    } else {
+                    	        		    	showDialog(CHECK_GEN);
+                    	        		    }
+                    	      		} else {
+                    	      			if (lib.canRead()) {
+                    	      				showDialog(GEN_2_STOCK);
+                    	        		    } else {
+                    	        		    	showDialog(GEN_3);
+                    	        		    }
+                    	      		}
+                    	  	    } catch (IOException e) {
+                    	  	    	Log.i(TAG, "" + e);
+                    	  	    } catch (Exception e) {
+                    	  	    	Log.i(TAG, "" + e);
+                    	  	    }
+                		      } else {
+                			      if (s1.charAt(2) == '9') {
+                			    	  showDialog(GEN_1);
+                		          }
+                		      }
+              	      }   
+                      } catch (FileNotFoundException e) {
+                	    	
+                      } catch (IOException e) {
+
+                      }
             	  } else {
             		  showDialog(UNSUPPORTED);
             	  }
@@ -1182,7 +2465,7 @@ public class HomeActivity extends ListActivity {
         case GEN_1:
           Builder gen1builder = new AlertDialog.Builder(HomeActivity.this);
           gen1builder.setTitle(R.string.check_gen_heading);
-          gen1builder.setMessage("Gen 1");
+          gen1builder.setMessage("Gen 1 ZTE Blade detected, is this correct?");
           gen1builder.setCancelable(false);
           gen1builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
               public void onClick(DialogInterface dialog, int id) {
@@ -1200,38 +2483,69 @@ public class HomeActivity extends ListActivity {
               }
           });
           return gen1builder.create();
-        case GEN_2:
-          Builder gen2builder = new AlertDialog.Builder(HomeActivity.this);
-          gen2builder.setTitle(R.string.check_gen_heading);
-          gen2builder.setCancelable(false);
-          final CharSequence[] gens2 = {"Stock Gen 2", "Stock Gen 3", other, unknown};
-          gen2builder.setItems(gens2, new DialogInterface.OnClickListener() {
-      	    public void onClick(DialogInterface dialog, int item) {
-      	    	Editor editgen = preferences.edit();
-      	    	Editor edit2 = preferences.edit();
-      	    	switch (item) {
-      	    	case 0:
-      	    		editgen.putInt("gen", 2);
-      	    		editgen.commit();
-      	    		edit2.putBoolean("allchecked", true);
-      	            edit2.commit();
-      	    		break;
-      	    	case 1:
-      	    		editgen.putInt("gen", 2);
-      	    		editgen.commit();
-      	    		edit2.putBoolean("allchecked", true);
-      	            edit2.commit();
-      	    		break;
-      	    	case 2:
-      	    		showDialog(CHECK_GEN);
-      	    		break;
-      	    	case 3:
-      	    		showDialog(UNSUPPORTED);
-      	    		break;
-      	    	}
-      	      }
-      	  });
-          return gen2builder.create();
+        case GEN_2_TPT:
+            Builder gen2tptbuilder = new AlertDialog.Builder(HomeActivity.this);
+            gen2tptbuilder.setTitle(R.string.check_gen_heading);
+            gen2tptbuilder.setMessage("TPT Upgraded Gen 2 ZTE Blade detected, is this correct?");
+            gen2tptbuilder.setCancelable(false);
+            gen2tptbuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+              	  Editor editgen = preferences.edit();
+          	      Editor edit2 = preferences.edit();
+          	      editgen.putInt("gen", 1);
+          	      editgen.commit();
+          	      edit2.putBoolean("allchecked", true);
+          	      edit2.commit();
+                }
+            });
+            gen2tptbuilder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+      	          showDialog(CHECK_GEN);
+                }
+            });
+            return gen2tptbuilder.create();
+        case GEN_2_STOCK:
+            Builder gen2stockbuilder = new AlertDialog.Builder(HomeActivity.this);
+            gen2stockbuilder.setTitle(R.string.check_gen_heading);
+            gen2stockbuilder.setMessage("Stock/Windows Upgraded Gen 2 ZTE Blade detected, is this correct?");
+            gen2stockbuilder.setCancelable(false);
+            gen2stockbuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+              	  Editor editgen = preferences.edit();
+          	      Editor edit2 = preferences.edit();
+          	      editgen.putInt("gen", 2);
+          	      editgen.commit();
+          	      edit2.putBoolean("allchecked", true);
+          	      edit2.commit();
+                }
+            });
+            gen2stockbuilder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+      	          showDialog(CHECK_GEN);
+                }
+            });
+            return gen2stockbuilder.create();
+        case GEN_3:
+            Builder gen3builder = new AlertDialog.Builder(HomeActivity.this);
+            gen3builder.setTitle(R.string.check_gen_heading);
+            gen3builder.setMessage("Gen 3 ZTE Blade detected, is this correct?");
+            gen3builder.setCancelable(false);
+            gen3builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+              	  Editor editgen = preferences.edit();
+          	      Editor edit2 = preferences.edit();
+          	      editgen.putInt("gen", 2);
+          	      editgen.commit();
+          	      edit2.putBoolean("allchecked", true);
+          	      edit2.commit();
+                }
+            });
+            gen3builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+      	          showDialog(CHECK_GEN);
+                }
+            });
+            return gen3builder.create();
         }
         return super.onCreateDialog(id);
     }
