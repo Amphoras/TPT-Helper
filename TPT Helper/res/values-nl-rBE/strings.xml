@@ -68,6 +68,10 @@
     <string name="vivacity">T-Mobile Vivacity</string>
     <string name="unsupported_heading">Niet-ondersteunde telefoon</string>
     <string name="unsupported">Sorry, dit toestel is momenteel niet ondersteund. Controleer het telefoontype en probeer opnieuw als je denkt dat dit onterecht is.</string>
+    <string name="confirm_gen1">Gen 1 ZTE Blade detected, is this correct?</string>
+    <string name="confirm_gen2_tpt">TPT Upgraded Gen 2 ZTE Blade detected, is this correct?</string>
+    <string name="confirm_gen2_stock">Stock/Windows Upgraded Gen 2 ZTE Blade detected, is this correct?</string>
+    <string name="confirm_gen3">Gen 3 ZTE Blade detected, is this correct?</string>
     
       <!-- Downloader strings -->
     <string name="standard_tpt_heading">Standaard TPT\'s:</string>

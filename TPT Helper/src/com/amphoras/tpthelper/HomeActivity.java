@@ -2465,7 +2465,7 @@ public class HomeActivity extends ListActivity {
         case GEN_1:
           Builder gen1builder = new AlertDialog.Builder(HomeActivity.this);
           gen1builder.setTitle(R.string.check_gen_heading);
-          gen1builder.setMessage("Gen 1 ZTE Blade detected, is this correct?");
+          gen1builder.setMessage(R.string.confirm_gen1);
           gen1builder.setCancelable(false);
           gen1builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
               public void onClick(DialogInterface dialog, int id) {
@@ -2486,7 +2486,7 @@ public class HomeActivity extends ListActivity {
         case GEN_2_TPT:
             Builder gen2tptbuilder = new AlertDialog.Builder(HomeActivity.this);
             gen2tptbuilder.setTitle(R.string.check_gen_heading);
-            gen2tptbuilder.setMessage("TPT Upgraded Gen 2 ZTE Blade detected, is this correct?");
+            gen2tptbuilder.setMessage(R.string.confirm_gen2_tpt);
             gen2tptbuilder.setCancelable(false);
             gen2tptbuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
@@ -2507,7 +2507,7 @@ public class HomeActivity extends ListActivity {
         case GEN_2_STOCK:
             Builder gen2stockbuilder = new AlertDialog.Builder(HomeActivity.this);
             gen2stockbuilder.setTitle(R.string.check_gen_heading);
-            gen2stockbuilder.setMessage("Stock/Windows Upgraded Gen 2 ZTE Blade detected, is this correct?");
+            gen2stockbuilder.setMessage(R.string.confirm_gen2_stock);
             gen2stockbuilder.setCancelable(false);
             gen2stockbuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
@@ -2528,7 +2528,7 @@ public class HomeActivity extends ListActivity {
         case GEN_3:
             Builder gen3builder = new AlertDialog.Builder(HomeActivity.this);
             gen3builder.setTitle(R.string.check_gen_heading);
-            gen3builder.setMessage("Gen 3 ZTE Blade detected, is this correct?");
+            gen3builder.setMessage(R.string.confirm_gen3);
             gen3builder.setCancelable(false);
             gen3builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {

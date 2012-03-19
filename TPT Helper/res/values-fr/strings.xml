@@ -68,6 +68,10 @@
     <string name="vivacity">T-Mobile Vivacity</string>
     <string name="unsupported_heading">Modèle non supporté</string>
     <string name="unsupported">Désolé, ce modèle n\'est pas actuellement pris en charge. Si vous pensez que c\'est une erreur, s\'il vous plaît vérifier votre modèle de téléphone et essayez à nouveau.</string>
+    <string name="confirm_gen1">Gen 1 ZTE Blade detected, is this correct?</string>
+    <string name="confirm_gen2_tpt">TPT Upgraded Gen 2 ZTE Blade detected, is this correct?</string>
+    <string name="confirm_gen2_stock">Stock/Windows Upgraded Gen 2 ZTE Blade detected, is this correct?</string>
+    <string name="confirm_gen3">Gen 3 ZTE Blade detected, is this correct?</string>
     
       <!-- Downloader strings -->
     <string name="standard_tpt_heading">TPTs standard:</string>

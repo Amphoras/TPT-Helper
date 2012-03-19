@@ -88,6 +88,10 @@ along with TPT Helper.  If not, see <http://www.gnu.org/licenses/>.
     <string name="vivacity">T-Mobile Vivacity</string>
     <string name="unsupported_heading">Unsupported Model</string>
     <string name="unsupported">Sorry, this device is not currently supported. If you think this is an error, please check your phone model and try again.</string>
+    <string name="confirm_gen1">Gen 1 ZTE Blade detected, is this correct?</string>
+    <string name="confirm_gen2_tpt">TPT Upgraded Gen 2 ZTE Blade detected, is this correct?</string>
+    <string name="confirm_gen2_stock">Stock/Windows Upgraded Gen 2 ZTE Blade detected, is this correct?</string>
+    <string name="confirm_gen3">Gen 3 ZTE Blade detected, is this correct?</string>
     
       <!-- Downloader strings -->
     <string name="standard_tpt_heading">Standard TPTs:</string>
