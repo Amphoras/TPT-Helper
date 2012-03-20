@@ -30,7 +30,16 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class PickFileSF2 extends Activity {
 	SharedPreferences preferences;
@@ -62,99 +71,120 @@ public class PickFileSF2 extends Activity {
             builder1.setCancelable(false);
             CharSequence cancel = getText(R.string.cancel);
             CharSequence other = getText(R.string.other);
-            final CharSequence[] zips1 = {"SF2-v1a.zip", "SF2-v1b.zip", "SF2-v1c.zip", other, cancel};
-        	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
+            CharSequence[] zips1 = new CharSequence[4];
+            int number = 0;
+            try {
+  	            URL url = new URL("http://amphoras.co.uk/SF2-TPTs.txt");
+  	            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+  	            connection.connect();
+  	            File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+  	            FileOutputStream fos = new FileOutputStream(file);
+  	            InputStream is = connection.getInputStream();
+  	            byte[] buffer = new byte[1024];
+  	            int length = 0;
+  	            while ((length = is.read(buffer)) > 0 ) {
+  	                fos.write(buffer, 0, length);
+  	            }
+  	            fos.close();
+		    	FileInputStream fis = new FileInputStream(file);
+	  	        InputStreamReader isr = new InputStreamReader(fis);
+	  	        BufferedReader br = new BufferedReader(isr);
+	  	        String s = "";
+	  	        while((s = br.readLine()) != null) {
+	  	            String[] mounts = s.split("\"");
+	  	            if (mounts[0].equals("AllInOne")) {
+	  	            	// Do nothing
+	  	            } else {
+	  	            	number = number + 1;
+	  	            	zips1[number - 1] = mounts[2];
+	  	            }
+	  	        }
+            CharSequence[] zips2 = new CharSequence[number + 2];
+            for (int i = 0; i < number; i++) {
+            	zips2[i] = zips1[i];
+            }
+            zips2[number] = other;
+            zips2[number + 1] = cancel;
+            final int position = number;
+        	builder1.setItems(zips2, new DialogInterface.OnClickListener() {
         	    public void onClick(DialogInterface dialog, int item) {
         	    	Editor editmd5 = preferences.edit();
-        	    	switch (item) {
-        	    	case 0:
-        	    		editmd5.putString("expectedmd5", "08219ff0cb2754faa921a65cc3b7b7b6");
-        	    		editmd5.commit();
-        	    		if (sf2v1a.canRead() == true){
-        	    		    Editor edit = preferences.edit();
-        	    			edit.putString("filepath", "/SF2-v1a.zip");
-        	    			edit.commit();
-        	    	        Intent i = new Intent(PickFileSF2.this, MD5sum.class);
-        	    	        startActivity(i);
-        	    	        PickFileSF2.this.finish();
+        	    	if (item < position) {
+        	    		try {
+        	    			int number = 0;
+        		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+        			    	FileInputStream fis = new FileInputStream(file);
+        		  	        InputStreamReader isr = new InputStreamReader(fis);
+        		  	        BufferedReader br = new BufferedReader(isr);
+        		  	        String s = "";
+        		  	        while((s = br.readLine()) != null) {
+        		  	            String[] mounts = s.split("\"");
+        		  	            if (mounts[0].equals("AllInOne")) {
+        		  	            	// Do nothing
+        		  	            } else {
+        		  	            	if (item == number) {
+        		  	            		editmd5.putString("expectedmd5", mounts[5]);
+        		        	    		editmd5.commit();
+        		        	    		File tpt = new File(Environment.getExternalStorageDirectory(), "/" + mounts[2]);
+        		        	    		File downloadtpt = new File(Environment.getExternalStorageDirectory(), "/download/" + mounts[2]);
+        		        	    		if (tpt.canRead() == true){
+        		        	    		    Editor edit = preferences.edit();
+        		        	    			edit.putString("filepath", "/" + mounts[2]);
+        		        	    			edit.commit();
+        		        	    	        Intent i = new Intent(PickFileSF2.this, MD5sum.class);
+        		        	    	        startActivity(i);
+        		        	    	        PickFileSF2.this.finish();
+        		        	    		} else {
+        		        	    			if (downloadtpt.canRead() == true){
+        		            	    	        Editor edit = preferences.edit();
+        		            	    		    edit.putString("filepath", "/download/" + mounts[2]);
+        		            	    			edit.commit();
+        		            	    	        Intent i = new Intent(PickFileSF2.this, MD5sum.class);
+        		            	    	        startActivity(i);
+        		            	    	        PickFileSF2.this.finish();
+        		        	    			} else {
+        		        	    				Editor edit = preferences.edit();
+        		            	    			edit.putString("filepicked", mounts[2]);
+        		            	    			edit.commit();
+        		        	    				showDialog(FILE_UNFOUND);
+        		        	    			}
+        		        	    		}
+        			  	            }
+        		  	            	number = number + 1;
+        		  	            }
+        		  	        }
+        		    	} catch (IOException e) {
+        	  	            e.printStackTrace();
+        	  	        }
+        	    	} else {
+        	    		if (item == position) {
+        	    			Intent i = new Intent(PickFileSF2.this, EnterFile.class);
+                    		startActivityForResult(i, 1);
         	    		} else {
-        	    			if (downloadsf2v1a.canRead() == true){
-            	    	        Editor edit = preferences.edit();
-            	    		    edit.putString("filepath", "/download/SF2-v1a.zip");
-            	    			edit.commit();
-            	    	        Intent i = new Intent(PickFileSF2.this, MD5sum.class);
-            	    	        startActivity(i);
-            	    	        PickFileSF2.this.finish();
-        	    			} else {
-        	    				Editor edit = preferences.edit();
-            	    			edit.putString("filepicked", "SF2-v1a.zip");
-            	    			edit.commit();
-        	    				showDialog(FILE_UNFOUND);
+        	    			if (item == position + 1) {
+        	    				PickFileSF2.this.finish();
         	    			}
         	    		}
-        	    		break;
-        	    	case 1:
-        	    		editmd5.putString("expectedmd5", "61e6387622ce1fbd1b128702d49a2c92");
-        	    		editmd5.commit();
-        	    		if (sf2v1b.canRead() == true){
-        	    		    Editor edit = preferences.edit();
-        	    			edit.putString("filepath", "/SF2-v1b.zip");
-        	    			edit.commit();
-        	    	        Intent i = new Intent(PickFileSF2.this, MD5sum.class);
-        	    	        startActivity(i);
-        	    	        PickFileSF2.this.finish();
-        	    		} else {
-        	    			if (downloadsf2v1b.canRead() == true){
-            	    	        Editor edit = preferences.edit();
-            	    		    edit.putString("filepath", "/download/SF2-v1b.zip");
-            	    			edit.commit();
-            	    	        Intent i = new Intent(PickFileSF2.this, MD5sum.class);
-            	    	        startActivity(i);
-            	    	        PickFileSF2.this.finish();
-        	    			} else {
-        	    				Editor edit = preferences.edit();
-            	    			edit.putString("filepicked", "SF2-v1b.zip");
-            	    			edit.commit();
-        	    				showDialog(FILE_UNFOUND);
-        	    			}
-        	    		}
-        	    		break;
-        	    	case 2:
-        	    		editmd5.putString("expectedmd5", "b22cfc03bccc73ff07db9651519e2296");
-        	    		editmd5.commit();
-        	    		if (sf2v1c.canRead() == true){
-        	    		    Editor edit = preferences.edit();
-        	    			edit.putString("filepath", "/SF2-v1c.zip");
-        	    			edit.commit();
-        	    	        Intent i = new Intent(PickFileSF2.this, MD5sum.class);
-        	    	        startActivity(i);
-        	    	        PickFileSF2.this.finish();
-        	    		} else {
-        	    			if (downloadsf2v1c.canRead() == true){
-            	    	        Editor edit = preferences.edit();
-            	    		    edit.putString("filepath", "/download/SF2-v1c.zip");
-            	    			edit.commit();
-            	    	        Intent i = new Intent(PickFileSF2.this, MD5sum.class);
-            	    	        startActivity(i);
-            	    	        PickFileSF2.this.finish();
-        	    			} else {
-        	    				Editor edit = preferences.edit();
-            	    			edit.putString("filepicked", "SF2-v1c.zip");
-            	    			edit.commit();
-        	    				showDialog(FILE_UNFOUND);
-        	    			}
-        	    		}
-        	    		break;
-        	    	case 3:
-        	    		Intent i = new Intent(PickFileSF2.this, EnterFile.class);
-                		startActivityForResult(i, 1);
-                		break;
-        	    	case 4:
-                		PickFileSF2.this.finish();
-                		break;
         	    	}
         	    }
         	});
+            } catch (MalformedURLException e) {
+            	builder1.setMessage("Unable to access TPT list. Please check your data connection.");
+                builder1.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                  	    PickFileSF2.this.finish();
+                    }
+                });
+  	            e.printStackTrace();
+  	        } catch (IOException e) {
+  	        	builder1.setMessage("Unable to access TPT list. Please check your data connection.");
+                builder1.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                  	    PickFileSF2.this.finish();
+                    }
+                });
+  	            e.printStackTrace();
+  	        }
         	return builder1.create();
         case FILE_UNFOUND:
         	String filepicked = preferences.getString("filepicked", "");
