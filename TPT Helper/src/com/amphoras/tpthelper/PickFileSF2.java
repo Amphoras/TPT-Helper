@@ -71,7 +71,7 @@ public class PickFileSF2 extends Activity {
             builder1.setCancelable(false);
             CharSequence cancel = getText(R.string.cancel);
             CharSequence other = getText(R.string.other);
-            CharSequence[] zips1 = new CharSequence[4];
+            CharSequence[] zips1 = new CharSequence[10];
             int number = 0;
             try {
   	            URL url = new URL("http://amphoras.co.uk/SF2-TPTs.txt");
