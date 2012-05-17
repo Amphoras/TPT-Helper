@@ -104,30 +104,124 @@ public class DownloaderSF2 extends ListActivity {
     	              fos.write(buffer, 0, length);
     	          }
     	          fos.close();
-        	      FileInputStream fis = new FileInputStream(file);
-        	      InputStreamReader isr = new InputStreamReader(fis);
-        	      BufferedReader br = new BufferedReader(isr);
-        	      String s = "";
-        	      while((s = br.readLine()) != null) {
-        	          String[] mounts = s.split("\"");
-        	    	  if (mounts[0].equals("AllInOne")) {
-        	    		  listitem = new HashMap<String, Object>();
-        		          CharSequence allinone_tpt_heading = getText(R.string.allinone_tpt_heading);
-        		          CharSequence allinone_tpt = getText(R.string.allinone_tpt);
-        		          listitem.put(tptname, allinone_tpt_heading);
-        		          listitem.put(tptlayout, allinone_tpt);
-        		          tpts.add(listitem);
-        	    	  } else {
-        	    		  listitem = new HashMap<String, Object>();
-          	              listitem.put(tptname, mounts[0]);
-          	              listitem.put(tptlayout, mounts[1]);
-          	              tpts.add(listitem);
-        	    	  }
+    	          try {
+            	      FileInputStream fis = new FileInputStream(file);
+            	      InputStreamReader isr = new InputStreamReader(fis);
+            	      BufferedReader br = new BufferedReader(isr);
+            	      String s = "";
+            	      while((s = br.readLine()) != null) {
+            	          String[] mounts = s.split("\"");
+            	    	  if (mounts[0].equals("AllInOne")) {
+            	    		  listitem = new HashMap<String, Object>();
+            		          CharSequence allinone_tpt_heading = getText(R.string.allinone_tpt_heading);
+            		          CharSequence allinone_tpt = getText(R.string.allinone_tpt);
+            		          listitem.put(tptname, allinone_tpt_heading);
+            		          listitem.put(tptlayout, allinone_tpt);
+            		          tpts.add(listitem);
+            	    	  } else {
+            	    		  listitem = new HashMap<String, Object>();
+              	              listitem.put(tptname, mounts[0]);
+              	              listitem.put(tptlayout, mounts[1]);
+              	              tpts.add(listitem);
+            	    	  }
+            	      }
+            	      
+            	      SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+            	  	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+            	  	  
+            	  	  listview.setAdapter(adapter);
+                  } catch (IOException e) {
+        	    	  listitem = new HashMap<String, Object>();
+      	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection and try again.");
+      	              listitem.put(tptlayout, "");
+      	              tpts.add(listitem);
+      	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+      	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+      	      	  
+      	      	      listview.setAdapter(adapter);
+        	          e.printStackTrace();
         	      }
-	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
-	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
-	  
-	    listview.setAdapter(adapter);
+              } catch (MalformedURLException e) {
+            	  try {
+                	  File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+            	      FileInputStream fis = new FileInputStream(file);
+            	      InputStreamReader isr = new InputStreamReader(fis);
+            	      BufferedReader br = new BufferedReader(isr);
+            	      String s = "";
+            	      while((s = br.readLine()) != null) {
+            	          String[] mounts = s.split("\"");
+            	    	  if (mounts[0].equals("AllInOne")) {
+            	    		  listitem = new HashMap<String, Object>();
+            		          CharSequence allinone_tpt_heading = getText(R.string.allinone_tpt_heading);
+            		          CharSequence allinone_tpt = getText(R.string.allinone_tpt);
+            		          listitem.put(tptname, allinone_tpt_heading);
+            		          listitem.put(tptlayout, allinone_tpt);
+            		          tpts.add(listitem);
+            	    	  } else {
+            	    		  listitem = new HashMap<String, Object>();
+              	              listitem.put(tptname, mounts[0]);
+              	              listitem.put(tptlayout, mounts[1]);
+              	              tpts.add(listitem);
+            	    	  }
+            	      }
+
+            	      SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+            	  	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+            	  	  
+            	  	  listview.setAdapter(adapter);
+                  } catch (IOException e2) {
+        	    	  listitem = new HashMap<String, Object>();
+      	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection and try again.");
+      	              listitem.put(tptlayout, "");
+      	              tpts.add(listitem);
+      	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+      	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+      	      	  
+      	      	      listview.setAdapter(adapter);
+        	          e2.printStackTrace();
+        	      }
+    	          e.printStackTrace();
+    	      } catch (IOException e) {
+    	    	  try {
+                	  File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+            	      FileInputStream fis = new FileInputStream(file);
+            	      InputStreamReader isr = new InputStreamReader(fis);
+            	      BufferedReader br = new BufferedReader(isr);
+            	      String s = "";
+            	      while((s = br.readLine()) != null) {
+            	          String[] mounts = s.split("\"");
+            	    	  if (mounts[0].equals("AllInOne")) {
+            	    		  listitem = new HashMap<String, Object>();
+            		          CharSequence allinone_tpt_heading = getText(R.string.allinone_tpt_heading);
+            		          CharSequence allinone_tpt = getText(R.string.allinone_tpt);
+            		          listitem.put(tptname, allinone_tpt_heading);
+            		          listitem.put(tptlayout, allinone_tpt);
+            		          tpts.add(listitem);
+            	    	  } else {
+            	    		  listitem = new HashMap<String, Object>();
+              	              listitem.put(tptname, mounts[0]);
+              	              listitem.put(tptlayout, mounts[1]);
+              	              tpts.add(listitem);
+            	    	  }
+            	      }
+            	      
+            	      SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+              	  	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+              	  	  
+              	  	  listview.setAdapter(adapter);
+                  } catch (IOException e2) {
+        	    	  listitem = new HashMap<String, Object>();
+      	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection and try again.");
+      	              listitem.put(tptlayout, "");
+      	              tpts.add(listitem);
+      	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+      	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+      	      	  
+      	      	      listview.setAdapter(adapter);
+        	          e2.printStackTrace();
+        	      }
+    	          e.printStackTrace();
+    	      }
 	  
 	    listview.setOnItemLongClickListener(new OnItemLongClickListener() {
 		@Override
@@ -198,27 +292,6 @@ public class DownloaderSF2 extends ListActivity {
             }
 	      }
 	    });
-              } catch (MalformedURLException e) {
-            	  listitem = new HashMap<String, Object>();
-  	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection and try again.");
-  	              listitem.put(tptlayout, "");
-  	              tpts.add(listitem);
-  	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
-  	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
-  	      	  
-  	      	      listview.setAdapter(adapter);
-    	          e.printStackTrace();
-    	      } catch (IOException e) {
-    	    	  listitem = new HashMap<String, Object>();
-  	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection and try again.");
-  	              listitem.put(tptlayout, "");
-  	              tpts.add(listitem);
-  	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
-  	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
-  	      	  
-  	      	      listview.setAdapter(adapter);
-    	          e.printStackTrace();
-    	      }
 	}
 	
 	@Override
@@ -239,7 +312,7 @@ public class DownloaderSF2 extends ListActivity {
               tpts.add(listitem);
               
               try {
-    	          URL url = new URL("http://amphoras.co.uk/tpts.txt");
+    	          URL url = new URL("http://amphoras.co.uk/SF2-TPTs.txt");
     	          HttpURLConnection connection = (HttpURLConnection) url.openConnection();
     	          connection.connect();
     	          File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
@@ -251,30 +324,124 @@ public class DownloaderSF2 extends ListActivity {
     	              fos.write(buffer, 0, length);
     	          }
     	          fos.close();
-        	      FileInputStream fis = new FileInputStream(file);
-        	      InputStreamReader isr = new InputStreamReader(fis);
-        	      BufferedReader br = new BufferedReader(isr);
-        	      String s = "";
-        	      while((s = br.readLine()) != null) {
-        	          String[] mounts = s.split("\"");
-        	    	  if (mounts[0].equals("AllInOne")) {
-        	    		  listitem = new HashMap<String, Object>();
-        		          CharSequence allinone_tpt_heading = getText(R.string.allinone_tpt_heading);
-        		          CharSequence allinone_tpt = getText(R.string.allinone_tpt);
-        		          listitem.put(tptname, allinone_tpt_heading);
-        		          listitem.put(tptlayout, allinone_tpt);
-        		          tpts.add(listitem);
-        	    	  } else {
-        	    		  listitem = new HashMap<String, Object>();
-          	              listitem.put(tptname, mounts[0]);
-          	              listitem.put(tptlayout, mounts[1]);
-          	              tpts.add(listitem);
-        	    	  }
+    	          try {
+            	      FileInputStream fis = new FileInputStream(file);
+            	      InputStreamReader isr = new InputStreamReader(fis);
+            	      BufferedReader br = new BufferedReader(isr);
+            	      String s = "";
+            	      while((s = br.readLine()) != null) {
+            	          String[] mounts = s.split("\"");
+            	    	  if (mounts[0].equals("AllInOne")) {
+            	    		  listitem = new HashMap<String, Object>();
+            		          CharSequence allinone_tpt_heading = getText(R.string.allinone_tpt_heading);
+            		          CharSequence allinone_tpt = getText(R.string.allinone_tpt);
+            		          listitem.put(tptname, allinone_tpt_heading);
+            		          listitem.put(tptlayout, allinone_tpt);
+            		          tpts.add(listitem);
+            	    	  } else {
+            	    		  listitem = new HashMap<String, Object>();
+              	              listitem.put(tptname, mounts[0]);
+              	              listitem.put(tptlayout, mounts[1]);
+              	              tpts.add(listitem);
+            	    	  }
+            	      }
+            	      
+            	      SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+            	  	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+            	  	  
+            	  	  listview.setAdapter(adapter);
+                  } catch (IOException e) {
+        	    	  listitem = new HashMap<String, Object>();
+      	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection and try again.");
+      	              listitem.put(tptlayout, "");
+      	              tpts.add(listitem);
+      	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+      	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+      	      	  
+      	      	      listview.setAdapter(adapter);
+        	          e.printStackTrace();
         	      }
-	    SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
-	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
-	  
-	    listview.setAdapter(adapter);
+              } catch (MalformedURLException e) {
+            	  try {
+                	  File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+            	      FileInputStream fis = new FileInputStream(file);
+            	      InputStreamReader isr = new InputStreamReader(fis);
+            	      BufferedReader br = new BufferedReader(isr);
+            	      String s = "";
+            	      while((s = br.readLine()) != null) {
+            	          String[] mounts = s.split("\"");
+            	    	  if (mounts[0].equals("AllInOne")) {
+            	    		  listitem = new HashMap<String, Object>();
+            		          CharSequence allinone_tpt_heading = getText(R.string.allinone_tpt_heading);
+            		          CharSequence allinone_tpt = getText(R.string.allinone_tpt);
+            		          listitem.put(tptname, allinone_tpt_heading);
+            		          listitem.put(tptlayout, allinone_tpt);
+            		          tpts.add(listitem);
+            	    	  } else {
+            	    		  listitem = new HashMap<String, Object>();
+              	              listitem.put(tptname, mounts[0]);
+              	              listitem.put(tptlayout, mounts[1]);
+              	              tpts.add(listitem);
+            	    	  }
+            	      }
+
+            	      SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+            	  	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+            	  	  
+            	  	  listview.setAdapter(adapter);
+                  } catch (IOException e2) {
+        	    	  listitem = new HashMap<String, Object>();
+      	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection and try again.");
+      	              listitem.put(tptlayout, "");
+      	              tpts.add(listitem);
+      	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+      	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+      	      	  
+      	      	      listview.setAdapter(adapter);
+        	          e2.printStackTrace();
+        	      }
+    	          e.printStackTrace();
+    	      } catch (IOException e) {
+    	    	  try {
+                	  File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+            	      FileInputStream fis = new FileInputStream(file);
+            	      InputStreamReader isr = new InputStreamReader(fis);
+            	      BufferedReader br = new BufferedReader(isr);
+            	      String s = "";
+            	      while((s = br.readLine()) != null) {
+            	          String[] mounts = s.split("\"");
+            	    	  if (mounts[0].equals("AllInOne")) {
+            	    		  listitem = new HashMap<String, Object>();
+            		          CharSequence allinone_tpt_heading = getText(R.string.allinone_tpt_heading);
+            		          CharSequence allinone_tpt = getText(R.string.allinone_tpt);
+            		          listitem.put(tptname, allinone_tpt_heading);
+            		          listitem.put(tptlayout, allinone_tpt);
+            		          tpts.add(listitem);
+            	    	  } else {
+            	    		  listitem = new HashMap<String, Object>();
+              	              listitem.put(tptname, mounts[0]);
+              	              listitem.put(tptlayout, mounts[1]);
+              	              tpts.add(listitem);
+            	    	  }
+            	      }
+            	      
+            	      SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+              	  	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+              	  	  
+              	  	  listview.setAdapter(adapter);
+                  } catch (IOException e2) {
+        	    	  listitem = new HashMap<String, Object>();
+      	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection and try again.");
+      	              listitem.put(tptlayout, "");
+      	              tpts.add(listitem);
+      	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
+      	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
+      	      	  
+      	      	      listview.setAdapter(adapter);
+        	          e2.printStackTrace();
+        	      }
+    	          e.printStackTrace();
+    	      }
 	  
 	    listview.setOnItemLongClickListener(new OnItemLongClickListener() {
 		@Override
@@ -345,27 +512,6 @@ public class DownloaderSF2 extends ListActivity {
             }
 	      }
 	    });
-              } catch (MalformedURLException e) {
-            	  listitem = new HashMap<String, Object>();
-  	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection.");
-  	              listitem.put(tptlayout, "");
-  	              tpts.add(listitem);
-  	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
-  	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
-  	      	  
-  	      	      listview.setAdapter(adapter);
-    	          e.printStackTrace();
-    	      } catch (IOException e) {
-    	    	  listitem = new HashMap<String, Object>();
-  	              listitem.put(tptname, "Unable to access TPT list. Please check your data connection.");
-  	              listitem.put(tptlayout, "");
-  	              tpts.add(listitem);
-  	              SimpleAdapter adapter = new SimpleAdapter(this, tpts, R.layout.list_item,
-  	      	        new String[]{tptname, tptlayout}, new int[]{R.id.tptname, R.id.tptlayout});
-  	      	  
-  	      	      listview.setAdapter(adapter);
-    	          e.printStackTrace();
-    	      }
 	}
 	
 	public void DownloadFile() {

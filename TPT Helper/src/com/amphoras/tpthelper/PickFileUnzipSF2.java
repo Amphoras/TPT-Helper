@@ -1,7 +1,7 @@
 package com.amphoras.tpthelper;
 
 /*  
-TPT Helper  Copyright (C) 2011  David Phillips
+TPT Helper  Copyright (C) 2011-2012  David Phillips
 
 This file is part of TPT Helper.
 
@@ -30,7 +30,6 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,13 +43,6 @@ import java.net.URL;
 
 public class PickFileUnzipSF2 extends Activity {
 	SharedPreferences preferences;
-	final File dir = Environment.getExternalStorageDirectory();
-	final File sf2v1a = new File(dir, "SF2-v1a.zip");
-	final File downloadsf2v1a = new File(dir, "download/SF2-v1a.zip");
-	final File sf2v1b = new File(dir, "SF2-v1b.zip");
-	final File downloadsf2v1b = new File(dir, "download/SF2-v1b.zip");
-	final File sf2v1c = new File(dir, "SF2-v1c.zip");
-	final File downloadsf2v1c = new File(dir, "download/SF2-v1c.zip");
 	private final int PICK_FILE = 1;
 	private final int FILE_UNFOUND = 2;
 	
@@ -58,7 +50,7 @@ public class PickFileUnzipSF2 extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.unzip);
+        setContentView(R.layout.md5sum);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         showDialog(PICK_FILE);
     }
@@ -67,8 +59,8 @@ public class PickFileUnzipSF2 extends Activity {
 	protected Dialog onCreateDialog(int id) {
         switch (id) {
         case PICK_FILE:
-            Builder builder1 = new AlertDialog.Builder(PickFileUnzipSF2.this);
-            builder1.setTitle(R.string.pickunzip);
+        	Builder builder1 = new AlertDialog.Builder(PickFileUnzipSF2.this);
+            builder1.setTitle(R.string.pickmd5);
             builder1.setCancelable(false);
             CharSequence cancel = getText(R.string.cancel);
             CharSequence other = getText(R.string.other);
@@ -87,29 +79,30 @@ public class PickFileUnzipSF2 extends Activity {
   	                fos.write(buffer, 0, length);
   	            }
   	            fos.close();
-		    	FileInputStream fis = new FileInputStream(file);
-	  	        InputStreamReader isr = new InputStreamReader(fis);
-	  	        BufferedReader br = new BufferedReader(isr);
-	  	        String s = "";
-	  	        while((s = br.readLine()) != null) {
-	  	            String[] mounts = s.split("\"");
-	  	            if (mounts[0].equals("AllInOne")) {
-	  	            	// Do nothing
-	  	            } else {
-	  	            	number = number + 1;
-	  	            	zips1[number - 1] = mounts[2];
-	  	            }
-	  	        }
-            CharSequence[] zips2 = new CharSequence[number + 2];
-            for (int i = 0; i < number; i++) {
-            	zips2[i] = zips1[i];
-            }
-            zips2[number] = other;
-            zips2[number + 1] = cancel;
-            final int position = number;
-        	builder1.setItems(zips2, new DialogInterface.OnClickListener() {
-            	public void onClick(DialogInterface dialog, int item) {
-            		if (item < position) {
+  	          try {
+  		    	FileInputStream fis = new FileInputStream(file);
+  	  	        InputStreamReader isr = new InputStreamReader(fis);
+  	  	        BufferedReader br = new BufferedReader(isr);
+  	  	        String s = "";
+  	  	        while((s = br.readLine()) != null) {
+  	  	            String[] mounts = s.split("\"");
+  	  	            if (mounts[0].equals("AllInOne")) {
+  	  	            	// Do nothing
+  	  	            } else {
+  	  	            	number = number + 1;
+  	  	            	zips1[number - 1] = mounts[2];
+  	  	            }
+  	  	        }
+              CharSequence[] zips2 = new CharSequence[number + 2];
+              for (int i = 0; i < number; i++) {
+              	zips2[i] = zips1[i];
+              }
+              zips2[number] = other;
+              zips2[number + 1] = cancel;
+              final int position = number;
+          	builder1.setItems(zips2, new DialogInterface.OnClickListener() {
+          	    public void onClick(DialogInterface dialog, int item) {
+          	    	if (item < position) {
         	    		try {
         	    			int number = 0;
         		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
@@ -164,23 +157,242 @@ public class PickFileUnzipSF2 extends Activity {
         	    			}
         	    		}
         	    	}
-        	    }
-        	});
+          	    }
+          	});
+              } catch (IOException e) {
+    	        	CharSequence[] zips = {"Unable to access TPT list.", "Please check your data connection.", other, cancel};
+              	builder1.setItems(zips, new DialogInterface.OnClickListener() {
+              	    public void onClick(DialogInterface dialog, int item) {
+              	    	switch (item) {
+              	    	case 0:
+              	    		PickFileUnzipSF2.this.finish();
+              	    		break;
+              	    	case 1:
+              	    		PickFileUnzipSF2.this.finish();
+              	    		break;
+              	    	case 2:
+              	    		Intent i = new Intent(PickFileUnzipSF2.this, EnterFile.class);
+                      		startActivityForResult(i, 1);
+                      		break;
+              	    	case 3:
+              	    		PickFileUnzipSF2.this.finish();
+              	    		break;
+              	    	}
+              	    }
+              	});
+    	            e.printStackTrace();
+    	        }
             } catch (MalformedURLException e) {
-            	builder1.setMessage("Unable to access TPT list. Please check your data connection.");
-                builder1.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                  	    PickFileUnzipSF2.this.finish();
-                    }
-                });
+            	try {
+                	File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+    		    	FileInputStream fis = new FileInputStream(file);
+    	  	        InputStreamReader isr = new InputStreamReader(fis);
+    	  	        BufferedReader br = new BufferedReader(isr);
+    	  	        String s = "";
+    	  	        while((s = br.readLine()) != null) {
+    	  	            String[] mounts = s.split("\"");
+    	  	            if (mounts[0].equals("AllInOne")) {
+    	  	            	// Do nothing
+    	  	            } else {
+    	  	            	number = number + 1;
+    	  	            	zips1[number - 1] = mounts[2];
+    	  	            }
+    	  	        }
+                CharSequence[] zips2 = new CharSequence[number + 2];
+                for (int i = 0; i < number; i++) {
+                	zips2[i] = zips1[i];
+                }
+                zips2[number] = other;
+                zips2[number + 1] = cancel;
+                final int position = number;
+            	builder1.setItems(zips2, new DialogInterface.OnClickListener() {
+            	    public void onClick(DialogInterface dialog, int item) {
+            	    	if (item < position) {
+            	    		try {
+            	    			int number = 0;
+            		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+            			    	FileInputStream fis = new FileInputStream(file);
+            		  	        InputStreamReader isr = new InputStreamReader(fis);
+            		  	        BufferedReader br = new BufferedReader(isr);
+            		  	        String s = "";
+            		  	        while((s = br.readLine()) != null) {
+            		  	            String[] mounts = s.split("\"");
+            		  	            if (mounts[0].equals("AllInOne")) {
+            		  	            	// Do nothing
+            		  	            } else {
+            		  	            	if (item == number) {
+            		        	    		File tpt = new File(Environment.getExternalStorageDirectory(), "/" + mounts[2]);
+            		        	    		File downloadtpt = new File(Environment.getExternalStorageDirectory(), "/download/" + mounts[2]);
+            		        	    		if (tpt.canRead() == true){
+            		        	    		    Editor edit = preferences.edit();
+            		        	    			edit.putString("zipname", "/" + mounts[2]);
+            		        	    			edit.commit();
+            		        	    			Intent i = new Intent(PickFileUnzipSF2.this, Unzipper.class);
+            		        	    	        startActivity(i);
+            		        	    	        PickFileUnzipSF2.this.finish();
+            		        	    		} else {
+            		        	    			if (downloadtpt.canRead() == true){
+            		            	    	        Editor edit = preferences.edit();
+            		            	    		    edit.putString("zipname", "/download/" + mounts[2]);
+            		            	    			edit.commit();
+            		            	    			Intent i = new Intent(PickFileUnzipSF2.this, Unzipper.class);
+            		            	    	        startActivity(i);
+            		            	    	        PickFileUnzipSF2.this.finish();
+            		        	    			} else {
+            		        	    				Editor edit = preferences.edit();
+            		            	    			edit.putString("filepicked", mounts[2]);
+            		            	    			edit.commit();
+            		        	    				showDialog(FILE_UNFOUND);
+            		        	    			}
+            		        	    		}
+            			  	            }
+            		  	            	number = number + 1;
+            		  	            }
+            		  	        }
+            		    	} catch (IOException e) {
+            	  	            e.printStackTrace();
+            	  	        }
+            	    	} else {
+            	    		if (item == position) {
+            	    			Intent i = new Intent(PickFileUnzipSF2.this, EnterFileUnzip.class);
+                        		startActivityForResult(i, 1);
+            	    		} else {
+            	    			if (item == position + 1) {
+            	    				PickFileUnzipSF2.this.finish();
+            	    			}
+            	    		}
+            	    	}
+            	    }
+            	});
+                } catch (IOException e2) {
+      	        	CharSequence[] zips = {"Unable to access TPT list.", "Please check your data connection.", other, cancel};
+                	builder1.setItems(zips, new DialogInterface.OnClickListener() {
+                	    public void onClick(DialogInterface dialog, int item) {
+                	    	switch (item) {
+                	    	case 0:
+                	    		PickFileUnzipSF2.this.finish();
+                	    		break;
+                	    	case 1:
+                	    		PickFileUnzipSF2.this.finish();
+                	    		break;
+                	    	case 2:
+                	    		Intent i = new Intent(PickFileUnzipSF2.this, EnterFile.class);
+                        		startActivityForResult(i, 1);
+                        		break;
+                	    	case 3:
+                	    		PickFileUnzipSF2.this.finish();
+                	    		break;
+                	    	}
+                	    }
+                	});
+      	            e2.printStackTrace();
+      	        }
   	            e.printStackTrace();
   	        } catch (IOException e) {
-  	        	builder1.setMessage("Unable to access TPT list. Please check your data connection.");
-                builder1.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                  	    PickFileUnzipSF2.this.finish();
-                    }
-                });
+  	        	try {
+  	            	File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+  			    	FileInputStream fis = new FileInputStream(file);
+  		  	        InputStreamReader isr = new InputStreamReader(fis);
+  		  	        BufferedReader br = new BufferedReader(isr);
+  		  	        String s = "";
+  		  	        while((s = br.readLine()) != null) {
+  		  	            String[] mounts = s.split("\"");
+  		  	            if (mounts[0].equals("AllInOne")) {
+  		  	            	// Do nothing
+  		  	            } else {
+  		  	            	number = number + 1;
+  		  	            	zips1[number - 1] = mounts[2];
+  		  	            }
+  		  	        }
+  	            CharSequence[] zips2 = new CharSequence[number + 2];
+  	            for (int i = 0; i < number; i++) {
+  	            	zips2[i] = zips1[i];
+  	            }
+  	            zips2[number] = other;
+  	            zips2[number + 1] = cancel;
+  	            final int position = number;
+  	        	builder1.setItems(zips2, new DialogInterface.OnClickListener() {
+  	        	    public void onClick(DialogInterface dialog, int item) {
+  	        	    	if (item < position) {
+  	        	    		try {
+  	        	    			int number = 0;
+  	        		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/SF2-TPTs.txt");
+  	        			    	FileInputStream fis = new FileInputStream(file);
+  	        		  	        InputStreamReader isr = new InputStreamReader(fis);
+  	        		  	        BufferedReader br = new BufferedReader(isr);
+  	        		  	        String s = "";
+  	        		  	        while((s = br.readLine()) != null) {
+  	        		  	            String[] mounts = s.split("\"");
+  	        		  	            if (mounts[0].equals("AllInOne")) {
+  	        		  	            	// Do nothing
+  	        		  	            } else {
+  	        		  	            	if (item == number) {
+  	        		        	    		File tpt = new File(Environment.getExternalStorageDirectory(), "/" + mounts[2]);
+  	        		        	    		File downloadtpt = new File(Environment.getExternalStorageDirectory(), "/download/" + mounts[2]);
+  	        		        	    		if (tpt.canRead() == true){
+  	        		        	    		    Editor edit = preferences.edit();
+  	        		        	    			edit.putString("zipname", "/" + mounts[2]);
+  	        		        	    			edit.commit();
+  	        		        	    			Intent i = new Intent(PickFileUnzipSF2.this, Unzipper.class);
+  	        		        	    	        startActivity(i);
+  	        		        	    	        PickFileUnzipSF2.this.finish();
+  	        		        	    		} else {
+  	        		        	    			if (downloadtpt.canRead() == true){
+  	        		            	    	        Editor edit = preferences.edit();
+  	        		            	    		    edit.putString("zipname", "/download/" + mounts[2]);
+  	        		            	    			edit.commit();
+  	        		            	    			Intent i = new Intent(PickFileUnzipSF2.this, Unzipper.class);
+  	        		            	    	        startActivity(i);
+  	        		            	    	        PickFileUnzipSF2.this.finish();
+  	        		        	    			} else {
+  	        		        	    				Editor edit = preferences.edit();
+  	        		            	    			edit.putString("filepicked", mounts[2]);
+  	        		            	    			edit.commit();
+  	        		        	    				showDialog(FILE_UNFOUND);
+  	        		        	    			}
+  	        		        	    		}
+  	        			  	            }
+  	        		  	            	number = number + 1;
+  	        		  	            }
+  	        		  	        }
+  	        		    	} catch (IOException e) {
+  	        	  	            e.printStackTrace();
+  	        	  	        }
+  	        	    	} else {
+  	        	    		if (item == position) {
+  	        	    			Intent i = new Intent(PickFileUnzipSF2.this, EnterFileUnzip.class);
+  	                    		startActivityForResult(i, 1);
+  	        	    		} else {
+  	        	    			if (item == position + 1) {
+  	        	    				PickFileUnzipSF2.this.finish();
+  	        	    			}
+  	        	    		}
+  	        	    	}
+  	        	    }
+  	        	});
+  	            } catch (IOException e2) {
+  	  	        	CharSequence[] zips = {"Unable to access TPT list.", "Please check your data connection.", other, cancel};
+  	            	builder1.setItems(zips, new DialogInterface.OnClickListener() {
+  	            	    public void onClick(DialogInterface dialog, int item) {
+  	            	    	switch (item) {
+  	            	    	case 0:
+  	            	    		PickFileUnzipSF2.this.finish();
+  	            	    		break;
+  	            	    	case 1:
+  	            	    		PickFileUnzipSF2.this.finish();
+  	            	    		break;
+  	            	    	case 2:
+  	            	    		Intent i = new Intent(PickFileUnzipSF2.this, EnterFile.class);
+  	                    		startActivityForResult(i, 1);
+  	                    		break;
+  	            	    	case 3:
+  	            	    		PickFileUnzipSF2.this.finish();
+  	            	    		break;
+  	            	    	}
+  	            	    }
+  	            	});
+  	  	            e2.printStackTrace();
+  	  	        }
   	            e.printStackTrace();
   	        }
         	return builder1.create();
@@ -217,9 +429,9 @@ public class PickFileUnzipSF2 extends Activity {
           if (resultCode == Activity.RESULT_OK) {
         	  String filename = data.getStringExtra("filename");
   	          Editor edit = preferences.edit();
-    	      edit.putString("zipname", "/" + filename);
+    	      edit.putString("filepath", "/" + filename);
     		  edit.commit();
-    	      Intent i = new Intent(PickFileUnzipSF2.this, Unzipper.class);
+    	      Intent i = new Intent(PickFileUnzipSF2.this, MD5sum.class);
     	      startActivity(i);
     	      PickFileUnzipSF2.this.finish();
           }
