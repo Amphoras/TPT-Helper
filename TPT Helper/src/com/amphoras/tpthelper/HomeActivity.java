@@ -297,12 +297,12 @@ public class HomeActivity extends ListActivity {
 			    		  break;
 			    	  case 3:
 			    		  if (blade2.equals("SF2")) {
-			    			  //Intent sf2 = new Intent(HomeActivity.this, CustomTPTSF2.class);
-				    		  //startActivity(sf2);
+			    			  Intent sf2 = new Intent(HomeActivity.this, CustomTPTSF2.class);
+				    		  startActivity(sf2);
 			    		  } else {
 			    			  if (blade2.equals("TMV")) {
-			    				  //Intent tmv = new Intent(HomeActivity.this, CustomTPTVivacity.class);
-					    		  //startActivity(tmv);
+			    				  Intent tmv = new Intent(HomeActivity.this, CustomTPTVivacity.class);
+					    		  startActivity(tmv);
 			    			  }
 			    		  }
 			    		  break;
@@ -501,12 +501,12 @@ public class HomeActivity extends ListActivity {
 			    		  break;
 			    	  case 3:
 			    		  if (blade2.equals("SF2")) {
-			    			  //Intent sf2 = new Intent(HomeActivity.this, CustomTPTSF2.class);
-				    		  //startActivity(sf2);
+			    			  Intent sf2 = new Intent(HomeActivity.this, CustomTPTSF2.class);
+				    		  startActivity(sf2);
 			    		  } else {
 			    			  if (blade2.equals("TMV")) {
-			    				  //Intent tmv = new Intent(HomeActivity.this, CustomTPTVivacity.class);
-					    		  //startActivity(tmv);
+			    				  Intent tmv = new Intent(HomeActivity.this, CustomTPTVivacity.class);
+					    		  startActivity(tmv);
 			    			  }
 			    		  }
 			    		  break;
