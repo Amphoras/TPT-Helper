@@ -27,7 +27,6 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -60,6 +59,12 @@ import android.widget.Toast;
 public class AllInOneVivacity extends Activity {
 	SharedPreferences preferences;
 	final File dir = Environment.getExternalStorageDirectory();
+	final File vivacityv1a = new File(dir, "Vivacity-v1a.zip");
+	final File downloadvivacityv1a = new File(dir, "download/Vivacity-v1a.zip");
+	final File vivacityv1b = new File(dir, "Vivacity-v1b.zip");
+	final File downloadvivacityv1b = new File(dir, "download/Vivacity-v1b.zip");
+	final File vivacityv1c = new File(dir, "Vivacity-v1c.zip");
+	final File downloadvivacityv1c = new File(dir, "download/Vivacity-v1c.zip");
 	private static ProgressDialog dialog;
 	private String unziplocation = Environment.getExternalStorageDirectory() + "/";
 	private static File nandroid = new File(Environment.getExternalStorageDirectory(), "image/nandroid.md5");
@@ -109,295 +114,70 @@ public class AllInOneVivacity extends Activity {
         	Builder builder1 = new AlertDialog.Builder(AllInOneVivacity.this);
             builder1.setTitle(R.string.pickallinone);
             builder1.setCancelable(false);
-            CharSequence[] zips1 = new CharSequence[10];
-            int number = 0;
-            try {
-  	            URL url = new URL("http://amphoras.co.uk/Vivacity-TPTs.txt");
-  	            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-  	            connection.connect();
-  	            File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-  	            FileOutputStream fos = new FileOutputStream(file);
-  	            InputStream is = connection.getInputStream();
-  	            byte[] buffer = new byte[1024];
-  	            int length = 0;
-  	            while ((length = is.read(buffer)) > 0 ) {
-  	                fos.write(buffer, 0, length);
-  	            }
-  	            fos.close();
-  	        try {
-    	        FileInputStream fis = new FileInputStream(file);
-  	  	        InputStreamReader isr = new InputStreamReader(fis);
-  	  	        BufferedReader br = new BufferedReader(isr);
-  	  	        String s = "";
-  	  	        while((s = br.readLine()) != null) {
-  	  	            String[] mounts = s.split("\"");
-  	  	            if (mounts[0].equals("AllInOne")) {
-  	  	            	// Do nothing
-  	  	            } else {
-  	  	            	number = number + 1;
-  	  	            	zips1[number - 1] = mounts[2];
-  	  	            }
-  	  	        }
-              CharSequence[] zips2 = new CharSequence[number + 1];
-              for (int i = 0; i < number; i++) {
-              	zips2[i] = zips1[i];
-              }
-              zips2[number] = cancel;
-              final int position = number;
-          	builder1.setItems(zips2, new DialogInterface.OnClickListener() {
-          	    public void onClick(DialogInterface dialog, int item) {
-          	    	Editor editmd5 = preferences.edit();
-          	    	Editor editdownload = preferences.edit();
-          	    	Editor editdownloadint = preferences.edit();
-          	    	if (item < position) {
-          	    		try {
-          	    			int number = 0;
-          		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-          			    	FileInputStream fis = new FileInputStream(file);
-          		  	        InputStreamReader isr = new InputStreamReader(fis);
-          		  	        BufferedReader br = new BufferedReader(isr);
-          		  	        String s = "";
-          		  	        while((s = br.readLine()) != null) {
-          		  	            String[] mounts = s.split("\"");
-          		  	            if (mounts[0].equals("AllInOne")) {
-          		  	            	// Do nothing
-          		  	            } else {
-          		  	            	if (item == number) {
-          		  	            		editdownload.putString("downloadpicked", mounts[2]);
-          		        	    		editdownload.commit();
-          		        				editdownloadint.putInt("downloadint", item);
-          		        	    		editdownloadint.commit();
-          		        	    		editmd5.putString("expectedmd5", mounts[5]);
-          		        	    		editmd5.commit();
-          		        	    		File tpt = new File(Environment.getExternalStorageDirectory(), "/" + mounts[2]);
-          		        	    		File downloadtpt = new File(Environment.getExternalStorageDirectory(), "/download/" + mounts[2]);
-          		        	    		if (tpt.canRead() == true){
-          		        	    			showDialog(TPT_FOUND);
-          		        	    		} else {
-          		        	    			if (downloadtpt.canRead() == true){
-          		        	    				showDialog(TPT_FOUND);
-          		        	    			} else {
-          		        	    				DownloadFile();
-          		        	    			}
-          		        	    		}
-          		  	            	}
-          		  	            	number = number + 1;
-          		  	            }
-          		  	        }
-          		    	} catch (IOException e) {
-          	  	            e.printStackTrace();
-          	  	        }
-          	    	} else {
-          	    		if (item == position) {
-          	    			AllInOneVivacity.this.finish();
-          	    		}
-          	    	}
-          	    }
-          	});
-    	      } catch (IOException e) {
-  	        	CharSequence[] zips = {"Unable to access TPT list.", "Please check your data connection.", cancel};
-            	builder1.setItems(zips, new DialogInterface.OnClickListener() {
-            	    public void onClick(DialogInterface dialog, int item) {
-            	    	switch (item) {
-            	    	case 0:
-            	    		AllInOneVivacity.this.finish();
-            	    		break;
-            	    	case 1:
-            	    		AllInOneVivacity.this.finish();
-            	    		break;
-            	    	case 2:
-            	    		AllInOneVivacity.this.finish();
-            	    		break;
-            	    	}
-            	    }
-            	});
-  	            e.printStackTrace();
-  	        }
-            } catch (MalformedURLException e) {
-            	try {
-      	        	File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-      	            FileInputStream fis = new FileInputStream(file);
-    	  	        InputStreamReader isr = new InputStreamReader(fis);
-    	  	        BufferedReader br = new BufferedReader(isr);
-    	  	        String s = "";
-    	  	        while((s = br.readLine()) != null) {
-    	  	            String[] mounts = s.split("\"");
-    	  	            if (mounts[0].equals("AllInOne")) {
-    	  	            	// Do nothing
-    	  	            } else {
-    	  	            	number = number + 1;
-    	  	            	zips1[number - 1] = mounts[2];
-    	  	            }
-    	  	        }
-                CharSequence[] zips2 = new CharSequence[number + 1];
-                for (int i = 0; i < number; i++) {
-                	zips2[i] = zips1[i];
-                }
-                zips2[number] = cancel;
-                final int position = number;
-            	builder1.setItems(zips2, new DialogInterface.OnClickListener() {
-            	    public void onClick(DialogInterface dialog, int item) {
-            	    	Editor editmd5 = preferences.edit();
-            	    	Editor editdownload = preferences.edit();
-            	    	Editor editdownloadint = preferences.edit();
-            	    	if (item < position) {
-            	    		try {
-            	    			int number = 0;
-            		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-            			    	FileInputStream fis = new FileInputStream(file);
-            		  	        InputStreamReader isr = new InputStreamReader(fis);
-            		  	        BufferedReader br = new BufferedReader(isr);
-            		  	        String s = "";
-            		  	        while((s = br.readLine()) != null) {
-            		  	            String[] mounts = s.split("\"");
-            		  	            if (mounts[0].equals("AllInOne")) {
-            		  	            	// Do nothing
-            		  	            } else {
-            		  	            	if (item == number) {
-            		  	            		editdownload.putString("downloadpicked", mounts[2]);
-            		        	    		editdownload.commit();
-            		        				editdownloadint.putInt("downloadint", item);
-            		        	    		editdownloadint.commit();
-            		        	    		editmd5.putString("expectedmd5", mounts[5]);
-            		        	    		editmd5.commit();
-            		        	    		File tpt = new File(Environment.getExternalStorageDirectory(), "/" + mounts[2]);
-            		        	    		File downloadtpt = new File(Environment.getExternalStorageDirectory(), "/download/" + mounts[2]);
-            		        	    		if (tpt.canRead() == true){
-            		        	    			showDialog(TPT_FOUND);
-            		        	    		} else {
-            		        	    			if (downloadtpt.canRead() == true){
-            		        	    				showDialog(TPT_FOUND);
-            		        	    			} else {
-            		        	    				DownloadFile();
-            		        	    			}
-            		        	    		}
-            		  	            	}
-            		  	            	number = number + 1;
-            		  	            }
-            		  	        }
-            		    	} catch (IOException e) {
-            	  	            e.printStackTrace();
-            	  	        }
-            	    	} else {
-            	    		if (item == position) {
-            	    			AllInOneVivacity.this.finish();
-            	    		}
-            	    	}
-            	    }
-            	});
-      	      } catch (IOException e2) {
-    	        	CharSequence[] zips = {"Unable to access TPT list.", "Please check your data connection.", cancel};
-              	builder1.setItems(zips, new DialogInterface.OnClickListener() {
-              	    public void onClick(DialogInterface dialog, int item) {
-              	    	switch (item) {
-              	    	case 0:
-              	    		AllInOneVivacity.this.finish();
-              	    		break;
-              	    	case 1:
-              	    		AllInOneVivacity.this.finish();
-              	    		break;
-              	    	case 2:
-              	    		AllInOneVivacity.this.finish();
-              	    		break;
-              	    	}
-              	    }
-              	});
-    	            e2.printStackTrace();
-    	        }
-  	            e.printStackTrace();
-  	        } catch (IOException e) {
-  	        	try {
-  	  	        	File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-  	  	            FileInputStream fis = new FileInputStream(file);
-  		  	        InputStreamReader isr = new InputStreamReader(fis);
-  		  	        BufferedReader br = new BufferedReader(isr);
-  		  	        String s = "";
-  		  	        while((s = br.readLine()) != null) {
-  		  	            String[] mounts = s.split("\"");
-  		  	            if (mounts[0].equals("AllInOne")) {
-  		  	            	// Do nothing
-  		  	            } else {
-  		  	            	number = number + 1;
-  		  	            	zips1[number - 1] = mounts[2];
-  		  	            }
-  		  	        }
-  	            CharSequence[] zips2 = new CharSequence[number + 1];
-  	            for (int i = 0; i < number; i++) {
-  	            	zips2[i] = zips1[i];
-  	            }
-  	            zips2[number] = cancel;
-  	            final int position = number;
-  	        	builder1.setItems(zips2, new DialogInterface.OnClickListener() {
-  	        	    public void onClick(DialogInterface dialog, int item) {
-  	        	    	Editor editmd5 = preferences.edit();
-  	        	    	Editor editdownload = preferences.edit();
-  	        	    	Editor editdownloadint = preferences.edit();
-  	        	    	if (item < position) {
-  	        	    		try {
-  	        	    			int number = 0;
-  	        		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-  	        			    	FileInputStream fis = new FileInputStream(file);
-  	        		  	        InputStreamReader isr = new InputStreamReader(fis);
-  	        		  	        BufferedReader br = new BufferedReader(isr);
-  	        		  	        String s = "";
-  	        		  	        while((s = br.readLine()) != null) {
-  	        		  	            String[] mounts = s.split("\"");
-  	        		  	            if (mounts[0].equals("AllInOne")) {
-  	        		  	            	// Do nothing
-  	        		  	            } else {
-  	        		  	            	if (item == number) {
-  	        		  	            		editdownload.putString("downloadpicked", mounts[2]);
-  	        		        	    		editdownload.commit();
-  	        		        				editdownloadint.putInt("downloadint", item);
-  	        		        	    		editdownloadint.commit();
-  	        		        	    		editmd5.putString("expectedmd5", mounts[5]);
-  	        		        	    		editmd5.commit();
-  	        		        	    		File tpt = new File(Environment.getExternalStorageDirectory(), "/" + mounts[2]);
-  	        		        	    		File downloadtpt = new File(Environment.getExternalStorageDirectory(), "/download/" + mounts[2]);
-  	        		        	    		if (tpt.canRead() == true){
-  	        		        	    			showDialog(TPT_FOUND);
-  	        		        	    		} else {
-  	        		        	    			if (downloadtpt.canRead() == true){
-  	        		        	    				showDialog(TPT_FOUND);
-  	        		        	    			} else {
-  	        		        	    				DownloadFile();
-  	        		        	    			}
-  	        		        	    		}
-  	        		  	            	}
-  	        		  	            	number = number + 1;
-  	        		  	            }
-  	        		  	        }
-  	        		    	} catch (IOException e) {
-  	        	  	            e.printStackTrace();
-  	        	  	        }
-  	        	    	} else {
-  	        	    		if (item == position) {
-  	        	    			AllInOneVivacity.this.finish();
-  	        	    		}
-  	        	    	}
-  	        	    }
-  	        	});
-  	  	      } catch (IOException e2) {
-  		        	CharSequence[] zips = {"Unable to access TPT list.", "Please check your data connection.", cancel};
-  	          	builder1.setItems(zips, new DialogInterface.OnClickListener() {
-  	          	    public void onClick(DialogInterface dialog, int item) {
-  	          	    	switch (item) {
-  	          	    	case 0:
-  	          	    		AllInOneVivacity.this.finish();
-  	          	    		break;
-  	          	    	case 1:
-  	          	    		AllInOneVivacity.this.finish();
-  	          	    		break;
-  	          	    	case 2:
-  	          	    		AllInOneVivacity.this.finish();
-  	          	    		break;
-  	          	    	}
-  	          	    }
-  	          	});
-  		            e2.printStackTrace();
-  		        }
-  	            e.printStackTrace();
-  	        }
+            final CharSequence[] zips1 = {"Vivacity-v1a.zip", "Vivacity-v1b.zip", "Vivacity-v1c.zip", cancel};
+        	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
+        	    public void onClick(DialogInterface dialog, int item) {
+        	    	Editor editmd5 = preferences.edit();
+        	    	Editor editdownload = preferences.edit();
+        	    	Editor editdownloadint = preferences.edit();
+        	    	switch (item) {
+        	    	case 0:
+        	    		editdownload.putString("downloadpicked", "Vivacity-v1a.zip");
+        	    		editdownload.commit();
+        				editdownloadint.putInt("downloadint", 0);
+        	    		editdownloadint.commit();
+        	    		editmd5.putString("expectedmd5", "9f662cd54a8fcfafc7c1642227350a36");
+        	    		editmd5.commit();
+        	    		if (vivacityv1a.canRead() == true){
+        	    		    showDialog(TPT_FOUND);
+        	    		} else {
+        	    			if (downloadvivacityv1a.canRead() == true){
+            	    	        showDialog(TPT_FOUND);
+        	    			} else {
+        	    		     	DownloadFile();
+        	    			}
+        	    		}
+        	    		break;
+        	    	case 1:
+        	    		editdownload.putString("downloadpicked", "Vivacity-v1b.zip");
+        	    		editdownload.commit();
+        				editdownloadint.putInt("downloadint", 1);
+        	    		editdownloadint.commit();
+        	    		editmd5.putString("expectedmd5", "757b3845f61ceb2ca25f08797c7721a9");
+        	    		editmd5.commit();
+        	    		if (vivacityv1b.canRead() == true){
+        	    			showDialog(TPT_FOUND);
+        	    		} else {
+        	    			if (downloadvivacityv1b.canRead() == true){
+        	    				showDialog(TPT_FOUND);
+        	    			} else {
+        	    				DownloadFile();
+        	    			}
+        	    		}
+        	    		break;
+        	    	case 2:
+        	    		editdownload.putString("downloadpicked", "Vivacity-v1c.zip");
+        	    		editdownload.commit();
+        				editdownloadint.putInt("downloadint", 2);
+        	    		editdownloadint.commit();
+        	    		editmd5.putString("expectedmd5", "256f94b47eb78451759d3bfc51b1f0c3");
+        	    		editmd5.commit();
+        	    		if (vivacityv1c.canRead() == true){
+        	    			showDialog(TPT_FOUND);
+        	    		} else {
+        	    			if (downloadvivacityv1c.canRead() == true){
+        	    				showDialog(TPT_FOUND);
+        	    			} else {
+        	    				DownloadFile();
+        	    			}
+        	    		}
+        	    		break;
+        	    	case 3:
+                		AllInOneVivacity.this.finish();
+                		break;
+        	    	}
+        	    }
+        	});
         	return builder1.create();
         case TPT_FOUND:
         	final String filepicked = preferences.getString("downloadpicked", "");
@@ -799,27 +579,17 @@ public class AllInOneVivacity extends Activity {
 	public void DownloadFile() {
 		DownloadFileTask task = new DownloadFileTask();
 		int id = preferences.getInt("downloadint", 0);
-		try {
-			int number = 0;
-    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-	    	FileInputStream fis = new FileInputStream(file);
-  	        InputStreamReader isr = new InputStreamReader(fis);
-  	        BufferedReader br = new BufferedReader(isr);
-  	        String s = "";
-  	        while((s = br.readLine()) != null) {
-  	        	number = number + 1;
-  	            String[] mounts = s.split("\"");
-  	            if (mounts[0].equals("AllInOne")) {
-  	            	// Do nothing
-  	            } else {
-  	            	if (id == number) {
-  	  	            	task.execute(new String[] { mounts[3] });
-  	  	            }
-  	            }
-  	        }
-    	} catch (IOException e) {
-	        e.printStackTrace();
-	    }
+		switch (id) {
+		case 0:
+			task.execute(new String[] { "http://copy.com/nsZWxbk6QW9e/Vivacity-v1a.zip" });
+			break;
+		case 1:
+			task.execute(new String[] { "http://copy.com/gJbwscFSMSUH/Vivacity-v1b.zip" });
+			break;
+		case 2:
+			task.execute(new String[] { "http://copy.com/0bdtEdrN9FqU/Vivacity-v1c.zip" });
+			break;
+		}
 	}
 	
 	private class DownloadFileTask extends AsyncTask<String, String, String> {

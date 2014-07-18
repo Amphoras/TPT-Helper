@@ -645,7 +645,7 @@ public class CustomTPTVivacity extends Activity {
 	
 	public void DownloadFile() {
 		DownloadFileTask task = new DownloadFileTask();
-		task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade%20II/T-Mobile%20Vivacity/Vivacity-TPT-base.zip" });
+		task.execute(new String[] { "http://copy.com/iuwwkiWeTZpa/Vivacity-TPT-base.zip" });
 	}
 	
 	private class DownloadFileTask extends AsyncTask<String, String, String> {
@@ -716,7 +716,7 @@ public class CustomTPTVivacity extends Activity {
 	
 	public void DownloadFile2() {
 		DownloadFileTask2 task = new DownloadFileTask2();
-		task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade%20II/T-Mobile%20Vivacity/Vivacity-tpt-files.zip" });
+		task.execute(new String[] { "http://copy.com/k1k0ZZSSHUtI/Vivacity-tpt-files.zip" });
 	}
 	
 	private class DownloadFileTask2 extends AsyncTask<String, String, String> {

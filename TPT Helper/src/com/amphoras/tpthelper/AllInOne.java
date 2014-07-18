@@ -657,25 +657,25 @@ public class AllInOne extends Activity {
 		int id = preferences.getInt("downloadint", 0);
 		switch (id) {
 		case 0:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/Gen1-to-Gen2-TPT-v10a.zip" });
+			task.execute(new String[] { "http://copy.com/gegkbgFULjia/Gen1-to-Gen2-TPT-v10a.zip" });
 			break;
 		case 1:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/Gen1-to-Gen2-TPT-v10b.zip" });
+			task.execute(new String[] { "http://copy.com/ZltEecIByzYr/Gen1-to-Gen2-TPT-v10b.zip" });
 			break;
 		case 2:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/Gen1-to-Gen2-TPT-v10c.zip" });
+			task.execute(new String[] { "http://copy.com/cd6gvrPOjRbZ/Gen1-to-Gen2-TPT-v10c.zip" });
 			break;
 		case 3:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/Gen1-to-Gen2-TPT-v10-stock.zip" });
+			task.execute(new String[] { "http://copy.com/eVYgC3RtHK2Q/Gen1-to-Gen2-TPT-v10-stock.zip" });
 			break;
 		case 4:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/Gen2-to-Gen1-TPT-v2-stock.zip" });
+			task.execute(new String[] { "http://copy.com/Ma1xkBkFYpVB/Gen2-to-Gen1-TPT-v2-stock.zip" });
 			break;
 		case 5:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/cm7-n257-blade-gen1-to-gen2-tpt.zip" });
+			task.execute(new String[] { "http://copy.com/9dJiu3fvhz9w/cm7-n257-blade-gen1-to-gen2-tpt.zip" });
 			break;
 		case 6:
-			task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%201%20to%20Gen%202/Gen1-to-Gen2-TPT-MMHMP-RLS9.zip" });
+			task.execute(new String[] { "http://copy.com/VIUBxyNKewTc/Gen1-to-Gen2-TPT-MMHMP-RLS9.zip" });
 			break;
 		}
 	}

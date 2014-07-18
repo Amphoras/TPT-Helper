@@ -665,7 +665,7 @@ public class CustomTPTGen2 extends Activity {
 	
 	public void DownloadFile() {
 		DownloadFileTask task = new DownloadFileTask();
-		task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%202/Gen2-TPT-base.zip" });
+		task.execute(new String[] { "http://copy.com/jr2oQ2jPwXzD/Gen2-TPT-base.zip" });
 	}
 	
 	private class DownloadFileTask extends AsyncTask<String, String, String> {
@@ -736,7 +736,7 @@ public class CustomTPTGen2 extends Activity {
 	
 	public void DownloadFile2() {
 		DownloadFileTask2 task = new DownloadFileTask2();
-		task.execute(new String[] { "http://dl.dropbox.com/u/41652192/TPT%20Helper/Blade/Gen%202/Gen2-tpt-files.zip" });
+		task.execute(new String[] { "http://copy.com/QdOsLvBDAZU7/Gen2-tpt-files.zip" });
 	}
 	
 	private class DownloadFileTask2 extends AsyncTask<String, String, String> {

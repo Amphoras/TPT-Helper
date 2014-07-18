@@ -1,7 +1,7 @@
 package com.amphoras.tpthelper;
 
 /*  
-TPT Helper  Copyright (C) 2011-2012  David Phillips
+TPT Helper  Copyright (C) 2011  David Phillips
 
 This file is part of TPT Helper.
 
@@ -30,19 +30,17 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class PickFileUnzipVivacity extends Activity {
 	SharedPreferences preferences;
+	final File dir = Environment.getExternalStorageDirectory();
+	final File vivacityv1a = new File(dir, "Vivacity-v1a.zip");
+	final File downloadvivacityv1a = new File(dir, "download/Vivacity-v1a.zip");
+	final File vivacityv1b = new File(dir, "Vivacity-v1b.zip");
+	final File downloadvivacityv1b = new File(dir, "download/Vivacity-v1b.zip");
+	final File vivacityv1c = new File(dir, "Vivacity-v1c.zip");
+	final File downloadvivacityv1c = new File(dir, "download/Vivacity-v1c.zip");
 	private final int PICK_FILE = 1;
 	private final int FILE_UNFOUND = 2;
 	
@@ -50,7 +48,7 @@ public class PickFileUnzipVivacity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.md5sum);
+        setContentView(R.layout.unzip);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         showDialog(PICK_FILE);
     }
@@ -59,342 +57,97 @@ public class PickFileUnzipVivacity extends Activity {
 	protected Dialog onCreateDialog(int id) {
         switch (id) {
         case PICK_FILE:
-        	Builder builder1 = new AlertDialog.Builder(PickFileUnzipVivacity.this);
-            builder1.setTitle(R.string.pickmd5);
+            Builder builder1 = new AlertDialog.Builder(PickFileUnzipVivacity.this);
+            builder1.setTitle(R.string.pickunzip);
             builder1.setCancelable(false);
             CharSequence cancel = getText(R.string.cancel);
             CharSequence other = getText(R.string.other);
-            CharSequence[] zips1 = new CharSequence[10];
-            int number = 0;
-            try {
-  	            URL url = new URL("http://amphoras.co.uk/Vivacity-TPTs.txt");
-  	            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-  	            connection.connect();
-  	            File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-  	            FileOutputStream fos = new FileOutputStream(file);
-  	            InputStream is = connection.getInputStream();
-  	            byte[] buffer = new byte[1024];
-  	            int length = 0;
-  	            while ((length = is.read(buffer)) > 0 ) {
-  	                fos.write(buffer, 0, length);
-  	            }
-  	            fos.close();
-  	          try {
-  		    	FileInputStream fis = new FileInputStream(file);
-  	  	        InputStreamReader isr = new InputStreamReader(fis);
-  	  	        BufferedReader br = new BufferedReader(isr);
-  	  	        String s = "";
-  	  	        while((s = br.readLine()) != null) {
-  	  	            String[] mounts = s.split("\"");
-  	  	            if (mounts[0].equals("AllInOne")) {
-  	  	            	// Do nothing
-  	  	            } else {
-  	  	            	number = number + 1;
-  	  	            	zips1[number - 1] = mounts[2];
-  	  	            }
-  	  	        }
-              CharSequence[] zips2 = new CharSequence[number + 2];
-              for (int i = 0; i < number; i++) {
-              	zips2[i] = zips1[i];
-              }
-              zips2[number] = other;
-              zips2[number + 1] = cancel;
-              final int position = number;
-          	builder1.setItems(zips2, new DialogInterface.OnClickListener() {
-          	    public void onClick(DialogInterface dialog, int item) {
-          	    	if (item < position) {
-        	    		try {
-        	    			int number = 0;
-        		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-        			    	FileInputStream fis = new FileInputStream(file);
-        		  	        InputStreamReader isr = new InputStreamReader(fis);
-        		  	        BufferedReader br = new BufferedReader(isr);
-        		  	        String s = "";
-        		  	        while((s = br.readLine()) != null) {
-        		  	            String[] mounts = s.split("\"");
-        		  	            if (mounts[0].equals("AllInOne")) {
-        		  	            	// Do nothing
-        		  	            } else {
-        		  	            	if (item == number) {
-        		        	    		File tpt = new File(Environment.getExternalStorageDirectory(), "/" + mounts[2]);
-        		        	    		File downloadtpt = new File(Environment.getExternalStorageDirectory(), "/download/" + mounts[2]);
-        		        	    		if (tpt.canRead() == true){
-        		        	    		    Editor edit = preferences.edit();
-        		        	    			edit.putString("zipname", "/" + mounts[2]);
-        		        	    			edit.commit();
-        		        	    			Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
-        		        	    	        startActivity(i);
-        		        	    	        PickFileUnzipVivacity.this.finish();
-        		        	    		} else {
-        		        	    			if (downloadtpt.canRead() == true){
-        		            	    	        Editor edit = preferences.edit();
-        		            	    		    edit.putString("zipname", "/download/" + mounts[2]);
-        		            	    			edit.commit();
-        		            	    			Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
-        		            	    	        startActivity(i);
-        		            	    	        PickFileUnzipVivacity.this.finish();
-        		        	    			} else {
-        		        	    				Editor edit = preferences.edit();
-        		            	    			edit.putString("filepicked", mounts[2]);
-        		            	    			edit.commit();
-        		        	    				showDialog(FILE_UNFOUND);
-        		        	    			}
-        		        	    		}
-        			  	            }
-        		  	            	number = number + 1;
-        		  	            }
-        		  	        }
-        		    	} catch (IOException e) {
-        	  	            e.printStackTrace();
-        	  	        }
-        	    	} else {
-        	    		if (item == position) {
-        	    			Intent i = new Intent(PickFileUnzipVivacity.this, EnterFileUnzip.class);
-                    		startActivityForResult(i, 1);
+            final CharSequence[] zips1 = {"Vivacity-v1a.zip", "Vivacity-v1b.zip", "Vivacity-v1c.zip", other, cancel};
+        	builder1.setItems(zips1, new DialogInterface.OnClickListener() {
+            	public void onClick(DialogInterface dialog, int item) {
+        	    	switch (item) {
+        	    	case 0:
+        	    		if (vivacityv1a.canRead() == true){
+        	    		    Editor edit = preferences.edit();
+        	    			edit.putString("zipname", "/Vivacity-v1a.zip");
+        	    			edit.commit();
+        	    	        Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
+        	    	        startActivity(i);
+        	    	        PickFileUnzipVivacity.this.finish();
         	    		} else {
-        	    			if (item == position + 1) {
-        	    				PickFileUnzipVivacity.this.finish();
+        	    			if (downloadvivacityv1a.canRead() == true){
+            	    	        Editor edit = preferences.edit();
+            	    		    edit.putString("zipname", "/download/Vivacity-v1a.zip");
+            	    			edit.commit();
+            	    	        Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
+            	    	        startActivity(i);
+            	    	        PickFileUnzipVivacity.this.finish();
+        	    			} else {
+        	    				Editor edit = preferences.edit();
+            	    			edit.putString("filepicked", "Vivacity-v1a.zip");
+            	    			edit.commit();
+        	    				showDialog(FILE_UNFOUND);
         	    			}
         	    		}
+        	    		break;
+        	    	case 1:
+        	    		if (vivacityv1b.canRead() == true){
+        	    		    Editor edit = preferences.edit();
+        	    			edit.putString("zipname", "/Vivacity-v1b.zip");
+        	    			edit.commit();
+        	    	        Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
+        	    	        startActivity(i);
+        	    	        PickFileUnzipVivacity.this.finish();
+        	    		} else {
+        	    			if (downloadvivacityv1b.canRead() == true){
+            	    	        Editor edit = preferences.edit();
+            	    		    edit.putString("zipname", "/download/Vivacity-v1b.zip");
+            	    			edit.commit();
+            	    	        Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
+            	    	        startActivity(i);
+            	    	        PickFileUnzipVivacity.this.finish();
+        	    			} else {
+        	    				Editor edit = preferences.edit();
+            	    			edit.putString("filepicked", "Vivacity-v1b.zip");
+            	    			edit.commit();
+        	    				showDialog(FILE_UNFOUND);
+        	    			}
+        	    		}
+        	    		break;
+        	    	case 2:
+        	    		if (vivacityv1c.canRead() == true){
+        	    		    Editor edit = preferences.edit();
+        	    			edit.putString("zipname", "/Vivacity-v1c.zip");
+        	    			edit.commit();
+        	    	        Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
+        	    	        startActivity(i);
+        	    	        PickFileUnzipVivacity.this.finish();
+        	    		} else {
+        	    			if (downloadvivacityv1c.canRead() == true){
+            	    	        Editor edit = preferences.edit();
+            	    		    edit.putString("zipname", "/download/Vivacity-v1c.zip");
+            	    			edit.commit();
+            	    	        Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
+            	    	        startActivity(i);
+            	    	        PickFileUnzipVivacity.this.finish();
+        	    			} else {
+        	    				Editor edit = preferences.edit();
+            	    			edit.putString("filepicked", "Vivacity-v1c.zip");
+            	    			edit.commit();
+        	    				showDialog(FILE_UNFOUND);
+        	    			}
+        	    		}
+        	    		break;
+        	    	case 3:
+        	    		Intent i = new Intent(PickFileUnzipVivacity.this, EnterFileUnzip.class);
+                		startActivityForResult(i, 1);
+                		break;
+        	    	case 4:
+                		PickFileUnzipVivacity.this.finish();
+                		break;
         	    	}
-          	    }
-          	});
-              } catch (IOException e) {
-    	        	CharSequence[] zips = {"Unable to access TPT list.", "Please check your data connection.", other, cancel};
-              	builder1.setItems(zips, new DialogInterface.OnClickListener() {
-              	    public void onClick(DialogInterface dialog, int item) {
-              	    	switch (item) {
-              	    	case 0:
-              	    		PickFileUnzipVivacity.this.finish();
-              	    		break;
-              	    	case 1:
-              	    		PickFileUnzipVivacity.this.finish();
-              	    		break;
-              	    	case 2:
-              	    		Intent i = new Intent(PickFileUnzipVivacity.this, EnterFile.class);
-                      		startActivityForResult(i, 1);
-                      		break;
-              	    	case 3:
-              	    		PickFileUnzipVivacity.this.finish();
-              	    		break;
-              	    	}
-              	    }
-              	});
-    	            e.printStackTrace();
-    	        }
-            } catch (MalformedURLException e) {
-            	try {
-                	File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-    		    	FileInputStream fis = new FileInputStream(file);
-    	  	        InputStreamReader isr = new InputStreamReader(fis);
-    	  	        BufferedReader br = new BufferedReader(isr);
-    	  	        String s = "";
-    	  	        while((s = br.readLine()) != null) {
-    	  	            String[] mounts = s.split("\"");
-    	  	            if (mounts[0].equals("AllInOne")) {
-    	  	            	// Do nothing
-    	  	            } else {
-    	  	            	number = number + 1;
-    	  	            	zips1[number - 1] = mounts[2];
-    	  	            }
-    	  	        }
-                CharSequence[] zips2 = new CharSequence[number + 2];
-                for (int i = 0; i < number; i++) {
-                	zips2[i] = zips1[i];
-                }
-                zips2[number] = other;
-                zips2[number + 1] = cancel;
-                final int position = number;
-            	builder1.setItems(zips2, new DialogInterface.OnClickListener() {
-            	    public void onClick(DialogInterface dialog, int item) {
-            	    	if (item < position) {
-            	    		try {
-            	    			int number = 0;
-            		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-            			    	FileInputStream fis = new FileInputStream(file);
-            		  	        InputStreamReader isr = new InputStreamReader(fis);
-            		  	        BufferedReader br = new BufferedReader(isr);
-            		  	        String s = "";
-            		  	        while((s = br.readLine()) != null) {
-            		  	            String[] mounts = s.split("\"");
-            		  	            if (mounts[0].equals("AllInOne")) {
-            		  	            	// Do nothing
-            		  	            } else {
-            		  	            	if (item == number) {
-            		        	    		File tpt = new File(Environment.getExternalStorageDirectory(), "/" + mounts[2]);
-            		        	    		File downloadtpt = new File(Environment.getExternalStorageDirectory(), "/download/" + mounts[2]);
-            		        	    		if (tpt.canRead() == true){
-            		        	    		    Editor edit = preferences.edit();
-            		        	    			edit.putString("zipname", "/" + mounts[2]);
-            		        	    			edit.commit();
-            		        	    			Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
-            		        	    	        startActivity(i);
-            		        	    	        PickFileUnzipVivacity.this.finish();
-            		        	    		} else {
-            		        	    			if (downloadtpt.canRead() == true){
-            		            	    	        Editor edit = preferences.edit();
-            		            	    		    edit.putString("zipname", "/download/" + mounts[2]);
-            		            	    			edit.commit();
-            		            	    			Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
-            		            	    	        startActivity(i);
-            		            	    	        PickFileUnzipVivacity.this.finish();
-            		        	    			} else {
-            		        	    				Editor edit = preferences.edit();
-            		            	    			edit.putString("filepicked", mounts[2]);
-            		            	    			edit.commit();
-            		        	    				showDialog(FILE_UNFOUND);
-            		        	    			}
-            		        	    		}
-            			  	            }
-            		  	            	number = number + 1;
-            		  	            }
-            		  	        }
-            		    	} catch (IOException e) {
-            	  	            e.printStackTrace();
-            	  	        }
-            	    	} else {
-            	    		if (item == position) {
-            	    			Intent i = new Intent(PickFileUnzipVivacity.this, EnterFileUnzip.class);
-                        		startActivityForResult(i, 1);
-            	    		} else {
-            	    			if (item == position + 1) {
-            	    				PickFileUnzipVivacity.this.finish();
-            	    			}
-            	    		}
-            	    	}
-            	    }
-            	});
-                } catch (IOException e2) {
-      	        	CharSequence[] zips = {"Unable to access TPT list.", "Please check your data connection.", other, cancel};
-                	builder1.setItems(zips, new DialogInterface.OnClickListener() {
-                	    public void onClick(DialogInterface dialog, int item) {
-                	    	switch (item) {
-                	    	case 0:
-                	    		PickFileUnzipVivacity.this.finish();
-                	    		break;
-                	    	case 1:
-                	    		PickFileUnzipVivacity.this.finish();
-                	    		break;
-                	    	case 2:
-                	    		Intent i = new Intent(PickFileUnzipVivacity.this, EnterFile.class);
-                        		startActivityForResult(i, 1);
-                        		break;
-                	    	case 3:
-                	    		PickFileUnzipVivacity.this.finish();
-                	    		break;
-                	    	}
-                	    }
-                	});
-      	            e2.printStackTrace();
-      	        }
-  	            e.printStackTrace();
-  	        } catch (IOException e) {
-  	        	try {
-  	            	File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-  			    	FileInputStream fis = new FileInputStream(file);
-  		  	        InputStreamReader isr = new InputStreamReader(fis);
-  		  	        BufferedReader br = new BufferedReader(isr);
-  		  	        String s = "";
-  		  	        while((s = br.readLine()) != null) {
-  		  	            String[] mounts = s.split("\"");
-  		  	            if (mounts[0].equals("AllInOne")) {
-  		  	            	// Do nothing
-  		  	            } else {
-  		  	            	number = number + 1;
-  		  	            	zips1[number - 1] = mounts[2];
-  		  	            }
-  		  	        }
-  	            CharSequence[] zips2 = new CharSequence[number + 2];
-  	            for (int i = 0; i < number; i++) {
-  	            	zips2[i] = zips1[i];
-  	            }
-  	            zips2[number] = other;
-  	            zips2[number + 1] = cancel;
-  	            final int position = number;
-  	        	builder1.setItems(zips2, new DialogInterface.OnClickListener() {
-  	        	    public void onClick(DialogInterface dialog, int item) {
-  	        	    	if (item < position) {
-  	        	    		try {
-  	        	    			int number = 0;
-  	        		    		File file = new File(Environment.getExternalStorageDirectory(), "/TPT Helper/Vivacity-TPTs.txt");
-  	        			    	FileInputStream fis = new FileInputStream(file);
-  	        		  	        InputStreamReader isr = new InputStreamReader(fis);
-  	        		  	        BufferedReader br = new BufferedReader(isr);
-  	        		  	        String s = "";
-  	        		  	        while((s = br.readLine()) != null) {
-  	        		  	            String[] mounts = s.split("\"");
-  	        		  	            if (mounts[0].equals("AllInOne")) {
-  	        		  	            	// Do nothing
-  	        		  	            } else {
-  	        		  	            	if (item == number) {
-  	        		        	    		File tpt = new File(Environment.getExternalStorageDirectory(), "/" + mounts[2]);
-  	        		        	    		File downloadtpt = new File(Environment.getExternalStorageDirectory(), "/download/" + mounts[2]);
-  	        		        	    		if (tpt.canRead() == true){
-  	        		        	    		    Editor edit = preferences.edit();
-  	        		        	    			edit.putString("zipname", "/" + mounts[2]);
-  	        		        	    			edit.commit();
-  	        		        	    			Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
-  	        		        	    	        startActivity(i);
-  	        		        	    	        PickFileUnzipVivacity.this.finish();
-  	        		        	    		} else {
-  	        		        	    			if (downloadtpt.canRead() == true){
-  	        		            	    	        Editor edit = preferences.edit();
-  	        		            	    		    edit.putString("zipname", "/download/" + mounts[2]);
-  	        		            	    			edit.commit();
-  	        		            	    			Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
-  	        		            	    	        startActivity(i);
-  	        		            	    	        PickFileUnzipVivacity.this.finish();
-  	        		        	    			} else {
-  	        		        	    				Editor edit = preferences.edit();
-  	        		            	    			edit.putString("filepicked", mounts[2]);
-  	        		            	    			edit.commit();
-  	        		        	    				showDialog(FILE_UNFOUND);
-  	        		        	    			}
-  	        		        	    		}
-  	        			  	            }
-  	        		  	            	number = number + 1;
-  	        		  	            }
-  	        		  	        }
-  	        		    	} catch (IOException e) {
-  	        	  	            e.printStackTrace();
-  	        	  	        }
-  	        	    	} else {
-  	        	    		if (item == position) {
-  	        	    			Intent i = new Intent(PickFileUnzipVivacity.this, EnterFileUnzip.class);
-  	                    		startActivityForResult(i, 1);
-  	        	    		} else {
-  	        	    			if (item == position + 1) {
-  	        	    				PickFileUnzipVivacity.this.finish();
-  	        	    			}
-  	        	    		}
-  	        	    	}
-  	        	    }
-  	        	});
-  	            } catch (IOException e2) {
-  	  	        	CharSequence[] zips = {"Unable to access TPT list.", "Please check your data connection.", other, cancel};
-  	            	builder1.setItems(zips, new DialogInterface.OnClickListener() {
-  	            	    public void onClick(DialogInterface dialog, int item) {
-  	            	    	switch (item) {
-  	            	    	case 0:
-  	            	    		PickFileUnzipVivacity.this.finish();
-  	            	    		break;
-  	            	    	case 1:
-  	            	    		PickFileUnzipVivacity.this.finish();
-  	            	    		break;
-  	            	    	case 2:
-  	            	    		Intent i = new Intent(PickFileUnzipVivacity.this, EnterFile.class);
-  	                    		startActivityForResult(i, 1);
-  	                    		break;
-  	            	    	case 3:
-  	            	    		PickFileUnzipVivacity.this.finish();
-  	            	    		break;
-  	            	    	}
-  	            	    }
-  	            	});
-  	  	            e2.printStackTrace();
-  	  	        }
-  	            e.printStackTrace();
-  	        }
+        	    }
+        	});
         	return builder1.create();
         case FILE_UNFOUND:
         	String filepicked = preferences.getString("filepicked", "");
@@ -429,9 +182,9 @@ public class PickFileUnzipVivacity extends Activity {
           if (resultCode == Activity.RESULT_OK) {
         	  String filename = data.getStringExtra("filename");
   	          Editor edit = preferences.edit();
-    	      edit.putString("filepath", "/" + filename);
+    	      edit.putString("zipname", "/" + filename);
     		  edit.commit();
-    	      Intent i = new Intent(PickFileUnzipVivacity.this, MD5sum.class);
+    	      Intent i = new Intent(PickFileUnzipVivacity.this, Unzipper.class);
     	      startActivity(i);
     	      PickFileUnzipVivacity.this.finish();
           }
